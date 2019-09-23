@@ -69,6 +69,7 @@ class Admincampus extends CommonDash {
 				'roleID'		=> '33',
 				'emaiL'			=> $this->input->post('Email'),
 				'passworD'		=> 'null',
+				'statuS'		=> 'pending',
 				'createdTime'	=> date('Y-m-d H:i:s')
 				)
 			); //insert login
@@ -287,6 +288,7 @@ class Admincampus extends CommonDash {
 
 		$update = $this->Mod_crud->updateData('t_login', array(
 		           		'passworD' 	=> 'null'
+					'statuS'	=> 'reset',
            			), array('emaiL' => $email)
            	);
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
