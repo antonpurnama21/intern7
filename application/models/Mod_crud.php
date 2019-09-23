@@ -173,6 +173,14 @@ class Mod_crud extends CI_Model {
 		return $data->num_rows();
 	}
 	
+	function setsession_qry(){
+		$query=$this->db->query('SET SESSION sql_mode = ""');
+		if ($query) {
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}	
 
 }
 
