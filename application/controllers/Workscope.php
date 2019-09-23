@@ -52,7 +52,7 @@ class Workscope extends CommonDash {
 			'breadcrumb' 	=> explode(',', 'Workscope, Workscope List'),
 			'dtworkscope'	=> $getworkscope
 		);
-		$this->render('dashboard', 'pages/Workscope/index', $data);
+		$this->render('dashboard', 'pages/workscope/index', $data);
 	}
 
 // DETAIL
@@ -85,7 +85,7 @@ class Workscope extends CommonDash {
 			'breadcrumb' 	=> explode(',', 'Workscope, Detail Workscope'),
 			'dtworkscope'	=> $detail
 		);
-		$this->render('dashboard', 'pages/Workscope/detil', $data);
+		$this->render('dashboard', 'pages/workscope/detil', $data);
 	}
 
 		public function getTimeline()
@@ -212,7 +212,7 @@ class Workscope extends CommonDash {
 			'breadcrumb' 	=> explode(',', 'Workscope, My Workscope'),
 			'dtworkscope'	=> $mywork
 		);
-		$this->render('dashboard', 'pages/Workscope/mywork', $data);
+		$this->render('dashboard', 'pages/workscope/mywork', $data);
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -243,7 +243,7 @@ class Workscope extends CommonDash {
 			'dtask'	=> $getask,
 			'workscopeID' => $id
 		);
-		$this->render('dashboard', 'pages/Workscope/indextask', $data);
+		$this->render('dashboard', 'pages/workscope/indextask', $data);
 	}
 
 		public function addTask($id=null)
@@ -517,7 +517,7 @@ class Workscope extends CommonDash {
 			'taskID' 		=> $id,
 			'dtprogress'	=> $getprogress
 		);
-		$this->render('dashboard', 'pages/Workscope/logprogress', $data);
+		$this->render('dashboard', 'pages/workscope/logprogress', $data);
 	}
 
 }
