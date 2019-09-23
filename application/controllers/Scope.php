@@ -15,7 +15,7 @@ class Scope extends CommonDash {
 	{
 		if ($this->session->userdata('userlog')['sess_role']==22) {
 
-		$deptID 	= $this->session->userdata('userlog')['sess_deptID'];
+		$deptID = $this->session->userdata('userlog')['sess_deptID'];
 		$scope 	= $this->Mod_crud->getData('result', '*', 't_project_scope', null, null,null, array('isApproved = "Y"','deptID = "'.$deptID.'"'), null, array('projectScopeID ASC'));
 
 		}else{
@@ -69,11 +69,11 @@ class Scope extends CommonDash {
 						"dashboards/js/pages/scope-manage-script.js",
 				)
 			),
-			'titleWeb' 		=> "Manage Project Scope | CBN Internship",
+			'titleWeb' 	=> "Manage Project Scope | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Project Scope, Manage Project Scope'),
 			'dtcategory' 	=> $this->Mod_crud->getData('result','*', 't_category'),
 			'dtproject' 	=> $this->Mod_crud->getData('result','*', 't_project'),
-			'dtscope'		=> $this->Mod_crud->getData('result', '*', 't_project_scope', null, null,null, array('deptID = "'.$deptID.'"'), null, array('projectScopeID ASC'))
+			'dtscope'	=> $this->Mod_crud->getData('result', '*', 't_project_scope', null, null,null, array('deptID = "'.$deptID.'"'), null, array('projectScopeID ASC'))
 		);
 		$this->render('dashboard', 'pages/scope/manage', $data);
 	}
