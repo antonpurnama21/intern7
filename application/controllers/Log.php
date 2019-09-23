@@ -26,7 +26,7 @@ class Log extends CommonDash {
 						"dashboards/js/plugins/pickers/pickadate/picker.js",
 						"dashboards/js/plugins/pickers/pickadate/picker.date.js",
 						"dashboards/js/plugins/forms/validation/validate.min.js",
-						"dashboards/js/pages/Log-index-script.js",
+						"dashboards/js/pages/log-index-script.js",
 				)
 			),
 			'titleWeb' => "Log Activities | CBN Internship",
