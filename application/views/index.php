@@ -171,9 +171,9 @@ foreach ($dtjumlah as $key) {?>
 							<th></th>
 							<th width="5%">No</th>
 							<th width="10%">Login ID</th>
-							<th width="30%">Email</th>
-							<th width="30%">Role</th>
-							<th width="25%">Action</th>
+							<th width="40%">Email</th>
+							<th width="25%">Role</th>
+							<th width="20%">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -182,12 +182,21 @@ foreach ($dtjumlah as $key) {?>
 								$no = 0;
 							foreach ($dtaccount as $key) {
 							$no++;
+							if ($key->statuS == 'new') {
+								$status = '<span class="badge badge-succes">New</span>';
+							}elseif ($key->statuS == 'new-mahasiswa') {
+								$status = '<span class="badge badge-succes">New Mahasiswa</span>';
+							}elseif ($key->statuS == 'reset') {
+								$status = '<span class="badge badge-warning">Reset Password</span>';
+							}else{
+								$status = 'Revoke';
+							}
 						?>
 						<tr class="text-size-mini">
 							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?= $key->loginID ?></td>
-							<td><?= $key->emaiL ?></td>
+							<td><?= $key->emaiL ?> <?=$status?></td>
 							<td><?= what_role($key->roleID) ?></td>
 							<td class="text-center">
 								<a data-placement="left" data-popup="tooltip" title="Batalkan Reset / Setup Link" style="margin-bottom: 5px" class="btn btn-default" onclick="confirms('Revoke','Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_revoke') ?>','<?= $key->emaiL ?>')"><i class="icon-blocked"></i></a>
