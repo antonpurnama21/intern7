@@ -107,7 +107,7 @@ class Dosen extends CommonDash {
 						$config['source_image'] 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
 						$config['create_thumb'] 	= FALSE;
 						$config['maintain_ratio'] 	= FALSE;
-						$config['quality'] 			= '50%';
+						$config['quality'] 		= '50%';
 						$config['width']         	= 200;
 						$config['height']       	= 200;
 						$config['new_image']	 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
@@ -120,20 +120,20 @@ class Dosen extends CommonDash {
 				}
 
 				$saveDosen = $this->Mod_crud->insertData('t_dosen', array(
-           				'dosenID' 		=> $dosenID,
-           				'loginID'		=> $dosenID,
+           				'dosenID' 	=> $dosenID,
+           				'loginID'	=> $dosenID,
            				'universityID' 	=> $this->input->post('Universityid'),
            				'facultyID' 	=> $this->input->post('Facultyid'),
-           				'emaiL'			=> $this->input->post('Email'),
+           				'emaiL'		=> $this->input->post('Email'),
            				'dosenNumber'	=> $this->input->post('Nid'),
-           				'fullName' 		=> ucwords($this->input->post('Fullname')),
+           				'fullName' 	=> ucwords($this->input->post('Fullname')),
            				'fixedPhone'	=> $this->input->post('Fixedphone'),
            				'mobilePhone'	=> $this->input->post('Mobilephone'),
-           				'city'			=> $this->input->post('City'),
-           				'zip'			=> $this->input->post('Zip'),
-           				'address'		=> $this->input->post('Address'),
+           				'city'		=> $this->input->post('City'),
+           				'zip'		=> $this->input->post('Zip'),
+           				'address'	=> $this->input->post('Address'),
            				'profilePic' 	=> $pathPic,
-           				'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+           				'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
            				'createdTIME'	=> date('Y-m-d H:i:s')
            			)
            		);
@@ -155,19 +155,19 @@ class Dosen extends CommonDash {
 			$expired_at = date('Y-m-d H:i:s',$done);
 
 			$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-					'emaiL'			=> $this->input->post('Email'),
-					'tokeN'			=> $tokeN,
+					'emaiL'		=> $this->input->post('Email'),
+					'tokeN'		=> $tokeN,
 					'created_at'	=> date('Y-m-d H:i:s'),
 					'expired_at'	=> $expired_at
 					)
 				);
 
 			$config = array(
-			  				'protocol' => 'smtp',
-					  		'smtp_host' => 'ssl://smtp.gmail.com',
-					  		'smtp_port' => 465,
-					  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-					  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+			  				'protocol' => 'ssmtp',
+							'smtp_host' => 'ssl://mail.intern7.iex.or.id',
+							'smtp_port' => 465,
+							'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+							'smtp_pass' => 'Infocbn123', // change it to yours
 					  		//'smtp_username' => 'armg3295',
 					  		'mailtype' => 'html',
 					  		'charset' => 'iso-8859-1',
@@ -237,7 +237,7 @@ class Dosen extends CommonDash {
 		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
 		    'breadcrumb' => explode(',', 'Dosen,Edit Dosen ('.name_dosen($id).')'),
 		    'dMaster'	 => $this->Mod_crud->getData('row', '*', 't_dosen', null, null,null, array('dosenID = "'.$id.'"')),
-			'actionForm' => base_url('dosen/edit'),
+		    'actionForm' => base_url('dosen/edit'),
 		    'buttonForm' => 'Simpan',
 		    'Req' => ''
 		);
@@ -272,7 +272,7 @@ class Dosen extends CommonDash {
 					$config['source_image'] 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
 					$config['create_thumb'] 	= FALSE;
 					$config['maintain_ratio'] 	= FALSE;
-					$config['quality'] 			= '50%';
+					$config['quality'] 		= '50%';
 					$config['width']         	= 200;
 					$config['height']       	= 200;
 					$config['new_image']	 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
@@ -293,16 +293,16 @@ class Dosen extends CommonDash {
 			$updateDosen = $this->Mod_crud->updateData('t_dosen', array(
 	           				'universityID' 	=> $this->input->post('Universityid'),
 	           				'facultyID' 	=> $this->input->post('Facultyid'),
-	           				'emaiL'			=> $this->input->post('Email'),
+	           				'emaiL'		=> $this->input->post('Email'),
 	           				'dosenNumber'	=> $this->input->post('Nid'),
-	           				'fullName' 		=> ucwords($this->input->post('Fullname')),
+	           				'fullName' 	=> ucwords($this->input->post('Fullname')),
 	           				'fixedPhone'	=> $this->input->post('Fixedphone'),
 	           				'mobilePhone'	=> $this->input->post('Mobilephone'),
-	           				'city'			=> $this->input->post('City'),
-	           				'zip'			=> $this->input->post('Zip'),
-	           				'address'		=> $this->input->post('Address'),
+	           				'city'		=> $this->input->post('City'),
+	           				'zip'		=> $this->input->post('Zip'),
+	           				'address'	=> $this->input->post('Address'),
 	           				'profilePic' 	=> $pathPic,
-	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+	           				'updatedBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'	=> date('Y-m-d H:i:s')
 	           			), array('dosenID' => $this->input->post('Dosenid'))
 	           	);
@@ -404,22 +404,22 @@ class Dosen extends CommonDash {
 		$delete  = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$this->input->post('Email')));
 
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-				'emaiL'			=> $email,
-				'tokeN'			=> $tokeN,
+				'emaiL'		=> $email,
+				'tokeN'		=> $tokeN,
 				'created_at'	=> date('Y-m-d H:i:s'),
 				'expired_at'	=> $expired_at
 				)
 			);
 
-		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+			$config = array(
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
-				  		'charset' => 'iso-8859-1',
+				  		'charset'  => 'iso-8859-1',
 				  		'wordwrap' => TRUE
 			);
 
@@ -546,7 +546,7 @@ class Dosen extends CommonDash {
 					$config['source_image'] 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
 					$config['create_thumb'] 	= FALSE;
 					$config['maintain_ratio'] 	= FALSE;
-					$config['quality'] 			= '50%';
+					$config['quality'] 		= '50%';
 					$config['width']         	= 200;
 					$config['height']       	= 200;
 					$config['new_image']	 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
@@ -567,16 +567,16 @@ class Dosen extends CommonDash {
 			$updateDosen = $this->Mod_crud->updateData('t_dosen', array(
 	           				'universityID' 	=> $this->input->post('Universityid'),
 	           				'facultyID' 	=> $this->input->post('Facultyid'),
-	           				'emaiL'			=> $this->input->post('Email'),
+	           				'emaiL'		=> $this->input->post('Email'),
 	           				'dosenNumber'	=> $this->input->post('Nid'),
-	           				'fullName' 		=> ucwords($this->input->post('Fullname')),
+	           				'fullName' 	=> ucwords($this->input->post('Fullname')),
 	           				'fixedPhone'	=> $this->input->post('Fixedphone'),
 	           				'mobilePhone'	=> $this->input->post('Mobilephone'),
-	           				'city'			=> $this->input->post('City'),
-	           				'zip'			=> $this->input->post('Zip'),
-	           				'address'		=> $this->input->post('Address'),
+	           				'city'		=> $this->input->post('City'),
+	           				'zip'		=> $this->input->post('Zip'),
+	           				'address'	=> $this->input->post('Address'),
 	           				'profilePic' 	=> $pathPic,
-	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+	           				'updatedBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'	=> date('Y-m-d H:i:s')
 	           			), array('dosenID' => $this->input->post('Dosenid'))
 	           	);
