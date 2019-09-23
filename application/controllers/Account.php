@@ -13,8 +13,8 @@ class Account extends CommonDash {
 
 	public function do_resend()
 	{
-		$emaiL = $this->input->post('id');
-		$delete 	= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$emaiL));
+		$emaiL 	= $this->input->post('id');
+		$delete = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$emaiL));
 
 		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$tokeN 	= substr(str_shuffle($set), 0, 55);
@@ -24,8 +24,8 @@ class Account extends CommonDash {
 		$expired_at = date('Y-m-d H:i:s',$done);
 
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-				'emaiL'			=> $emaiL,
-				'tokeN'			=> $tokeN,
+				'emaiL'		=> $emaiL,
+				'tokeN'		=> $tokeN,
 				'created_at'	=> date('Y-m-d H:i:s'),
 				'expired_at'	=> $expired_at
 				)
@@ -89,6 +89,7 @@ class Account extends CommonDash {
 		$emaiL 		= $this->input->post('id');
 		$update 	= $this->Mod_crud->updateData('t_login', array(
 		           		'passworD' 	=> NULL
+					'statuS'	=> 'revoke',
            			), array('emaiL' => $emaiL)
            	);
 		
