@@ -61,7 +61,7 @@ class Admin extends CommonDash {
 						'loginID' 	=> $id,
 						'emaiL' 	=> $this->input->post('Email'),
 						'fullName' 	=> $this->input->post('Fullname'),
-						'telePhone' => $this->input->post('Telephone'),
+						'telePhone' 	=> $this->input->post('Telephone'),
 						'deptID'	=> $this->input->post('Deptid'),
 						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' => date('Y-m-d H:i:s')
@@ -73,7 +73,7 @@ class Admin extends CommonDash {
 				'roleID'		=> $this->input->post('Roleid'),
 				'emaiL'			=> $this->input->post('Email'),
 				'passworD'		=> 'null',
-				'createdTime'	=> date('Y-m-d H:i:s')
+				'createdTime'		=> date('Y-m-d H:i:s')
 				)
 			); //insert login
 
@@ -85,19 +85,19 @@ class Admin extends CommonDash {
 			$expired_at = date('Y-m-d H:i:s',$done);
 
 			$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-					'emaiL'			=> $this->input->post('Email'),
-					'tokeN'			=> $tokeN,
+					'emaiL'		=> $this->input->post('Email'),
+					'tokeN'		=> $tokeN,
 					'created_at'	=> date('Y-m-d H:i:s'),
 					'expired_at'	=> $expired_at
 					)
 				);
 
 			$config = array(
-			  				'protocol' => 'smtp',
-					  		'smtp_host' => 'ssl://smtp.gmail.com',
-					  		'smtp_port' => 465,
-					  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-					  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+			  				'protocol' => 'ssmtp',
+							'smtp_host' => 'ssl://mail.intern7.iex.or.id',
+							'smtp_port' => 465,
+							'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+							'smtp_pass' => 'Infocbn123', // change it to yours
 					  		//'smtp_username' => 'armg3295',
 					  		'mailtype' => 'html',
 					  		'charset' => 'iso-8859-1',
@@ -161,14 +161,14 @@ class Admin extends CommonDash {
 			$update = $this->Mod_crud->updateData('t_admin', array(
 						'emaiL' 	=> $this->input->post('Email'),
 						'fullName' 	=> $this->input->post('Fullname'),
-						'telePhone' => $this->input->post('Telephone'),
+						'telePhone' 	=> $this->input->post('Telephone'),
 						'deptID'	=> $this->input->post('Deptid'),
 						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' => date('Y-m-d H:i:s')
            			), array('adminID ' => $this->input->post('Adminid'))
            		);
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
-						'roleID'		=> $this->input->post('Roleid'),
+					'roleID'		=> $this->input->post('Roleid'),
 		           		'emaiL' 		=> $this->input->post('Email')
            			), array('loginID'  => $this->input->post('Adminid'))
            	);
@@ -309,19 +309,19 @@ class Admin extends CommonDash {
            			), array('emaiL' => $email)
            	);
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-				'emaiL'			=> $email,
-				'tokeN'			=> $tokeN,
+				'emaiL'		=> $email,
+				'tokeN'		=> $tokeN,
 				'created_at'	=> date('Y-m-d H:i:s'),
 				'expired_at'	=> $expired_at
 				)
 			);
 
 		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
 				  		'charset' => 'iso-8859-1',
@@ -413,10 +413,10 @@ class Admin extends CommonDash {
 			$update = $this->Mod_crud->updateData('t_admin', array(
 						'emaiL' 	=> $this->input->post('Email'),
 						'fullName' 	=> $this->input->post('Fullname'),
-						'telePhone' => $this->input->post('Telephone'),
+						'telePhone' 	=> $this->input->post('Telephone'),
 						'deptID'	=> $this->input->post('Deptid'),
 						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
-						'createdTime' => date('Y-m-d H:i:s')
+						'createdTime' 	=> date('Y-m-d H:i:s')
            			), array('adminID ' => $this->input->post('Adminid'))
            		);
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
