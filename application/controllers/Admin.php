@@ -73,7 +73,7 @@ class Admin extends CommonDash {
 				'roleID'		=> $this->input->post('Roleid'),
 				'emaiL'			=> $this->input->post('Email'),
 				'passworD'		=> 'null',
-				'statuS'		=> 'pending',
+				'statuS'		=> 'new',
 				'createdTime'		=> date('Y-m-d H:i:s')
 				)
 			); //insert login
