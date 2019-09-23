@@ -142,7 +142,13 @@
 							<div class="sidebar-user-material-content">
 								<a href="#"><img src="<?= $sesi['sess_avatar']; ?>" class="img-circle img-responsive" alt=""></a>
 								<h6><?= $sesi['sess_name'] ?></h6>
-								<span class="text-size-small"><?= what_role($sesi['sess_role']); ?></span>
+								<span class="text-size-small"><?= what_role($sesi['sess_role']); ?></span><br />
+								<?php  
+								if ($sesi['sess_role'] == 11 OR $sesi['sess_role'] == 22) {?>
+								<span class="text-size-small"><?= name_dept($sesi['sess_deptID']); ?></span>
+								<?php }else {?>
+								<span class="text-size-small"><?= name_university($sesi['sess_univID']); ?></span>
+								<?php } ?>
 							</div>
 						</div>
 					</div>
