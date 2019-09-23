@@ -69,7 +69,7 @@ class Admincampus extends CommonDash {
 				'roleID'		=> '33',
 				'emaiL'			=> $this->input->post('Email'),
 				'passworD'		=> 'null',
-				'statuS'		=> 'pending',
+				'statuS'		=> 'new',
 				'createdTime'	=> date('Y-m-d H:i:s')
 				)
 			); //insert login
