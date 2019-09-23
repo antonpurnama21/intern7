@@ -143,6 +143,7 @@ class Dosen extends CommonDash {
 					'roleID'		=> 44,
 					'emaiL'			=> $this->input->post('Email'),
 					'passworD'		=> 'null',
+					'statuS'		=> 'new',
 					'createdTime'	=> date('Y-m-d H:i:s')
 					)
 				);
@@ -397,7 +398,8 @@ class Dosen extends CommonDash {
 		$expired_at = date('Y-m-d H:i:s',$done);
 
 		$update = $this->Mod_crud->updateData('t_login', array(
-		           		'passworD' 	=> 'null'
+		           		'passworD' 	=> 'null',
+					'statuS'	=> 'reset',
            			), array('emaiL' => $email)
            	);
 		
