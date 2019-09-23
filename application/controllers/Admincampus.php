@@ -54,12 +54,12 @@ class Admincampus extends CommonDash {
 
 			$save = $this->Mod_crud->insertData('t_admin_campus', array(
 						'adminCampusID' => $id,
-						'loginID' 		=> $id,
+						'loginID' 	=> $id,
 						'universityID' 	=> $this->input->post('Universityid'),
-						'emaiL' 		=> $this->input->post('Email'),
-						'fullName' 		=> $this->input->post('Fullname'),
+						'emaiL' 	=> $this->input->post('Email'),
+						'fullName' 	=> $this->input->post('Fullname'),
 						'telePhone' 	=> $this->input->post('Telephone'),
-						'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' 	=> date('Y-m-d H:i:s')
            			)
            		); //insert admincampus
@@ -81,19 +81,19 @@ class Admincampus extends CommonDash {
 			$expired_at = date('Y-m-d H:i:s',$done);
 
 			$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-					'emaiL'			=> $this->input->post('Email'),
-					'tokeN'			=> $tokeN,
+					'emaiL'		=> $this->input->post('Email'),
+					'tokeN'		=> $tokeN,
 					'created_at'	=> date('Y-m-d H:i:s'),
 					'expired_at'	=> $expired_at
 					)
 				);
 
 			$config = array(
-			  				'protocol' => 'smtp',
-					  		'smtp_host' => 'ssl://smtp.gmail.com',
-					  		'smtp_port' => 465,
-					  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-					  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+			  				'protocol' => 'ssmtp',
+							'smtp_host' => 'ssl://mail.intern7.iex.or.id',
+							'smtp_port' => 465,
+							'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+							'smtp_pass' => 'Infocbn123', // change it to yours
 					  		//'smtp_username' => 'armg3295',
 					  		'mailtype' => 'html',
 					  		'charset' => 'iso-8859-1',
@@ -157,15 +157,15 @@ class Admincampus extends CommonDash {
 
 			$update = $this->Mod_crud->updateData('t_admin_campus', array(
 						'universityID'	=> $this->input->post('Universityid'),
-						'emaiL' 		=> $this->input->post('Email'),
-						'fullName' 		=> $this->input->post('Fullname'),
+						'emaiL' 	=> $this->input->post('Email'),
+						'fullName' 	=> $this->input->post('Fullname'),
 						'telePhone' 	=> $this->input->post('Telephone'),
-						'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' 	=> date('Y-m-d H:i:s')
            			), array('adminCampusID ' => $this->input->post('Admincampusid'))
            		);
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
-		           		'emaiL' 		=> $this->input->post('Email')
+		           		'emaiL' 	=> $this->input->post('Email')
            			), array('loginID'  => $this->input->post('Admincampusid'))
            	);
 			helper_log('edit','Edit Admin Campus Account ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']);
@@ -298,11 +298,11 @@ class Admincampus extends CommonDash {
 			);
 
 		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
 				  		'charset' => 'iso-8859-1',
@@ -396,15 +396,15 @@ class Admincampus extends CommonDash {
 
 			$update = $this->Mod_crud->updateData('t_admin_campus', array(
 						'universityID'	=> $this->input->post('Universityid'),
-						'emaiL' 		=> $this->input->post('Email'),
-						'fullName' 		=> $this->input->post('Fullname'),
+						'emaiL' 	=> $this->input->post('Email'),
+						'fullName' 	=> $this->input->post('Fullname'),
 						'telePhone' 	=> $this->input->post('Telephone'),
-						'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' 	=> date('Y-m-d H:i:s')
            			), array('adminCampusID ' => $this->input->post('Admincampusid'))
            		);
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
-		           		'emaiL' 		=> $this->input->post('Email')
+		           		'emaiL' 	=> $this->input->post('Email')
            			), array('loginID'  => $this->input->post('Admincampusid'))
            	);
 			helper_log('edit','Edit Profile',$this->session->userdata('userlog')['sess_usrID']);
