@@ -48,7 +48,7 @@ class Workscope extends CommonDash {
 						"dashboards/js/pages/workscope-index-script.js",
 				)
 			),
-			'titleWeb' 		=> "Workscope | CBN Internship",
+			'titleWeb' 	=> "Workscope | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, Workscope List'),
 			'dtworkscope'	=> $getworkscope
 		);
@@ -81,7 +81,7 @@ class Workscope extends CommonDash {
 						"dashboards/js/pages/timeline.js",
 				)
 			),
-			'titleWeb' 		=> "Detail Workscope | CBN Internship",
+			'titleWeb' 	=> "Detail Workscope | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, Detail Workscope'),
 			'dtworkscope'	=> $detail
 		);
@@ -208,7 +208,7 @@ class Workscope extends CommonDash {
 
 				)
 			),
-			'titleWeb' 		=> "My Workscope | CBN Internship",
+			'titleWeb' 	=> "My Workscope | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, My Workscope'),
 			'dtworkscope'	=> $mywork
 		);
@@ -238,7 +238,7 @@ class Workscope extends CommonDash {
 						"dashboards/js/pages/task-index-script.js",
 				)
 			),
-			'titleWeb' 		=> "My Task | CBN Internship",
+			'titleWeb' 	=> "My Task | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, My Task'),
 			'dtask'	=> $getask,
 			'workscopeID' => $id
@@ -293,12 +293,12 @@ class Workscope extends CommonDash {
 			foreach ($taskName as $key) {
 				array_push($data, array(
 						'workscopeID'	=> $workscopeID[$index],
-						'taskName' 		=> $taskName[$index],
-						'taskDesc' 		=> $taskDesc[$index],
-						'startDate'		=> $startDate[$index],
-						'endDate' 		=> $endDate[$index],
+						'taskName' 	=> $taskName[$index],
+						'taskDesc' 	=> $taskDesc[$index],
+						'startDate'	=> $startDate[$index],
+						'endDate' 	=> $endDate[$index],
 						'statusTask'	=> 'pending',
-						'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTIME'	=> date('Y-m-d h:i:s')
 					));
 				helper_log('add','Add New Task ( '.$taskName[$index].' )',$this->session->userdata('userlog')['sess_usrID']);
@@ -331,7 +331,7 @@ class Workscope extends CommonDash {
 			$edit = $this->Mod_crud->updateData('t_task', array(
            			'taskName' 	=> $this->input->post('Taskname'),
            			'taskDesc'	=> $this->input->post('Taskdesc'),
-           			'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+           			'updatedBY'	=> $this->session->userdata('userlog')['sess_usrID'],
            			'updatedTIME'	=> date('Y-m-d H:i:s')
            		), array('taskID' => $this->input->post('Taskid'))
            	);
@@ -381,10 +381,10 @@ class Workscope extends CommonDash {
 						"dashboards/js/pages/progress-index-script.js",
 				)
 			),
-			'titleWeb' 		=> "Progress Task | CBN Internship",
+			'titleWeb' 	=> "Progress Task | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, Progress Task'),
-			'taskID' 		=> $id,
-			'getClose'		=> $getClose
+			'taskID' 	=> $id,
+			'getClose'	=> $getClose
 		);
 		$this->render('dashboard', 'pages/Workscope/indexprogress', $data);
 	}
@@ -399,15 +399,15 @@ class Workscope extends CommonDash {
 			foreach ($getprogress as $key) {
 				$no++;
 				array_push($res, array(
-							'',
-							$no,
-							$key->progress,
-							$key->finding,
-							date_format(date_create($key->date), 'd F Y'),
-							'
-							<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal(`'.base_url("workscope/modalEditProgress").'`, `'.$key->progressID.'~'.$id.'`, `edit`);"><i class="icon-quill4"></i> Edit</a>
-							'
-							)
+					'',
+					$no,
+					$key->progress,
+					$key->finding,
+					date_format(date_create($key->date), 'd F Y'),
+					'
+					<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal(`'.base_url("workscope/modalEditProgress").'`, `'.$key->progressID.'~'.$id.'`, `edit`);"><i class="icon-quill4"></i> Edit</a>
+					'
+					)
 				);
 			}
 		}
@@ -417,8 +417,8 @@ class Workscope extends CommonDash {
 	public function modalAddProgress($id=null)
 	{
 		$data = array(
-				'modalTitle' => 'Add Progress ',
-				'formAction' => base_url('workscope/saveProgress'),
+				'modalTitle' 	=> 'Add Progress ',
+				'formAction' 	=> base_url('workscope/saveProgress'),
 				'taskID'	=> $id,
 				'Req' => ''
 			);
@@ -435,18 +435,18 @@ class Workscope extends CommonDash {
 		$date = date('Y-m-d');
 		if ($date > $endDate) {
 			$edit = $this->Mod_crud->updateData('t_task', array(
-						'statusTask'	=> 'delay'
+					'statusTask'	=> 'delay'
            			), array('taskID' 	=> $taskID)
            	);
 		}
 
 		$save = $this->Mod_crud->insertData('t_task_progress', array(
-				'taskID'			=> $taskID,
-				'progress'			=> $this->input->post('Progress'),
-				'finding'			=> $this->input->post('Finding'),
-				'date'				=> $date,
-				'createdBY'			=> $this->session->userdata('userlog')['sess_usrID'],
-           		'createdTIME'		=> date('Y-m-d H:i:s')
+				'taskID'		=> $taskID,
+				'progress'		=> $this->input->post('Progress'),
+				'finding'		=> $this->input->post('Finding'),
+				'date'			=> $date,
+				'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+           			'createdTIME'		=> date('Y-m-d H:i:s')
            		)
            	);
 		helper_log('add','Added New Progress Task ('.name_task($taskID).')',$this->session->userdata('userlog')['sess_usrID']);
@@ -464,7 +464,7 @@ class Workscope extends CommonDash {
 				'modalTitle' => 'Edit Progress',
 				'dMaster' => $this->Mod_crud->getData('row', '*', 't_task_progress', null, null, null, array('progressID = "'.$ID[0].'"')),
 				'formAction' => base_url('workscope/editProgress'),
-				'taskID'	=> $ID[1],
+				'taskID' => $ID[1],
 				'Req' => ''
 			);
 		$this->load->view('pages/workscope/formProgress', $data);
@@ -474,9 +474,9 @@ class Workscope extends CommonDash {
 	{
 
 		$update = $this->Mod_crud->updateData('t_task_progress', array(
-					'progress'		=> $this->input->post('Progress'),
-					'finding'		=> $this->input->post('Finding'),
-       				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+				'progress'	=> $this->input->post('Progress'),
+				'finding'	=> $this->input->post('Finding'),
+       				'updatedBY'	=> $this->session->userdata('userlog')['sess_usrID'],
        				'updatedTIME'	=> date('Y-m-d H:i:s')
        			), array('progressID ' => $this->input->post('Progressid'))
        		);
@@ -512,9 +512,9 @@ class Workscope extends CommonDash {
 						"dashboards/js/plugins/forms/validation/validate.min.js",
 				)
 			),
-			'titleWeb' 		=> "Log Progress | CBN Internship",
+			'titleWeb' 	=> "Log Progress | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, Log Progress'),
-			'taskID' 		=> $id,
+			'taskID' 	=> $id,
 			'dtprogress'	=> $getprogress
 		);
 		$this->render('dashboard', 'pages/workscope/logprogress', $data);
