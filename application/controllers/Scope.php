@@ -470,11 +470,11 @@ class Scope extends CommonDash {
 	public function getProject()
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'projectID, projectName', 't_project');
+		$data = $this->Mod_crud->getData('result', 'projectID, deptID, projectName', 't_project');
 		if (!empty($data)) {
 			foreach ($data as $key) {
 				$mk['id'] = $key->projectID;
-				$mk['text'] = $key->projectName;
+				$mk['text'] = $key->projectName.' ( '.name_dept($key->deptID).' )';
 				array_push($resp, $mk);
 			}
 		}
