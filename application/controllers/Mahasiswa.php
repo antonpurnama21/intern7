@@ -16,12 +16,12 @@ class Mahasiswa extends CommonDash {
 		if ($this->session->userdata('userlog')['sess_role']==33) {
 
 			$universityID 	= $this->session->userdata('userlog')['sess_univID'];
-			$mahasiswa 		= $this->Mod_crud->getData('result', 'm.*,ff.*,l.roleID', 't_mahasiswa m', null, null, array('t_mahasiswa_file ff'=>'m.mahasiswaID = ff.mahasiswaID','t_login l'=>'m.loginID = l.loginID'), array('m.universityID = "'.$universityID.'"'), null, array('m.mahasiswaID ASC'));
+			$mahasiswa 	= $this->Mod_crud->getData('result', 'm.*,ff.*,l.roleID', 't_mahasiswa m', null, null, array('t_mahasiswa_file ff'=>'m.mahasiswaID = ff.mahasiswaID','t_login l'=>'m.loginID = l.loginID'), array('m.universityID = "'.$universityID.'"'), null, array('m.mahasiswaID ASC'));
 
 		}elseif ($this->session->userdata('userlog')['sess_role']==44) {
 
 			$universityID 	= $this->session->userdata('userlog')['sess_univID'];
-			$facultyID 		= $this->session->userdata('userlog')['sess_facID'];
+			$facultyID 	= $this->session->userdata('userlog')['sess_facID'];
 			$mahasiswa	= $this->Mod_crud->getData('result', 'm.*,ff.*,l.roleID', 't_mahasiswa m', null, null, array('t_mahasiswa_file ff'=>'m.mahasiswaID = ff.mahasiswaID','t_login l'=>'m.loginID = l.loginID'), array('m.universityID = "'.$universityID.'"','m.facultyID = "'.$facultyID.'"'), null, array('m.mahasiswaID ASC'));
 
 		}else{
@@ -99,14 +99,14 @@ class Mahasiswa extends CommonDash {
 
 				$savemahasiswa = $this->Mod_crud->insertData('t_mahasiswa', array(
            				'mahasiswaID'		=> $mahasiswaID,
-           				'loginID'			=> $mahasiswaID,
+           				'loginID'		=> $mahasiswaID,
            				'universityID' 		=> $this->input->post('Universityid'),
            				'facultyID' 		=> $this->input->post('Facultyid'),
-           				'emaiL'				=> $this->input->post('Email'),
+           				'emaiL'			=> $this->input->post('Email'),
            				'mahasiswaNumber'	=> $this->input->post('Nim'),
-           				'fullName' 			=> ucwords($this->input->post('Fullname')),
+           				'fullName' 		=> ucwords($this->input->post('Fullname')),
            				'mobilePhone'		=> $this->input->post('Mobilephone'),
-           				'createdBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+           				'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
            				'createdTIME'		=> date('Y-m-d H:i:s')
            			)
            		);
@@ -128,19 +128,19 @@ class Mahasiswa extends CommonDash {
 			$expired_at = date('Y-m-d H:i:s',$done);
 
 			$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-					'emaiL'			=> $this->input->post('Email'),
-					'tokeN'			=> $tokeN,
+					'emaiL'		=> $this->input->post('Email'),
+					'tokeN'		=> $tokeN,
 					'created_at'	=> date('Y-m-d H:i:s'),
 					'expired_at'	=> $expired_at
 					)
 				);
 
 			$config = array(
-			  				'protocol' => 'smtp',
-					  		'smtp_host' => 'ssl://smtp.gmail.com',
-					  		'smtp_port' => 465,
-					  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-					  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+			  				'protocol' => 'ssmtp',
+							'smtp_host' => 'ssl://mail.intern7.iex.or.id',
+							'smtp_port' => 465,
+							'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+							'smtp_pass' => 'Infocbn123', // change it to yours
 					  		//'smtp_username' => 'armg3295',
 					  		'mailtype' => 'html',
 					  		'charset' => 'iso-8859-1',
@@ -248,7 +248,7 @@ class Mahasiswa extends CommonDash {
 						$config['source_image'] 	= 'fileupload/pic_mahasiswa/' . $gbr['file_name'];
 						$config['create_thumb'] 	= FALSE;
 						$config['maintain_ratio'] 	= FALSE;
-						$config['quality'] 			= '50%';
+						$config['quality'] 		= '50%';
 						$config['width']         	= 200;
 						$config['height']       	= 200;
 						$config['new_image']	 	= 'fileupload/pic_mahasiswa/' . $gbr['file_name'];
@@ -313,54 +313,54 @@ class Mahasiswa extends CommonDash {
            				'facultyID' 		=> $this->input->post('Facultyid'),
            				'residenceID'		=> $this->input->post('Residenceid'),
            				'mahasiswaNumber'	=> $this->input->post('Nim'),
-           				'emaiL'				=> $this->input->post('Email'),
-           				'fullName' 			=> ucwords($this->input->post('Fullname')),
+           				'emaiL'			=> $this->input->post('Email'),
+           				'fullName' 		=> ucwords($this->input->post('Fullname')),
            				'birthPlace'		=> $this->input->post('Birthplace'),
-           				'birthDate'			=> date_format(date_create($this->input->post('Birthdate_submit')), 'Y-m-d'),
-           				'gender'			=> $this->input->post('Gender'),
-           				'religion'			=> $this->input->post('Religion'),
-           				'city'				=> $this->input->post('City'),
-           				'zip'				=> $this->input->post('Zip'),
-           				'address'			=> $this->input->post('Address'),
+           				'birthDate'		=> date_format(date_create($this->input->post('Birthdate_submit')), 'Y-m-d'),
+           				'gender'		=> $this->input->post('Gender'),
+           				'religion'		=> $this->input->post('Religion'),
+           				'city'			=> $this->input->post('City'),
+           				'zip'			=> $this->input->post('Zip'),
+           				'address'		=> $this->input->post('Address'),
            				'fixedPhone'		=> $this->input->post('Fixedphone'),
            				'mobilePhone'		=> $this->input->post('Mobilephone'),
-           				'hobby'				=> $this->input->post('Hobby'),
-           				'strength'			=> $this->input->post('Strength'),
-           				'weakness'			=> $this->input->post('Weakness'),
+           				'hobby'			=> $this->input->post('Hobby'),
+           				'strength'		=> $this->input->post('Strength'),
+           				'weakness'		=> $this->input->post('Weakness'),
            				'organizationExp'	=> $this->input->post('Organizationexp'),
            				'projectEverMade'	=> $this->input->post('Projectevermade'),
-           				'semester'			=> $this->input->post('Semester'),
-           				'sksTotal'			=> $this->input->post('Skstotal'),
+           				'semester'		=> $this->input->post('Semester'),
+           				'sksTotal'		=> $this->input->post('Skstotal'),
            				'indexTotal'		=> $this->input->post('Indextotal'),
            				'statusActive'		=> '1',
-           				'updatedBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
            				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			), array('mahasiswaID' => $this->input->post('Mahasiswaid'))
 	           	);
 				if (empty($getfile)) {
 					$updatefile = $this->Mod_crud->insertData('t_mahasiswa_file', array(
 	           				'mahasiswaID'		=> $this->input->post('Mahasiswaid'),
-	           				'photo' 			=> $pathPic,
-	           				'resume'			=> $pathCv,
-	           				'academicTranscipt' => $pathAc,
-	           				'updatedBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+	           				'photo' 		=> $pathPic,
+	           				'resume'		=> $pathCv,
+	           				'academicTranscipt' 	=> $pathAc,
+	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			)
 	           		);
 				}else{
 					$updatefile = $this->Mod_crud->updateData('t_mahasiswa_file', array(
 	           				'mahasiswaID'		=> $this->input->post('Mahasiswaid'),
-	           				'photo' 			=> $pathPic,
-	           				'resume'			=> $pathCv,
-	           				'academicTranscipt' => $pathAc,
-	           				'updatedBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+	           				'photo' 		=> $pathPic,
+	           				'resume'		=> $pathCv,
+	           				'academicTranscipt' 	=> $pathAc,
+	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			),array('mahasiswaID' => $this->input->post('Mahasiswaid'))
 	           		);
 				}
 
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
-			           		'emaiL' 		=> $this->input->post('Email')
+			           		'emaiL' 	=> $this->input->post('Email')
 	           			), array('loginID' => $this->input->post('Mahasiswaid'))
 	           	);
 			helper_log('edit','Edit Mahasiswa Data ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']);
@@ -474,19 +474,19 @@ class Mahasiswa extends CommonDash {
 		$delete  = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$this->input->post('Email')));
 
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-				'emaiL'			=> $email,
-				'tokeN'			=> $tokeN,
+				'emaiL'		=> $email,
+				'tokeN'		=> $tokeN,
 				'created_at'	=> date('Y-m-d H:i:s'),
 				'expired_at'	=> $expired_at
 				)
 			);
 
 		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
 				  		'charset' => 'iso-8859-1',
@@ -619,7 +619,7 @@ class Mahasiswa extends CommonDash {
 						$config['source_image'] 	= 'fileupload/pic_mahasiswa/' . $gbr['file_name'];
 						$config['create_thumb'] 	= FALSE;
 						$config['maintain_ratio'] 	= FALSE;
-						$config['quality'] 			= '50%';
+						$config['quality'] 		= '50%';
 						$config['width']         	= 200;
 						$config['height']       	= 200;
 						$config['new_image']	 	= 'fileupload/pic_mahasiswa/' . $gbr['file_name'];
@@ -684,47 +684,47 @@ class Mahasiswa extends CommonDash {
            				'facultyID' 		=> $this->input->post('Facultyid'),
            				'residenceID'		=> $this->input->post('Residenceid'),
            				'mahasiswaNumber'	=> $this->input->post('Nim'),
-           				'emaiL'				=> $this->input->post('Email'),
-           				'fullName' 			=> ucwords($this->input->post('Fullname')),
+           				'emaiL'			=> $this->input->post('Email'),
+           				'fullName' 		=> ucwords($this->input->post('Fullname')),
            				'birthPlace'		=> $this->input->post('Birthplace'),
-           				'birthDate'			=> date_format(date_create($this->input->post('Birthdate_submit')), 'Y-m-d'),
-           				'gender'			=> $this->input->post('Gender'),
-           				'religion'			=> $this->input->post('Religion'),
-           				'city'				=> $this->input->post('City'),
-           				'zip'				=> $this->input->post('Zip'),
-           				'address'			=> $this->input->post('Address'),
+           				'birthDate'		=> date_format(date_create($this->input->post('Birthdate_submit')), 'Y-m-d'),
+           				'gender'		=> $this->input->post('Gender'),
+           				'religion'		=> $this->input->post('Religion'),
+           				'city'			=> $this->input->post('City'),
+           				'zip'			=> $this->input->post('Zip'),
+           				'address'		=> $this->input->post('Address'),
            				'fixedPhone'		=> $this->input->post('Fixedphone'),
            				'mobilePhone'		=> $this->input->post('Mobilephone'),
-           				'hobby'				=> $this->input->post('Hobby'),
-           				'strength'			=> $this->input->post('Strength'),
-           				'weakness'			=> $this->input->post('Weakness'),
+           				'hobby'			=> $this->input->post('Hobby'),
+           				'strength'		=> $this->input->post('Strength'),
+           				'weakness'		=> $this->input->post('Weakness'),
            				'organizationExp'	=> $this->input->post('Organizationexp'),
            				'projectEverMade'	=> $this->input->post('Projectevermade'),
-           				'semester'			=> $this->input->post('Semester'),
-           				'sksTotal'			=> $this->input->post('Skstotal'),
+           				'semester'		=> $this->input->post('Semester'),
+           				'sksTotal'		=> $this->input->post('Skstotal'),
            				'indexTotal'		=> $this->input->post('Indextotal'),
            				'statusActive'		=> '1',
-           				'updatedBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
            				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			), array('mahasiswaID' => $this->input->post('Mahasiswaid'))
 	           	);
 				if (empty($getfile)) {
 					$updatefile = $this->Mod_crud->insertData('t_mahasiswa_file', array(
 	           				'mahasiswaID'		=> $this->input->post('Mahasiswaid'),
-	           				'photo' 			=> $pathPic,
-	           				'resume'			=> $pathCv,
+	           				'photo' 		=> $pathPic,
+	           				'resume'		=> $pathCv,
 	           				'academicTranscipt' => $pathAc,
-	           				'updatedBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			)
 	           		);
 				}else{
 					$updatefile = $this->Mod_crud->updateData('t_mahasiswa_file', array(
 	           				'mahasiswaID'		=> $this->input->post('Mahasiswaid'),
-	           				'photo' 			=> $pathPic,
-	           				'resume'			=> $pathCv,
+	           				'photo' 		=> $pathPic,
+	           				'resume'		=> $pathCv,
 	           				'academicTranscipt' => $pathAc,
-	           				'updatedBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			),array('mahasiswaID' => $this->input->post('Mahasiswaid'))
 	           		);
