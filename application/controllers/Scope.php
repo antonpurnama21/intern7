@@ -103,14 +103,14 @@ class Scope extends CommonDash {
 				)
 			),
 			'titleWeb' 		=> "Project Scope Detail | CBN Internship",
-			'breadcrumb' 	=> explode(',', 'Project Scope, Project Scope Detail'),
+			'breadcrumb' 		=> explode(',', 'Project Scope, Project Scope Detail'),
 			'dtscope'		=> $detail,
 			'dtmp'			=> $temp,
 		);
 		$this->render('dashboard', 'pages/scope/detil', $data);
 	}
 
-		public function add()
+	public function add()
 	{
 		$data = array(
 			'_JS' => generate_js(array(
@@ -130,18 +130,19 @@ class Scope extends CommonDash {
 					"dashboards/js/pages/scope-script.js",
 				)
 			),
-		    'titleWeb' => "Add Project Scope | CBN Internship",
+		    'titleWeb' 		=> "Add Project Scope | CBN Internship",
 		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
-		    'breadcrumb' => explode(',', 'Project Scope,Add Project Scope'),
-		    'actionForm' => base_url('scope/saveScope'),
-		    'buttonForm' => 'Simpan',
-		    'Req'	=> ''
+		    'breadcrumb' 	=> explode(',', 'Project Scope,Add Project Scope'),
+		    'actionForm' 	=> base_url('scope/saveScope'),
+		    'buttonForm' 	=> 'Simpan',
+		    'Req'		=> ''
 		);
 
 		$this->render('dashboard', 'pages/scope/form', $data);
 	}
 
-	public function saveScope(){
+	public function saveScope()
+	{
 		$cekscope = $this->Mod_crud->getData('result','projectID,projectScope','t_project_scope',null,null,null,array('projectID = "'.$this->input->post('Projectid').'" AND projectScope = "'.$this->input->post('Projectscope').'"'));
 		if ($cekscope) {
 			echo json_encode(array('code' => 366, 'message' => 'Projectscope already added!'));
@@ -152,19 +153,19 @@ class Scope extends CommonDash {
 
 			$save = $this->Mod_crud->insertData('t_project_scope', array(
 				'projectScopeID'	=> $code,
-				'deptID'			=> $deptID,
+				'deptID'		=> $deptID,
 				'categoryID'		=> $this->input->post('Categoryid'),
-				'projectID'			=> $this->input->post('Projectid'),
+				'projectID'		=> $this->input->post('Projectid'),
 				'projectScope'		=> $this->input->post('Projectscope'),
 				'description'		=> $this->input->post('Description'),
 				'qualification'		=> $this->input->post('Qualification'),
-				'startDate'			=> date_format(date_create($this->input->post('Startdate_submit')), 'Y-m-d'),
-				'endDate'			=> date_format(date_create($this->input->post('Enddate_submit')), 'Y-m-d'),
+				'startDate'		=> date_format(date_create($this->input->post('Startdate_submit')), 'Y-m-d'),
+				'endDate'		=> date_format(date_create($this->input->post('Enddate_submit')), 'Y-m-d'),
 				'reqQuantity'		=> $this->input->post('Quantity'),
-				'isTaken'			=> $this->input->post('Istaken'),
+				'isTaken'		=> $this->input->post('Istaken'),
 				'isApproved'		=> 'P',
-				'createdBY'			=> $this->session->userdata('userlog')['sess_usrID'],
-           		'createdTIME'		=> date('Y-m-d H:i:s')
+				'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+           			'createdTIME'		=> date('Y-m-d H:i:s')
            		)
            	);
 
@@ -176,10 +177,10 @@ class Scope extends CommonDash {
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}
-       	}
+       		}
 	}
 
-		public function form($id=null)
+	public function form($id=null)
 	{
 		$data = array(
 			'_JS' => generate_js(array(
@@ -199,13 +200,13 @@ class Scope extends CommonDash {
 					"dashboards/js/pages/scope-script.js",
 				)
 			),
-		    'titleWeb' => "Edit Project Scope | CBN Internship",
+		    'titleWeb' 	 => "Edit Project Scope | CBN Internship",
 		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
 		    'breadcrumb' => explode(',', 'Project Scope,Edit ('.name_projectscope($id).')'),
 		    'dMaster'	 => $this->Mod_crud->getData('row','*','t_project_scope', null, null,null, array('projectScopeID = "'.$id.'"')),
-			'actionForm' => base_url('scope/editScope'),
+		    'actionForm' => base_url('scope/editScope'),
 		    'buttonForm' => 'Simpan',
-		    'Req' => ''
+		    'Req' 	 => ''
 		);
 
 		$this->render('dashboard', 'pages/scope/form', $data);
@@ -218,17 +219,17 @@ class Scope extends CommonDash {
 				echo json_encode(array('code' => 366, 'message' => 'Project scope has been added!'));
 			}else{
 				$edit = $this->Mod_crud->updateData('t_project_scope', array(
-           			'categoryID'		=> $this->input->post('Categoryid'),
-					'projectID'			=> $this->input->post('Projectid'),
+           				'categoryID'		=> $this->input->post('Categoryid'),
+					'projectID'		=> $this->input->post('Projectid'),
 					'projectScope'		=> $this->input->post('Projectscope'),
 					'description'		=> $this->input->post('Description'),
 					'qualification'		=> $this->input->post('Qualification'),
-					'startDate'			=> date_format(date_create($this->input->post('Startdate_submit')), 'Y-m-d'),
-					'endDate'			=> date_format(date_create($this->input->post('Enddate_submit')), 'Y-m-d'),
+					'startDate'		=> date_format(date_create($this->input->post('Startdate_submit')), 'Y-m-d'),
+					'endDate'		=> date_format(date_create($this->input->post('Enddate_submit')), 'Y-m-d'),
 					'reqQuantity'		=> $this->input->post('Quantity'),
-					'isTaken'			=> $this->input->post('Istaken'),
-					'updatedBY'			=> $this->session->userdata('userlog')['sess_usrID'],
-           			'updatedTIME'		=> date('Y-m-d H:i:s')
+					'isTaken'		=> $this->input->post('Istaken'),
+					'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+           				'updatedTIME'		=> date('Y-m-d H:i:s')
            		), array('projectScopeID' => $this->input->post('Projectscopeid'))
            	);
 
@@ -244,7 +245,8 @@ class Scope extends CommonDash {
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function modalCategory(){
+	public function modalCategory()
+	{
 		$data = array(
 				'modalTitle' => 'Add Category ',
 				'formAction' => base_url('scope/saveCategory'),
@@ -253,7 +255,8 @@ class Scope extends CommonDash {
 		$this->load->view('pages/scope/formCategory', $data);
 	}
 
-	public function saveCategory(){
+	public function saveCategory()
+	{
 		$cekscope = $this->Mod_crud->getData('result','categoryName','t_category',null,null,null,array('categoryName = "'.$this->input->post('Categoryname').'"'));
 		if ($cekscope) {
 			echo json_encode(array('code' => 266, 'message' => 'Category already added!'));
@@ -262,9 +265,9 @@ class Scope extends CommonDash {
 			$code = $this->Mod_crud->autoNumber('categoryID','t_category','CAT-',3);
 			$save = $this->Mod_crud->insertData('t_category', array(
 				'categoryID'	=> $code,
-           		'categoryName'	=> $this->input->post('Categoryname'),
-           		'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
-           		'createdTIME'	=> date('Y-m-d H:i:s')
+				'categoryName'	=> $this->input->post('Categoryname'),
+				'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
+				'createdTIME'	=> date('Y-m-d H:i:s')
            		)
            	);
 
@@ -276,16 +279,17 @@ class Scope extends CommonDash {
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}
-       	}
+       		}
 	}
 
-	public function modalEditCategory(){
+	public function modalEditCategory()
+	{
 		$ID = explode('~',$this->input->post('id'));
 		$data = array(
-				'modalTitle' => 'Edit Category '.$ID[1],
-				'dMaster' => $this->Mod_crud->getData('row','*','t_category', null, null,null, array('categoryID = "'.$ID[0].'"')),
-				'formAction' => base_url('scope/editCategory'),
-				'Req' => ''
+				'modalTitle' 	=> 'Edit Category '.$ID[1],
+				'dMaster' 	=> $this->Mod_crud->getData('row','*','t_category', null, null,null, array('categoryID = "'.$ID[0].'"')),
+				'formAction' 	=> base_url('scope/editCategory'),
+				'Req' 		=> ''
 			);
 		$this->load->view('pages/scope/formCategory', $data);
 	}
@@ -298,9 +302,9 @@ class Scope extends CommonDash {
 			}else{
 				$edit = $this->Mod_crud->updateData('t_category', array(
            			'categoryName' 	=> $this->input->post('Categoryname'),
-           			'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+           			'updatedBY'	=> $this->session->userdata('userlog')['sess_usrID'],
            			'updatedTIME'	=> date('Y-m-d H:i:s')
-           		), array('categoryID' => $this->input->post('Categoryid'))
+           		), array('categoryID' 	=> $this->input->post('Categoryid'))
            	);
 
 			helper_log('edit','Edit Category ( '.$this->input->post('Categoryname').' )',$this->session->userdata('userlog')['sess_usrID']);
@@ -316,16 +320,18 @@ class Scope extends CommonDash {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public function modalProject(){
+	public function modalProject()
+	{
 		$data = array(
 				'modalTitle' => 'Add Project ',
 				'formAction' => base_url('scope/saveProject'),
-				'Req' => ''
+				'Req' 	     => ''
 			);
 		$this->load->view('pages/scope/formProject' , $data);
 	}
 
-	public function saveProject(){
+	public function saveProject()
+	{
 		$cekscope = $this->Mod_crud->getData('result','projectName','t_project',null,null,null,array('projectName = "'.$this->input->post('Projectname').'"'));
 		if ($cekscope) {
 			echo json_encode(array('code' => 267, 'message' => 'Project already added!'));
@@ -334,11 +340,11 @@ class Scope extends CommonDash {
 			$code = $this->Mod_crud->autoNumber('projectID','t_project','PRJ-',3);
 			$deptID = $this->session->userdata('userlog')['sess_deptID'];
  			$save = $this->Mod_crud->insertData('t_project', array(
-				'projectID'		=> $code,
-				'deptID'		=> $deptID,
-           		'projectName'	=> $this->input->post('Projectname'),
-           		'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
-           		'createdTIME'	=> date('Y-m-d H:i:s')
+				'projectID'	=> $code,
+				'deptID'	=> $deptID,
+				'projectName'	=> $this->input->post('Projectname'),
+				'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
+				'createdTIME'	=> date('Y-m-d H:i:s')
            		)
            	);
 
@@ -350,16 +356,17 @@ class Scope extends CommonDash {
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}
-       	}
+       		}
 	}
 
-	public function modalEditProject(){
+	public function modalEditProject()
+	{
 		$ID = explode('~',$this->input->post('id'));
 		$data = array(
-				'modalTitle' => 'Edit Project '.$ID[1],
-				'dMaster' => $this->Mod_crud->getData('row','*','t_project', null, null,null, array('projectID = "'.$ID[0].'"')),
-				'formAction' => base_url('scope/editProject'),
-				'Req' => ''
+				'modalTitle'	=> 'Edit Project '.$ID[1],
+				'dMaster' 	=> $this->Mod_crud->getData('row','*','t_project', null, null,null, array('projectID = "'.$ID[0].'"')),
+				'formAction'	=> base_url('scope/editProject'),
+				'Req' 		=> ''
 			);
 		$this->load->view('pages/scope/formProject', $data);
 	}
@@ -372,9 +379,9 @@ class Scope extends CommonDash {
 			}else{
 				$edit = $this->Mod_crud->updateData('t_project', array(
            			'projectName' 	=> $this->input->post('Projectname'),
-           			'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
+           			'updatedBY'	=> $this->session->userdata('userlog')['sess_usrID'],
            			'updatedTIME'	=> date('Y-m-d H:i:s')
-           		), array('projectID' => $this->input->post('Projectid'))
+           		), array('projectID'	=> $this->input->post('Projectid'))
            	);
 
 			helper_log('edit','Edit Project ( '.$this->input->post('Projectname').' )',$this->session->userdata('userlog')['sess_usrID']);
@@ -385,7 +392,7 @@ class Scope extends CommonDash {
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}
-       	}
+       		}
 	}
 
 
@@ -401,9 +408,9 @@ class Scope extends CommonDash {
 		$query 		= $this->Mod_crud->deleteData('t_project_scope', array('projectScopeID' => $this->input->post('id')));
 		if ($query){
 			$data = array(
-					'code' => 200,
+					'code' 	=> 200,
 					'pesan' => 'Success Delete !',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi' 	=> 'setTimeout("window.location.reload();",1500)'
               	);
 			echo json_encode($data);
 		}else{
@@ -419,9 +426,9 @@ class Scope extends CommonDash {
 		$query 		= $this->Mod_crud->deleteData('t_category', array('categoryID' => $this->input->post('id')));
 		if ($query){
 			$data = array(
-					'code' => 200,
+					'code' 	=> 200,
 					'pesan' => 'Success Delete !',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi' 	=> 'setTimeout("window.location.reload();",1500)'
               	);
 			echo json_encode($data);
 		}else{
@@ -436,9 +443,9 @@ class Scope extends CommonDash {
 		$query 		= $this->Mod_crud->deleteData('t_project', array('projectID' => $this->input->post('id')));
 		if ($query){
 			$data = array(
-					'code' => 200,
+					'code' 	=> 200,
 					'pesan' => 'Success Delete !',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi' 	=> 'setTimeout("window.location.reload();",1500)'
               	);
 			echo json_encode($data);
 		}else{
@@ -460,7 +467,7 @@ class Scope extends CommonDash {
 		echo json_encode($resp);
 	}
 
-		public function getProject()
+	public function getProject()
 	{
 		$resp = array();
 		$data = $this->Mod_crud->getData('result', 'projectID, projectName', 't_project');
@@ -474,7 +481,7 @@ class Scope extends CommonDash {
 		echo json_encode($resp);
 	}
 
-		public function cancelScope()
+	public function cancelScope()
 	{
 		helper_log('cancel','Canceled Project Scope ( '.name_projectscope($this->input->post('id')).' )',$this->session->userdata('userlog')['sess_usrID']);
 		
@@ -495,22 +502,22 @@ class Scope extends CommonDash {
 		
 	}
 
-			public function applyScope()
+	public function applyScope()
 	{
 		helper_log('cancel','Applied Project Scope ( '.name_projectscope($this->input->post('id')).' )',$this->session->userdata('userlog')['sess_usrID']);
 		
 		$apply = $this->Mod_crud->insertData('t_project_scope_temp', array(
 				'projectScopeID' 	=> $this->input->post('id'),
-           		'mahasiswaID'	 	=> $this->session->userdata('userlog')['sess_usrID'],
-           		'type'				=> 'applied',
-           		'date'				=> date('Y-m-d h:i:s')
+				'mahasiswaID'	 	=> $this->session->userdata('userlog')['sess_usrID'],
+				'type'			=> 'applied',
+				'date'			=> date('Y-m-d h:i:s')
            		)
            	);
 		if ($apply){
 			$data = array(
-					'code' => 200,
+					'code' 	=> 200,
 					'pesan' => 'Applied Scope Success !',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi' 	=> 'setTimeout("window.location.reload();",1500)'
               	);
 			echo json_encode($data);
 		}else{
@@ -522,9 +529,9 @@ class Scope extends CommonDash {
 		function do_approve()
 	{
 		$approve = $this->Mod_crud->updateData('t_project_scope', array(
-        		'isApproved' 	=> 'Y',
+        		'isApproved' 		=> 'Y',
         		'updatedBY'		=> $this->session->userdata('login')['sess_usrID'],
-        		'updatedTIME'	=> date('Y-m-d H:i:s')
+        		'updatedTIME'		=> date('Y-m-d H:i:s')
         	), array('projectScopeID' => $this->input->post('id'))
 		);
 
@@ -532,9 +539,9 @@ class Scope extends CommonDash {
 
 		if ($approve){
 			$data = array(
-					'code' => 200,
+					'code'	=> 200,
 					'pesan' => 'Approved Scope Success !',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi' 	=> 'setTimeout("window.location.reload();",1500)'
               	);
 			echo json_encode($data);
 		}else{
@@ -542,11 +549,11 @@ class Scope extends CommonDash {
 		}
 	}
 
-			function not_approve()
+		function not_approve()
 	{
 		$notapprove = $this->Mod_crud->updateData('t_project_scope', array(
         		'isApproved' 	=> 'N',
-        		'updatedBY'		=> $this->session->userdata('login')['sess_usrID'],
+        		'updatedBY'	=> $this->session->userdata('login')['sess_usrID'],
         		'updatedTIME'	=> date('Y-m-d H:i:s')
         	), array('projectScopeID' => $this->input->post('id'))
 		);
@@ -555,9 +562,9 @@ class Scope extends CommonDash {
 
 		if ($notapprove){
 			$data = array(
-					'code' => 200,
+					'code' 	=> 200,
 					'pesan' => 'Denied Scope Success !',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi' 	=> 'setTimeout("window.location.reload();",1500)'
               	);
 			echo json_encode($data);
 		}else{
@@ -565,7 +572,8 @@ class Scope extends CommonDash {
 		}
 	}
 
-	public function download($id=null){
+	public function download($id=null)
+	{
 		$getscope = $this->Mod_crud->getData('result', '*','t_project_scope',null,null,null,array('projectScopeID = "'.$id.'"'));
 		foreach ($getscope as $key) {
 			$projectScope = $key->projectScope;
@@ -588,7 +596,7 @@ class Scope extends CommonDash {
 		foreach ($getscope as $key) {
 			$projectName 	= name_project($key->projectID);
 			$projectScope	= $key->projectScope;
-			$deptName		= name_dept($key->deptID);
+			$deptName	= name_dept($key->deptID);
 		}
 		$getmhs		= $this->Mod_crud->getData('result','*','t_mahasiswa',null,null,null,array('mahasiswaID = "'.$mahasiswaID.'"'));
 		foreach ($getmhs as $key) {
@@ -597,11 +605,11 @@ class Scope extends CommonDash {
 		}
 		$code = $this->Mod_crud->autoNumber('workscopeID','t_workscope','WSC-',3);
 		$save = $this->Mod_crud->insertData('t_workscope', array(
-				'workscopeID'		=> $code,
-				'projectScopeID'	=> $projectScopeID,
+			'workscopeID'		=> $code,
+			'projectScopeID'	=> $projectScopeID,
            		'mahasiswaID'		=> $mahasiswaID,
            		'statusWorkscope'	=> 'pending',
-           		'createdBY'			=> $this->session->userdata('login')['sess_usrID'],
+           		'createdBY'		=> $this->session->userdata('login')['sess_usrID'],
            		'createdTIME'		=> date('Y-m-d H:i:s')
            		)
            	);
@@ -609,15 +617,15 @@ class Scope extends CommonDash {
            				'statusTemp' 	=> 'accepted'
            			), array('tempID' => $tempID)
 			);
-		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+			$config = array(
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
-				  		'charset' => 'iso-8859-1',
+				  		'charset'  => 'iso-8859-1',
 				  		'wordwrap' => TRUE
 			);
 
@@ -652,9 +660,9 @@ class Scope extends CommonDash {
 
            	if ($this->email->send()){
 			$data = array(
-					'code' => 200,
+					'code'  => 200,
 					'pesan' => 'Mahasiswa Accepted, Success!',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi'  => 'setTimeout("window.location.reload();",1500)'
 	              	);
 				echo json_encode($data);
 			}else{
@@ -674,7 +682,7 @@ class Scope extends CommonDash {
 		foreach ($getscope as $key) {
 			$projectName 	= name_project($key->projectID);
 			$projectScope	= $key->projectScope;
-			$deptName		= name_dept($key->deptID);
+			$deptName	= name_dept($key->deptID);
 		}
 		$getmhs		= $this->Mod_crud->getData('result','*','t_mahasiswa',null,null,null,array('mahasiswaID = "'.$mahasiswaID.'"'));
 		foreach ($getmhs as $key) {
@@ -685,12 +693,12 @@ class Scope extends CommonDash {
            				'statusTemp' 	=> 'rejected'
            			), array('tempID' => $tempID)
 			);
-		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+			$config = array(
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
 				  		'charset' => 'iso-8859-1',
@@ -728,9 +736,9 @@ class Scope extends CommonDash {
 
            	if ($this->email->send()){
 			$data = array(
-					'code' => 200,
+					'code' 	=> 200,
 					'pesan' => 'Mahasiswa Rejected, Success!',
-					'aksi' => 'setTimeout("window.location.reload();",1500)'
+					'aksi' 	=> 'setTimeout("window.location.reload();",1500)'
 	              	);
 				echo json_encode($data);
 			}else{
@@ -741,9 +749,9 @@ class Scope extends CommonDash {
 	public function modalScope(){
 		$ID = explode('~',$this->input->post('id'));
 		$data = array(
-				'modalTitle' => 'Review '.$ID[1],
-				'dMaster' => $this->Mod_crud->getData('row','*','t_project_scope', null, null,null, array('projectScopeID = "'.$ID[0].'"')),
-				'Req' => ''
+				'modalTitle' 	=> 'Review '.$ID[1],
+				'dMaster' 	=> $this->Mod_crud->getData('row','*','t_project_scope', null, null,null, array('projectScopeID = "'.$ID[0].'"')),
+				'Req' 		=> ''
 			);
 		$this->load->view('pages/scope/reviewScope', $data);
 	}
@@ -752,10 +760,10 @@ class Scope extends CommonDash {
 	{
 		$ID = explode('~',$this->input->post('id'));
 		$data = array(
-			'modalTitle' => 'View '.$ID[1],
-			'dMaster' => $this->Mod_crud->getData('row','m.*,ff.*','t_mahasiswa m',null,null,array('t_mahasiswa_file ff'=>'m.mahasiswaID = ff.mahasiswaID'),array('m.mahasiswaID = "'.$ID[0].'"')),
-			'dtworkscope' => $this->Mod_crud->getData('result','ws.*,ps.*','t_workscope ws',null,null,array('t_project_scope ps'=>'ps.projectScopeID = ws.projectScopeID'),array('ws.mahasiswaID = "'.$ID[0].'"')),
-			'Req' => ''
+			'modalTitle' 	=> 'View '.$ID[1],
+			'dMaster' 	=> $this->Mod_crud->getData('row','m.*,ff.*','t_mahasiswa m',null,null,array('t_mahasiswa_file ff'=>'m.mahasiswaID = ff.mahasiswaID'),array('m.mahasiswaID = "'.$ID[0].'"')),
+			'dtworkscope' 	=> $this->Mod_crud->getData('result','ws.*,ps.*','t_workscope ws',null,null,array('t_project_scope ps'=>'ps.projectScopeID = ws.projectScopeID'),array('ws.mahasiswaID = "'.$ID[0].'"')),
+			'Req' 		=> ''
 			);
 		$this->load->view('pages/scope/reviewMahasiswa', $data);
 	}
