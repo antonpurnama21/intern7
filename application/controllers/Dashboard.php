@@ -14,6 +14,7 @@ class Dashboard extends CommonDash {
 	public function index()
 	{
 		if ($this->session->userdata('userlog')['sess_role']==11) {
+			qrysession();
 			$getaccount = $this->Mod_crud->getData('result', '*', 't_login', null, null, null,array('passworD = "null"'));
 			$getscope = $this->Mod_crud->getData('result', '*', 't_project_scope', null, null, null, array('isApproved = "P"'), null, array('projectScopeID ASC'));
 			$dataMhs = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(mhs.mahasiswaID)),0) as value, us.universityName as label FROM `t_university` as us LEFT JOIN t_mahasiswa as mhs ON mhs.universityID = us.universityID GROUP BY us.universityName');
@@ -63,7 +64,7 @@ class Dashboard extends CommonDash {
 		}elseif ($this->session->userdata('userlog')['sess_role']==22) {
 			$deptID = $this->session->userdata('userlog')['sess_deptID'];
 			$usrID = $this->session->userdata('userlog')['sess_usrID'];
-
+			qrysession();
 			$applyJumlah = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(t_project_scope_temp.projectScopeID)),0) as value, projectScope as label FROM `t_project_scope`LEFT JOIN t_project_scope_temp ON t_project_scope_temp.projectScopeID = t_project_scope.projectScopeID WHERE t_project_scope.deptID = "'.$deptID.'" AND t_project_scope.isApproved = "Y" GROUP BY t_project_scope.projectScope');
 			
 			$applyPersen = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(t_project_scope_temp.projectScopeID) / (SELECT COUNT(*) FROM `t_project_scope_temp`))*100,0) as value, projectScope as label FROM `t_project_scope`LEFT JOIN t_project_scope_temp ON t_project_scope_temp.projectScopeID = t_project_scope.projectScopeID WHERE t_project_scope.deptID = "'.$deptID.'" GROUP BY t_project_scope.projectScope');
@@ -101,6 +102,7 @@ class Dashboard extends CommonDash {
 			$this->render('dashboard', 'indexAdm', $data);
 			
 		}elseif ($this->session->userdata('userlog')['sess_role']==33) {
+			qrysession();
 			$data = array(
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
@@ -126,6 +128,7 @@ class Dashboard extends CommonDash {
 			$this->render('dashboard', 'indexAdmcampus', $data);
 			
 		}elseif ($this->session->userdata('userlog')['sess_role']==44) {
+			qrysession();
 			$data = array(
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
@@ -152,6 +155,7 @@ class Dashboard extends CommonDash {
 			
 		}else{
 			$id = $this->session->userdata('userlog')['sess_usrID'];
+			qrysession();
 			$getpersen = $this->Mod_crud->qry('row','SELECT COALESCE(ROUND(((SELECT COUNT(taskID) FROM `t_task` WHERE (statusTask = "done" OR statusTask = "done-delay") AND (workscopeID = ws.workscopeID)) / (SELECT COUNT(*) FROM `t_task` WHERE workscopeID = ws.workscopeID))*100,0),0) as value  FROM t_workscope as ws LEFT JOIN t_task as ts ON ws.workscopeID = ts.workscopeID WHERE ws.mahasiswaID = "'.$id.'"');
 			$data = array(
 				'_JS' => generate_js(array(
