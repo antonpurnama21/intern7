@@ -85,7 +85,7 @@
 								<td></td>
 								<td><?= $no ?>.</td>
 								<td><?= $pro->projectID ?></td>
-								<td><?= $pro->projectName ?></td>
+								<td><?= $pro->projectName ?> ( <?= name_dept($pro->deptID) ?> }</td>
 								<td class="text-center">
 									<a data-placement="left" data-popup="tooltip" title="Edit" style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal('<?= base_url('scope/modalEditProject') ?>','<?= $pro->projectID.'~'.$pro->projectName ?>','editproject')"><i class="icon-quill4"></i></a>
 									<a data-placement="left" data-popup="tooltip" title="Delete" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Delete','Project `<?= $pro->projectName ?>`?','<?= base_url('scope/deleteProject') ?>','<?= $pro->projectID ?>')"><i class="icon-trash"></i></a>
