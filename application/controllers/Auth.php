@@ -41,7 +41,7 @@ class Auth extends CI_Controller {
 				echo json_encode(array('code' => 367, 'message' => 'Wrong password'));
 			}else{
 					//$avatar = base_url('assets/dashboards/images/avatars/default_avatar.png');
-				if ($this->input->post("chkremember")){
+			if ($this->input->post("chkremember")){
                         $this->input->set_cookie('u_mail', $this->input->post('email'), 86500); /* Create cookie for store emailid */
                         $this->input->set_cookie('u_pass', $this->input->post('password'), 86500); /* Create cookie for password */
                     }
@@ -111,7 +111,7 @@ class Auth extends CI_Controller {
 
 		$data = array(
 		    'titleWeb' 	=> 'Reset Page | CBN Internship',
-		    'email'		=> $getreset->emaiL
+		    'email'	=> $getreset->emaiL
 		);
 		$this->template->load('reset', null, $data);
 		}
@@ -163,10 +163,10 @@ class Auth extends CI_Controller {
 					$avatar = base_url('fileupload/pic_mahasiswa/default.png');
 				}
 
-					$login['sess_name']		= $user->fullName;
+					$login['sess_name']	= $user->fullName;
 					$login['sess_email'] 	= $cekemail->emaiL;
 					$login['sess_role'] 	= $cekemail->roleID;
-					$login['is_login'] 		= TRUE;
+					$login['is_login'] 	= TRUE;
 					$login['sess_pass'] 	= md5($this->input->post('password'));
 					$login['sess_avatar'] 	= $avatar;
 				
@@ -174,6 +174,7 @@ class Auth extends CI_Controller {
 				
 				$this->Mod_crud->updateData('t_login', array(
 					'passworD' 	=> md5($pass1),
+					'statuS'	=> 'verified',
 					'lastLog' => date('Y/m/d H:i:s')
 					),array('emaiL' => $this->input->post('email'))
 				);
@@ -217,19 +218,19 @@ class Auth extends CI_Controller {
 		$expired_at = date('Y-m-d H:i:s',$done);
 
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-				'emaiL'			=> $emaiL,
-				'tokeN'			=> $tokeN,
+				'emaiL'		=> $emaiL,
+				'tokeN'		=> $tokeN,
 				'created_at'	=> date('Y-m-d H:i:s'),
 				'expired_at'	=> $expired_at
 				)
 			);
 
 		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
 				  		'charset' => 'iso-8859-1',
@@ -331,14 +332,14 @@ class Auth extends CI_Controller {
 			
 				$savemahasiswa 	= $this->Mod_crud->insertData('t_mahasiswa', array(
            				'mahasiswaID'		=> $mahasiswaID,
-           				'loginID'			=> $mahasiswaID,
+           				'loginID'		=> $mahasiswaID,
            				'universityID' 		=> $this->input->post('Universityid'),
            				'facultyID' 		=> $this->input->post('Facultyid'),
-           				'emaiL'				=> $this->input->post('Email'),
+           				'emaiL'			=> $this->input->post('Email'),
            				'mahasiswaNumber'	=> $this->input->post('Nim'),
-           				'fullName' 			=> ucwords($this->input->post('Fullname')),
+           				'fullName' 		=> ucwords($this->input->post('Fullname')),
            				'mobilePhone'		=> $this->input->post('Mobilephone'),
-           				'createdBY'			=> 'Register',
+           				'createdBY'		=> 'Register',
            				'createdTIME'		=> date('Y-m-d H:i:s')
            			)
            		);
@@ -348,6 +349,7 @@ class Auth extends CI_Controller {
 					'roleID'		=> 55,
 					'emaiL'			=> $this->input->post('Email'),
 					'passworD'		=> 'null',
+					'statuS'		=> 'new-mahasiswa',
 					'createdTime'	=> date('Y-m-d H:i:s')
 					)
 				);
@@ -360,19 +362,19 @@ class Auth extends CI_Controller {
 				$expired_at = date('Y-m-d H:i:s',$done);
 
 				$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
-						'emaiL'			=> $this->input->post('Email'),
-						'tokeN'			=> $tokeN,
+						'emaiL'		=> $this->input->post('Email'),
+						'tokeN'		=> $tokeN,
 						'created_at'	=> date('Y-m-d H:i:s'),
 						'expired_at'	=> $expired_at
 						)
 					);
 
 					$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
 				  		'charset' => 'iso-8859-1',
