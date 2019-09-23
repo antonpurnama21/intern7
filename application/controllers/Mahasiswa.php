@@ -116,6 +116,7 @@ class Mahasiswa extends CommonDash {
 					'roleID'		=> 55,
 					'emaiL'			=> $this->input->post('Email'),
 					'passworD'		=> 'null',
+					'statuS'		=> 'new-mahasiswa',
 					'createdTime'	=> date('Y-m-d H:i:s')
 					)
 				);
@@ -467,7 +468,8 @@ class Mahasiswa extends CommonDash {
 		$expired_at = date('Y-m-d H:i:s',$done);
 
 		$update = $this->Mod_crud->updateData('t_login', array(
-		           		'passworD' 	=> 'null'
+		           		'passworD' 	=> 'null',
+					'statuS'	=> 'reset',
            			), array('emaiL' => $email)
            	);
 		
@@ -713,7 +715,7 @@ class Mahasiswa extends CommonDash {
 	           				'mahasiswaID'		=> $this->input->post('Mahasiswaid'),
 	           				'photo' 		=> $pathPic,
 	           				'resume'		=> $pathCv,
-	           				'academicTranscipt' => $pathAc,
+	           				'academicTranscipt' 	=> $pathAc,
 	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			)
@@ -723,7 +725,7 @@ class Mahasiswa extends CommonDash {
 	           				'mahasiswaID'		=> $this->input->post('Mahasiswaid'),
 	           				'photo' 		=> $pathPic,
 	           				'resume'		=> $pathCv,
-	           				'academicTranscipt' => $pathAc,
+	           				'academicTranscipt' 	=> $pathAc,
 	           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
 	           				'updatedTIME'		=> date('Y-m-d H:i:s')
 	           			),array('mahasiswaID' => $this->input->post('Mahasiswaid'))
