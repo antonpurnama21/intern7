@@ -31,12 +31,12 @@ class Account extends CommonDash {
 				)
 			);
 
-		$config = array(
-				  		'protocol' => 'smtp',
-				  		'smtp_host' => 'ssl://smtp.gmail.com',
+			$config = array(
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
 				  		'smtp_port' => 465,
-				  		'smtp_user' => 'midaspurnama@gmail.com', // change it to yours
-				  		'smtp_pass' => 'midaspurnama123456789', // change it to yours
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
 				  		//'smtp_username' => 'armg3295',
 				  		'mailtype' => 'html',
 				  		'charset' => 'iso-8859-1',
@@ -115,7 +115,7 @@ class Account extends CommonDash {
 
 		if ($getlogin->roleID == 11) {
 			$delete 	 = $this->Mod_crud->deleteData('t_admin',array('loginID'=>$id));
-			$deletereset = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
+			$deletereset 	 = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 			$deletelog 	 = $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));
 			if ($deletelog){
 			$data = array(
@@ -129,7 +129,7 @@ class Account extends CommonDash {
 			}
 		}elseif ($getlogin->roleID == 22 ) {
 			$delete 		= $this->Mod_crud->deleteData('t_admin',array('loginID'=>$id));
-			$deletereset 	= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
+			$deletereset 		= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 			$deletelog 		= $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));			
 			if ($deletelog){
 			$data = array(
@@ -143,7 +143,7 @@ class Account extends CommonDash {
 			}
 		}elseif ($getlogin->roleID == 33 ) {
 			$delete 		= $this->Mod_crud->deleteData('t_admin_university',array('loginID'=>$id));
-			$deletereset 	= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
+			$deletereset 		= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 			$deletelog 		= $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));			
 			if ($deletelog){
 			$data = array(
@@ -158,7 +158,7 @@ class Account extends CommonDash {
 		}elseif ($getlogin->roleID == 44 ) {
 			$getdosen		= $this->Mod_crud->getData('row','*','t_dosen',null,null,null,array('loginID = "'.$id.'"'));
 			$delete 		= $this->Mod_crud->deleteData('t_dosen',array('loginID'=>$id));
-			$deletereset 	= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
+			$deletereset 		= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 			$deletelog 		= $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));
 			if ($deletelog){
 			unlink(FCPATH . $getdosen->profilePic);
