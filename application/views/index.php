@@ -183,9 +183,9 @@ foreach ($dtjumlah as $key) {?>
 							foreach ($dtaccount as $key) {
 							$no++;
 							if ($key->statuS == 'new') {
-								$status = '<span class="badge badge-succes">New</span>';
+								$status = '<span class="badge badge-success">New</span>';
 							}elseif ($key->statuS == 'new-mahasiswa') {
-								$status = '<span class="badge badge-succes">New Mahasiswa</span>';
+								$status = '<span class="badge badge-success">New Mahasiswa</span>';
 							}elseif ($key->statuS == 'reset') {
 								$status = '<span class="badge badge-warning">Reset Password</span>';
 							}else{
