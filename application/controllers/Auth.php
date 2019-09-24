@@ -388,7 +388,7 @@ class Auth extends CI_Controller {
 								</head>
 								<body>
 									<h2>CBN Internship Web Portal</h2>
-									<p>Please click the link below to set your password ".base_url('login/passwordreset/'.$tokeN)." <br/>( warning: this link will expire after one hour )<br/><br/></p>
+									<p>Please click the link below to set your password ".base_url('auth/reset/'.$tokeN)." <br/>( warning: this link will expire after one hour )<br/><br/></p>
 									<p><hr />Do Not reply to this message<hr /><br/></p>
 									<p>CBN Internet<br/>
 										PT. Cyberindo Aditama<br/>
