@@ -184,7 +184,11 @@
 								<div class="input-group">
 									<div class="input-group-addon" style="padding-top:0px;">:</div>
 									<label class="control-label">
-										<a style="margin-bottom: 5px" class="btn btn-success btn-sm" href="<?php echo base_url(); ?>mahasiswa/download/resume/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> resume.pdf</a><br /><a style="margin-bottom: 5px" class="btn btn-success btn-sm" href="<?php echo base_url(); ?>mahasiswa/download/transcipt/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> transcipt.pdf</a>
+										<?php 
+										if (!empty($dtmahasiswa->resume)) {?>
+										<a style="margin-bottom: 5px" class="btn btn-success btn-sm" href="<?php echo base_url(); ?>mahasiswa/download/resume/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> resume.pdf</a><br />
+										<a style="margin-bottom: 5px" class="btn btn-success btn-sm" href="<?php echo base_url(); ?>mahasiswa/download/transcipt/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> transcipt.pdf</a>
+										<?php } ?>
 									</label>
 								</div>
 							</div>
@@ -194,7 +198,7 @@
 
 					<div class="row">
 						<button style="margin-bottom: 5px" class="btn btn-primary" onclick="location.href='<?=base_url('mahasiswa/formProfile/'.$dtmahasiswa->mahasiswaID) ?>'"><i class="icon-quill4"></i> Update Profile</button>
-						<a style="margin-bottom: 5px" class="btn btn-danger" onclick="showModal('<?=base_url("dosen/changePass")?>', '<?=$dtmahasiswa->mahasiswaID.'~'.$dtmahasiswa->fullName?>', `editadmin`);"><i class="icon-lock"></i> Change Password</a><br />
+						<a style="margin-bottom: 5px" class="btn btn-danger" onclick="showModal('<?=base_url("mahasiswa/changePass")?>', '<?=$dtmahasiswa->mahasiswaID.'~'.$dtmahasiswa->fullName?>', `editadmin`);"><i class="icon-lock"></i> Change Password</a><br />
 						
 					</div>
 				</div>
