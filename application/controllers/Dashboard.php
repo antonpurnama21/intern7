@@ -156,7 +156,7 @@ class Dashboard extends CommonDash {
 		}else{
 			$id = $this->session->userdata('userlog')['sess_usrID'];
 			qrysession();
-			$getpersen = $this->Mod_crud->qry('row','SELECT COALESCE(ROUND(((SELECT COUNT(taskID) FROM `t_task` WHERE (statusTask = "done" OR statusTask = "done-delay") AND (workscopeID = ws.workscopeID)) / (SELECT COUNT(*) FROM `t_task` WHERE workscopeID = ws.workscopeID))*100,0),0) as value, ws.projectScope as id  FROM t_workscope as ws LEFT JOIN t_task as ts ON ws.workscopeID = ts.workscopeID WHERE ws.mahasiswaID = "'.$id.'"');
+			$getpersen = $this->Mod_crud->qry('row','SELECT COALESCE(ROUND(((SELECT COUNT(taskID) FROM `t_task` WHERE (statusTask = "done" OR statusTask = "done-delay") AND (workscopeID = ws.workscopeID)) / (SELECT COUNT(*) FROM `t_task` WHERE workscopeID = ws.workscopeID))*100,0),0) as value, ws.projectScopeID as id  FROM t_workscope as ws LEFT JOIN t_task as ts ON ws.workscopeID = ts.workscopeID WHERE ws.mahasiswaID = "'.$id.'"');
 			$data = array(
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
