@@ -196,11 +196,16 @@ foreach ($dtjumlah as $key) {?>
 							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?= $key->loginID ?></td>
-							<td><?= $key->emaiL ?> <?=$status?></td>
+							<td>
+								<div class='row' style='height:5px'>
+									<div class='col-md-8 text-right text-bold'><b><?= $key->emaiL ?></b></div>
+									<div class='col-md-4'><?=$status?></div>
+								 </div>
+							</td>
 							<td><?= what_role($key->roleID) ?></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Batalkan Reset / Setup Link" style="margin-bottom: 5px" class="btn btn-default" onclick="confirms('Revoke','Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_revoke') ?>','<?= $key->emaiL ?>')"><i class="icon-blocked"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Kirim Kembali Setup Link" style="margin-bottom: 5px" class="btn btn-default" onclick="confirms('Resend Setup Link','For Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_resend') ?>','<?= $key->emaiL ?>')"><i class="icon-sync"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Batalkan Reset / Setup Link" style="margin-bottom: 5px" class="btn btn-primary" onclick="confirms('Revoke','Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_revoke') ?>','<?= $key->emaiL ?>')"><i class="icon-blocked"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Kirim Kembali Setup Link" style="margin-bottom: 5px" class="btn btn-primary" onclick="confirms('Resend Setup Link','For Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_resend') ?>','<?= $key->emaiL ?>')"><i class="icon-sync"></i></a>
 								<a data-placement="left" data-popup="tooltip" title="Delete Account" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Delete','Account `<?= $key->emaiL ?>`?','<?= base_url('account/delete') ?>','<?= $key->loginID ?>')"><i class="icon-trash"></i></a>
 							</td>
 						</tr>
