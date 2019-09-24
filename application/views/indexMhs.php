@@ -14,10 +14,12 @@
 		<?php 
 		if (!empty($dtpersen->value)) {
 			$persen = $dtpersen->value.'%';
+			$scope = name_scope($dtpersen->id);
 		}else{
 			$persen = '0%';
+			$scope = '';
 		}?>
-		<label>Your Progress ( % )</label>
+		<label><?= $scope ?> ( % )</label>
 		<div class="progress mb-3" style="height: 1.375rem;">
 			<div class="progress-bar progress-bar-striped progress-bar-animated bg-green active" style="width: <?=$persen?>">
 				<span><?=$persen?> Complete</span>
