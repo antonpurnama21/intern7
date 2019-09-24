@@ -546,7 +546,6 @@ class Mahasiswa extends CommonDash {
 						"dashboards/js/plugins/forms/styling/switch.min.js",
 						"dashboards/js/plugins/forms/styling/switchery.min.js",
 						"dashboards/js/plugins/forms/styling/uniform.min.js",
-						"dashboards/js/plugins/forms/styling/uniform.min.js",
 						"dashboards/js/plugins/pickers/pickadate/picker.js",
 						"dashboards/js/plugins/pickers/pickadate/picker.date.js",
 						"dashboards/js/plugins/forms/validation/validate.min.js",
