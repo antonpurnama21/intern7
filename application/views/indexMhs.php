@@ -14,7 +14,7 @@
 		<?php 
 		if (!empty($dtpersen->value)) {
 			$persen = $dtpersen->value.'%';
-			$scope = name_scope($dtpersen->id);
+			$scope = name_projectscope($dtpersen->id);
 		}else{
 			$persen = '0%';
 			$scope = '';
