@@ -145,9 +145,9 @@
 								<span class="text-size-small"><?= what_role($sesi['sess_role']); ?></span><br />
 								<?php  
 								if ($sesi['sess_role'] == 11 OR $sesi['sess_role'] == 22) {?>
-								<span class="text-size-small"><?= name_dept($sesi['sess_deptID']); ?></span>
+								<span class="text-size-small">[ <?= name_dept($sesi['sess_deptID']); ?> ]</span>
 								<?php }else {?>
-								<span class="text-size-small"><?= name_university($sesi['sess_univID']); ?></span>
+								<span class="text-size-small">[ <?= name_university($sesi['sess_univID']); ?> ]</span>
 								<?php } ?>
 							</div>
 						</div>
@@ -193,16 +193,16 @@
 
 								<ul class="dropdown-menu dropdown-menu-right">
 									<?php if ($sesi['sess_role']==11){ ?>
-			                        <li><a href="<?= base_url('admin/profile') ?>"><i class="icon-user"></i> Profile</a></li>
-			                        <?php }elseif ($sesi['sess_role']==22) {?>
-			                        <li><a href="<?= base_url('admin/profile') ?>"><i class="icon-user"></i> Profile</a></li>
-			                        <?php }elseif ($sesi['sess_role']==33) {?>
-			                        <li><a href="<?= base_url('admincampus/profile') ?>"><i class="icon-user"></i> Profile</a></li>
-			                        <?php }elseif ($sesi['sess_role']==44) {?>
-			                        <li><a href="<?= base_url('dosen/profile') ?>"><i class="icon-user"></i> Profile</a></li>
-			                        <?php }else{?>
-			                        <li><a href="<?= base_url('mahasiswa/profile') ?>"><i class="icon-user"></i> Profile</a></li>
-			                        <?php } ?>
+									<li><a href="<?= base_url('admin/profile') ?>"><i class="icon-user"></i> Profile</a></li>
+									<?php }elseif ($sesi['sess_role']==22) {?>
+									<li><a href="<?= base_url('admin/profile') ?>"><i class="icon-user"></i> Profile</a></li>
+									<?php }elseif ($sesi['sess_role']==33) {?>
+									<li><a href="<?= base_url('admincampus/profile') ?>"><i class="icon-user"></i> Profile</a></li>
+									<?php }elseif ($sesi['sess_role']==44) {?>
+									<li><a href="<?= base_url('dosen/profile') ?>"><i class="icon-user"></i> Profile</a></li>
+									<?php }else{?>
+									<li><a href="<?= base_url('mahasiswa/profile') ?>"><i class="icon-user"></i> Profile</a></li>
+									<?php } ?>
 									<li><a href="<?= base_url('auth/logout') ?>"><i class="icon-exit"></i> Log out</a></li>
 								</ul>
 							</li>
