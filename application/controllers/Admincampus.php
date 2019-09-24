@@ -287,7 +287,7 @@ class Admincampus extends CommonDash {
 		$expired_at = date('Y-m-d H:i:s',$done);
 
 		$update = $this->Mod_crud->updateData('t_login', array(
-		           		'passworD' 	=> 'null'
+		           		'passworD' 	=> 'null',
 					'statuS'	=> 'reset',
            			), array('emaiL' => $email)
            	);
