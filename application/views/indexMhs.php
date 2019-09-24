@@ -12,7 +12,7 @@
 
 	<div class="panel-body">
 		<?php 
-		if (!empty($dtpersen->value)) {
+		if (!empty($dtpersen->id)) {
 			$persen = $dtpersen->value.'%';
 			$scope = name_projectscope($dtpersen->id);
 		}else{
