@@ -46,12 +46,7 @@ class Auth extends CI_Controller {
                         $this->input->set_cookie('u_pass', $this->input->post('password'), 86500); /* Create cookie for password */
                     }
 
-                if ($cekPass->roleID == 11) {
-						$user 	= $this->Mod_crud->getData('row', '*', 't_admin', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"'));
-						$login['sess_usrID']  = $user->adminID;
-						$login['sess_deptID'] = $user->deptID;
-						$avatar = base_url('fileupload/pic_admin/default.png');
-					}elseif ($cekPass->roleID == 22) {
+                			if ($cekPass->roleID == 11 OR $cekPass->roleID == 22) {
 						$user 	= $this->Mod_crud->getData('row', '*', 't_admin', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"'));
 						$login['sess_usrID']  = $user->adminID;
 						$login['sess_deptID'] = $user->deptID;
@@ -134,19 +129,14 @@ class Auth extends CI_Controller {
 
 				$delete  = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 
-				if ($cekemail->roleID == 11) {
-					$user 	= $this->Mod_crud->getData('row', '*', 't_admin', null, null, null, array('emaiL = "'.$email.'"'));
-					$login['sess_usrID']  = $user->adminID;
-					$login['sess_deptID'] = $user->deptID;
-					$avatar = base_url('fileupload/pic_admin/default.png');
-				}elseif ($cekemail->roleID == 22) {
+				if ($cekemail->roleID == 11 OR $cekemail->roleID == 22) {
 					$user 	= $this->Mod_crud->getData('row', '*', 't_admin', null, null, null, array('emaiL = "'.$email.'"'));
 					$login['sess_usrID']  = $user->adminID;
 					$login['sess_deptID'] = $user->deptID;
 					$avatar = base_url('fileupload/pic_admin/default.png');
 				}elseif ($cekemail->roleID == 33) {
 					$user 	= $this->Mod_crud->getData('row', '*', 't_admin_university', null, null, null, array('emaiL = "'.$email.'"'));
-					$login['sess_usrID'] 	= $user->adminUniversityID;
+					$login['sess_usrID'] 	= $user->adminCampusID;
 					$login['sess_univID'] 	= $user->universityID;
 					$avatar = base_url('fileupload/pic_admin/default.png');
 				}elseif ($cekemail->roleID == 44) {
