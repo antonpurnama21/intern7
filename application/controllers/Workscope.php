@@ -96,11 +96,8 @@ class Workscope extends CommonDash {
 		$data = $this->Mod_crud->getData('result', 'taskID, taskDesc, taskName, startDate, endDate, statusTask', 't_task', null,null,null,array('workscopeID = "'.$wsID->workscopeID.'"'));
 		if (!empty($data)) {
 			foreach ($data as $key) {
-				if ($this->session->userdata('userlog')['sess_role']==55) {
-					$base = base_url('workscope/progress/'.$key->taskID);
-				}else{
-					$base = base_url('workscope/logProgress/'.$key->taskID);
-				}
+				$base = base_url('workscope/progress/'.$key->taskID);
+					
 				if ($key->statusTask=='pending') {
 					$status = 'Pending';
 					$color = 'gray';
@@ -141,11 +138,8 @@ class Workscope extends CommonDash {
 		$data = $this->Mod_crud->getData('result', 'taskID, taskDesc, taskName, startDate, endDate, statusTask', 't_task', null,null,null,array('workscopeID = "'.$id.'"'));
 		if (!empty($data)) {
 			foreach ($data as $key) {
-				if ($this->session->userdata('userlog')['sess_role']==55) {
-					$base = base_url('workscope/progress/'.$key->taskID);
-				}else{
-					$base = base_url('workscope/logProgress/'.$key->taskID);
-				}
+				$base = base_url('workscope/logProgress/'.$key->taskID);
+				
 				if ($key->statusTask=='pending') {
 					$status = 'Pending';
 					$color = 'gray';
