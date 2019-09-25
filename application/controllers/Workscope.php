@@ -380,7 +380,7 @@ class Workscope extends CommonDash {
 			'taskID' 	=> $id,
 			'getClose'	=> $getClose
 		);
-		$this->render('dashboard', 'pages/Workscope/indexprogress', $data);
+		$this->render('dashboard', 'pages/workscope/indexprogress', $data);
 	}
 
 	public function getListProgress($id=null)
