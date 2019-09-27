@@ -538,7 +538,7 @@ class Workscope extends CommonDash {
            			), array('taskID' => $id)
            	);
 
-		helper_log('done',$nameMhs.' Menyelesaikan Task ( '.$nameTask.' )'.,$this->session->userdata('userlog')['sess_usrID']);
+		helper_log('done',$nameMhs.' Menyelesaikan Task ( '.$nameTask.' )',$this->session->userdata('userlog')['sess_usrID']);
 		if ($edit){
 			$this->alert->set('bg-success', "Update success !");
    			echo json_encode(array('code' => 200, 'message' => 'Update success !'));
