@@ -516,10 +516,10 @@ class Workscope extends CommonDash {
 	
 		public function progressDone($id)
 	{	
-		$nameMhs = name_mhs($this->session->userdata('login')['sess_usrID']);
+		$nameMhs = name_mhs($this->session->userdata('userlog')['sess_usrID']);
 		$nameTask = name_task($id);
 
-		$getask = $this->Mod_crud->getData('row','endDate','t_task',null,null,null,array('taskID = "'.$taskID.'"'));
+		$getask = $this->Mod_crud->getData('row','endDate','t_task',null,null,null,array('taskID = "'.$id.'"'));
 		$endDate = $getask->endDate;
 		$date = date('Y-m-d');
 		if ($date > $endDate) {
@@ -533,7 +533,7 @@ class Workscope extends CommonDash {
 		$edit = $this->Mod_crud->updateData('t_task', array(
 					'closeDate'		=> $close,
            				'statusTask'		=> $statusTask,
-           				'updatedBY'		=> $this->session->userdata('login')['sess_usrID'],
+           				'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
            				'updatedTIME'		=> date('Y-m-d H:i:s')
            			), array('taskID' => $id)
            	);
