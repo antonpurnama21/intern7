@@ -541,7 +541,7 @@ class Workscope extends CommonDash {
 		helper_log('done',$nameMhs.' Menyelesaikan Task ( '.$nameTask.' )',$this->session->userdata('userlog')['sess_usrID']);
 		if ($edit){
 			$this->alert->set('bg-success', "Update success !");
-   			redirect('workscope/progressDone/'.$id);
+   			redirect('workscope/progress/'.$id);
    		}else{
    			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
    		}
