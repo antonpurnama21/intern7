@@ -513,6 +513,40 @@ class Workscope extends CommonDash {
 		);
 		$this->render('dashboard', 'pages/workscope/logprogress', $data);
 	}
+	
+		public function progressDone($id)
+	{	
+		$nameMhs = name_mhs($this->session->userdata('login')['sess_usrID']);
+		$nameTask = name_task($id);
+
+		$getask = $this->Mod_crud->getData('row','endDate','t_task',null,null,null,array('taskID = "'.$taskID.'"'));
+		$endDate = $getask->endDate;
+		$date = date('Y-m-d');
+		if ($date > $endDate) {
+			$statusTask = 'done-delay';
+			$close = $date;
+		}else{
+			$statusTask = 'done';
+			$close = $date;
+		}
+
+		$edit = $this->Mod_crud->updateData('t_task', array(
+					'closeDate'		=> $close,
+           				'statusTask'		=> $statusTask,
+           				'updatedBY'		=> $this->session->userdata('login')['sess_usrID'],
+           				'updatedTIME'		=> date('Y-m-d H:i:s')
+           			), array('taskID' => $id)
+           	);
+
+		helper_log('done',$nameMhs.' Menyelesaikan Task ( '.$nameTask.' )'.,$this->session->userdata('userlog')['sess_usrID']);
+		if ($edit){
+			$this->alert->set('bg-success', "Update success !");
+   			echo json_encode(array('code' => 200, 'message' => 'Update success !'));
+   		}else{
+   			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
+   		}
+    
+	}
 
 }
 
