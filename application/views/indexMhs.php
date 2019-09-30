@@ -15,13 +15,22 @@
 		if (!empty($dtpersen->id)) {
 			$persen = $dtpersen->value.'%';
 			$scope = name_projectscope($dtpersen->id);
+			if($dtpersen->value=='100'){
+				$bg = 'bg-blue';
+				$ac = '';
+			}else{
+				$bg = 'bg-green';
+				$ac = 'active';
+			}
 		}else{
 			$persen = '0%';
 			$scope = '';
+			$bg = '';
+			$ac = '';				
 		}?>
 		<label><?= $scope ?> ( % )</label>
 		<div class="progress mb-3" style="height: 2rem;">
-			<div class="progress-bar progress-bar-striped progress-bar-animated bg-green active" style="width: <?=$persen?>">
+			<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?> <?=$ac?>" style="width: <?=$persen?>">
 				<span><?=$persen?> Complete</span>
 			</div>
 		</div>
