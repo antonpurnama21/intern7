@@ -20,7 +20,7 @@
 			$scope = '';
 		}?>
 		<label><?= $scope ?> ( % )</label>
-		<div class="progress mb-3" style="height: 1.375rem;">
+		<div class="progress mb-3" style="height: 2rem;">
 			<div class="progress-bar progress-bar-striped progress-bar-animated bg-green active" style="width: <?=$persen?>">
 				<span><?=$persen?> Complete</span>
 			</div>
