@@ -30,11 +30,11 @@
 				?>
 					<tr class="text-size-mini">
 						<td><?= $no ?>.</td>
-						<td><?= $key->departmentID ?></td>
-						<td><?= $key->departmentName ?></td>
+						<td><?= $key->deptID ?></td>
+						<td><?= $key->deptName ?></td>
 						<td class="text-center">
-							<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('department/modalEdit') ?>','<?= $key->departmentID.'~'.$key->departmentName ?>','editdepartment')"><i class="icon-quill4"></i></a>
-							<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Department `<?= $key->departmentName ?>`?','<?= base_url('department/delete') ?>','<?= $key->departmentID ?>')"><i class="icon-trash"></i></a>
+							<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('department/modalEdit') ?>','<?= $key->deptID.'~'.$key->deptName ?>','editdepartment')"><i class="icon-quill4"></i></a>
+							<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Department `<?= $key->deptName ?>`?','<?= base_url('department/delete') ?>','<?= $key->deptID ?>')"><i class="icon-trash"></i></a>
 						</td>
 					</tr>
 				<?php
