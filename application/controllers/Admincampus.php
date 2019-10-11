@@ -17,7 +17,7 @@ class Admincampus extends CommonDash {
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -31,6 +31,7 @@ class Admincampus extends CommonDash {
 			),
 			'titleWeb' => "admin Campus | CBN Internship",
 			'breadcrumb' => explode(',', 'Account,Admin Campus'),
+			'dMaster'	=> $this->Mod_crud->getData('result','a.*, l.roleID', 't_admin_campus a', null, null, array('t_login l' => 'a.loginID = l.loginID')),
 		);
 		$this->render('dashboard', 'pages/admincampus/index', $data);
 	}
@@ -213,7 +214,7 @@ class Admincampus extends CommonDash {
 	public function getList()
 	{
 		$res = array();
-		$admincampus = $this->Mod_crud->getData('result','a.*, l.roleID', 't_admin_campus a', null, null, array('t_login l' => 'a.loginID = l.loginID'));
+		$admincampus = 
 		if (!empty($admincampus)) {
 			$no = 0;
 			foreach ($admincampus as $key) {

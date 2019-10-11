@@ -9,18 +9,47 @@
         	</ul>
     	</div>
 	</div>
-	<input type="hidden" name="alamatList" id="alamatList" value="<?= base_url('admincampus/getList') ?>">
 	<div class="ml-20">
-		<button type="button" class="btn btn-success" onclick="showModal('<?= base_url('admincampus/modalAdd') ?>', '', 'add');"><i class="icon-add position-left"></i> Add</button>
+		<button type="button" class="btn btn-success" onclick="showModal('<?= base_url('admincampuscampus/modalAdd') ?>', '', 'add');"><i class="icon-add position-left"></i> Add</button>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th></th>
-				<th width="10%">No</th>
-				<th width="60%">Information Admin Campus</th>
-				<th width="30%">Action</th>
+				<th>No</th>
+				<th>ID User</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone Number</th>
+				<th>University</th>
+				<th>Role</th>
+				<th>Action</th>
 			</tr>
 		</thead>
+		<tbody>
+			<?php
+				if (!empty($dMaster)) {
+					$no = 0;
+					foreach ($dMaster as $key) {
+						$no++;
+			?>
+			<tr class="text-size-mini">
+				<td><?= $no ?></td>
+				<td><div class="col-md-8 text-semibold text-success"><?= $key->loginID?></div></td>
+				<td><?= $key->fullName?></td>
+				<td><?= $key->emaiL?></td>
+				<td><?= $key->telePhone?></td>
+				<td><?= name_university($key->universityID)?></td>
+				<td><?= what_role($key->roleID)?></td>
+				<td>
+					<a data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 10px" onclick="showModal('<?= base_url("admincampus/modalReset")?>', '<?= $key->adminCampusID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
+					<a data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 10px" onclick="showModal('<?=base_url("admincampus/modalEdit")?>', '<?=$key->adminCampusID.'~'.$key->fullName?>', 'editadmincampus')"><i class="icon-quill4"></i></a>
+					<a data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 10px; color: red;" onclick="confirms('Delete','admincampus `<?= $key->fullName?>`?','<?= base_url("admincampus/delete")?>','<?= $key->adminCampusID?>')"><i class="icon-trash"></i></a>
+				</td>
+			</tr>
+			<?php
+					}
+				}
+			?>
+		</tbody>
 	</table>
 </div>
