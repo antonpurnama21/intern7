@@ -39,12 +39,15 @@
 
                                 if ($key->statusWorkscope=='pending') {
                                     $btn = 'btn-secondary';
+                                    $bg = '';
                                     $status = 'Pending';
                                 }elseif ($key->statusWorkscope=='on-progress') {
-                                    $btn = 'btn-success';
+                                    $btn = 'bg-green';
+                                    $bg = 'bg-success';
                                     $status = 'On Progress';
                                 }else{
                                     $btn = 'btn-primary';
+                                    $bg = 'bg-blue'
                                     $status = 'Done';
                                 }
 						?>
@@ -72,7 +75,7 @@
 									<div class='col-md-4 text-right text-bold'>Progress :</div>
 									<div class='col-md-8'>
 										<div class="progress active" style="margin-bottom: 5px">
-											<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?=$persen?>%">
+											<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?>" style="width: <?=$persen?>%">
 												<span><?=$persen?> %</span>
 											</div>
 										</div>
