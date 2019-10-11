@@ -15,9 +15,8 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th></th>
 				<th width="10%">No</th>
-				<th width="70%">Information Admin Campus</th>
+				<th>Information Admin Campus</th>
 				<th width="20%">Action</th>
 			</tr>
 		</thead>
@@ -29,7 +28,6 @@
 						$no++;
 			?>
 			<tr class="text-size-mini">
-				<td></td>
 				<td><?= $no ?></td>
 				<td>
 					<div class="row" style="height:5px">
