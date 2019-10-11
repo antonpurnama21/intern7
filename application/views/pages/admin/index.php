@@ -16,8 +16,11 @@
 		<thead>
 			<tr style="font-size:12px; text-align:center;">
 				<th>No</th>
-				<th>Information</th>
-				<th>Contact</th>
+				<th>ID User</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone Number</th>
+				<th>Department</th>
 				<th>Role</th>
 				<th>Action</th>
 			</tr>
@@ -31,39 +34,12 @@
 			?>
 			<tr class="text-size-mini">
 				<td><?= $no ?></td>
-				<td>
-					<div class="row" style="height:5px">
-						<div class="col-md-4 text-right text-bold">ID User :</div>
-						<div class="col-md-8 text-semibold text-success"><?= $key->loginID?></div>
-					 </div>
-					 <br/>
-					 <div class="row" style="height:5px">
-						<div class="col-md-4 text-right text-bold">Admin Name :</div>
-						<div class="col-md-8"><?= $key->fullName?></div>
-					 </div>
-				</td>
-				<td>
-					 <div class="row" style="height:5px">
-						<div class="col-md-4 text-right text-bold">Email :</div>
-						<div class="col-md-8"><?= $key->emaiL?>"</div>
-					 </div>
-					 <br/>
-					 <div class="row" style="height:5px">
-						<div class="col-md-4 text-right text-bold">Phone Number :</div>
-						<div class="col-md-8"><?= $key->telePhone?></div>
-					 </div>
-				</td>
-				<td>
-					 <div class="row nomargin" style="height:5px">
-						<div class="col-md-4 text-right text-bold">Department :</div>
-						<div class="col-md-8"><?= name_dept($key->deptID)?></div>
-					 </div>
-					 <br/>
-					 <div class="row" style="height:5px">
-						<div class="col-md-4 text-right text-bold">Role User :</div>
-						<div class="col-md-8"><?= what_role($key->roleID)?></div>
-					 </div>
-				</td>
+				<td><div class="col-md-8 text-semibold text-success"><?= $key->loginID?></div></td>
+				<td><?= $key->fullName?></td>
+				<td><?= $key->emaiL?></td>
+				<td><?= $key->telePhone?></td>
+				<td><?= name_dept($key->deptID)?></td>
+				<td><?= what_role($key->roleID)?></td>
 				<td>
 					<a data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 10px" onclick="showModal('<?= base_url("admin/modalReset")?>', '<?= $key->adminID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
 					<a data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 10px" onclick="showModal('<?=base_url("admin/modalEdit")?>', '<?=$key->adminID.'~'.$key->fullName?>', 'editadmin')"><i class="icon-quill4"></i></a>
