@@ -10,7 +10,7 @@
 				<div class="modal-body">
 					<fieldset class="content-group">
 
-						<input type="hidden" name="Universityid" id="Universityid" class="form-control" placeholder="Admin ID" title="Admin ID" value="<?= isset($dMaster->UniversityID) ? $dMaster->UniversityID : '' ?>" readonly>
+						<input type="hidden" name="Universityid" id="Universityid" class="form-control" placeholder="Admin ID" title="Admin ID" value="<?= isset($dMaster->universityID) ? $dMaster->universityID : '' ?>" readonly>
 						
 						<div class="row">
 							<div class="form-group">
