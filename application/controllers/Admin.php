@@ -17,7 +17,7 @@ class Admin extends CommonDash {
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -31,6 +31,7 @@ class Admin extends CommonDash {
 			),
 			'titleWeb' => "Admin Department | CBN Internship",
 			'breadcrumb' => explode(',', 'Account,Admin Department'),
+			'dMaster'	=> $this->Mod_crud->getData('result','a.*, l.roleID', 't_admin a', null, null, array('t_login l' => 'a.loginID = l.loginID')),
 		);
 		$this->render('dashboard', 'pages/admin/index', $data);
 	}
@@ -61,7 +62,7 @@ class Admin extends CommonDash {
 						'loginID' 	=> $id,
 						'emaiL' 	=> $this->input->post('Email'),
 						'fullName' 	=> $this->input->post('Fullname'),
-						'telePhone' 	=> $this->input->post('Telephone'),
+						'telePhone' => $this->input->post('Telephone'),
 						'deptID'	=> $this->input->post('Deptid'),
 						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' => date('Y-m-d H:i:s')
