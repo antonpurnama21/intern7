@@ -14,9 +14,11 @@
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
-			<tr style="font-size:12px;text-align:center;">
+			<tr style="font-size:12px; text-align:center;">
 				<th>No</th>
-				<th>Information Admin Campus</th>
+				<th>Information</th>
+				<th>Contact</th>
+				<th>Role</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -39,7 +41,8 @@
 						<div class="col-md-4 text-right text-bold">Admin Name :</div>
 						<div class="col-md-8"><?= $key->fullName?></div>
 					 </div>
-					 <br/>
+				</td>
+				<td>
 					 <div class="row" style="height:5px">
 						<div class="col-md-4 text-right text-bold">Email :</div>
 						<div class="col-md-8"><?= $key->emaiL?>"</div>
@@ -49,7 +52,8 @@
 						<div class="col-md-4 text-right text-bold">Phone Number :</div>
 						<div class="col-md-8"><?= $key->telePhone?></div>
 					 </div>
-					 <br/>
+				</td>
+				<td>
 					 <div class="row nomargin" style="height:5px">
 						<div class="col-md-4 text-right text-bold">Department :</div>
 						<div class="col-md-8"><?= name_dept($key->deptID)?></div>
