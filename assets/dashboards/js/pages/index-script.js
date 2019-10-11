@@ -1,4 +1,8 @@
 $(function() {
+    $('.select2').select2();
+
+    $(".styled, .multiselect-container input").uniform({ radioClass: 'choice' });
+
     $('.datatable-responsive-row-control').DataTable({
         responsive: {
             details: {

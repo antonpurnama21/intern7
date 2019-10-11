@@ -17,7 +17,7 @@ class Department extends CommonDash {
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -31,6 +31,7 @@ class Department extends CommonDash {
 			),
 			'titleWeb' => "Department CBN | CBN Internship",
 			'breadcrumb' => explode(',', 'Data,Department'),
+			'dMaster' => $this->Mod_crud->getData('result','*', 't_department'),
 		);
 		$this->render('dashboard', 'pages/department/index', $data);
 	}
@@ -116,30 +117,6 @@ class Department extends CommonDash {
 			echo '';
 		}
 		
-	}
-
-	public function getList()
-	{
-		$res = array();
-		$department = $this->Mod_crud->getData('result','*', 't_department');
-		if (!empty($department)) {
-			$no = 0;
-			foreach ($department as $key) {
-				$no++;
-				array_push($res, array(
-							'',
-							$no,
-							$key->deptID,
-							$key->deptName,
-							'
-							<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal(`'.base_url("department/modalEdit").'`, `'.$key->deptID.'~'.$key->deptName.'`, `editdepartment`);"><i class="icon-quill4"></i> Edit</a>
-							<a style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms(`Delete`,` '.$key->deptName.'?`,`'.base_url("department/delete").'`,`'.$key->deptID.'`)"><i class="icon-trash"></i> Delete</a>
-							'
-							)
-				);
-			}
-		}
-		echo json_encode($res);
 	}
 
 }

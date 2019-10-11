@@ -9,19 +9,38 @@
         	</ul>
     	</div>
 	</div>
-	<input type="hidden" name="alamatList" id="alamatList" value="<?= base_url('department/getList') ?>">
 	<div class="ml-20">
 		<button type="button" class="btn btn-success" onclick="showModal('<?= base_url('department/modalAdd') ?>', '', 'add');"><i class="icon-add position-left"></i> Add</button>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th></th>
-				<th width="10%">No</th>
-				<th width="30%">Department ID</th>
-				<th width="40%">Department</th>
-				<th width="20%">Action</th>
+				<th>No</th>
+				<th>Department ID</th>
+				<th>Department</th>
+				<th>Action</th>
 			</tr>
 		</thead>
+		<tbody>
+				<?php
+					if (!empty($dMaster)) {
+						$no = 0;
+						foreach ($dMaster as $key) {
+							$no++;
+				?>
+					<tr class="text-size-mini">
+						<td><?= $no ?>.</td>
+						<td><?= $key->departmentID ?></td>
+						<td><?= $key->departmentName ?></td>
+						<td class="text-center">
+							<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('department/modalEdit') ?>','<?= $key->departmentID.'~'.$key->departmentName ?>','editdepartment')"><i class="icon-quill4"></i></a>
+							<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Department `<?= $key->departmentName ?>`?','<?= base_url('department/delete') ?>','<?= $key->departmentID ?>')"><i class="icon-trash"></i></a>
+						</td>
+					</tr>
+				<?php
+						}
+					}
+				?>
+		</tbody>	
 	</table>
 </div>

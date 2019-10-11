@@ -17,7 +17,7 @@ class University extends CommonDash {
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -31,6 +31,7 @@ class University extends CommonDash {
 			),
 			'titleWeb' => "University | CBN Internship",
 			'breadcrumb' => explode(',', 'Data,University'),
+			'dMaster' => $this->Mod_crud->getData('result','*', 't_university',null,null,null,array('mou = "YES"')),
 		);
 		$this->render('dashboard', 'pages/university/index', $data);
 	}
@@ -55,6 +56,7 @@ class University extends CommonDash {
 			$save = $this->Mod_crud->insertData('t_university', array(
 						'universityID' 		=> $id,
 						'universityName' 	=> $this->input->post('Universityname'),
+						'mou'				=> $this->input->post('Mou'),
 						'createdBY'			=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' 		=> date('Y-m-d H:i:s')
            			)
@@ -88,8 +90,9 @@ class University extends CommonDash {
 
 			$update = $this->Mod_crud->updateData('t_university', array(
 						'universityName'	=> $this->input->post('Universityname'),
-						'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
-						'createdTime' 	=> date('Y-m-d H:i:s')
+						'mou'				=> $this->input->post('Mou'),
+						'createdBY'			=> $this->session->userdata('userlog')['sess_usrID'],
+						'createdTime' 		=> date('Y-m-d H:i:s')
            			), array('universityID ' => $this->input->post('Universityid'))
            		);
 			helper_log('edit','Edit University ( '.$this->input->post('Universityname').' )',$this->session->userdata('userlog')['sess_usrID']);
@@ -116,30 +119,6 @@ class University extends CommonDash {
 			echo '';
 		}
 		
-	}
-
-	public function getList()
-	{
-		$res = array();
-		$university = $this->Mod_crud->getData('result','*', 't_university');
-		if (!empty($university)) {
-			$no = 0;
-			foreach ($university as $key) {
-				$no++;
-				array_push($res, array(
-							'',
-							$no,
-							$key->universityID,
-							$key->universityName,
-							'
-							<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal(`'.base_url("university/modalEdit").'`, `'.$key->universityID.'~'.$key->universityName.'`, `edituniversity`);"><i class="icon-quill4"></i> Edit</a>
-							<a style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms(`Delete`,`Admin campus '.$key->universityName.'?`,`'.base_url("university/delete").'`,`'.$key->universityID.'`)"><i class="icon-trash"></i> Delete</a>
-							'
-							)
-				);
-			}
-		}
-		echo json_encode($res);
 	}
 
 }

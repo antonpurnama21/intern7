@@ -1,9 +1,11 @@
 $(function() {
-    var listPengaduan = [];
-    $.post($('#alamatList').val(), {}, function(resp){
-        var result = JSON.parse(resp);
+
+        $('.select2').select2();
+
+        $(".styled, .multiselect-container input").uniform({ radioClass: 'choice' });
+        
         $('.datatable-responsive-row-control').DataTable({
-            data:result,
+            'scrollX': true,
             responsive: {
                 details: {
                     type: 'column',
@@ -27,7 +29,6 @@ $(function() {
             ],
             order: [1, 'asc']
         });
-    });
     
 });
 
