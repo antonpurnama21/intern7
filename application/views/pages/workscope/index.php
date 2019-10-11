@@ -47,7 +47,7 @@
                                     $status = 'On Progress';
                                 }else{
                                     $btn = 'btn-primary';
-                                    $bg = 'bg-blue'
+                                    $bg = 'bg-blue';
                                     $status = 'Done';
                                 }
 						?>
