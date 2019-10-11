@@ -15,7 +15,6 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th></th>
 				<th>No</th>
 				<th>University ID</th>
 				<th>University</th>

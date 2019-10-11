@@ -18,7 +18,7 @@
 								<div class="col-lg-8">
 									<div class="input-group">
 										<div class="input-group-addon"><i class="icon-user-tie"></i></div>
-										<input type="text" name="Universityname" id="Universityname" class="form-control" required="required" placeholder="Insert University" title="Insert University" value="<?= isset($dMaster->UniversityName) ? $dMaster->UniversityName : '' ?>" required>
+										<input type="text" name="Universityname" id="Universityname" class="form-control" required="required" placeholder="Insert University" title="Insert University" value="<?= isset($dMaster->universityName) ? $dMaster->universityName : '' ?>" required>
 									</div>
 								</div>
 							</div>
