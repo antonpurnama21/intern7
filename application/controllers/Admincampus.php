@@ -211,58 +211,6 @@ class Admincampus extends CommonDash {
 		echo json_encode($resp);
 	}
 
-	public function getList()
-	{
-		$res = array();
-		$admincampus = 
-		if (!empty($admincampus)) {
-			$no = 0;
-			foreach ($admincampus as $key) {
-				$no++;
-				array_push($res, array(
-							'',
-							$no,
-							"<div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>ID User :</div>
-								<div class='col-md-8 text-semibold text-success'>".$key->loginID."</div>
-							 </div>
-							 <br/>
-							 <div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Admin Name :</div>
-								<div class='col-md-8'>".$key->fullName."</div>
-							 </div>
-							 <br/>
-							 <div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Email :</div>
-								<div class='col-md-8'>".$key->emaiL."</div>
-							 </div>
-							 <br/>
-							 <div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Phone Number :</div>
-								<div class='col-md-8'>".$key->telePhone."</div>
-							 </div>
-							 <br/>
-							 <div class='row nomargin' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>University :</div>
-								<div class='col-md-8'>".name_university($key->universityID)."</div>
-							 </div>
-							 <br/>
-							 <div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Role User :</div>
-								<div class='col-md-8'>".what_role($key->roleID)."</div>
-							 </div>",
-							'
-							<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal(`'.base_url("admincampus/modalReset").'`, `'.$key->adminCampusID.'~'.$key->fullName.'`, `resetpass`);"><i class="icon-lock"></i></a>
-							<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal(`'.base_url("admincampus/modalEdit").'`, `'.$key->adminCampusID.'~'.$key->fullName.'`, `editadmincampus`);"><i class="icon-quill4"></i></a>
-							<a style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms(`Delete`,`Admin Campus '.$key->fullName.'?`,`'.base_url("admincampus/delete").'`,`'.$key->adminCampusID.'`)"><i class="icon-trash"></i></a>
-							'
-							)
-				);
-			}
-		}
-		echo json_encode($res);
-	}
-
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 		public function modalReset()
 	{
