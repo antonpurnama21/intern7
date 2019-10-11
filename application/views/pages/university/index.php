@@ -18,6 +18,7 @@
 				<th>No</th>
 				<th>University ID</th>
 				<th>University</th>
+				<th>Mou</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -32,6 +33,7 @@
 						<td><?= $no ?>.</td>
 						<td><?= $key->universityID ?></td>
 						<td><?= $key->universityName ?></td>
+						<td><?= $key->mou?></td>
 						<td class="text-center">
 							<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('university/modalEdit') ?>','<?= $key->universityID.'~'.$key->universityName ?>','edituniversity')"><i class="icon-quill4"></i></a>
 							<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','University `<?= $key->universityName ?>`?','<?= base_url('university/delete') ?>','<?= $key->universityID ?>')"><i class="icon-trash"></i></a>

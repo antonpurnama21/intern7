@@ -31,7 +31,7 @@ class University extends CommonDash {
 			),
 			'titleWeb' => "University | CBN Internship",
 			'breadcrumb' => explode(',', 'Data,University'),
-			'dMaster' => $this->Mod_crud->getData('result','*', 't_university',null,null,null,array('mou = "YES"')),
+			'dMaster' => $this->Mod_crud->getData('result','*', 't_university'),
 		);
 		$this->render('dashboard', 'pages/university/index', $data);
 	}
