@@ -17,10 +17,13 @@
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
 				<th></th>
-				<th width="5">No</th>
-				<th width="45">Information</th>
-				<th width="35">Requiretment</th>
-				<th width="15">Action</th>
+				<th>No</th>
+				<th>Project Scope</th>
+				<th>Project Name</th>
+				<th>From Department</th>
+				<th>Requiretment</th>
+				<th>Status</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -67,43 +70,11 @@
 						<tr>
 							<td></td>
 							<td><?= $no ?>.</td>
-							<td>
-								 <div class='row' style='height:5px'>
-								 	<div class='col-md-4 text-right text-bold'>Scope ID :</div>
-								 	<div class='col-md-8 text-semibold text-success'><?=$key->projectScopeID?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Project Scope :</div>
-									<div class='col-md-8'><?=$key->projectScope?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Department :</div>
-									<div class='col-md-8'><?=name_dept($key->deptID)?> <?=chk_typeTemp($key->projectScopeID);?></div>
-								 </div>
-								 <br/>
-								 <div class='row nomargin' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Category :</div>
-									<div class='col-md-8'><?=name_category($key->categoryID)?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Project Name :</div>
-									<div class='col-md-8'><?=name_project($key->projectID)?></div>
-								 </div>
-							</td>
-							<td>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Requiretment :</div>
-									<div class='col-md-8'><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Status :</div>
-									<div class='col-md-8'><?=$status?></div>
-								 </div>
-							</td>
+							<td><?=$key->projectScope?></td>
+							<td><?=name_project($key->projectID)?></td>
+							<td><?=name_dept($key->deptID)?> <?=chk_typeTemp($key->projectScopeID);?></td>
+							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
+							<td><?=$status?></td>
 							<td class="text-center">
 								<a data-placement="left" data-popup="tooltip" title="Print Project Scope" style="margin: 10px" href="<?=base_url()?>report/printScope/<?=$key->projectScopeID?>"><i class="icon-printer"></i></a>
 	                            <a data-placement="left" data-popup="tooltip" title="View project Scope" style="margin: 10px" onclick="showModal('<?=base_url('scope/modalScope') ?>', '<?=$key->projectScopeID.'~'.$key->projectScope?>', 'review');"><i class="icon-eye"></i></a>
