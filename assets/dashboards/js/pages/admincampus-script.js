@@ -4,6 +4,7 @@ $(function() {
         var result = JSON.parse(resp);
         $('.datatable-responsive-row-control').DataTable({
             data:result,
+            'scrollX': true,
             responsive: {
                 details: {
                     type: 'column',

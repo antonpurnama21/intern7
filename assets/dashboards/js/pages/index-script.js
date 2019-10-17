@@ -4,6 +4,7 @@ $(function() {
     $(".styled, .multiselect-container input").uniform({ radioClass: 'choice' });
 
     $('.datatable-responsive-row-control').DataTable({
+        'scrollX': true,
         responsive: {
             details: {
                 type: 'column',
