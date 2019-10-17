@@ -52,6 +52,11 @@
 	    max-width: 900px;
 	    margin: 0 auto;
 	  }
+
+	 a.disabled {
+	  pointer-events: none;
+	  cursor: default;
+	}
 	
 	</style>
 

@@ -18,10 +18,10 @@
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
 						<th></th>
-						<th width="10%">No</th>
-						<th width="10%">Category ID</th>
-						<th width="40%">Category</th>
-						<th width="40%">Action</th>
+						<th width="10">No</th>
+						<th width="10">Category ID</th>
+						<th width="40">Category</th>
+						<th width="40">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,8 +37,8 @@
 								<td><?= $cat->categoryID ?></td>
 								<td><?= $cat->categoryName ?></td>
 								<td class="text-center">
-									<a data-placement="left" data-popup="tooltip" title="Edit" style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal('<?= base_url('scope/modalEditCategory') ?>','<?= $cat->categoryID.'~'.$cat->categoryName ?>','editcategory')"><i class="icon-quill4"></i></a>
-									<a data-placement="left" data-popup="tooltip" title="Delete" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Delete','Category `<?= $cat->categoryName ?>`?','<?= base_url('scope/deleteCategory') ?>','<?= $cat->categoryID ?>')"><i class="icon-trash"></i></a>
+									<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('scope/modalEditCategory') ?>','<?= $cat->categoryID.'~'.$cat->categoryName ?>','editcategory')"><i class="icon-quill4"></i></a>
+									<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Category `<?= $cat->categoryName ?>`?','<?= base_url('scope/deleteCategory') ?>','<?= $cat->categoryID ?>')"><i class="icon-trash"></i></a>
 								</td>
 							</tr>
 						<?php
@@ -68,10 +68,10 @@
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
 						<th></th>
-						<th width="10%">No</th>
-						<th width="15%">Project ID</th>
-						<th width="40%">Project Name</th>
-						<th width="35%">Action</th>
+						<th width="10">No</th>
+						<th width="15">Project ID</th>
+						<th width="40">Project Name</th>
+						<th width="35">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -87,8 +87,8 @@
 								<td><?= $pro->projectID ?></td>
 								<td><?= $pro->projectName ?> ( <?= name_dept($pro->deptID) ?> }</td>
 								<td class="text-center">
-									<a data-placement="left" data-popup="tooltip" title="Edit" style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal('<?= base_url('scope/modalEditProject') ?>','<?= $pro->projectID.'~'.$pro->projectName ?>','editproject')"><i class="icon-quill4"></i></a>
-									<a data-placement="left" data-popup="tooltip" title="Delete" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Delete','Project `<?= $pro->projectName ?>`?','<?= base_url('scope/deleteProject') ?>','<?= $pro->projectID ?>')"><i class="icon-trash"></i></a>
+									<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('scope/modalEditProject') ?>','<?= $pro->projectID.'~'.$pro->projectName ?>','editproject')"><i class="icon-quill4"></i></a>
+									<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Project `<?= $pro->projectName ?>`?','<?= base_url('scope/deleteProject') ?>','<?= $pro->projectID ?>')"><i class="icon-trash"></i></a>
 								</td>
 							</tr>
 						<?php
@@ -121,10 +121,10 @@
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
 						<th></th>
-						<th width="5%">No</th>
-						<th width="45%">Information</th>
-						<th width="35%">Requiretment</th>
-						<th width="15%">Action</th>
+						<th width="5">No</th>
+						<th width="45">Information</th>
+						<th width="35">Requiretment</th>
+						<th width="15">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -196,9 +196,9 @@
 								 </div>
 							</td>
 							<td class="text-center">
-								<button data-placement="left" data-popup="tooltip" title="Project Scope Detail" style="margin-bottom: 5px" type="button" class="btn btn-primary" onclick="location.href='<?=base_url('scope/detilScope/'.$key->projectScopeID) ?>'"><i class="icon-eye"></i></button>
-								<button data-placement="left" data-popup="tooltip" title="Edit" style="margin-bottom: 5px" type="button" class="btn btn-primary" onclick="location.href='<?=base_url('scope/form/'.$key->projectScopeID) ?>'"><i class="icon-quill4"></i></button>
-								<button data-placement="left" data-popup="tooltip" title="Delete" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Delete','Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/delete')?>','<?=$key->projectScopeID?>')"><i class="icon-trash"></i></button>								
+								<a data-placement="left" data-popup="tooltip" title="Project Scope Detail" style="margin: 10px" onclick="location.href='<?=base_url('scope/detilScope/'.$key->projectScopeID) ?>'"><i class="icon-eye"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="location.href='<?=base_url('scope/form/'.$key->projectScopeID) ?>'"><i class="icon-quill4"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/delete')?>','<?=$key->projectScopeID?>')"><i class="icon-trash"></i></a>								
 							</td>
 						</tr>
 						<?php

@@ -189,10 +189,10 @@
 					<thead>
 	                        <tr style="font-size:12px;text-align:center;">
 	                            <th></th>
-	                            <th width="10%">No</th>
-	                            <th width="40%">Mahasiswa Information</th>
-	                            <th width="20%">Status</th>
-	                            <th width="30%">Action</th>
+	                            <th width="10">No</th>
+	                            <th width="40">Mahasiswa Information</th>
+	                            <th width="20">Status</th>
+	                            <th width="30">Action</th>
 	                         </tr>
                         </thead>
                         <tbody>
@@ -203,7 +203,7 @@
 									$no++;
 
                                 if ($key->type == 'canceled') {
-                                $buton = "disabled";
+                                $buton = 'class="disabled"';
                                     }else{
                                         $buton = '';
                                     }
@@ -249,14 +249,14 @@
 									 </div>
 								</td>
                                 <td>
-                                    <button data-placement="left" data-popup="tooltip" title="View Mahasiswa" style="margin-bottom: 5px" onclick="showModal('<?=base_url('scope/modalMahasiswa') ?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', 'review');" class="btn btn-primary btn-sm"><i class="icon-eye2"></i></button>
+                                    <a data-placement="left" data-popup="tooltip" title="View Mahasiswa" style="margin: 10px" onclick="showModal('<?=base_url('scope/modalMahasiswa') ?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', 'review');"><i class="icon-eye2"></i></a>
                                 <?php if($key->statusTemp == 'accepted'){ ?>
-                                    <a style="margin-bottom: 5px" href="#" class="btn btn-default btn-sm"><i class="icon-checkmark"> Accepted</i></a>
+                                    <a style="margin: 10px" href="#"><i class="icon-checkmark"> Accepted</i></a>
                                 <?php }elseif ($status == 'rejected') { ?>
-                                    <a style="margin-bottom: 5px" href="#" class="btn btn-default btn-sm"><i class="icon-cross2"> Rejected</i></a>
+                                    <a style="margin: 10px; color: red;" href="#"><i class="icon-cross2"> Rejected</i></a>
                                 <?php }else{ ?>
-                                    <a data-placement="left" data-popup="tooltip" title="Accept Mahasiswa" style="margin-bottom: 5px" onclick="confirms('Accept','`<?=$key->fullName?>` ?','<?=base_url('scope/do_accept')?>','<?=$key->tempID?>')" class="btn btn-primary btn-sm <?=$buton?>" title="Accepted"><i class="icon-checkmark"></i></a>   
-                                    <a data-placement="left" data-popup="tooltip" title="Reject Mahasiswa" style="margin-bottom: 5px" onclick="confirms('Reject','`<?=$key->fullName?>` ?','<?=base_url('scope/do_reject')?>','<?=$key->tempID?>')" class="btn btn-danger btn-sm" style="color: white;" title="Denied"><i class="icon-cross2"></i></a>
+                                    <a data-placement="left" data-popup="tooltip" title="Accept Mahasiswa" style="margin-bottom: 5px" onclick="confirms('Accept','`<?=$key->fullName?>` ?','<?=base_url('scope/do_accept')?>','<?=$key->tempID?>')" <?=$buton?> title="Accepted"><i class="icon-checkmark"></i></a>   
+                                    <a data-placement="left" data-popup="tooltip" title="Reject Mahasiswa" style="margin-bottom: 5px" onclick="confirms('Reject','`<?=$key->fullName?>` ?','<?=base_url('scope/do_reject')?>','<?=$key->tempID?>')" style="color: white;" title="Denied"><i class="icon-cross2"></i></a>
                                 <?php } ?>
                                 </td>
                             </tr>

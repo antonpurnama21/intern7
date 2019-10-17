@@ -61,6 +61,7 @@ class Log extends CommonDash {
 				$no++;
 				$waktu = timestep($key->logTime);
 				array_push($res, array(
+							'',
 							$no,
 							email($key->logUsrID),
 							$waktu,
@@ -93,6 +94,7 @@ class Log extends CommonDash {
                     $email = $email1;
                 }
 				array_push($res, array(
+							'',
 							$no,
 							$email,
 							$waktu,
