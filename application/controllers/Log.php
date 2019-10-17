@@ -61,6 +61,7 @@ class Log extends CommonDash {
 				$no++;
 				$waktu = timestep($key->logTime);
 				array_push($res, array(
+							'',
 							$no,
 							"<div class='row' style='height:5px'>
 								<div class='col-md-4 text-right text-bold'>Email user :</div>
@@ -113,6 +114,7 @@ class Log extends CommonDash {
                     $email = $email1;
                 }
 				array_push($res, array(
+							'',
 							$no,
 							"<div class='row' style='height:5px'>
 								<div class='col-md-4 text-right text-bold'>Email user :</div>
