@@ -40,7 +40,7 @@
 					<td><?= $no ?>.</td>
 					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:70%;height:auto;"></td>
 					<td>
-						"<div class="row" style="height:5px">
+						<div class="row" style="height:5px">
 							<div class="col-md-4 text-right text-bold">NIM :</div>
 							<div class="col-md-8 text-semibold text-success"><?=$key->dosenNumber?></div>
 						 </div>
