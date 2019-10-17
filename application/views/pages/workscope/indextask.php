@@ -37,19 +37,19 @@
 
                                 if ($key->statusTask == 'done') {
                                     $status     = 'Done';
-                                    $btn        = 'btn-primary';
+                                    $btn        = 'background-color: blue;';
                                 }elseif ($key->statusTask == 'done-delay') {
                                     $status     = 'Done Delay';
-                                    $btn        = 'btn-warning';
+                                    $btn        = 'background-color: orange;';
                                 }elseif ($key->statusTask == 'on-progress') {
                                     $status     = 'On Progress';
-                                    $btn        = 'btn-success';
+                                    $btn        = 'background-color: green;';
                                 }elseif ($key->statusTask == 'delay') {
                                     $status     = 'Delay';
-                                    $btn        = 'btn-danger';
+                                    $btn        = 'background-color: red;';
                                 }else{
                                     $status     = 'Pending';
-                                    $btn      = 'btn-secondary';
+                                    $btn      = 'background-color: gray;';
                                 }
 						?>
 						<tr>
@@ -60,10 +60,10 @@
 							<td><?= date_format(date_create($key->startDate), 'd F Y') ?></td>
 							<td><?= date_format(date_create($key->endDate), 'd F Y') ?></td>
 							<td><?=$key->taskDesc?></td>
-							<td><span class="btn <?=$btn?>"><?=$status?></span></td>
+							<td><a style="<?= $btn?>"><?=$status?></a></td>
 							<td class="text-center">
-								<button data-placement="top" data-popup="tooltip" title="Detail Task" style="margin-bottom: 5px" type="button" class="btn btn-primary" onclick="showModal('<?= base_url('workscope/modalReviewTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-eye"></i></button>
-								<button data-placement="top" data-popup="tooltip" title="Edit Task" style="margin-bottom: 5px; <?= showLevel(array(55)); ?>" type="button" class="btn btn-primary" onclick="showModal('<?= base_url('workscope/modalEditTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-quill4"></i></button>							
+								<a data-placement="left" data-popup="tooltip" title="Detail Task" style="margin: 10px" onclick="showModal('<?= base_url('workscope/modalReviewTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-eye"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Edit Task" style="margin: 10px; <?= showLevel(array(55)); ?>" onclick="showModal('<?= base_url('workscope/modalEditTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-quill4"></i></a>							
 							</td>
 						</tr>
 						<?php

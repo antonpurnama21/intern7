@@ -61,7 +61,7 @@
 							<td><?=name_project($key->projectID)?></td>
 							<td><?=name_mhs($key->mahasiswaID) ?></td>
 							<td>
-								<div class="progress active" style="margin-bottom: 5px">
+								<div class="progress active" style="margin: 10px">
 									<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?>" style="width: <?=$persen?>%">
 										<span><?=$persen?> %</span>
 									</div>
@@ -69,7 +69,7 @@
 							</td>
 							<td><?=$status?></td>
 							<td class="text-center">
-								<button data-placement="top" data-popup="tooltip" title="View Workscope" style="margin-bottom: 5px" type="button" class="btn btn-primary" onclick="location.href='<?=base_url('workscope/detail/'.$key->workscopeID) ?>'"><i class="icon-eye"></i></button>
+								<a data-placement="left" data-popup="tooltip" title="View Workscope" style="margin: 10px" onclick="location.href='<?=base_url('workscope/detail/'.$key->workscopeID) ?>'"><i class="icon-eye"></i></a>
 							</td>
 						</tr>
 						<?php
