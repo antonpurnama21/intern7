@@ -195,7 +195,7 @@ foreach ($dtjumlah as $key) {?>
 							<td><?= $no ?>.</td>
 							<td><?= $key->loginID ?></td>
 							<td>
-								<?= $key->emaiL ?>  <?=$status?>
+								<?= $key->emaiL ?> <div class="full-right"><?=$status?></div>
 							</td>
 							<td><?= what_role($key->roleID) ?></td>
 							<td>
