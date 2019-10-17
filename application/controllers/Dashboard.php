@@ -32,7 +32,7 @@ class Dashboard extends CommonDash {
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -47,16 +47,16 @@ class Dashboard extends CommonDash {
 						"dashboards/js/pages/index-script.js",
 					)
 				),
-				'titleWeb' => 'Home | CBN Internship',
-				'breadcrumb' => explode(',', 'Dashboard, Main Page'),
+				'titleWeb' 	=> 'Home | CBN Internship',
+				'breadcrumb'=> explode(',', 'Dashboard, Main Page'),
 				'dtaccount' => $getaccount,
 				'dtscope'	=> $getscope,
 				'dtmhs'		=> $dataMhs,
 				'dtprj'		=> $dataProject,
 				'dtscp'		=> $dataScope,
-				'dtpersen'		=> $applyPersen,
-				'dtjumlah'		=> $applyJumlah,
-				'dtprogress'	=> $progressProject,
+				'dtpersen'	=> $applyPersen,
+				'dtjumlah'	=> $applyJumlah,
+				'dtprogress'=> $progressProject,
 
 			);
 			$this->render('dashboard', 'index', $data);
@@ -77,7 +77,7 @@ class Dashboard extends CommonDash {
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -107,7 +107,7 @@ class Dashboard extends CommonDash {
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -122,8 +122,8 @@ class Dashboard extends CommonDash {
 						"dashboards/js/pages/index-script.js",
 					)
 				),
-				'titleWeb' => 'Home | CBN Internship',
-				'breadcrumb' => explode(',', 'Dashboard, Main Page'),
+				'titleWeb' 	=> 'Home | CBN Internship',
+				'breadcrumb'=> explode(',', 'Dashboard, Main Page'),
 			);
 			$this->render('dashboard', 'indexAdmcampus', $data);
 			
@@ -133,7 +133,7 @@ class Dashboard extends CommonDash {
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -148,8 +148,8 @@ class Dashboard extends CommonDash {
 						"dashboards/js/pages/index-script.js",
 					)
 				),
-				'titleWeb' => 'Home | CBN Internship',
-				'breadcrumb' => explode(',', 'Dashboard, Main Page'),
+				'titleWeb' 	=> 'Home | CBN Internship',
+				'breadcrumb'=> explode(',', 'Dashboard, Main Page'),
 			);
 			$this->render('dashboard', 'indexDosen', $data);
 			
@@ -161,7 +161,7 @@ class Dashboard extends CommonDash {
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -180,9 +180,9 @@ class Dashboard extends CommonDash {
 						"dashboards/js/pages/timeline.js",
 					)
 				),
-				'titleWeb' => 'Home | CBN Internship',
-				'breadcrumb' => explode(',', 'Dashboard, Main Page'),
-				'dtpersen' => $getpersen,
+				'titleWeb' 	=> 'Home | CBN Internship',
+				'breadcrumb'=> explode(',', 'Dashboard, Main Page'),
+				'dtpersen' 	=> $getpersen,
 			);
 			$this->render('dashboard', 'indexMhs', $data);
 

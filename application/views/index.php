@@ -204,9 +204,9 @@ foreach ($dtjumlah as $key) {?>
 							</td>
 							<td><?= what_role($key->roleID) ?></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Batalkan Reset / Setup Link" style="margin-bottom: 5px" class="btn btn-primary" onclick="confirms('Revoke','Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_revoke') ?>','<?= $key->emaiL ?>')"><i class="icon-blocked"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Kirim Kembali Setup Link" style="margin-bottom: 5px" class="btn btn-primary" onclick="confirms('Resend Setup Link','For Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_resend') ?>','<?= $key->emaiL ?>')"><i class="icon-sync"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Delete Account" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Delete','Account `<?= $key->emaiL ?>`?','<?= base_url('account/delete') ?>','<?= $key->loginID ?>')"><i class="icon-trash"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Batalkan Reset / Setup Link" style="margin: 10px" onclick="confirms('Revoke','Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_revoke') ?>','<?= $key->emaiL ?>')"><i class="icon-blocked"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Kirim Kembali Setup Link" style="margin: 10px" onclick="confirms('Resend Setup Link','For Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_resend') ?>','<?= $key->emaiL ?>')"><i class="icon-sync"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Delete Account" style="margin: 10px; color: red;" onclick="confirms('Delete','Account `<?= $key->emaiL ?>`?','<?= base_url('account/delete') ?>','<?= $key->loginID ?>')"><i class="icon-trash"></i></a>
 							</td>
 						</tr>
 					<?php
@@ -315,8 +315,8 @@ foreach ($dtjumlah as $key) {?>
 								 </div>
 							</td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Setujui Project Scope" style="margin-bottom: 5px" class="btn btn-success" onclick="confirms('Publish','Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/do_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-clipboard2"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Tolak Project Scope" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Deny','Deny This Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/not_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-blocked"></i></a>								
+								<a data-placement="left" data-popup="tooltip" title="Setujui Project Scope" style="margin: 10px" onclick="confirms('Publish','Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/do_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-clipboard2"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Tolak Project Scope" style="margin: 10px; color: red;" onclick="confirms('Deny','Deny This Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/not_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-blocked"></i></a>								
 							</td>
 						</tr>
 						<?php
