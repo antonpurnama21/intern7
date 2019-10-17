@@ -19,7 +19,7 @@
 			<tr style="font-size:12px;text-align:center;">
 				<th>.</th>
 				<th>No</th>
-				<th width="30">PIC</th>
+				<th>PIC</th>
 				<th>Nim</th>
 				<th>Mahasiswa Name</th>
 				<th>Email</th>
