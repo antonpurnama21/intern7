@@ -36,20 +36,20 @@
 								$no++;
 
                                 if ($key->statusTask == 'done') {
-                                    $status     = 'Done';
-                                    $btn        = 'background-color: blue;';
+                                    $status     = 'DONE';
+                                    $btn        = 'color: blue;';
                                 }elseif ($key->statusTask == 'done-delay') {
-                                    $status     = 'Done Delay';
-                                    $btn        = 'background-color: orange;';
+                                    $status     = 'DONE DELAY';
+                                    $btn        = 'color: orange;';
                                 }elseif ($key->statusTask == 'on-progress') {
-                                    $status     = 'On Progress';
-                                    $btn        = 'background-color: green;';
+                                    $status     = 'ON PROGRESS';
+                                    $btn        = 'color: green;';
                                 }elseif ($key->statusTask == 'delay') {
-                                    $status     = 'Delay';
-                                    $btn        = 'background-color: red;';
+                                    $status     = 'DELAY';
+                                    $btn        = 'color: red;';
                                 }else{
-                                    $status     = 'Pending';
-                                    $btn      = 'background-color: gray;';
+                                    $status     = 'PENDING';
+                                    $btn      	= 'color: gray;';
                                 }
 						?>
 						<tr>
