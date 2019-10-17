@@ -111,9 +111,9 @@
 	                            $check2 = chk_applyMhs($key->projectScopeID);
 	                            $stats = chk_statsTemp($key->projectScopeID); 
 	                            if ($stats == 'accepted') {?>
-	                            	<button data-placement="left" data-popup="tooltip" title="You Was Accepted" style="'<?=showLevel(array(55))?> margin: 10px">Accepted</button>
+	                            	<a data-placement="left" data-popup="tooltip" title="You Was Accepted" style="'<?=showLevel(array(55))?> margin: 10px">Accepted</a>
 	                            <?php }elseif ($stats == 'rejected'){?>
-	                            	<button data-placement="left" data-popup="tooltip" title="You Was Rejected" style="<?=showLevel(array(55))?> margin: 10px; color: red;">Rejected</button>
+	                            	<a data-placement="left" data-popup="tooltip" title="You Was Rejected" style="<?=showLevel(array(55))?> margin: 10px; color: red;">Rejected</a>
 	                            <?php }else{
 	                            if ($check2 == false) {?>
 	                            <a data-placement="left" data-popup="tooltip" title="Apply This Project Scope" onclick="confirms('Apply','Apply Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/applyScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px;" <?=$button?> ><i class="icon-checkmark"></i> Apply</a><br/><?=$badge?>
