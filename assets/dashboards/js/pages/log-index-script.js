@@ -19,11 +19,11 @@ $(function() {
                 },
                 { 
                     width: "100px",
-                    targets: [2]
+                    targets: [3]
                 },
                 { 
                     orderable: true,
-                    targets: [2]
+                    targets: [3]
                 }
             ],
             order: [1, 'asc']
