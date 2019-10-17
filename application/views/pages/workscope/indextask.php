@@ -17,12 +17,15 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th></th>
-						<th width="5%">No</th>
-						<th width="30%">Information</th>
-						<th width="30%">Description</th>
-						<th width="20%">Status</th>
-						<th width="15%">Action</th>
+						<th>.</th>
+						<th>No</th>
+						<th>Task ID</th>
+						<th>Task Name</th>
+						<th>Start Date</th>
+						<th>End Date</th>
+						<th>Description</th>
+						<th>Status</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,33 +55,12 @@
 						<tr>
 							<td></td>
 							<td><?= $no ?>.</td>
-							<td>
-								 <div class='row' style='height:5px'>
-								 	<div class='col-md-4 text-right text-bold'>Task ID :</div>
-								 	<div class='col-md-8 text-semibold text-success'><?=$key->taskID?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Task Name :</div>
-									<div class='col-md-8'><?=$key->taskName?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Start Date :</div>
-									<div class='col-md-8'><?= date_format(date_create($key->startDate), 'd F Y') ?></div>
-								 </div>
-								 <br/>
-								 <div class='row nomargin' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>End Date :</div>
-									<div class='col-md-8'><?= date_format(date_create($key->endDate), 'd F Y') ?></div>
-								 </div>
-							</td>
-							<td>
-								 <?=$key->taskDesc?>
-							</td>
-							<td>
-								<span class="btn <?=$btn?>"><?=$status?></span>
-							</td>
+							<td><div class='col-md-8 text-semibold text-success'><?=$key->taskID?></div></td>
+							<td><?=$key->taskName?></td>
+							<td><?= date_format(date_create($key->startDate), 'd F Y') ?></td>
+							<td><?= date_format(date_create($key->endDate), 'd F Y') ?></td>
+							<td><?=$key->taskDesc?></td>
+							<td><span class="btn <?=$btn?>"><?=$status?></span></td>
 							<td class="text-center">
 								<button data-placement="top" data-popup="tooltip" title="Detail Task" style="margin-bottom: 5px" type="button" class="btn btn-primary" onclick="showModal('<?= base_url('workscope/modalReviewTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-eye"></i></button>
 								<button data-placement="top" data-popup="tooltip" title="Edit Task" style="margin-bottom: 5px; <?= showLevel(array(55)); ?>" type="button" class="btn btn-primary" onclick="showModal('<?= base_url('workscope/modalEditTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-quill4"></i></button>							

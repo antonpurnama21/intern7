@@ -120,12 +120,12 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th></th>
+						<th>.</th>
 						<th>No</th>
 						<th>ID</th>
 						<th>Project Scope</th>
 						<th>Project Name</th>
-						<th>From Department</th>
+						<th>Department</th>
 						<th>Requiretment</th>
 						<th>Status</th>
 						<th>Approval</th>

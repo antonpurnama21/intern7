@@ -45,12 +45,12 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th></th>
-				<th width="5%">No</th>
-				<th width="35%">Progress</th>
-				<th width="30%">Finding</th>
-				<th width="15%">Date</th>
-				<th width="15%">Action</th>
+				<th>.</th>
+				<th>No</th>
+				<th>Progress</th>
+				<th>Finding</th>
+				<th>Date</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 	</table>

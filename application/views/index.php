@@ -168,11 +168,12 @@ foreach ($dtjumlah as $key) {?>
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
-							<th width="5">No</th>
-							<th width="10">Login ID</th>
-							<th width="35">Email</th>
-							<th width="30">Role</th>
-							<th width="20">Action</th>
+							<th>.</th>
+							<th>No</th>
+							<th>Login ID</th>
+							<th>Email</th>
+							<th>Role</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -192,6 +193,7 @@ foreach ($dtjumlah as $key) {?>
 							}
 						?>
 						<tr class="text-size-mini">
+							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?= $key->loginID ?></td>
 							<td>
@@ -233,10 +235,16 @@ foreach ($dtjumlah as $key) {?>
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
-							<th width="10">No</th>
-							<th width="40">Information</th>
-							<th width="30">Requiretment</th>
-							<th width="20">Action</th>
+							<th>.</th>
+							<th>No</th>
+							<th>ID</th>
+							<th>Project Scope</th>
+							<th>Project Name</th>
+							<th>From Department</th>
+							<th>Requiretment</th>
+							<th>Status</th>
+							<th>Approval</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -264,49 +272,15 @@ foreach ($dtjumlah as $key) {?>
 
 						?>
 						<tr class="text-size-mini">
+							<td></td>
 							<td><?= $no ?>.</td>
-							<td>
-								 <div class='row' style='height:5px'>
-								 	<div class='col-md-4 text-right text-bold'>Scope ID :</div>
-								 	<div class='col-md-8 text-semibold text-success'><?=$key->projectScopeID?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Project Scope :</div>
-									<div class='col-md-8'><?=$key->projectScope?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Department :</div>
-									<div class='col-md-8'><?=name_dept($key->deptID)?></div>
-								 </div>
-								 <br/>
-								 <div class='row nomargin' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Category :</div>
-									<div class='col-md-8'><?=name_category($key->categoryID)?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Project Name :</div>
-									<div class='col-md-8'><?=name_project($key->projectID)?></div>
-								 </div>
-							</td>
-							<td>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Requiretment :</div>
-									<div class='col-md-8'><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Status :</div>
-									<div class='col-md-8'><?=$status?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Approval :</div>
-									<div class='col-md-8'><b><?=ucwords($approve)?></b></div>
-								 </div>
-							</td>
+							<td><div class='col-md-8 text-semibold text-success'><?=$key->projectScopeID?></div></td>
+							<td><?=$key->projectScope?></td>
+							<td><?=name_project($key->projectID)?></td>
+							<td><?=name_dept($key->deptID)?></td>
+							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
+							<td><?=$status?></td>
+							<td><b><?=ucwords($approve)?></b></td>
 							<td class="text-center">
 								<a data-placement="left" data-popup="tooltip" title="Setujui Project Scope" style="margin: 10px" onclick="confirms('Publish','Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/do_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-clipboard2"></i></a>
 								<a data-placement="left" data-popup="tooltip" title="Tolak Project Scope" style="margin: 10px; color: red;" onclick="confirms('Deny','Deny This Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/not_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-blocked"></i></a>								
