@@ -168,7 +168,6 @@ foreach ($dtjumlah as $key) {?>
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
-							<th></th>
 							<th>No</th>
 							<th>Login ID</th>
 							<th>Email</th>
@@ -193,7 +192,6 @@ foreach ($dtjumlah as $key) {?>
 							}
 						?>
 						<tr class="text-size-mini">
-							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?= $key->loginID ?></td>
 							<td>
@@ -238,7 +236,6 @@ foreach ($dtjumlah as $key) {?>
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
-							<th></th>
 							<th>No</th>
 							<th>Information</th>
 							<th>Requiretment</th>
@@ -270,7 +267,6 @@ foreach ($dtjumlah as $key) {?>
 
 						?>
 						<tr class="text-size-mini">
-							<td></td>
 							<td><?= $no ?>.</td>
 							<td>
 								 <div class='row' style='height:5px'>
