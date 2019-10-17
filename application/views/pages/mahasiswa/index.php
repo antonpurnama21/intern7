@@ -43,7 +43,7 @@
 				<tr>
 					<td></td>
 					<td><?= $no ?>.</td>
-					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:70px;height:70px;"></td>
+					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:70%;height:auto;"></td>
 					<td><div class="col-md-8 text-semibold text-success"><?=$key->mahasiswaNumber?></div></td>
 					<td><?=$key->fullName?></td>
 					<td><?=$key->emaiL?></td>
