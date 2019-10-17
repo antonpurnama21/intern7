@@ -234,8 +234,8 @@ foreach ($dtjumlah as $key) {?>
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
 							<th width="10">No</th>
-							<th width="40">Information</th>
-							<th width="30">Requiretment</th>
+							<th width="50">Information</th>
+							<th width="50">Requiretment</th>
 							<th width="20">Action</th>
 						</tr>
 					</thead>
