@@ -15,11 +15,11 @@ $(function() {
                 },
                 { 
                     width: "100px",
-                    targets: [5]
+                    targets: [3]
                 },
                 { 
                     orderable: true,
-                    targets: [5]
+                    targets: [3]
                 }
             ],
             order: [1, 'asc']
