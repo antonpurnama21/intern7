@@ -230,11 +230,14 @@
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
-							<th></th>
-							<th width="10">No</th>
-							<th width="40">Log Information</th>
-							<th width="10">Type Log</th>
-							<th width="40">Description</th>
+							<th>No</th>
+							<th>Email User</th>
+							<th>Log Time</th>
+							<th>Browser Access</th>
+							<th>IP Address</th>
+							<th>Pletform</th>
+							<th>Type Log</th>
+							<th>Description</th>
 						</tr>
 					</thead>
 				</table>

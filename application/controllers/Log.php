@@ -63,33 +63,13 @@ class Log extends CommonDash {
 				array_push($res, array(
 							'',
 							$no,
-							"<div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Email user :</div>
-								<div class='col-md-8 text-semibold text-success'>".email($key->logUsrID)."</div>
-							 </div>
-							 <br/>
-							 <div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Log time :</div>
-								<div class='col-md-8'>".$waktu."</div>
-							 </div>
-							 <br/>
-							 <div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Browser access :</div>
-								<div class='col-md-8'>".$key->logBrowser."</div>
-							 </div>
-							 <br/>
-							 <div class='row nomargin' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Ip address :</div>
-								<div class='col-md-8'>".$key->logIP."</div>
-							 </div>
-							 <br/>
-							 <div class='row' style='height:5px'>
-								<div class='col-md-4 text-right text-bold'>Platform :</div>
-								<div class='col-md-8'>".$key->logPlatform."</div>
-							 </div>
-							 <br/>",
-							 ucwords(logtype($key->logTypeID)),
-							 $key->logDesc
+							email($key->logUsrID),
+							$waktu,
+							$key->logBrowser,
+							$key->logIP,
+							$key->logPlatform,
+							ucwords(logtype($key->logTypeID)),
+							$key->logDesc
 							)
 				);
 			}
@@ -114,7 +94,6 @@ class Log extends CommonDash {
                     $email = $email1;
                 }
 				array_push($res, array(
-							'',
 							$no,
 							"<div class='row' style='height:5px'>
 								<div class='col-md-4 text-right text-bold'>Email user :</div>

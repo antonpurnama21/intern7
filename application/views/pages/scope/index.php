@@ -105,20 +105,20 @@
 								 </div>
 							</td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Print Project Scope" style="margin: 10px;" href="<?=base_url()?>report/printScope/<?=$key->projectScopeID?>"><i class="icon-printer"></i></a>
-	                            <a data-placement="left" data-popup="tooltip" title="View project Scope" style="margin: 10px" onclick="showModal('<?=base_url('scope/modalScope') ?>', '<?=$key->projectScopeID.'~'.$key->projectScope?>', 'review');"><i class="icon-eye"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Print Project Scope" style="margin-bottom: 5px" href="<?=base_url()?>report/printScope/<?=$key->projectScopeID?>" class="btn btn-success btn-sm"><i class="icon-printer"></i></a>
+	                            <a data-placement="left" data-popup="tooltip" title="View project Scope" style="margin-bottom: 5px" onclick="showModal('<?=base_url('scope/modalScope') ?>', '<?=$key->projectScopeID.'~'.$key->projectScope?>', 'review');" class="btn btn-primary btn-sm"><i class="icon-eye"></i></a>
 	                            <?php if($this->session->userdata('userlog')['sess_role']==55){ 
 	                            $check2 = chk_applyMhs($key->projectScopeID);
 	                            $stats = chk_statsTemp($key->projectScopeID); 
 	                            if ($stats == 'accepted') {?>
-	                            	<a data-placement="left" data-popup="tooltip" title="You Was Accepted" style="'<?=showLevel(array(55))?> margin: 10px;">Accepted</a>
+	                            	<button data-placement="left" data-popup="tooltip" title="You Was Accepted" style="'<?=showLevel(array(55))?> margin-bottom: 5px" class="btn btn-primary btn-sm">Accepted</button>
 	                            <?php }elseif ($stats == 'rejected'){?>
-	                            	<a data-placement="left" data-popup="tooltip" title="You Was Rejected" style="<?=showLevel(array(55))?> margin: 10px">Rejected</a>
+	                            	<button data-placement="left" data-popup="tooltip" title="You Was Rejected" style="<?=showLevel(array(55))?> margin-bottom: 5px" class="btn btn-primary btn-sm">Rejected</button>
 	                            <?php }else{
 	                            if ($check2 == false) {?>
-	                            <a data-placement="left" data-popup="tooltip" title="Apply This Project Scope" onclick="confirms('Apply','Apply Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/applyScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px;" class="<?=$button?>"><i class="icon-checkmark"></i> Apply</a><br/><?=$badge?>
+	                            <a data-placement="left" data-popup="tooltip" title="Apply This Project Scope" onclick="confirms('Apply','Apply Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/applyScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin-bottom: 5px; color: white;" class="btn btn-primary btn-sm <?=$button?>"><i class="icon-checkmark"></i> Apply</a><br/><?=$badge?>
 	                        	<?php }else{?>
-	                            '<a data-placement="left" data-popup="tooltip" title="Cancel This Project Scope" onclick="confirms('Cancel','Cancel Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/cancelScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px; color: red;"><i class="icon-cross2"></i> Cancel</a>,
+	                            '<a data-placement="left" data-popup="tooltip" title="Cancel This Project Scope" onclick="confirms('Cancel','Cancel Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/cancelScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin-bottom: 5px; color: white;" class="btn btn-danger btn-sm"><i class="icon-cross2"></i> Cancel</a>,
 	                            <?php } } }?>							
 							</td>
 						</tr>
