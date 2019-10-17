@@ -200,7 +200,7 @@ class Admincampus extends CommonDash {
 		public function getCampus()
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'universityID, universityName', 't_university');
+		$data = $this->Mod_crud->getData('result', 'universityID, universityName', 't_university',null,null,null,array('mou = "YES"'));
 		if (!empty($data)) {
 			foreach ($data as $key) {
 				$mk['id'] = $key->universityID;

@@ -19,7 +19,7 @@
 			<tr style="font-size:12px;text-align:center;">
 				<th>.</th>
 				<th>No</th>
-				<th>PIC</th>
+				<th width="30">PIC</th>
 				<th>Nim</th>
 				<th>Mahasiswa Name</th>
 				<th>Email</th>
@@ -43,7 +43,7 @@
 				<tr>
 					<td></td>
 					<td><?= $no ?>.</td>
-					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:100px;height:100px;"></td>
+					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:70px;height:70px"></td>
 					<td><div class="col-md-8 text-semibold text-success"><?=$key->dosenNumber?></div></td>
 					<td><?=$key->fullName?></td>
 					<td><?=$key->emaiL?></td>
