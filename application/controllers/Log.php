@@ -17,7 +17,7 @@ class Log extends CommonDash {
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -61,7 +61,6 @@ class Log extends CommonDash {
 				$no++;
 				$waktu = timestep($key->logTime);
 				array_push($res, array(
-							'',
 							$no,
 							"<div class='row' style='height:5px'>
 								<div class='col-md-4 text-right text-bold'>Email user :</div>
@@ -114,7 +113,6 @@ class Log extends CommonDash {
                     $email = $email1;
                 }
 				array_push($res, array(
-							'',
 							$no,
 							"<div class='row' style='height:5px'>
 								<div class='col-md-4 text-right text-bold'>Email user :</div>

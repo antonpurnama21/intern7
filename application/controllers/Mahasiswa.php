@@ -33,7 +33,7 @@ class Mahasiswa extends CommonDash {
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -60,7 +60,7 @@ class Mahasiswa extends CommonDash {
 			'_JS' => generate_js(array(
 					"dashboards/js/plugins/ui/moment/moment.min.js",
 					"dashboards/js/plugins/tables/datatables/datatables.min.js",
-					"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+					"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 					"dashboards/js/plugins/forms/selects/select2.min.js",
 					"dashboards/js/pages/datatables_responsive.js",
 					"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -193,7 +193,7 @@ class Mahasiswa extends CommonDash {
 			'_JS' => generate_js(array(
 					"dashboards/js/plugins/ui/moment/moment.min.js",
 					"dashboards/js/plugins/tables/datatables/datatables.min.js",
-					"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+					"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 					"dashboards/js/plugins/forms/selects/select2.min.js",
 					"dashboards/js/pages/datatables_responsive.js",
 					"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -540,7 +540,7 @@ class Mahasiswa extends CommonDash {
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
-						"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 						"dashboards/js/plugins/forms/selects/select2.min.js",
 						"dashboards/js/pages/datatables_responsive.js",
 						"dashboards/js/plugins/forms/styling/switch.min.js",
@@ -565,7 +565,7 @@ class Mahasiswa extends CommonDash {
 			'_JS' => generate_js(array(
 					"dashboards/js/plugins/ui/moment/moment.min.js",
 					"dashboards/js/plugins/tables/datatables/datatables.min.js",
-					"dashboards/js/plugins/tables/datatables/extensions/responsive.min.js",
+					"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
 					"dashboards/js/plugins/forms/selects/select2.min.js",
 					"dashboards/js/pages/datatables_responsive.js",
 					"dashboards/js/plugins/forms/styling/switch.min.js",

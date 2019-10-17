@@ -17,12 +17,11 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th></th>
-				<th width="5%">No</th>
-				<th width="15%">Pic</th>
-				<th width="35%">Information</th>
-				<th width="35%">Addresses</th>
-				<th width="10%">Action</th>
+				<th width="5">No</th>
+				<th width="15">Pic</th>
+				<th width="35">Information</th>
+				<th width="35">Addresses</th>
+				<th width="10">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -38,7 +37,6 @@
 						}
 				?>
 				<tr>
-					<td></td>
 					<td><?= $no ?>.</td>
 					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:70%;height:auto;"></td>
 					<td>
@@ -94,9 +92,9 @@
 						 </div>
 					</td>
 					<td class="text-center">
-						<a data-placement="left" data-popup="tooltip" title="Reset Password" style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal('<?=base_url("dosen/modalReset")?>', '<?=$key->dosenID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="Edit Dosen" style="margin-bottom: 5px" class="btn btn-primary" href="<?=base_url('dosen/form/'.$key->dosenID)?>"><i class="icon-quill4"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="Delete" style="margin-bottom: 5px" class="btn btn-danger" onclick="confirms('Delete','dosen `<?=$key->fullName ?>`?','<?=base_url('dosen/delete') ?>','<?=$key->dosenID?>')"><i class="icon-trash"></i></a>
+						<a data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 10px" onclick="showModal('<?=base_url("dosen/modalReset")?>', '<?=$key->dosenID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
+						<a data-placement="left" data-popup="tooltip" title="Edit Dosen" style="margin: 10px" href="<?=base_url('dosen/form/'.$key->dosenID)?>"><i class="icon-quill4"></i></a>
+						<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','dosen `<?=$key->fullName ?>`?','<?=base_url('dosen/delete') ?>','<?=$key->dosenID?>')"><i class="icon-trash"></i></a>
 					</td>
 				</tr>
 				<?php
