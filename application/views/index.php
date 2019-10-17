@@ -168,10 +168,10 @@ foreach ($dtjumlah as $key) {?>
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
-							<th width="10">No</th>
+							<th width="5">No</th>
 							<th width="10">Login ID</th>
-							<th>Email</th>
-							<th>Role</th>
+							<th width="35">Email</th>
+							<th width="30">Role</th>
 							<th width="20">Action</th>
 						</tr>
 					</thead>
@@ -234,8 +234,8 @@ foreach ($dtjumlah as $key) {?>
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
 							<th width="10">No</th>
-							<th>Information</th>
-							<th>Requiretment</th>
+							<th width="40">Information</th>
+							<th width="30">Requiretment</th>
 							<th width="20">Action</th>
 						</tr>
 					</thead>
