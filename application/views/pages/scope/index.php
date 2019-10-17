@@ -36,7 +36,7 @@
 				                    $check = chk_statsMhs($this->session->userdata('userlog')['sess_usrID']);
 				                    if ($check == false) {
 				                        $button='class="disabled"';
-				                        $badge = '<span class="badge badge-warning"><i class="icon-info3"></i> Please Complete Your Profile</span>';
+				                        $badge = '<span style="margin-top: 5px" class="badge badge-warning"><i class="icon-info3"></i> Please Complete Your Profile</span>';
 				                    }else{
 				                    	$button ='';
 				                    	$badge  ='';
@@ -116,9 +116,9 @@
 	                            	<a data-placement="left" data-popup="tooltip" title="You Was Rejected" style="<?=showLevel(array(55))?> margin: 10px; color: red;">Rejected</a>
 	                            <?php }else{
 	                            if ($check2 == false) {?>
-	                            <a data-placement="left" data-popup="tooltip" title="Apply This Project Scope" onclick="confirms('Apply','Apply Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/applyScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px;" <?=$button?> ><i class="icon-checkmark"></i> Apply</a><br/><?=$badge?>
+	                            <a data-placement="left" data-popup="tooltip" title="Apply This Project Scope" onclick="confirms('Apply','Apply Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/applyScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px;" <?=$button?> ><i class="icon-checkmark"></i> APPLY</a><br/><?=$badge?>
 	                        	<?php }else{?>
-	                            '<a data-placement="left" data-popup="tooltip" title="Cancel This Project Scope" onclick="confirms('Cancel','Cancel Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/cancelScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px; color: red;"><i class="icon-cross2"></i> Cancel</a>,
+	                            '<a data-placement="left" data-popup="tooltip" title="Cancel This Project Scope" onclick="confirms('Cancel','Cancel Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/cancelScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px; color: red;"><i class="icon-cross2"></i> CANCEL ?</a>,
 	                            <?php } } }?>							
 							</td>
 						</tr>
