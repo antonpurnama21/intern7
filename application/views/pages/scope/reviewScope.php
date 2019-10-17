@@ -75,7 +75,7 @@
 									<div class="col-lg-8">
 										<div class="input-group">
 											<div class="input-group-addon" style="padding-top:0px;">:</div>
-											<label class="control-label"><?= name_department($dMaster->deptID) ?></label>
+											<label class="control-label"><?= name_dept($dMaster->deptID) ?></label>
 										</div>
 									</div>
 								</div>

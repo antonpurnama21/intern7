@@ -16,7 +16,7 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th></th>
+				<th>.</th>
 				<th>No</th>
 				<th>Project Scope</th>
 				<th>Project Name</th>
@@ -72,7 +72,7 @@
 							<td><?= $no ?>.</td>
 							<td><?=$key->projectScope?></td>
 							<td><?=name_project($key->projectID)?></td>
-							<td><?=name_dept($key->deptID)?> <?=chk_typeTemp($key->projectScopeID);?></td>
+							<td><?=name_dept($key->deptID)?></td>
 							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
 							<td><?=$status?></td>
 							<td class="text-center">

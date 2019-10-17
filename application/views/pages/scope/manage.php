@@ -17,11 +17,11 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th></th>
-						<th width="10">No</th>
-						<th width="10">Category ID</th>
-						<th width="40">Category</th>
-						<th width="40">Action</th>
+						<th>.</th>
+						<th>No</th>
+						<th>Category ID</th>
+						<th>Category</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -67,11 +67,11 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th></th>
-						<th width="10">No</th>
-						<th width="15">Project ID</th>
-						<th width="40">Project Name</th>
-						<th width="35">Action</th>
+						<th>.</th>
+						<th>No</th>
+						<th>Project ID</th>
+						<th>Project Name</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -121,10 +121,15 @@
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
 						<th></th>
-						<th width="5">No</th>
-						<th width="45">Information</th>
-						<th width="35">Requiretment</th>
-						<th width="15">Action</th>
+						<th>No</th>
+						<th>ID</th>
+						<th>Project Scope</th>
+						<th>Project Name</th>
+						<th>From Department</th>
+						<th>Requiretment</th>
+						<th>Status</th>
+						<th>Approval</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -153,48 +158,13 @@
 						<tr>
 							<td></td>
 							<td><?= $no ?>.</td>
-							<td>
-								 <div class='row' style='height:5px'>
-								 	<div class='col-md-4 text-right text-bold'>Scope ID :</div>
-								 	<div class='col-md-8 text-semibold text-success'><?=$key->projectScopeID?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Project Scope :</div>
-									<div class='col-md-8'><?=$key->projectScope?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Department :</div>
-									<div class='col-md-8'><?=name_dept($key->deptID)?></div>
-								 </div>
-								 <br/>
-								 <div class='row nomargin' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Category :</div>
-									<div class='col-md-8'><?=name_category($key->categoryID)?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Project Name :</div>
-									<div class='col-md-8'><?=name_project($key->projectID)?></div>
-								 </div>
-							</td>
-							<td>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Requiretment :</div>
-									<div class='col-md-8'><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Status :</div>
-									<div class='col-md-8'><?=$status?></div>
-								 </div>
-								 <br/>
-								 <div class='row' style='height:5px'>
-									<div class='col-md-4 text-right text-bold'>Approval :</div>
-									<div class='col-md-8'><b><?=ucwords($approve)?></b></div>
-								 </div>
-							</td>
+							<td><div class='col-md-8 text-semibold text-success'><?=$key->projectScopeID?></div></td>
+							<td><?=$key->projectScope?></td>
+							<td><?=name_project($key->projectID)?></td>
+							<td><?=name_dept($key->deptID)?></td>
+							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
+							<td><?=$status?></td>
+							<td><b><?=ucwords($approve)?></b></td>
 							<td class="text-center">
 								<a data-placement="left" data-popup="tooltip" title="Project Scope Detail" style="margin: 10px" onclick="location.href='<?=base_url('scope/detilScope/'.$key->projectScopeID) ?>'"><i class="icon-eye"></i></a>
 								<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="location.href='<?=base_url('scope/form/'.$key->projectScopeID) ?>'"><i class="icon-quill4"></i></a>

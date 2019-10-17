@@ -188,11 +188,14 @@
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 	                        <tr style="font-size:12px;text-align:center;">
-	                            <th></th>
-	                            <th width="10">No</th>
-	                            <th width="40">Mahasiswa Information</th>
-	                            <th width="20">Status</th>
-	                            <th width="30">Action</th>
+	                            <th>.</th>
+	                            <th>No</th>
+	                            <th>NIM</th>
+	                            <th>Nama Mahasiswa</th>
+	                            <th>University</th>
+	                            <th>Type</th>
+	                            <th>Status</th>
+	                            <th>Action</th>
 	                         </tr>
                         </thead>
                         <tbody>
@@ -216,38 +219,11 @@
                             <tr>
                             	<td></td>
                                 <td><?= $no ?>.</td>
-								<td>
-									 <div class='row' style='height:5px'>
-									 	<div class='col-md-4 text-right text-bold'>NIM :</div>
-									 	<div class='col-md-8 text-semibold text-success'><?=$key->mahasiswaNumber ?></div>
-									 </div>
-									 <br/>
-									 <div class='row' style='height:5px'>
-										<div class='col-md-4 text-right text-bold'>Mahasiswa Name :</div>
-										<div class='col-md-8'><?=ucwords($key->fullName)?></div>
-									 </div>
-									 <br/>
-									 <div class='row' style='height:5px'>
-										<div class='col-md-4 text-right text-bold'>University :</div>
-										<div class='col-md-8'><?=name_university($key->universityID)?></div>
-									 </div>
-									 <br/>
-									 <div class='row nomargin' style='height:5px'>
-										<div class='col-md-4 text-right text-bold'>Faculty :</div>
-										<div class='col-md-8'><?=name_faculty($key->facultyID)?></div>
-									 </div>
-								</td>
-								<td>
-									 <div class='row' style='height:5px'>
-										<div class='col-md-4 text-right text-bold'>Type :</div>
-										<div class='col-md-8'><b><?=strtoupper($key->type)?></b></div>
-									 </div>
-									 <br/>
-									 <div class='row' style='height:5px'>
-										<div class='col-md-4 text-right text-bold'>Status :</div>
-										<div class='col-md-8'><b><?=$status?></b></div>
-									 </div>
-								</td>
+                                <td><?=$key->mahasiswaNumber ?></td>
+                                <td><?=ucwords($key->fullName)?></td>
+                                <td><?=name_university($key->universityID)?></td>
+                                <td><b><?=strtoupper($key->type)?></b></td>
+                                <td><b><?=$status?></b></td>
                                 <td>
                                     <a data-placement="left" data-popup="tooltip" title="View Mahasiswa" style="margin: 10px" onclick="showModal('<?=base_url('scope/modalMahasiswa') ?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', 'review');"><i class="icon-eye2"></i></a>
                                 <?php if($key->statusTemp == 'accepted'){ ?>
