@@ -18,9 +18,9 @@
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
 				<th width="5">No</th>
-				<th width="15">Pic</th>
-				<th width="35">Information</th>
-				<th width="35">Addresses</th>
+				<th>Pic</th>
+				<th>Information</th>
+				<th>Addresses</th>
 				<th width="10">Action</th>
 			</tr>
 		</thead>
