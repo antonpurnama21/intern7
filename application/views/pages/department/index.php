@@ -15,6 +15,7 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
+				<th>.</th>
 				<th>No</th>
 				<th>Department ID</th>
 				<th>Department</th>
@@ -29,6 +30,7 @@
 							$no++;
 				?>
 					<tr class="text-size-mini">
+						<td></td>
 						<td><?= $no ?>.</td>
 						<td><?= $key->deptID ?></td>
 						<td><?= $key->deptName ?></td>

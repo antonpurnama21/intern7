@@ -630,6 +630,17 @@ class Dosen extends CommonDash {
 		}
 	}
 
+		public function modalDosen()
+	{
+		$ID = explode('~',$this->input->post('id'));
+		$data = array(
+			'modalTitle' => 'View '.$ID[1],
+			'dMaster' => $this->Mod_crud->getData('row','*','t_dosen',null,null,null,array('dosenID = "'.$ID[0].'"')),
+			'Req' => ''
+			);
+		$this->load->view('pages/dosen/reviewDosen', $data);
+	}
+
 }
 
 /* End of file dosen.php */
