@@ -168,6 +168,7 @@ foreach ($dtjumlah as $key) {?>
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
+							<th></th>
 							<th width="10">No</th>
 							<th width="10">Login ID</th>
 							<th width="40">Email</th>
@@ -192,10 +193,11 @@ foreach ($dtjumlah as $key) {?>
 							}
 						?>
 						<tr class="text-size-mini">
+							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?= $key->loginID ?></td>
 							<td>
-								<?= $key->emaiL ?> <?=$status?>
+								<?= $key->emaiL ?>  <?=$status?>
 							</td>
 							<td><?= what_role($key->roleID) ?></td>
 							<td>
