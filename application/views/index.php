@@ -169,11 +169,11 @@ foreach ($dtjumlah as $key) {?>
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
 							<th></th>
-							<th width="5%">No</th>
-							<th width="10%">Login ID</th>
-							<th width="40%">Email</th>
-							<th width="25%">Role</th>
-							<th width="20%">Action</th>
+							<th>No</th>
+							<th>Login ID</th>
+							<th>Email</th>
+							<th>Role</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -239,10 +239,10 @@ foreach ($dtjumlah as $key) {?>
 					<thead>
 						<tr style="font-size:12px;text-align:center;">
 							<th></th>
-							<th width="5%">No</th>
-							<th width="45%">Information</th>
-							<th width="35%">Requiretment</th>
-							<th width="15%">Action</th>
+							<th>No</th>
+							<th>Information</th>
+							<th>Requiretment</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
