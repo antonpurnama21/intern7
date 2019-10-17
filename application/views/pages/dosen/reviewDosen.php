@@ -29,7 +29,7 @@
 									<div class="col-lg-8">
 										<div class="input-group">
 											<div class="input-group-addon" style="padding-top:0px;">:</div>
-											<label class="control-label"><?= $dMaster->mahasiswaNumber ?></label>
+											<label class="control-label"><?= $dMaster->dosenNumber ?></label>
 										</div>
 									</div>
 								</div>
@@ -66,18 +66,6 @@
 										<div class="input-group">
 											<div class="input-group-addon" style="padding-top:0px;">:</div>
 											<label class="control-label"><?= name_faculty($dMaster->facultyID) ?></label>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="form-group ">
-									<label class="control-label col-lg-4 text-bold ">Gender</label>
-									<div class="col-lg-8">
-										<div class="input-group">
-											<div class="input-group-addon" style="padding-top:0px;">:</div>
-											<label class="control-label"><?= $dMaster->gender ?></label>
 										</div>
 									</div>
 								</div>

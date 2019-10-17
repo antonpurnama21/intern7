@@ -41,6 +41,7 @@
 					}
 				?>
 				<tr>
+					<td></td>
 					<td><?= $no ?>.</td>
 					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:100px;height:100px;"></td>
 					<td><div class="col-md-8 text-semibold text-success"><?=$key->mahasiswaNumber?></div></td>
