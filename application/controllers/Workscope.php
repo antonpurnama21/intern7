@@ -93,7 +93,7 @@ class Workscope extends CommonDash {
 		$id = $this->session->userdata('userlog')['sess_usrID'];
 		$wsID = $this->Mod_crud->getData('row','workscopeID','t_workscope',null,null,null,array('mahasiswaID = "'.$id.'"'));
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'taskID, taskDesc, taskName, startDate, endDate, statusTask', 't_task', null,null,null,array('workscopeID = "'.$wsID->workscopeID.'"'));
+		$data = $this->Mod_crud->getData('result', '*', 't_task', null,null,null,array('workscopeID = "'.$wsID->workscopeID.'"'));
 		if (!empty($data)) {
 			foreach ($data as $key) {
 				$base = base_url('workscope/progress/'.$key->taskID);
@@ -127,6 +127,18 @@ class Workscope extends CommonDash {
 				$mk['color'] = $color;
 				$mk['url'] = $url;
 				array_push($resp, $mk);
+				if ($key->startDelay != null){
+					$color2 = 'red';
+					$status2 = 'Delay Date';
+
+					$md['title'] = $key->taskName.' [ '.$status2.' ] ';
+					$md['description'] = $key->taskDesc;
+					$md['start'] = $key->startDelay."T00:00:00";
+					$md['end'] = $key->endDelay."T23:59:00";
+					$md['color'] = $color2;
+					$md['url'] = $url;
+					array_push($resp, $md);
+				}
 			}
 		}
 		echo json_encode($resp);
@@ -135,7 +147,7 @@ class Workscope extends CommonDash {
 		public function TimelineByid($id=null)
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'taskID, taskDesc, taskName, startDate, endDate, statusTask', 't_task', null,null,null,array('workscopeID = "'.$id.'"'));
+		$data = $this->Mod_crud->getData('result', '*', 't_task', null,null,null,array('workscopeID = "'.$id.'"'));
 		if (!empty($data)) {
 			foreach ($data as $key) {
 				$base = base_url('workscope/logProgress/'.$key->taskID);
@@ -169,6 +181,18 @@ class Workscope extends CommonDash {
 				$mk['color'] = $color;
 				$mk['url'] = $url;
 				array_push($resp, $mk);
+				if ($key->startDelay != null){
+					$color2 = 'red';
+					$status2 = 'Delay Date';
+
+					$md['title'] = $key->taskName.' [ '.$status2.' ] ';
+					$md['description'] = $key->taskDesc;
+					$md['start'] = $key->startDelay."T00:00:00";
+					$md['end'] = $key->endDelay."T23:59:00";
+					$md['color'] = $color2;
+					$md['url'] = $url;
+					array_push($resp, $md);
+				}
 			}
 		}
 		echo json_encode($resp);
@@ -355,7 +379,7 @@ class Workscope extends CommonDash {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		public function progress($id=null)
 	{	
-		$getClose = $this->Mod_crud->getData('row', 'endDate,closeDate', 't_task', null, null,null, array('taskID = "'.$id.'"'));
+		$getClose = $this->Mod_crud->getData('row', 'startDate,endDate, startDelay, endDelay, closeDate', 't_task', null, null,null, array('taskID = "'.$id.'"'));
 		
 		$data = array(
 			'_JS' => generate_js(array(
@@ -378,7 +402,7 @@ class Workscope extends CommonDash {
 			'titleWeb' 	=> "Progress Task | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, Progress Task'),
 			'taskID' 	=> $id,
-			'getClose'	=> $getClose
+			'getDate'	=> $getClose
 		);
 		$this->render('dashboard', 'pages/workscope/indexprogress', $data);
 	}
@@ -399,7 +423,7 @@ class Workscope extends CommonDash {
 					$key->finding,
 					date_format(date_create($key->date), 'd F Y'),
 					'
-					<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal(`'.base_url("workscope/modalEditProgress").'`, `'.$key->progressID.'~'.$id.'`, `edit`);"><i class="icon-quill4"></i> Edit</a>
+					<a style="margin: 10px" onclick="showModal(`'.base_url("workscope/modalEditProgress").'`, `'.$key->progressID.'~'.$id.'`, `edit`);"><i class="icon-quill4"></i></a>
 					'
 					)
 				);
@@ -427,9 +451,12 @@ class Workscope extends CommonDash {
 		$getask = $this->Mod_crud->getData('row','endDate','t_task',null,null,null,array('taskID = "'.$taskID.'"'));
 		$endDate = $getask->endDate;
 		$date = date('Y-m-d');
+		$startDelay = date('Y-m-d', strtotime('+1 day', strtotime($endDate)));
 		if ($date > $endDate) {
 			$edit = $this->Mod_crud->updateData('t_task', array(
-					'statusTask'	=> 'delay'
+					'statusTask'	=> 'delay',
+					'startDelay'	=> $startDelay,
+					'endDelay'		=> $date,
            			), array('taskID' 	=> $taskID)
            	);
 		}
@@ -488,6 +515,7 @@ class Workscope extends CommonDash {
 		public function logProgress($id=null)
 	{	
 		$getprogress = $this->Mod_crud->getData('result', '*', 't_task_progress', null, null,null, array('taskID = "'.$id.'"'), null, array('progressID DESC'));
+		$getTask = $this->Mod_crud->getData('row','*','t_task',null,null,null,array('taskID = "'.$id.'"'));
 		
 		$data = array(
 			'_JS' => generate_js(array(
@@ -506,10 +534,11 @@ class Workscope extends CommonDash {
 						"dashboards/js/plugins/forms/validation/validate.min.js",
 				)
 			),
-			'titleWeb' 	=> "Log Progress | CBN Internship",
+			'titleWeb' 		=> "Log Progress | CBN Internship",
 			'breadcrumb' 	=> explode(',', 'Workscope, Log Progress'),
-			'taskID' 	=> $id,
-			'dtprogress'	=> $getprogress
+			'taskID' 		=> $id,
+			'dtprogress'	=> $getprogress,
+			'task'			=> $getTask,
 		);
 		$this->render('dashboard', 'pages/workscope/logprogress', $data);
 	}
@@ -519,15 +548,26 @@ class Workscope extends CommonDash {
 		$nameMhs = name_mhs($this->session->userdata('userlog')['sess_usrID']);
 		$nameTask = name_task($id);
 
-		$getask = $this->Mod_crud->getData('row','endDate','t_task',null,null,null,array('taskID = "'.$id.'"'));
+		$getask = $this->Mod_crud->getData('row','endDate, startDelay','t_task',null,null,null,array('taskID = "'.$id.'"'));
 		$endDate = $getask->endDate;
+		$startDelay = $getask->startDelay;
 		$date = date('Y-m-d');
-		if ($date > $endDate) {
-			$statusTask = 'done-delay';
-			$close = $date;
+		if (empty($startDelay)) {
+			if ($date > $endDate) {
+				$statusTask = 'done';
+				$close = $date;
+			}else{
+				$statusTask = 'done';
+				$close = $date;
+			}
 		}else{
-			$statusTask = 'done';
-			$close = $date;
+			if ($date > $endDate) {
+				$statusTask = 'done-delay';
+				$close = $date;
+			}else{
+				$statusTask = 'done';
+				$close = $date;
+			}
 		}
 
 		$edit = $this->Mod_crud->updateData('t_task', array(

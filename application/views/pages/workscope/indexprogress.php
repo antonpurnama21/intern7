@@ -32,15 +32,23 @@
 	<input type="hidden" name="alamatList" id="alamatList" value="<?= base_url('workscope/getListProgress/'.$taskID) ?>">
 
 	<div class="ml-20">
+		<h5>Task Date : <?= date_format(date_create($getDate->startDate), 'l , d F Y')?> to <?= date_format(date_create($getDate->endDate), 'l , d F Y')?></h5>
 	<?php
     $dateNow = date('Y-m-d');
-    if(empty($getClose->closeDate)){ ?>
+    if(empty($getDate->closeDate)){ ?>
         <button type="button" style="<?= showLevel(array(55)) ?>" class="btn btn-success" onclick="showModal('<?= base_url('workscope/modalAddProgress/'.$taskID) ?>', '', 'add');"><i class="icon-add position-left"></i> Add Progress</button>
         
-    <?php if($dateNow >= $getClose->endDate){ ?>
-        <button type="button" style="<?= showLevel(array(55)); ?>" class="btn btn-success" onclick="location.href='<?=base_url('workscope/progressDone/'.$taskID)?>'"><i class="icon-add position-left"></i> Progress Done</button>
+    <?php if($dateNow >= $getDate->endDate){ ?>
+        <button type="button" style="<?= showLevel(array(55)); ?>" class="btn btn-success" onclick="location.href='<?=base_url('workscope/progressDone/'.$taskID)?>'">Progress Done</button>
+        <h5><i>Jika progressmu sudah selesai, silahkan klik tombol "Progress Done", atau jika belum selesai abaikan saja.</i></h5>
+        <?php if ($dateNow > $getDate->endDate): ?>
+        <h5>Note : <br>Jika tak ada penambahan progress melebihi "Task Date"<br> Status tetap "Done".</h5>
+        <?php endif ?>
+
     <?php }
-    } ?>
+    }else{?>
+		<h5>Close Date : <?= date_format(date_create($getDate->closeDate), 'l , d F Y')?></h5>
+	<?php } ?>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>

@@ -10,6 +10,32 @@
     	</div>
 	</div>
 
+	<?php 
+	$SD = new DateTime($task->startDelay);
+	$ED = new DateTime($task->endDelay);
+	$interval = $SD->diff($ED);
+
+	if (empty($task->startDelay)) {
+		$delay = '0 Days';
+	}else{
+		$delay = $interval->days.' Days';
+	}
+
+	if (empty($task->closeDate)) {
+		$close = '-';
+	}else{
+		$close = date_format(date_create($task->closeDate), 'l , d F Y');
+	}
+
+	 ?>
+
+	<h5 style="margin-left: 20px;">
+		Task Date : <?= date_format(date_create($task->startDate), 'l , d F Y')?> to <?= date_format(date_create($task->endDate), 'l , d F Y')?> <br/>
+		Close Date : <?= $close?> <br/>
+		Status : <?= ucwords($task->statusTask)?> <br/>
+		Delay  :  <?= $delay ?><br/>
+	</h5>
+
 	<div class="panel-body">
 		<div style="overflow: scroll; height: 480px;">
 			<?php

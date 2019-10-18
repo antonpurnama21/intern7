@@ -194,6 +194,11 @@
 	</div>
 </div>
 
+<!-- <h1><?php 
+	$date = date('Y-m-d', strtotime('+7 day'));
+	echo $date++;
+ ?></h1> -->
+
 <div class="row">
 	<div class="col-md-12">
 

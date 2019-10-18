@@ -186,7 +186,7 @@ if (!function_exists('update_workscope'))
 	{
 		$CI =& get_instance();
 
-		$get = $CI->Mod_crud->getData('result','ps.*,ws.*','t_project_scope ps',null,null,array('t_workscope ws' => 'ps.projectScopeID = ws.projectScopeID'));
+		$get = $CI->Mod_crud->getData('result','ps.startDate, ps.endDate ,ws.workscopeID, ws.statusWorkscope','t_project_scope ps',null,null,array('t_workscope ws' => 'ps.projectScopeID = ws.projectScopeID'));
 
 		if ($get) {
     	    foreach ($get as $key) {
