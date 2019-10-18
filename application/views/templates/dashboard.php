@@ -67,7 +67,7 @@
 	<!-- Main navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top bg-blue-800">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="<?=base_url()?>"><img src="<?= base_url('assets/dashboards/images/logo_light.png'); ?>" alt=""></a>
+			<a class="navbar-brand" href="<?=base_url()?>"><img src="<?= base_url('assets/dashboards/images/internship.png'); ?>" style="width: 100px; height: auto;"></a>
 
 			<ul class="nav navbar-nav visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
