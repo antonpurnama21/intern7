@@ -93,7 +93,7 @@ class Workscope extends CommonDash {
 		$id = $this->session->userdata('userlog')['sess_usrID'];
 		$wsID = $this->Mod_crud->getData('row','workscopeID','t_workscope',null,null,null,array('mahasiswaID = "'.$id.'"'));
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'taskID,taskName,taskDesc,startDate,endDate,startDelay,endDelay,closeDate,statusTask', 't_task', null,null,null,array('workscopeID = "'.$wsID->workscopeID.'"'));
+		$data = $this->Mod_crud->getData('result', '*', 't_task', null,null,null,array('workscopeID = "'.$wsID->workscopeID.'"'));
 		if (!empty($data)) {
 			foreach ($data as $key) {
 				$base = base_url('workscope/progress/'.$key->taskID);
@@ -147,7 +147,7 @@ class Workscope extends CommonDash {
 		public function TimelineByid($id=null)
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'taskID,taskName,taskDesc,startDate,endDate,startDelay,endDelay,closeDate,statusTask', 't_task', null,null,null,array('workscopeID = "'.$id.'"'));
+		$data = $this->Mod_crud->getData('result', '*', 't_task', null,null,null,array('workscopeID = "'.$id.'"'));
 		if (!empty($data)) {
 			foreach ($data as $key) {
 				$base = base_url('workscope/logProgress/'.$key->taskID);
