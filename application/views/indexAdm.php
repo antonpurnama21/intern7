@@ -1,6 +1,3 @@
-
-
-
 <div class="panel panel-flat">
 	<div class="panel-heading">
 		<h5 class="panel-title"><i class="icon-law"></i> <?= $breadcrumb[1] ?></h5>
@@ -14,8 +11,7 @@
 	</div>
 
 	<div class="panel-body">
-
-		
+		<h5>Selamat Datang <strong><?= $sesi['sess_name']?> !</strong></h5>
 	</div>
 </div>
 

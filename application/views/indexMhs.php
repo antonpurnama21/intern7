@@ -11,29 +11,51 @@
 	</div>
 
 	<div class="panel-body">
-		<?php 
-		if (!empty($dtpersen->id)) {
-			$persen = $dtpersen->value.'%';
-			$scope = name_projectscope($dtpersen->id);
-			if($dtpersen->value=='100'){
-				$bg = 'bg-blue';
-				$ac = '';
-			}else{
-				$bg = 'bg-green';
-				$ac = 'active';
-			}
-		}else{
-			$persen = '0%';
-			$scope = '';
-			$bg = '';
-			$ac = '';				
-		}?>
-		<label><?= $scope ?> ( % )</label>
-		<div class="progress mb-3" style="height: 2rem;">
-			<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?> <?=$ac?>" style="width: <?=$persen?>">
-				<span><?=$persen?> Complete</span>
+		<h5>Selamat Datang <strong><?= $sesi['sess_name']?> !</strong></h5>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="panel panel-white border-top-success">
+			<div class="panel-heading">
+				<h6 class="panel-title">Progress Scope (%) :</h6>
+				<div class="heading-elements">
+					<ul class="icons-list">
+                		<li><a data-action="collapse" data-popup="tooltip" title="Collapse"></a></li>
+                		<li><a data-action="reload" data-popup="tooltip" title="Reload"></a></li>
+                		<li><a data-action="close" data-popup="tooltip" title="Close"></a></li>
+                	</ul>
+            	</div>
+			</div><br />
+			<div class="panel-body">
+				<?php 
+				if (!empty($dtpersen->id)) {
+					$persen = $dtpersen->value.'%';
+					$scope = name_projectscope($dtpersen->id);
+					if($dtpersen->value=='100'){
+						$bg = 'bg-blue';
+						$ac = '';
+					}else{
+						$bg = 'bg-green';
+						$ac = 'active';
+					}
+				}else{
+					$persen = '0%';
+					$scope = '';
+					$bg = '';
+					$ac = '';				
+				}?>
+				<label><?= $scope ?> ( % )</label>
+				<div class="progress mb-3" style="height: 2rem;">
+					<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?> <?=$ac?>" style="width: <?=$persen?>">
+						<span><?=$persen?> Complete</span>
+					</div>
+				</div>	
 			</div>
 		</div>
+
 	</div>
 </div>
 

@@ -1,5 +1,21 @@
-<div class="row">
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title"><i class="icon-law"></i> <?= $breadcrumb[1] ?></h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+        		<li><a data-action="collapse"></a></li>
+        		<li><a data-action="reload"></a></li>
+        		<li><a data-action="close"></a></li>
+        	</ul>
+    	</div>
+	</div>
 
+	<div class="panel-body">
+		<h5>Selamat Datang <strong><?= $sesi['sess_name']?> !</strong></h5>
+	</div>
+</div>
+
+<div class="row">
 	<div class="col-md-4">
 		<div class="panel panel-white border-top-success">
 			<div class="panel-heading">
