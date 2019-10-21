@@ -33,7 +33,7 @@
 
 	<script type="text/javascript" src="<?= base_url('assets/dashboards/js/plugins/ui/ripple.min.js'); ?>"></script>
 	<!-- /theme JS files -->
-	<link rel="shortcut icon" href="<?= base_url('assets/dashboards/images/logo_icon_dark.png'); ?>" />
+	<link rel="shortcut icon" href="<?= base_url('assets/dashboards/images/cbn-shortcut.png'); ?>" />
 
 </head>
 
