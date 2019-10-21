@@ -12,7 +12,7 @@
 
 	<div class="ml-20">
 		<button type="button" class="btn btn-success" onclick="location.href='<?=base_url('dosen/add')?>'"><i class="icon-add position-left"></i> Add</button>
-		<button type="button" style="margin-right: 10px" class="btn btn-success pull-right" onclick="location.href='<?=base_url('report/reportDosen')?>'"><i class="icon-printer position-left"></i> Print to PDF</button>
+		<a style="margin-right: 10px" class="btn btn-success pull-right" target="_blank" href="<?=base_url('report/reportDosen')?>"><i class="icon-printer position-left"></i> Print to PDF</a>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>

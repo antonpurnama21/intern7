@@ -186,8 +186,8 @@
 									<label class="control-label">
 										<?php 
 										if (!empty($dtmahasiswa->resume)) {?>
-										<a style="margin-bottom: 5px" class="btn btn-success btn-sm" href="<?php echo base_url(); ?>mahasiswa/download/resume/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> resume.pdf</a><br />
-										<a style="margin-bottom: 5px" class="btn btn-success btn-sm" href="<?php echo base_url(); ?>mahasiswa/download/transcipt/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> transcipt.pdf</a>
+										<a style="margin-bottom: 5px" class="btn btn-success btn-sm" target="_blank" href="<?php echo base_url(); ?>mahasiswa/download/resume/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> resume.pdf</a><br />
+										<a style="margin-bottom: 5px" class="btn btn-success btn-sm" target="_blank" href="<?php echo base_url(); ?>mahasiswa/download/transcipt/<?=$dtmahasiswa->mahasiswaID?>"><i class="icon-file-download"></i> transcipt.pdf</a>
 										<?php } ?>
 									</label>
 								</div>

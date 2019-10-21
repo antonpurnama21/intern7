@@ -493,6 +493,21 @@ if (!function_exists('name_admin'))
 	}
 }
 
+if (!function_exists('name_admincampus'))
+{
+	function name_admincampus($id=null)
+	{
+		$CI =& get_instance();
+
+		$get = $CI->Mod_crud->getData('row', 'fullName', 't_admin_campus', null, null, null, array("adminCampusID = '".$id."'"));
+		if ($get) :
+			return $get->fullName;
+		else :
+			return false;
+		endif;
+	}
+}
+
 if (!function_exists('name_category'))
 {
 	function name_category($id=null)

@@ -76,7 +76,7 @@
 							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
 							<td><?=$status?></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Print Project Scope" style="margin: 10px" href="<?=base_url()?>report/printScope/<?=$key->projectScopeID?>"><i class="icon-printer"></i></a>
+								<a data-placement="left" data-popup="tooltip" title="Print Project Scope" style="margin: 10px" target="_blank" href="<?=base_url()?>report/printScope/<?=$key->projectScopeID?>"><i class="icon-printer"></i></a>
 	                            <a data-placement="left" data-popup="tooltip" title="View project Scope" style="margin: 10px" onclick="showModal('<?=base_url('scope/modalScope') ?>', '<?=$key->projectScopeID.'~'.$key->projectScope?>', 'review');"><i class="icon-eye"></i></a>
 	                            <?php if($this->session->userdata('userlog')['sess_role']==55){ 
 	                            $check2 = chk_applyMhs($key->projectScopeID);

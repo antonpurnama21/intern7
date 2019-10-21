@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mod_crud extends CI_Model {
 
-	function getData($type = null, $select, $table, $limit = null, $offset = null, $joins = null, $where = null, $group = null, $order = null)
+	function getData($type = null, $select, $table, $limit = null, $offset = null, $joins = null, $where = null, $group = null, $order = null, $like = null)
 	{
 		$command = "SELECT $select FROM $table";
 	 	if ($joins != null)
@@ -17,6 +17,13 @@ class Mod_crud extends CI_Model {
 		if ($where != null)
 			{	
 				$command .= ' WHERE '.implode(' AND ',$where);
+			}
+
+		if ($like != null AND $where == null)
+			{
+				$command .= ' WHERE '.$like;
+			}elseif ($like != null AND $where != null) {
+				$command .= ' AND '.'('.$like.')';
 			}
 
 		if ($group != null)
@@ -135,7 +142,7 @@ class Mod_crud extends CI_Model {
 		return $kode;
 	}
 
-	function countData($type = null, $select, $table, $limit = null, $offset = null, $joins = null, $where = null, $group = null, $order = null)
+	function countData($type = null, $select, $table, $limit = null, $offset = null, $joins = null, $where = null, $group = null, $order = null, $like = null)
 	{
 		$command = "SELECT $select FROM $table";
 	 	if ($joins != null)
@@ -149,6 +156,13 @@ class Mod_crud extends CI_Model {
 		if ($where != null)
 			{	
 				$command .= ' WHERE '.implode(' AND ',$where);
+			}
+
+		if ($like != null AND $where == null)
+			{
+				$command .= ' WHERE '.$like;
+			}elseif ($like != null AND $where != null) {
+				$command .= ' AND '.'('.$like.')';
 			}
 
 		if ($group != null)

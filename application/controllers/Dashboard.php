@@ -103,6 +103,11 @@ class Dashboard extends CommonDash {
 			
 		}elseif ($this->session->userdata('userlog')['sess_role']==33) {
 			qrysession();
+			$universityID = $this->session->userdata('userlog')['sess_univID'];
+			$jmlMhs = $this->Mod_crud->countData('row','*','t_mahasiswa',null,null,null,array('universityID = "'.$universityID.'"'));
+			$jmlDsn = $this->Mod_crud->countData('row','*','t_dosen',null,null,null,array('universityID = "'.$universityID.'"'));
+			$mhsPerFaculty = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(mhs.mahasiswaID)),0) as value, us.facultyName as label FROM `t_faculty` as us LEFT JOIN `t_mahasiswa` as mhs ON mhs.facultyID = us.facultyID WHERE mhs.universityID = "'.$universityID.'" GROUP BY us.facultyID');
+			$dsnPerFaculty = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(mhs.dosenID)),0) as value, us.facultyName as label FROM `t_faculty` as us LEFT JOIN `t_dosen` as mhs ON mhs.facultyID = us.facultyID WHERE mhs.universityID = "'.$universityID.'" GROUP BY us.facultyID');
 			$data = array(
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
@@ -124,11 +129,20 @@ class Dashboard extends CommonDash {
 				),
 				'titleWeb' 	=> 'Home | CBN Internship',
 				'breadcrumb'=> explode(',', 'Dashboard, Main Page'),
+				'dtjml'	=> $jmlMhs,
+				'mhsFac' => $mhsPerFaculty,
+				'dsjml' => $jmlDsn,
+				'dsnFac' => $dsnPerFaculty,
 			);
 			$this->render('dashboard', 'indexAdmcampus', $data);
 			
 		}elseif ($this->session->userdata('userlog')['sess_role']==44) {
 			qrysession();
+			$universityID = $this->session->userdata('userlog')['sess_univID'];
+			$jmlMhs = $this->Mod_crud->countData('row','*','t_mahasiswa',null,null,null,array('universityID = "'.$universityID.'"'));
+			$jmlDsn = $this->Mod_crud->countData('row','*','t_dosen',null,null,null,array('universityID = "'.$universityID.'"'));
+			$mhsPerFaculty = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(mhs.mahasiswaID)),0) as value, us.facultyName as label FROM `t_faculty` as us LEFT JOIN `t_mahasiswa` as mhs ON mhs.facultyID = us.facultyID WHERE mhs.universityID = "'.$universityID.'" GROUP BY us.facultyID');
+			$dsnPerFaculty = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(mhs.dosenID)),0) as value, us.facultyName as label FROM `t_faculty` as us LEFT JOIN `t_dosen` as mhs ON mhs.facultyID = us.facultyID WHERE mhs.universityID = "'.$universityID.'" GROUP BY us.facultyID');
 			$data = array(
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
@@ -150,6 +164,10 @@ class Dashboard extends CommonDash {
 				),
 				'titleWeb' 	=> 'Home | CBN Internship',
 				'breadcrumb'=> explode(',', 'Dashboard, Main Page'),
+				'dtjml'	=> $jmlMhs,
+				'mhsFac' => $mhsPerFaculty,
+				'dsjml' => $jmlDsn,
+				'dsnFac' => $dsnPerFaculty,
 			);
 			$this->render('dashboard', 'indexDosen', $data);
 			
