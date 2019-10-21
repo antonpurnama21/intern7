@@ -88,11 +88,11 @@ class Log extends CommonDash {
 				$like[] = 'logUsrID LIKE "11%"';
 				$like[]	= 'logUsrID LIKE "22%"';
 				$lk = implode(' OR ', $like);
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,null,null,null,$lk);
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,null,null,array('logID DESC'),$lk);
 			}else{
 				$usr = name_admin($this->input->post('Admin'));
 				$idusr = $this->input->post('Admin');
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Admin').'"'));
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Admin').'"'),null,array('logID DESC'));
 			}
 
 			$data = array(
@@ -123,11 +123,11 @@ class Log extends CommonDash {
 			if ($this->input->post('Admincampus') == 'alladmincampus') {
 				$usr = 'Admin Campus';
 				$idusr = 'admcampus';
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "33%"'));
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "33%"'),null,array('logID DESC'));
 			}else{
 				$idusr = $this->input->post('Admincampus');
 				$usr = name_admincampus($this->input->post('Admincampus'));
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Admincampus').'"'));
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Admincampus').'"'),null,array('logID DESC'));
 			}
 			$data = array(
 				'_JS' => generate_js(array(
@@ -157,11 +157,11 @@ class Log extends CommonDash {
 			if ($this->input->post('Dosen') == 'alldosen') {
 				$usr = 'Dosen';
 				$idusr = 'dsn';
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "44%"'));
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "44%"'),null,array('logID DESC'));
 			}else{
 				$idusr = $this->input->post('Dosen');
 				$usr = name_dosen($this->input->post('Dosen'));
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Dosen').'"'));
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Dosen').'"'),null,array('logID DESC'));
 			}
 			$data = array(
 				'_JS' => generate_js(array(
@@ -191,11 +191,11 @@ class Log extends CommonDash {
 			if ($this->input->post('Mahasiswa') == 'allmahasiswa') {
 				$idusr = 'mhs';
 				$usr = 'Mahasiswa';
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "55%"'));
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "55%"'),null,array('logID DESC'));
 			}else{
 				$idusr = $this->input->post('Mahasiswa');
 				$usr = name_mhs($this->input->post('Mahasiswa'));
-				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Mahasiswa').'"'));
+				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Mahasiswa').'"'),null,array('logID DESC'));
 			}
 			$data = array(
 				'_JS' => generate_js(array(
@@ -227,7 +227,7 @@ class Log extends CommonDash {
 	{
 		$res = array();
 		$id = $this->session->userdata('userlog')['sess_usrID'];
-		$Log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$id.'"'));
+		$Log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$id.'"'),null,array('logID DESC'));
 		if (!empty($Log)) {
 			$no = 0;
 			foreach ($Log as $key) {
