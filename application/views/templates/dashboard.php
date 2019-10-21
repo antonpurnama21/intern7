@@ -82,7 +82,7 @@
 			</ul>
 
 			<div class="navbar-right">
-				<p class="navbar-text">Welcome, <?= $sesi['sess_name'] ?></p>
+				<p class="navbar-text"><?= $sesi['sess_name'] ?></p>
 				<p class="navbar-text"><span class="label bg-success-400">online</span></p>
 				
 				<ul class="nav navbar-nav">				

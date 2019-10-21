@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="panel-body">
-		<h5>Selamat Datang <strong><?= $sesi['sess_name']?> !</strong></h5>
+		<h5>Welcome, <strong><?= $sesi['sess_name']?> !</strong></h5>
 	</div>
 </div>
 
