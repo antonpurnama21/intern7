@@ -56,16 +56,16 @@ public function reportDosen()
 			$like[] = 'logUsrID LIKE "11%"';
 			$like[]	= 'logUsrID LIKE "22%"';
 			$lk = implode(' OR ', $like);
-			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,null,null,null,$lk);
+			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,null,null,array('logID DESC'),$lk);
 		}elseif ($id == 'admcampus') {
 			$title = 'Admin Campus';
-			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "33%"'));
+			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "33%"'),null,array('logID DESC'));
 		}elseif ($id == 'dsn') {
 			$title = 'Dosen';
-			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "44%"'));
+			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "44%"'),null,array('logID DESC'));
 		}elseif ($id == 'mhs') {
 			$title = 'Mahasiswa';
-			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "55%"'));
+			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "55%"'),null,array('logID DESC'));
 		}else{
 			$ii = substr($id,0,2);
 			if ($ii == '11' OR $ii == '22') {
@@ -78,7 +78,7 @@ public function reportDosen()
 				$name = name_mhs($id);
 			}
 			$title = $name;
-			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$id.'"'));
+			$dt = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$id.'"'),null,array('logID DESC'));
 		}
 		$data = array(
 				'title' => "Activity Log ".$title,
@@ -92,7 +92,7 @@ public function reportDosen()
 	{
 		$data = array(
 				'title' => "Activity Log",
-				'data' => $this->Mod_crud->getData('result', '*','t_log_activity')
+				'data' => $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,null,null,array('logID DESC'))
 			);
 		$this->load->view('pages/report/PrintLogAll', $data);
 		//echo json_encode($data);
