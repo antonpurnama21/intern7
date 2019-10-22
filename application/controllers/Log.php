@@ -260,14 +260,14 @@ class Log extends CommonDash {
 	public function getAdmin()
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'adminID, fullName', 't_admin');
+		$data = $this->Mod_crud->getData('result', 'adminID, fullName, deptID', 't_admin');
 		if (!empty($data)) {
 				$mk['id'] = 'alladmin';
 				$mk['text'] = 'Print All';
 				array_push($resp, $mk);
 			foreach ($data as $key) {
 				$mk['id'] = $key->adminID;
-				$mk['text'] = $key->fullName;
+				$mk['text'] = $key->fullName.' ['.name_dept($key->deptID).']';
 				array_push($resp, $mk);
 			}
 		}
@@ -277,14 +277,14 @@ class Log extends CommonDash {
 	public function getAdminCampus()
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'adminCampusID, fullName', 't_admin_campus');
+		$data = $this->Mod_crud->getData('result', 'adminCampusID, fullName, universityID', 't_admin_campus');
 		if (!empty($data)) {
 				$mk['id'] = 'alladmincampus';
 				$mk['text'] = 'Print All';
 				array_push($resp, $mk);
 			foreach ($data as $key) {
 				$mk['id'] = $key->adminCampusID;
-				$mk['text'] = $key->fullName;
+				$mk['text'] = $key->fullName.' ['.name_university($key->universityID).']';
 				array_push($resp, $mk);
 			}
 		}
@@ -294,14 +294,14 @@ class Log extends CommonDash {
 	public function getDosen()
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'dosenID, fullName', 't_dosen');
+		$data = $this->Mod_crud->getData('result', 'dosenID, fullName, universityID', 't_dosen');
 		if (!empty($data)) {
 				$mk['id'] = 'alldosen';
 				$mk['text'] = 'Print All';
 				array_push($resp, $mk);
 			foreach ($data as $key) {
 				$mk['id'] = $key->dosenID;
-				$mk['text'] = $key->fullName;
+				$mk['text'] = $key->fullName.' ['.name_university($key->universityID).']';
 				array_push($resp, $mk);
 			}
 		}
@@ -311,14 +311,14 @@ class Log extends CommonDash {
 	public function getMahasiswa()
 	{
 		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'mahasiswaID, fullName', 't_mahasiswa');
+		$data = $this->Mod_crud->getData('result', 'mahasiswaID, fullName, universityID', 't_mahasiswa');
 		if (!empty($data)) {
 				$mk['id'] = 'allmahasiswa';
 				$mk['text'] = 'Print All';
 				array_push($resp, $mk);
 			foreach ($data as $key) {
 				$mk['id'] = $key->mahasiswaID;
-				$mk['text'] = $key->fullName;
+				$mk['text'] = $key->fullName.' ['.name_university($key->universityID).']';
 				array_push($resp, $mk);
 			}
 		}
