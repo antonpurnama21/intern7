@@ -51,6 +51,7 @@ class Coba extends Fpdf {
 	$pdf->SetFont('Times','B',10);
 	$pdf->SetLineWidth(1,5);
 	$pdf->SetFillColor(252,255,189);
+	$pdf->SetLeftMargin(100);
 	$pdf->Cell(20 ,15, "No",1, "LR", "C", true);
 	$pdf->Cell(100 ,15, "User ID" ,1 ,"LR", "C", true);
 	$pdf->Cell(100 ,15, "Email" ,1 ,"LR", "C", true);
