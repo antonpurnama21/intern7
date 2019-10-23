@@ -73,7 +73,7 @@ class Coba extends Fpdf {
 			$pdf->SetXY($pdf->GetX(), $curY);
 			$pdf->Cell(20  ,15, $no.".",'LRT', 0, "C");
 			$pdf->SetXY($pdf->GetX(), $curY);
-			$pdf->MultiCell(100,15,$key->adminID,'LRT', 'C');
+			$pdf->MultiCell(100,15,$key->adminCampusID,'LRT', 'C');
 			$curA=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+120, $curY);
 			$pdf->MultiCell(100,15,$key->emaiL,'LRT', 'C');
