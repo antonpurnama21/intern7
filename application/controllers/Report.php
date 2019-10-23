@@ -20,7 +20,25 @@ class Report extends CI_Controller {
 
 	}
 
-public function reportDosen()
+		public function reportAdmin()
+	{		
+		$data = array(
+				'title' => "REKAPITULASI DATA ADMIN DEPARTMENT",
+				'dMaster' => $this->Mod_crud->getData('result', 'a.*, l.roleID','t_admin a', null, null, array('t_login l'=>'l.loginID = a.loginID'), null, null, array('adminID ASC'))
+			);
+		$this->load->view('pages/report/ReportAdmin', $data);
+	}
+
+	public function reportAdmincampus()
+	{		
+		$data = array(
+				'title' => "REKAPITULASI DATA ADMIN CAMPUS",
+				'dMaster' => $this->Mod_crud->getData('result', 'a.*, l.roleID','t_admin_campus a', null, null, array('t_login l'=>'l.loginID = a.loginID'), null, null, array('adminCampusID ASC'))
+			);
+		$this->load->view('pages/report/ReportAdminCampus', $data);
+	}
+
+	public function reportDosen()
 	{		
 		$data = array(
 				'title' => "REKAPITULASI DATA DOSEN",
@@ -41,7 +59,7 @@ public function reportDosen()
 	public function printScope($id=null)
 	{
 		$data = array(
-				'title' => "PROJECT SCOPE",
+				'title' => "PROJECT SCOPE ".name_projectscope($id),
 				'dtscope' => $this->Mod_crud->getData('row', '*','t_project_scope',null,null,null,array('projectScopeID = "'.$id.'"'))
 			);
 		$this->load->view('pages/report/PrintScope', $data);

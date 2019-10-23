@@ -15,7 +15,7 @@ class Coba extends Fpdf {
 }
 
 	$pdf = new Coba('L', 'pt', 'A4'); 
-	$pdf->SetTitle('Report Data Dosen');
+	$pdf->SetTitle($title);
 	$pdf->AliasNbPages();
 	$pdf->SetTopMargin(30);
 	$pdf->SetLeftMargin(20);
@@ -132,7 +132,7 @@ class Coba extends Fpdf {
 		$pdf->MultiCell(790,20,"Maaf Data Masih Kosong !",1, 'C');
 	}
 
-	$pdf->Output('data-dosen'.date('dFY').'.pdf','I');
+	$pdf->Output($title.date('dFY').'.pdf','I');
 
 
 ?>

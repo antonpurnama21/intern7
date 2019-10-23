@@ -14,7 +14,8 @@ class Coba extends FPDF {
     }
 }
 
-	$pdf = new Coba('P', 'pt', 'A4'); 
+	$pdf = new Coba('P', 'pt', 'A4');
+	$pdf->SetTitle($title);
 	$pdf->AliasNbPages();
 	$pdf->SetTopMargin(30);
 	$pdf->SetLeftMargin(20);
