@@ -116,7 +116,7 @@ class Coba extends Fpdf {
 			$pdf->Line($xAwal+590,$yAwal,$xAwal+590,$curN);
 			$pdf->Line($xAwal+690,$yAwal,$xAwal+690,$curN);
 			$pdf->Line($xAwal,$curN,$xAwal+690,$curN);
-			if ($curN >= 500){
+			if ($curN >= 100){
 				$pdf->AddPage();
 				$pdf->SetLeftMargin(80);
 				$pdf->SetRightMargin(20);
