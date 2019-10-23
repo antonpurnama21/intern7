@@ -28,6 +28,10 @@ class Dashboard extends CommonDash {
 
 			$progressProject = $this->Mod_crud->qry('result','SELECT COALESCE(ROUND(((SELECT COUNT(taskID) FROM `t_task` WHERE (statusTask = "done" OR statusTask = "done-delay") AND (workscopeID = ws.workscopeID)) / (SELECT COUNT(*) FROM `t_task` WHERE workscopeID = ws.workscopeID))*100,0),0) as value, ps.projectScope as label FROM t_project_scope as ps LEFT JOIN t_workscope as ws ON ps.projectScopeID = ws.projectScopeID LEFT JOIN t_task as ts ON ws.workscopeID = ts.workscopeID GROUP BY ps.projectScope');
 
+			$jmlMhs = $this->Mod_crud->countData('row','*','t_mahasiswa');
+			$jmlProject = $this->Mod_crud->countData('row','*','t_project');
+			$jmlScope = $this->Mod_crud->countData('row','*','t_project_scope');
+
 			$data = array(
 				'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
@@ -57,6 +61,9 @@ class Dashboard extends CommonDash {
 				'dtpersen'	=> $applyPersen,
 				'dtjumlah'	=> $applyJumlah,
 				'dtprogress'=> $progressProject,
+				'jmlMhs'	=> $jmlMhs,
+				'jmlProject'=> $jmlProject,
+				'jmlScope'	=> $jmlScope,
 
 			);
 			$this->render('dashboard', 'index', $data);

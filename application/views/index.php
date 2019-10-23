@@ -19,7 +19,7 @@
 	<div class="col-md-4">
 		<div class="panel panel-white border-top-success">
 			<div class="panel-heading">
-				<h6 class="panel-title text-bold"><i class="icon-puzzle3"></i> Mahasiswa Total</h6>
+				<h6 class="panel-title text-bold"><i class="icon-puzzle3"></i> Mahasiswa Total ( <?=$jmlMhs ?> )</h6>
 			</div>
 			
 			<div class="panel-body">
@@ -44,7 +44,7 @@
 	<div class="col-md-4">
 		<div class="panel panel-white border-top-success">
 			<div class="panel-heading">
-				<h6 class="panel-title text-bold"><i class="icon-puzzle3"></i> Project Total</h6>
+				<h6 class="panel-title text-bold"><i class="icon-puzzle3"></i> Project Total ( <?=$jmlProject ?> )</h6>
 			</div>
 			
 			<div class="panel-body">
@@ -69,7 +69,7 @@
 	<div class="col-md-4">
 		<div class="panel panel-white border-top-success">
 			<div class="panel-heading">
-				<h6 class="panel-title text-bold"><i class="icon-puzzle3"></i> Project Scope Total</h6>
+				<h6 class="panel-title text-bold"><i class="icon-puzzle3"></i> Project Scope Total ( <?=$jmlScope ?> )</h6>
 			</div>
 			
 			<div class="panel-body">
