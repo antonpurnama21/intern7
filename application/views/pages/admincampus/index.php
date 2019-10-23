@@ -10,7 +10,7 @@
     	</div>
 	</div>
 	<div class="ml-20">
-		<button type="button" class="btn btn-success" onclick="showModal('<?= base_url('admincampuscampus/modalAdd') ?>', '', 'add');"><i class="icon-add position-left"></i> Add</button>
+		<button type="button" class="btn btn-success" onclick="showModal('<?= base_url('admincampus/modalAdd') ?>', '', 'add');"><i class="icon-add position-left"></i> Add</button>
 		<a style="margin-right: 10px" class="btn btn-success pull-right" target="_blank" href="<?=base_url('report/reportAdmincampus')?>"><i class="icon-printer position-left"></i> Print to PDF</a>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
