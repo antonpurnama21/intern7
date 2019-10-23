@@ -51,6 +51,7 @@ class Coba extends Fpdf {
 	$pdf->SetFont('Times','B',10);
 	$pdf->SetLineWidth(1,5);
 	$pdf->SetFillColor(252,255,189);
+	$pdf->SetLeftMargin(100);
 	$pdf->Cell(20 ,15, "No",1, "LR", "C", true);
 	$pdf->Cell(100 ,15, "User ID" ,1 ,"LR", "C", true);
 	$pdf->Cell(100 ,15, "Email" ,1 ,"LR", "C", true);
@@ -59,7 +60,7 @@ class Coba extends Fpdf {
 	$pdf->Cell(100 ,15, "Universitas" ,1 ,"LR", "C", true);
 	$pdf->Cell(100, 15, "Hak Akses", 1, "LR", "C", true);
 	if (!empty($dMaster)) {
-		$pdf->SetLeftMargin(20);
+		$pdf->SetLeftMargin(100);
 		$pdf->Ln();
 		$no = 0;
 		$curY=$pdf->GetY();
@@ -74,21 +75,25 @@ class Coba extends Fpdf {
 			$pdf->Cell(20  ,15, $no.".",'LRT', 0, "C");
 			$pdf->SetXY($pdf->GetX(), $curY);
 			$pdf->MultiCell(100,15,$key->adminCampusID,'LRT', 'C');
+
 			$curA=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+120, $curY);
 			$pdf->MultiCell(100,15,$key->emaiL,'LRT', 'C');
+
 			$pdf->SetXY($pdf->GetX()+220, $curY);
 			$pdf->MultiCell(100,15,$key->fullName,'LRT', 'C');
 			$pdf->SetXY($pdf->GetX()+320, $curY);
 			$pdf->MultiCell(100,15,$key->telePhone,'LRT', 'C');
+			
 			$curB=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+420, $curY);
 			$pdf->MultiCell(100,15,name_university($key->universityID),'LRT', 'C');
+			
 			$pdf->SetXY($pdf->GetX()+520, $curY);
 			$pdf->MultiCell(100,15,what_role($key->roleID),'LRT', 'C');
 
 			$curC=$pdf->GetY();
-			$pdf->SetXY($pdf->GetX()+770, $curY);
+			$pdf->SetXY($pdf->GetX()+620, $curY);
 
 			if (($curA >= $curB) && ($curA >= $curC)){
 				$curN = $curA;
@@ -100,7 +105,7 @@ class Coba extends Fpdf {
 				$curN = $curA;
 			}
 
-			$pdf->SetLeftMargin(20);
+			$pdf->SetLeftMargin(100);
 			$pdf->SetLineWidth(1);
 			$pdf->Line($xAwal,$yAwal,$xAwal,$curN);
 			$pdf->Line($xAwal+20,$yAwal,$xAwal+20,$curN);
@@ -113,7 +118,7 @@ class Coba extends Fpdf {
 			$pdf->Line($xAwal,$curN,$xAwal+620,$curN);
 			if ($curN >= 500){
 				$pdf->AddPage();
-				$pdf->SetLeftMargin(20);
+				$pdf->SetLeftMargin(100);
 				$pdf->SetRightMargin(20);
 				$curY = 40;
 				$yAwal = 40;

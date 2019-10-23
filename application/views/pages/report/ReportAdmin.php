@@ -75,21 +75,25 @@ class Coba extends Fpdf {
 			$pdf->Cell(20  ,15, $no.".",'LRT', 0, "C");
 			$pdf->SetXY($pdf->GetX(), $curY);
 			$pdf->MultiCell(100,15,$key->adminID,'LRT', 'C');
+
 			$curA=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+120, $curY);
 			$pdf->MultiCell(100,15,$key->emaiL,'LRT', 'C');
+			
 			$pdf->SetXY($pdf->GetX()+220, $curY);
 			$pdf->MultiCell(100,15,$key->fullName,'LRT', 'C');
 			$pdf->SetXY($pdf->GetX()+320, $curY);
 			$pdf->MultiCell(100,15,$key->telePhone,'LRT', 'C');
+			
 			$curB=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+420, $curY);
 			$pdf->MultiCell(100,15,name_dept($key->deptID),'LRT', 'C');
+			
 			$pdf->SetXY($pdf->GetX()+520, $curY);
 			$pdf->MultiCell(100,15,what_role($key->roleID),'LRT', 'C');
 
 			$curC=$pdf->GetY();
-			$pdf->SetXY($pdf->GetX()+770, $curY);
+			$pdf->SetXY($pdf->GetX()+620, $curY);
 
 			if (($curA >= $curB) && ($curA >= $curC)){
 				$curN = $curA;

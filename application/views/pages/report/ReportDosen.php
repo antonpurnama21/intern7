@@ -91,7 +91,7 @@ class Coba extends Fpdf {
 			$pdf->SetXY($pdf->GetX()+620, $curY);
 			$pdf->MultiCell(170,15,$key->address.", Kota.".$key->city." ".$key->zip.", Telp.".$key->mobilePhone,'LRT', 'C');
 			$curD=$pdf->GetY();
-			$pdf->SetXY($pdf->GetX()+770, $curY);
+			$pdf->SetXY($pdf->GetX()+790, $curY);
 
 			if (($curA >= $curB) && ($curA >= $curC) && ($curA >= $curD)){
 				$curN = $curA;
