@@ -54,10 +54,10 @@ class Coba extends Fpdf {
 	$pdf->SetLeftMargin(100);
 	$pdf->Cell(20 ,15, "No",1, "LR", "C", true);
 	$pdf->Cell(100 ,15, "User ID" ,1 ,"LR", "C", true);
-	$pdf->Cell(100 ,15, "Email" ,1 ,"LR", "C", true);
+	$pdf->Cell(150 ,15, "Email" ,1 ,"LR", "C", true);
 	$pdf->Cell(100 ,15, "Nama Lengkap" ,1 ,"LR", "C", true);
 	$pdf->Cell(100 ,15, "Kontak" ,1 ,"LR", "C", true);
-	$pdf->Cell(100 ,15, "Universitas" ,1 ,"LR", "C", true);
+	$pdf->Cell(120 ,15, "Universitas" ,1 ,"LR", "C", true);
 	$pdf->Cell(100, 15, "Hak Akses", 1, "LR", "C", true);
 	if (!empty($dMaster)) {
 		$pdf->SetLeftMargin(100);
@@ -78,22 +78,22 @@ class Coba extends Fpdf {
 
 			$curA=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+120, $curY);
-			$pdf->MultiCell(100,15,$key->emaiL,'LRT', 'C');
+			$pdf->MultiCell(150,15,$key->emaiL,'LRT', 'C');
 
-			$pdf->SetXY($pdf->GetX()+220, $curY);
+			$pdf->SetXY($pdf->GetX()+270, $curY);
 			$pdf->MultiCell(100,15,$key->fullName,'LRT', 'C');
-			$pdf->SetXY($pdf->GetX()+320, $curY);
+			$pdf->SetXY($pdf->GetX()+370, $curY);
 			$pdf->MultiCell(100,15,$key->telePhone,'LRT', 'C');
 			
 			$curB=$pdf->GetY();
-			$pdf->SetXY($pdf->GetX()+420, $curY);
-			$pdf->MultiCell(100,15,name_university($key->universityID),'LRT', 'C');
+			$pdf->SetXY($pdf->GetX()+470, $curY);
+			$pdf->MultiCell(120,15,name_university($key->universityID),'LRT', 'C');
 			
-			$pdf->SetXY($pdf->GetX()+520, $curY);
+			$pdf->SetXY($pdf->GetX()+590, $curY);
 			$pdf->MultiCell(100,15,what_role($key->roleID),'LRT', 'C');
 
 			$curC=$pdf->GetY();
-			$pdf->SetXY($pdf->GetX()+620, $curY);
+			$pdf->SetXY($pdf->GetX()+690, $curY);
 
 			if (($curA >= $curB) && ($curA >= $curC)){
 				$curN = $curA;
@@ -110,12 +110,12 @@ class Coba extends Fpdf {
 			$pdf->Line($xAwal,$yAwal,$xAwal,$curN);
 			$pdf->Line($xAwal+20,$yAwal,$xAwal+20,$curN);
 			$pdf->Line($xAwal+120,$yAwal,$xAwal+120,$curN);
-			$pdf->Line($xAwal+220,$yAwal,$xAwal+220,$curN);
-			$pdf->Line($xAwal+320,$yAwal,$xAwal+320,$curN);
-			$pdf->Line($xAwal+420,$yAwal,$xAwal+420,$curN);
-			$pdf->Line($xAwal+520,$yAwal,$xAwal+520,$curN);
-			$pdf->Line($xAwal+620,$yAwal,$xAwal+620,$curN);
-			$pdf->Line($xAwal,$curN,$xAwal+620,$curN);
+			$pdf->Line($xAwal+270,$yAwal,$xAwal+270,$curN);
+			$pdf->Line($xAwal+370,$yAwal,$xAwal+370,$curN);
+			$pdf->Line($xAwal+470,$yAwal,$xAwal+470,$curN);
+			$pdf->Line($xAwal+590,$yAwal,$xAwal+590,$curN);
+			$pdf->Line($xAwal+690,$yAwal,$xAwal+690,$curN);
+			$pdf->Line($xAwal,$curN,$xAwal+690,$curN);
 			if ($curN >= 500){
 				$pdf->AddPage();
 				$pdf->SetLeftMargin(100);
@@ -129,7 +129,7 @@ class Coba extends Fpdf {
 		}
 	}else{
 		$pdf->Ln();
-		$pdf->MultiCell(620,20,"Maaf Data Masih Kosong !",1, 'C');
+		$pdf->MultiCell(690,20,"Maaf Data Masih Kosong !",1, 'C');
 	}
 
 	$pdf->Output($title.date('dFY').'.pdf','I');
