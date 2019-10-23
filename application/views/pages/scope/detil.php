@@ -231,8 +231,8 @@
                                 <?php }elseif ($status == 'rejected') { ?>
                                     <a style="margin: 10px; color: red;" href="#"><i class="icon-cross2"> Rejected</i></a>
                                 <?php }else{ ?>
-                                    <a data-placement="left" data-popup="tooltip" title="Accept Mahasiswa" style="margin-bottom: 5px" onclick="confirms('Accept','`<?=$key->fullName?>` ?','<?=base_url('scope/do_accept')?>','<?=$key->tempID?>')" <?=$buton?> title="Accepted"><i class="icon-checkmark"></i></a>   
-                                    <a data-placement="left" data-popup="tooltip" title="Reject Mahasiswa" style="margin-bottom: 5px" onclick="confirms('Reject','`<?=$key->fullName?>` ?','<?=base_url('scope/do_reject')?>','<?=$key->tempID?>')" style="color: white;" title="Denied"><i class="icon-cross2"></i></a>
+                                    <a data-placement="left" data-popup="tooltip" title="Accept Mahasiswa" style="margin: 10px" onclick="confirms('Accept','`<?=$key->fullName?>` ?','<?=base_url('scope/do_accept')?>','<?=$key->tempID?>')" <?=$buton?> title="Accepted"><i class="icon-checkmark"></i></a>   
+                                    <a data-placement="left" data-popup="tooltip" title="Reject Mahasiswa" style="margin: 10px; color: red;" onclick="confirms('Reject','`<?=$key->fullName?>` ?','<?=base_url('scope/do_reject')?>','<?=$key->tempID?>')" title="Denied"><i class="icon-cross2"></i></a>
                                 <?php } ?>
                                 </td>
                             </tr>
