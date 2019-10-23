@@ -51,7 +51,7 @@ class Coba extends Fpdf {
 	$pdf->SetFont('Times','B',10);
 	$pdf->SetLineWidth(1,5);
 	$pdf->SetFillColor(252,255,189);
-	$pdf->SetLeftMargin(80);
+	$pdf->SetLeftMargin(20);
 	$pdf->Cell(20 ,15, "No",1, "LR", "C", true);
 	$pdf->Cell(100 ,15, "User ID" ,1 ,"LR", "C", true);
 	$pdf->Cell(150 ,15, "Email" ,1 ,"LR", "C", true);
@@ -60,7 +60,7 @@ class Coba extends Fpdf {
 	$pdf->Cell(120 ,15, "Departemen" ,1 ,"LR", "C", true);
 	$pdf->Cell(100, 15, "Hak Akses", 1, "LR", "C", true);
 	if (!empty($dMaster)) {
-		$pdf->SetLeftMargin(80);
+		$pdf->SetLeftMargin(20);
 		$pdf->Ln();
 		$no = 0;
 		$curY=$pdf->GetY();
@@ -105,7 +105,7 @@ class Coba extends Fpdf {
 				$curN = $curA;
 			}
 
-			$pdf->SetLeftMargin(80);
+			$pdf->SetLeftMargin(20);
 			$pdf->SetLineWidth(1);
 			$pdf->Line($xAwal,$yAwal,$xAwal,$curN);
 			$pdf->Line($xAwal+20,$yAwal,$xAwal+20,$curN);
