@@ -73,15 +73,15 @@ class Coba extends Fpdf {
 			$pdf->SetFont('Times','',8);
 			$pdf->SetXY($pdf->GetX(), $curY);
 			$pdf->Cell(20  ,15, $no.".",'LRT', 0, "C");
-			
-			$curA=$pdf->GetY();
+
 			$pdf->SetXY($pdf->GetX(), $curY);
 			$pdf->MultiCell(100,15,email($key->logUsrID),'LRT', 'C');
-			
-			$curB=$pdf->GetY();
+			$curA=$pdf->GetY();
+
 			$pdf->SetXY($pdf->GetX()+120, $curY);
 			$pdf->MultiCell(100,15,timestep($key->logTime),'LRT', 'C');
-			
+			$curB=$pdf->GetY();
+
 			$pdf->SetXY($pdf->GetX()+220, $curY);
 			$pdf->MultiCell(100,15,$key->logBrowser,'LRT', 'C');
 			$pdf->SetXY($pdf->GetX()+320, $curY);
@@ -91,21 +91,18 @@ class Coba extends Fpdf {
 			$pdf->SetXY($pdf->GetX()+520, $curY);
 			$pdf->MultiCell(100,15,logtype($key->logTypeID),'LRT', 'C');
 			
-			$curC=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+620, $curY);
 			$pdf->MultiCell(170,15,$key->logDesc,'LRT', 'C');
-			
-			$curD=$pdf->GetY();
-			$pdf->SetXY($pdf->GetX()+770, $curY);
+			$curC=$pdf->GetY();
 
-			if (($curA >= $curB) && ($curA >= $curC) && ($curA >= $curD)){
+			$pdf->SetXY($pdf->GetX()+790, $curY);
+
+			if (($curA >= $curB) && ($curA >= $curC)){
 				$curN = $curA;
-			}else if (($curB >= $curA) && ($curB >= $curC) && ($curB >= $curD)){
+			}else if (($curB >= $curA) && ($curB >= $curC)){
 				$curN = $curB;
-			}else if (($curC >= $curA) && ($curC >= $curB) && ($curC >= $curD)){
+			}else if (($curC >= $curA) && ($curC >= $curB)){
 				$curN = $curC;
-			}else if (($curD >= $curA) && ($curD >= $curB) && ($curD >= $curC)){
-				$curN = $curD;
 			}else{
 				$curN = $curA;
 			}
