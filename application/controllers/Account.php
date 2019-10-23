@@ -94,12 +94,52 @@ class Account extends CommonDash {
            	);
 		
 		$delete 	= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$emaiL));
-		helper_log('revoke','Revoke Setup Link for '.$emaiL,$this->session->userdata('userlog')['sess_usrID']);
 
-           	if ($delete){
+			$config = array(
+				  		'protocol' => 'ssmtp',
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
+				  		'smtp_port' => 465,
+				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
+				  		'smtp_pass' => 'Infocbn123', // change it to yours
+				  		//'smtp_username' => 'armg3295',
+				  		'mailtype' => 'html',
+				  		'charset' => 'iso-8859-1',
+				  		'wordwrap' => TRUE
+			);
+
+			$message = 	'
+						<html>
+						<head>
+							<title>Revoke Setup Link</title>
+						</head>
+						<body>
+							<h2>CBN Internship Web Portal</h2>
+							<p>The request to change your account password has been canceled by HC Admin, please use the default password <i>"cbn123"</i> to continue being able to access your account.<br/><br/></p>
+							<p><hr />Do Not reply to this message<hr /><br/></p>
+							<p>CBN Internet<br/>
+								PT. Cyberindo Aditama<br/>
+								Jalan. HR Rasuna Said Blok X5, No. 13<br/>
+								Jakarta Selatan - 12950<br/>
+								Telp. (021) 2996-4900<br/>
+								Fax : +62 21 574-2481<br/>
+								Web : www.cbn.net.id<br/>
+							</p>							
+						</body>
+						</html>
+						';
+	 		
+		    $this->load->library('email', $config);
+		    $this->email->set_newline("\r\n");
+		    $this->email->from($config['smtp_user']);
+		    $this->email->to($emaiL);
+		    $this->email->subject('Revoke Setup Link');
+		    $this->email->message($message);
+		    helper_log('revoke','Revoke Setup Link for '.$emaiL,$this->session->userdata('userlog')['sess_usrID']);
+
+           	if ($this->email->send()){
 			$data = array(
 					'code' => 200,
-					'pesan' => 'Revoke Link, Success!',
+					'pesan' => 'Send Revoke Link, Success!',
 					'aksi' => 'setTimeout("window.location.reload();",1500)'
 	              	);
 				echo json_encode($data);
