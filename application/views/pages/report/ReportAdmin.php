@@ -51,7 +51,7 @@ class Coba extends Fpdf {
 	$pdf->SetFont('Times','B',10);
 	$pdf->SetLineWidth(1,5);
 	$pdf->SetFillColor(252,255,189);
-	$pdf->Cell(20 ,50, "No",1, "LR", "C", true);
+	$pdf->Cell(20 ,15, "No",1, "LR", "C", true);
 	$pdf->Cell(100 ,15, "User ID" ,1 ,"LR", "C", true);
 	$pdf->Cell(100 ,15, "Email" ,1 ,"LR", "C", true);
 	$pdf->Cell(100 ,15, "Nama Lengkap" ,1 ,"LR", "C", true);
@@ -59,7 +59,7 @@ class Coba extends Fpdf {
 	$pdf->Cell(100 ,15, "Departemen" ,1 ,"LR", "C", true);
 	$pdf->Cell(100, 15, "Hak Akses", 1, "LR", "C", true);
 	if (!empty($dMaster)) {
-		$pdf->SetLeftMargin(20);
+		$pdf->SetLeftMargin(100);
 		$pdf->Ln();
 		$no = 0;
 		$curY=$pdf->GetY();
@@ -74,16 +74,16 @@ class Coba extends Fpdf {
 			$pdf->Cell(20  ,15, $no.".",'LRT', 0, "C");
 			$pdf->SetXY($pdf->GetX(), $curY);
 			$pdf->MultiCell(100,15,$key->adminID,'LRT', 'C');
+			$curA=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+120, $curY);
 			$pdf->MultiCell(100,15,$key->emaiL,'LRT', 'C');
 			$pdf->SetXY($pdf->GetX()+220, $curY);
 			$pdf->MultiCell(100,15,$key->fullName,'LRT', 'C');
 			$pdf->SetXY($pdf->GetX()+320, $curY);
 			$pdf->MultiCell(100,15,$key->telePhone,'LRT', 'C');
-			$curA=$pdf->GetY();
+			$curB=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+420, $curY);
 			$pdf->MultiCell(100,15,name_dept($key->deptID),'LRT', 'C');
-			$curB=$pdf->GetY();
 			$pdf->SetXY($pdf->GetX()+520, $curY);
 			$pdf->MultiCell(100,15,what_role($key->roleID),'LRT', 'C');
 
