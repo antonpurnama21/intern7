@@ -88,7 +88,7 @@ class Account extends CommonDash {
 	{
 		$emaiL 		= $this->input->post('id');
 		$update 	= $this->Mod_crud->updateData('t_login', array(
-		           		'passworD' 	=> NULL,
+		           	'passworD' 	=> md5('cbn123'),
 					'statuS'	=> 'revoke',
            			), array('emaiL' => $emaiL)
            	);
