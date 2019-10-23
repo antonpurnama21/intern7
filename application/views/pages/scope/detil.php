@@ -228,7 +228,7 @@
                                     <a data-placement="left" data-popup="tooltip" title="View Mahasiswa" style="margin: 10px" onclick="showModal('<?=base_url('scope/modalMahasiswa') ?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', 'review');"><i class="icon-eye2"></i></a>
                                 <?php if($key->statusTemp == 'accepted'){ ?>
                                     <a style="margin: 10px" href="#"><i class="icon-checkmark"> Accepted</i></a>
-                                <?php }elseif ($status == 'rejected') { ?>
+                                <?php }elseif ($key->statusTemp == 'rejected') { ?>
                                     <a style="margin: 10px; color: red;" href="#"><i class="icon-cross2"> Rejected</i></a>
                                 <?php }else{ ?>
                                     <a data-placement="left" data-popup="tooltip" title="Accept Mahasiswa" style="margin: 10px" onclick="confirms('Accept','`<?=$key->fullName?>` ?','<?=base_url('scope/do_accept')?>','<?=$key->tempID?>')" <?=$buton?> title="Accepted"><i class="icon-checkmark"></i></a>   
