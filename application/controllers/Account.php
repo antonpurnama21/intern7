@@ -43,14 +43,14 @@ class Account extends CommonDash {
 				  		'wordwrap' => TRUE
 			);
 
-			$message = 	"
+			$message = 	'
 						<html>
 						<head>
 							<title>Account Setup Link</title>
 						</head>
 						<body>
 							<h2>CBN Internship Web Portal</h2>
-							<p>Please click the link below to set your password ".base_url('auth/reset/'.$tokeN)." <br/>( warning: this link will expire after one hour )<br/><br/></p>
+							<p>Please click the link below to set your password '.base_url('auth/reset/'.$tokeN).' <br/>( warning: this link will expire after one hour )<br/><br/></p>
 							<p><hr />Do Not reply to this message<hr /><br/></p>
 							<p>CBN Internet<br/>
 								PT. Cyberindo Aditama<br/>
@@ -62,7 +62,7 @@ class Account extends CommonDash {
 							</p>							
 						</body>
 						</html>
-						";
+						';
 	 		
 		    $this->load->library('email', $config);
 		    $this->email->set_newline("\r\n");
@@ -75,7 +75,7 @@ class Account extends CommonDash {
            	if ($this->email->send()){
 			$data = array(
 					'code' => 200,
-					'pesan' => 'Resend Link, Success!',
+					'pesan' => 'Resend Setup Link, Success!',
 					'aksi' => 'setTimeout("window.location.reload();",1500)'
 	              	);
 				echo json_encode($data);
