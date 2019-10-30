@@ -217,9 +217,9 @@ foreach ($dtjumlah as $key) {?>
 							</td>
 							<td><?= what_role($key->roleID) ?></td>
 							<td>
-								<a data-placement="left" data-popup="tooltip" title="Batalkan Reset / Setup Link" style="margin: 10px" onclick="confirms('Revoke','Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_revoke') ?>','<?= $key->emaiL ?>')"><i class="icon-blocked"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Kirim Kembali Setup Link" style="margin: 10px" onclick="confirms('Resend Setup Link','For Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_resend') ?>','<?= $key->emaiL ?>')"><i class="icon-sync"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Delete Account" style="margin: 10px; color: red;" onclick="confirms('Delete','Account `<?= $key->emaiL ?>`?','<?= base_url('account/delete') ?>','<?= $key->loginID ?>')"><i class="icon-trash"></i></a>
+								<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Batalkan Reset / Setup Link" style="margin: 5px" onclick="confirms('Revoke','Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_revoke') ?>','<?= $key->emaiL ?>')"><i class="icon-blocked"></i></a>
+								<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Kirim Kembali Setup Link" style="margin: 5px" onclick="confirms('Resend Setup Link','For Account `<?= $key->emaiL ?>`?','<?= base_url('account/do_resend') ?>','<?= $key->emaiL ?>')"><i class="icon-sync"></i></a>
+								<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete Account" style="margin: 5px;" onclick="confirms('Delete','Account `<?= $key->emaiL ?>`?','<?= base_url('account/delete') ?>','<?= $key->loginID ?>')"><i class="icon-trash"></i></a>
 							</td>
 						</tr>
 					<?php
@@ -271,19 +271,16 @@ foreach ($dtjumlah as $key) {?>
 									$no++;
 
 									if ($key->isApproved == 'Y') {
-									    $approve = 'Yes';
-									    $btn = 'btn-primary';
+									    $approve = '<span class="badge badge-success">Yes</span>';
 									}elseif ($key->isApproved=='N') {
-									    $approve = 'No';
-									    $btn = 'btn-danger';
+									    $approve = '<span class="badge badge-danger">No</span>';
 									}else{
-									    $approve = 'Pending';
-									    $btn = 'btn-default';
+									    $approve = '<span class="badge badge-default">Pending</span>';
 									}
 									if($key->isTaken == 1){ 
-									    $status = '<b>Open</b>';
+									    $status = '<span class="badge badge-success">Open</span>';
 									}else{
-									    $status = '<b>Close</b>';
+									    $status = '<span class="badge badge-danger">Close</span>';
 									}
 
 						?>
@@ -294,12 +291,12 @@ foreach ($dtjumlah as $key) {?>
 							<td><?=$key->projectScope?></td>
 							<td><?=name_project($key->projectID)?></td>
 							<td><?=name_dept($key->deptID)?></td>
-							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
+							<td><span class="badge badge-primary"><?=$key->reqQuantity?></span>&emsp;|&emsp;<span class="badge badge-success"><?=chk_totalApply($key->projectScopeID)?></span></td>
 							<td><?=$status?></td>
-							<td><b><?=ucwords($approve)?></b></td>
+							<td><b><?=$approve?></b></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Setujui Project Scope" style="margin: 10px" onclick="confirms('Publish','Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/do_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-clipboard2"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Tolak Project Scope" style="margin: 10px; color: red;" onclick="confirms('Deny','Deny This Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/not_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-blocked"></i></a>								
+								<a class="btn btn-success" data-placement="left" data-popup="tooltip" title="Setujui Project Scope" style="margin: 5px" onclick="confirms('Publish','Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/do_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-clipboard2"></i></a>
+								<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Tolak Project Scope" style="margin: 5px;" onclick="confirms('Deny','Deny This Project Scope `<?= $key->projectScope ?>`?','<?= base_url('scope/not_approve') ?>','<?= $key->projectScopeID ?>')"><i class="icon-blocked"></i></a>								
 							</td>
 						</tr>
 						<?php

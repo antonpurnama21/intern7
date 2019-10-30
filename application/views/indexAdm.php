@@ -124,19 +124,17 @@ foreach ($dtjumlah as $key) {?>
 									$no++;
 
 									if ($key->isApproved == 'Y') {
-									    $approve = 'Yes';
-									    $btn = 'btn-primary';
+									    $approve = '<span class="badge badge-success">Yes</span>';
 									}elseif ($key->isApproved=='N') {
-									    $approve = 'No';
-									    $btn = 'btn-danger';
+									    $approve = '<span class="badge badge-danger">No</span>';
 									}else{
-									    $approve = 'Pending';
-									    $btn = 'btn-default';
+									    $approve = '<span class="badge badge-default">Pending</span>';
 									}
+
 									if($key->isTaken == 1){ 
-									    $status = '<b>Open</b>';
+									    $status = '<span class="badge badge-success">Open</span>';
 									}else{
-									    $status = '<b>Close</b>';
+									    $status = '<span class="badge badge-danger">Close</span>';
 									}
 
 						?>
@@ -147,12 +145,10 @@ foreach ($dtjumlah as $key) {?>
 							<td><?=$key->projectScope?></td>
 							<td><?=name_project($key->projectID)?></td>
 							<td><?=name_dept($key->deptID)?></td>
-							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
+							<td><span class="badge badge-primary"><?=$key->reqQuantity?></span>&emsp;|&emsp;<span class="badge badge-success"><?=chk_totalApply($key->projectScopeID)?></span></td>
 							<td><?=$status?></td>
 							<td class="text-center">
-								<div class='row'>
-									<a data-placement="left" data-popup="tooltip" title="Menunggu Persetujuan dari Admin HC"><i class="icon-hour-glass"></i> <?=ucwords($approve)?></a>
-								 </div>								
+								<i class="icon-hour-glass"></i> <?=$approve?>							
 							</td>
 						</tr>
 						<?php

@@ -423,7 +423,7 @@ class Workscope extends CommonDash {
 					$key->finding,
 					date_format(date_create($key->date), 'd F Y'),
 					'
-					<a style="margin: 10px" onclick="showModal(`'.base_url("workscope/modalEditProgress").'`, `'.$key->progressID.'~'.$id.'`, `edit`);"><i class="icon-quill4"></i></a>
+					<a class="btn btn-primary" style="margin: 5px" onclick="showModal(`'.base_url("workscope/modalEditProgress").'`, `'.$key->progressID.'~'.$id.'`, `edit`);"><i class="icon-quill4"></i></a>
 					'
 					)
 				);

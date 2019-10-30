@@ -50,10 +50,10 @@
 					<td><?=name_university($key->universityID)?></td>
 					<td><?=name_faculty($key->facultyID)?></td>
 					<td class="text-center">
-						<a data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 10px" onclick="showModal('<?=base_url("dosen/modalReset")?>', '<?=$key->dosenID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="Edit Dosen" style="margin: 10px" href="<?=base_url('dosen/form/'.$key->dosenID)?>"><i class="icon-quill4"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="View Dosen" style="margin: 10px" onclick="showModal('<?=base_url("dosen/modalDosen")?>', '<?=$key->dosenID.'~'.$key->fullName?>', `view`);"><i class="icon-eye"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','dosen `<?=$key->fullName ?>`?','<?=base_url('dosen/delete') ?>','<?=$key->dosenID?>')"><i class="icon-trash"></i></a>
+						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?=base_url("dosen/modalReset")?>', '<?=$key->dosenID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
+						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Dosen" style="margin: 5px" href="<?=base_url('dosen/form/'.$key->dosenID)?>"><i class="icon-quill4"></i></a>
+						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="View Dosen" style="margin: 5px" onclick="showModal('<?=base_url("dosen/modalDosen")?>', '<?=$key->dosenID.'~'.$key->fullName?>', `view`);"><i class="icon-eye"></i></a>
+						<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete" style="margin: 5px;" onclick="confirms('Delete','dosen `<?=$key->fullName ?>`?','<?=base_url('dosen/delete') ?>','<?=$key->dosenID?>')"><i class="icon-trash"></i></a>
 					</td>
 				</tr>
 				<?php

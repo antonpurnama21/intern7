@@ -44,9 +44,9 @@
 				<td><?= name_dept($key->deptID)?></td>
 				<td><?= what_role($key->roleID)?></td>
 				<td>
-					<a data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 10px" onclick="showModal('<?= base_url("admin/modalReset")?>', '<?= $key->adminID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
-					<a data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 10px" onclick="showModal('<?=base_url("admin/modalEdit")?>', '<?=$key->adminID.'~'.$key->fullName?>', 'editadmin')"><i class="icon-quill4"></i></a>
-					<a data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 10px; color: red;" onclick="confirms('Delete','Admin `<?= $key->fullName?>`?','<?= base_url("admin/delete")?>','<?= $key->adminID?>')"><i class="icon-trash"></i></a>
+					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?= base_url("admin/modalReset")?>', '<?= $key->adminID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
+					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" onclick="showModal('<?=base_url("admin/modalEdit")?>', '<?=$key->adminID.'~'.$key->fullName?>', 'editadmin')"><i class="icon-quill4"></i></a>
+					<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 5px;" onclick="confirms('Delete','Admin `<?= $key->fullName?>`?','<?= base_url("admin/delete")?>','<?= $key->adminID?>')"><i class="icon-trash"></i></a>
 				</td>
 			</tr>
 			<?php

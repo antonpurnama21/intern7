@@ -37,8 +37,8 @@
 								<td><?= $cat->categoryID ?></td>
 								<td><?= $cat->categoryName ?></td>
 								<td class="text-center">
-									<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('scope/modalEditCategory') ?>','<?= $cat->categoryID.'~'.$cat->categoryName ?>','editcategory')"><i class="icon-quill4"></i></a>
-									<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Category `<?= $cat->categoryName ?>`?','<?= base_url('scope/deleteCategory') ?>','<?= $cat->categoryID ?>')"><i class="icon-trash"></i></a>
+									<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit" style="margin: 5px" onclick="showModal('<?= base_url('scope/modalEditCategory') ?>','<?= $cat->categoryID.'~'.$cat->categoryName ?>','editcategory')"><i class="icon-quill4"></i></a>
+									<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete" style="margin: 5px;" onclick="confirms('Delete','Category `<?= $cat->categoryName ?>`?','<?= base_url('scope/deleteCategory') ?>','<?= $cat->categoryID ?>')"><i class="icon-trash"></i></a>
 								</td>
 							</tr>
 						<?php
@@ -87,8 +87,8 @@
 								<td><?= $pro->projectID ?></td>
 								<td><?= $pro->projectName ?> ( <?= name_dept($pro->deptID) ?> }</td>
 								<td class="text-center">
-									<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('scope/modalEditProject') ?>','<?= $pro->projectID.'~'.$pro->projectName ?>','editproject')"><i class="icon-quill4"></i></a>
-									<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Project `<?= $pro->projectName ?>`?','<?= base_url('scope/deleteProject') ?>','<?= $pro->projectID ?>')"><i class="icon-trash"></i></a>
+									<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit" style="margin: 5px" onclick="showModal('<?= base_url('scope/modalEditProject') ?>','<?= $pro->projectID.'~'.$pro->projectName ?>','editproject')"><i class="icon-quill4"></i></a>
+									<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete" style="margin: 5px;" onclick="confirms('Delete','Project `<?= $pro->projectName ?>`?','<?= base_url('scope/deleteProject') ?>','<?= $pro->projectID ?>')"><i class="icon-trash"></i></a>
 								</td>
 							</tr>
 						<?php
@@ -140,19 +140,16 @@
 								$no++;
 
 								if ($key->isApproved == 'Y') {
-				                    $approve = 'Yes';
-				                    $btn = 'btn-primary';
+				                    $approve = '<span class="badge badge-success">Yes</span>';
 				                }elseif ($key->isApproved=='N') {
-				                    $approve = 'No';
-				                    $btn = 'btn-danger';
+				                    $approve = '<span class="badge badge-danger">No</span>';
 				                }else{
-				                    $approve = 'Pending';
-				                    $btn = 'btn-default';
+				                    $approve = '<span class="badge badge-default">Pending</span>';
 				                }
 				                if($key->isTaken == 1){ 
-				                    $status = '<b>Open</b>';
+				                    $status = '<span class="badge badge-success">Open</span>';
 				                }else{
-				                    $status = '<b>Close</b>';
+				                    $status = '<span class="badge badge-danger">Close</span>';
 				                }
 						?>
 						<tr>
@@ -162,13 +159,13 @@
 							<td><?=$key->projectScope?></td>
 							<td><?=name_project($key->projectID)?></td>
 							<td><?=name_dept($key->deptID)?></td>
-							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
+							<td><span class="badge badge-primary"><?=$key->reqQuantity?></span>&emsp;|&emsp;<span class="badge badge-success"><?=chk_totalApply($key->projectScopeID)?></span></td>
 							<td><?=$status?></td>
-							<td><b><?=ucwords($approve)?></b></td>
+							<td><?=$approve?></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Project Scope Detail" style="margin: 10px" onclick="location.href='<?=base_url('scope/detilScope/'.$key->projectScopeID) ?>'"><i class="icon-eye"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="location.href='<?=base_url('scope/form/'.$key->projectScopeID) ?>'"><i class="icon-quill4"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/delete')?>','<?=$key->projectScopeID?>')"><i class="icon-trash"></i></a>								
+								<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Project Scope Detail" style="margin: 5px" onclick="location.href='<?=base_url('scope/detilScope/'.$key->projectScopeID) ?>'"><i class="icon-eye"></i></a>
+								<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit" style="margin: 5px" onclick="location.href='<?=base_url('scope/form/'.$key->projectScopeID) ?>'"><i class="icon-quill4"></i></a>
+								<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete" style="margin: 5px;" onclick="confirms('Delete','Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/delete')?>','<?=$key->projectScopeID?>')"><i class="icon-trash"></i></a>								
 							</td>
 						</tr>
 						<?php

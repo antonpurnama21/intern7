@@ -62,8 +62,8 @@
 							<td><?=$key->taskDesc?></td>
 							<td><a style="<?= $btn?>"><?=$status?></a></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Detail Task" style="margin: 10px" onclick="showModal('<?= base_url('workscope/modalReviewTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-eye"></i></a>
-								<a data-placement="left" data-popup="tooltip" title="Edit Task" style="margin: 10px; <?= showLevel(array(55)); ?>" onclick="showModal('<?= base_url('workscope/modalEditTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-quill4"></i></a>							
+								<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Detail Task" style="margin: 5px" onclick="showModal('<?= base_url('workscope/modalReviewTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-eye"></i></a>
+								<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Edit Task" style="margin: 5px; <?= showLevel(array(55)); ?>" onclick="showModal('<?= base_url('workscope/modalEditTask') ?>','<?= $key->taskID.'~'.$key->taskName ?>','edit')"><i class="icon-quill4"></i></a>							
 							</td>
 						</tr>
 						<?php

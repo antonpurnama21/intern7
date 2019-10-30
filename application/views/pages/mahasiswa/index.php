@@ -50,10 +50,10 @@
 					<td><?=name_university($key->universityID)?></td>
 					<td><?=name_faculty($key->facultyID)?></td>
 					<td class="text-center">
-						<a data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 10px" onclick="showModal('<?=base_url("mahasiswa/modalReset")?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="Edit Mahasiswa" style="margin: 10px" href="<?=base_url('mahasiswa/form/'.$key->mahasiswaID)?>"><i class="icon-quill4"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="View Mahasiswa" style="margin: 10px" onclick="showModal('<?=base_url("mahasiswa/modalMahasiswa")?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', `view`);"><i class="icon-eye"></i></a>
-						<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Mahasiswa `<?=$key->fullName ?>`?','<?=base_url('mahasiswa/delete') ?>','<?=$key->mahasiswaID?>')"><i class="icon-trash"></i></a>
+						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?=base_url("mahasiswa/modalReset")?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
+						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Mahasiswa" style="margin: 5px" href="<?=base_url('mahasiswa/form/'.$key->mahasiswaID)?>"><i class="icon-quill4"></i></a>
+						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="View Mahasiswa" style="margin: 5px" onclick="showModal('<?=base_url("mahasiswa/modalMahasiswa")?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', `view`);"><i class="icon-eye"></i></a>
+						<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete" style="margin: 5px;" onclick="confirms('Delete','Mahasiswa `<?=$key->fullName ?>`?','<?=base_url('mahasiswa/delete') ?>','<?=$key->mahasiswaID?>')"><i class="icon-trash"></i></a>
 					</td>
 				</tr>
 				<?php

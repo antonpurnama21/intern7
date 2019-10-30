@@ -43,15 +43,15 @@
                                 if ($key->statusWorkscope=='pending') {
                                     $btn = 'btn-secondary';
                                     $bg = '';
-                                    $status = 'Pending';
+                                    $status = '<span class="badge badge-default">Pending</span>';
                                 }elseif ($key->statusWorkscope=='on-progress') {
                                     $btn = 'bg-green';
                                     $bg = 'bg-success';
-                                    $status = 'On Progress';
+                                    $status = '<span class="badge badge-success">On Progress</span>';
                                 }else{
                                     $btn = 'btn-primary';
                                     $bg = 'bg-blue';
-                                    $status = 'Done';
+                                    $status = '<span class="badge badge-primary">Done</span>';
                                 }
 						?>
 						<tr>
@@ -61,7 +61,7 @@
 							<td><?=name_project($key->projectID)?></td>
 							<td><?=name_mhs($key->mahasiswaID) ?></td>
 							<td>
-								<div class="progress active" style="margin: 10px">
+								<div class="progress active" style="margin: 5px">
 									<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?>" style="width: <?=$persen?>%">
 										<span><?=$persen?> %</span>
 									</div>
@@ -69,7 +69,7 @@
 							</td>
 							<td><?=$status?></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="View Workscope" style="margin: 10px" onclick="location.href='<?=base_url('workscope/detail/'.$key->workscopeID) ?>'"><i class="icon-eye"></i></a>
+								<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="View Workscope" style="margin: 5px" onclick="location.href='<?=base_url('workscope/detail/'.$key->workscopeID) ?>'"><i class="icon-eye"></i></a>
 							</td>
 						</tr>
 						<?php

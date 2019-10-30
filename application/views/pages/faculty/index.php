@@ -35,8 +35,8 @@
 						<td><?= $key->facultyID ?></td>
 						<td><?= $key->facultyName ?></td>
 						<td class="text-center">
-							<a data-placement="left" data-popup="tooltip" title="Edit" style="margin: 10px" onclick="showModal('<?= base_url('faculty/modalEdit') ?>','<?= $key->facultyID.'~'.$key->facultyName ?>','editfaculty')"><i class="icon-quill4"></i></a>
-							<a data-placement="left" data-popup="tooltip" title="Delete" style="margin: 10px; color: red;" onclick="confirms('Delete','Faculty `<?= $key->facultyName ?>`?','<?= base_url('faculty/delete') ?>','<?= $key->facultyID ?>')"><i class="icon-trash"></i></a>
+							<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit" style="margin: 5px" onclick="showModal('<?= base_url('faculty/modalEdit') ?>','<?= $key->facultyID.'~'.$key->facultyName ?>','editfaculty')"><i class="icon-quill4"></i></a>
+							<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete" style="margin: 5px;" onclick="confirms('Delete','Faculty `<?= $key->facultyName ?>`?','<?= base_url('faculty/delete') ?>','<?= $key->facultyID ?>')"><i class="icon-trash"></i></a>
 						</td>
 					</tr>
 				<?php

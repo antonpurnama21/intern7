@@ -73,23 +73,23 @@
 							<td><?=$key->projectScope?></td>
 							<td><?=name_project($key->projectID)?></td>
 							<td><?=name_dept($key->deptID)?></td>
-							<td><b><?=$key->reqQuantity?> | <?=chk_totalApply($key->projectScopeID)?></b></td>
+							<td><span class="badge badge-primary"><?=$key->reqQuantity?></span>&emsp;|&emsp;<span class="badge badge-success"><?=chk_totalApply($key->projectScopeID)?></span></td>
 							<td><?=$status?></td>
 							<td class="text-center">
-								<a data-placement="left" data-popup="tooltip" title="Print Project Scope" style="margin: 10px" target="_blank" href="<?=base_url()?>report/printScope/<?=$key->projectScopeID?>"><i class="icon-printer"></i></a>
-	                            <a data-placement="left" data-popup="tooltip" title="View project Scope" style="margin: 10px" onclick="showModal('<?=base_url('scope/modalScope') ?>', '<?=$key->projectScopeID.'~'.$key->projectScope?>', 'review');"><i class="icon-eye"></i></a>
+								<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Print Project Scope" style="margin: 5px" target="_blank" href="<?=base_url()?>report/printScope/<?=$key->projectScopeID?>"><i class="icon-printer"></i></a>
+	                            <a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="View project Scope" style="margin: 5px" onclick="showModal('<?=base_url('scope/modalScope') ?>', '<?=$key->projectScopeID.'~'.$key->projectScope?>', 'review');"><i class="icon-eye"></i></a>
 	                            <?php if($this->session->userdata('userlog')['sess_role']==55){ 
 	                            $check2 = chk_applyMhs($key->projectScopeID);
 	                            $stats = chk_statsTemp($key->projectScopeID); 
 	                            if ($stats == 'accepted') {?>
-	                            	<a data-placement="left" data-popup="tooltip" title="You Was Accepted" style="'<?=showLevel(array(55))?> margin: 10px">Accepted</a>
+	                            	<span class="badge badge-success" style="margin: 5px">ACCEPTED</span>
 	                            <?php }elseif ($stats == 'rejected'){?>
-	                            	<a data-placement="left" data-popup="tooltip" title="You Was Rejected" style="<?=showLevel(array(55))?> margin: 10px; color: red;">Rejected</a>
+	                            	<span class="badge badge-danger" style="margin: 5px">REJECTED</span>
 	                            <?php }else{
 	                            if ($check2 == false) {?>
-	                            <a data-placement="left" data-popup="tooltip" title="Apply This Project Scope" onclick="confirms('Apply','Apply Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/applyScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px;" <?=$button?> ><i class="icon-checkmark"></i> APPLY</a><br/><?=$badge?>
+	                            <a class="btn btn-success" data-placement="left" data-popup="tooltip" title="Apply This Project Scope" onclick="confirms('Apply','Apply Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/applyScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 5px;" <?=$button?> ><i class="icon-checkmark"></i> APPLY</a><br/><?=$badge?>
 	                        	<?php }else{?>
-	                            '<a data-placement="left" data-popup="tooltip" title="Cancel This Project Scope" onclick="confirms('Cancel','Cancel Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/cancelScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 10px; color: red;"><i class="icon-cross2"></i> CANCEL ?</a>,
+	                            '<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Cancel This Project Scope" onclick="confirms('Cancel','Cancel Project Scope `<?=$key->projectScope?>` ?','<?=base_url('scope/cancelScope')?>','<?=$key->projectScopeID?>')" style="<?=showLevel(array(55))?> margin: 5px;"><i class="icon-cross2"></i> CANCEL ?</a>,
 	                            <?php } } }?>							
 							</td>
 						</tr>
