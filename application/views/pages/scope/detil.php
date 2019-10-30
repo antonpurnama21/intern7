@@ -227,9 +227,9 @@
                                 <td>
                                     <a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="View Mahasiswa" style="margin: 5px" onclick="showModal('<?=base_url('scope/modalMahasiswa') ?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', 'review');"><i class="icon-eye2"></i></a>
                                 	<?php if($key->statusTemp == 'accepted'){ ?>
-                                    <span class="badge badge-success"><i class="icon-checkmark"> Accepted</i></span>
+                                    <span class="badge badge-success" style="margin: 5px"><i class="icon-checkmark"> ACCEPTED</i></span>
                                 	<?php }elseif ($key->statusTemp == 'rejected') { ?>
-                                    <span class="badge badge-danger"><i class="icon-cross2"> Rejected</i></span>
+                                    <span class="badge badge-danger" style="margin: 5px"><i class="icon-cross2"> REJECTED</i></span>
                                 	<?php }else{ ?>
                                     <a class="btn btn-success" data-placement="left" data-popup="tooltip" title="Accept Mahasiswa" style="margin: 5px" onclick="confirms('Accept','`<?=$key->fullName?>` ?','<?=base_url('scope/do_accept')?>','<?=$key->tempID?>')" <?=$buton?> title="Accepted"><i class="icon-checkmark"></i></a>   
                                     <a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Reject Mahasiswa" style="margin: 5px;" onclick="confirms('Reject','`<?=$key->fullName?>` ?','<?=base_url('scope/do_reject')?>','<?=$key->tempID?>')" title="Denied"><i class="icon-cross2"></i></a>
