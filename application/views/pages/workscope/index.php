@@ -43,7 +43,7 @@
                                 if ($persen == 100) {
                                 	$active = '';
                                 }else{
-                                	$active = 'active'
+                                	$active = 'active';
                                 }
 
                                 if ($key->statusWorkscope=='pending') {
