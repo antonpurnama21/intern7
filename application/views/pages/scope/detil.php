@@ -206,7 +206,7 @@
 									$no++;
 
                                 if ($key->type == 'canceled') {
-                                $buton = 'class="disabled"';
+                                	$buton = 'disabled';
                                     }else{
                                         $buton = '';
                                     }

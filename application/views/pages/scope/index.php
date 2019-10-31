@@ -38,7 +38,7 @@
 				                    $button = '';
 				                    $check = chk_statsMhs($this->session->userdata('userlog')['sess_usrID']);
 				                    if ($check == false) {
-				                        $button='class="disabled"';
+				                        $button='disabled';
 				                        $badge = '<span style="margin-top: 5px" class="badge badge-warning"><i class="icon-info3"></i> Please Complete Your Profile</span>';
 				                    }else{
 				                    	$button ='';
@@ -46,12 +46,12 @@
 
 				                    	$check3 = chk_typeTemp($key->projectScopeID);
 					                    if ($check3 == 'canceled') {
-					                      	$button = 'class="disabled"';
+					                      	$button = 'disabled"';
 					                    }else{
 					                    	$button = '';
 					                    	$check4 = chk_workMhs($this->session->userdata('userlog')['sess_usrID']);
 							                if ($check4 == true) {
-							                    $button = 'class="disabled"';
+							                    $button = 'disabled';
 							                }else{
 							                    $button = '';
 							                }
@@ -62,7 +62,7 @@
 
 				                }else{
 				                    $status = '<span class="badge badge-danger">CLOSE</span>';
-				                    $button = 'class="disabled"';
+				                    $button = 'disabled';
 				                    $badge  = '';
 				                }
 				                $approve = $key->isApproved;
