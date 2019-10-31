@@ -40,6 +40,12 @@
                                 $totalDone = chk_totalTaskDone($key->workscopeID);
                                 $persen = @($totalDone / $totalTask * 100);
 
+                                if ($persen == 100) {
+                                	$active = '';
+                                }else{
+                                	$active = 'active'
+                                }
+
                                 if ($key->statusWorkscope=='pending') {
                                     $btn = 'btn-secondary';
                                     $bg = '';
@@ -61,7 +67,7 @@
 							<td><?=name_project($key->projectID)?></td>
 							<td><?=name_mhs($key->mahasiswaID) ?></td>
 							<td>
-								<div class="progress active" style="margin: 5px">
+								<div class="progress <?=$active?>" style="margin: 5px">
 									<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?>" style="width: <?=$persen?>%">
 										<span><?=$persen?> %</span>
 									</div>

@@ -143,7 +143,7 @@ foreach ($dtjumlah as $key) {?>
 										}elseif ($persen < 100 ) {
 											$badge = 'success';
 										}elseif($persen == 100){
-											$persen = 'primary';
+											$badge = 'primary';
 										}
 									?>
 								<label class="control-label"><span class="badge badge-<?=$badge?>"><?=$persen?> %</span></label>

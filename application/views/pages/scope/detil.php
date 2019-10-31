@@ -205,11 +205,12 @@
 								foreach ($dtmp as $key) {
 									$no++;
 
-                                if ($key->type == 'canceled') {
-                                	$buton = 'disabled';
+                                	if ($key->type == 'canceled') {
+                                		$buton = 'disabled';
                                     }else{
                                         $buton = '';
                                     }
+
                                     if ($key->statusTemp == "") {
                                         $status = "NONE";
                                     }else{
