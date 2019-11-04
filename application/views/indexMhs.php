@@ -52,7 +52,7 @@
 				<label><?= $scope ?> ( % )</label>
 				<div class="progress mb-3" style="height: 3rem;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?> <?=$ac?>" style="width: <?=$persen?>">
-						<span><?=$persen?> Complete</span>
+						<span class="mt-2"><?=$persen?> Complete</span>
 					</div>
 				</div>	
 			</div>
