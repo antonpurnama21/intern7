@@ -22,7 +22,7 @@
 
 		<div class="panel panel-white border-top-success">
 			<div class="panel-heading">
-				<h6 class="panel-title">Progress Scope (%) :</h6>
+				<h6 class="panel-title">Progress Scope :</h6>
 				<div class="heading-elements">
 					<ul class="icons-list">
                 		<li><a data-action="collapse" data-popup="tooltip" title="Collapse"></a></li>
@@ -49,7 +49,7 @@
 					$bg = '';
 					$ac = '';				
 				}?>
-				<label><?= $scope ?> ( <strong><?=$persen?> Complete %</strong> )</label>
+				<label><?= $scope ?> ( <strong><?=$persen?> Complete</strong> )</label>
 				<div class="progress mb-3" style="height: 3rem;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?> <?=$ac?>" style="width: <?=$persen?>">
 						<span></span>
