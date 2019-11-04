@@ -14,7 +14,9 @@
 		<h5>Welcome, <strong><?= $sesi['sess_name']?> !</strong></h5>
 	</div>
 </div>
-
+<div>
+	<h2>Your Progress Bar</h2>
+</div>
 <div class="row">
 	<div class="col-md-12">
 
@@ -48,7 +50,7 @@
 					$ac = '';				
 				}?>
 				<label><?= $scope ?> ( % )</label>
-				<div class="progress mb-3" style="height: 2rem;">
+				<div class="progress mb-3" style="height: 3rem;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?> <?=$ac?>" style="width: <?=$persen?>">
 						<span><?=$persen?> Complete</span>
 					</div>
@@ -58,7 +60,9 @@
 
 	</div>
 </div>
-
+<div>
+	<h2>Timeline Progress</h2>
+</div>
 <div class="row">
 	<div class="col-md-12">
 

@@ -14,7 +14,9 @@
 		<h5>Welcome, <strong><?= $sesi['sess_name']?> !</strong></h5>
 	</div>
 </div>
-
+<div>
+	<h2>Project Scope Progress</h2>
+</div>
 <div class="row">
 <?php
 if (!empty($dtjumlah)) {
@@ -86,7 +88,9 @@ foreach ($dtjumlah as $key) {?>
 
 ?>
 </div>
-
+<div>
+	<h2>Notifications</h2>
+</div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-white border-top-success">

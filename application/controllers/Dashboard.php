@@ -22,7 +22,7 @@ class Dashboard extends CommonDash {
 
 			$dataScope = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(b.projectScopeID)),0) as value, a.deptName as label FROM `t_department` as a LEFT JOIN `t_project_scope` as b ON b.deptID = a.deptID GROUP BY a.deptName');
 
-			$applyJumlah = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(t_project_scope_temp.projectScopeID)),0) as value, projectScope as label FROM `t_project_scope`LEFT JOIN t_project_scope_temp ON t_project_scope_temp.projectScopeID = t_project_scope.projectScopeID WHERE t_project_scope.isApproved = "Y" GROUP BY t_project_scope.projectScope');
+			$applyJumlah = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(t_project_scope_temp.projectScopeID)),0) as value, projectScope as label, projectID as project FROM `t_project_scope`LEFT JOIN t_project_scope_temp ON t_project_scope_temp.projectScopeID = t_project_scope.projectScopeID WHERE t_project_scope.isApproved = "Y" GROUP BY t_project_scope.projectScope');
 
 			$applyPersen = $this->Mod_crud->qry('result','SELECT ROUND((COUNT(t_project_scope_temp.projectScopeID) / (SELECT COUNT(*) FROM `t_project_scope_temp`))*100,0) as value, projectScope as label FROM `t_project_scope`LEFT JOIN t_project_scope_temp ON t_project_scope_temp.projectScopeID = t_project_scope.projectScopeID GROUP BY t_project_scope.projectScope');
 
