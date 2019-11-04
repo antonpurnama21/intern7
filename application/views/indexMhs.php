@@ -49,10 +49,10 @@
 					$bg = '';
 					$ac = '';				
 				}?>
-				<label><?= $scope ?> ( % )</label>
+				<label><?= $scope ?> ( <strong><?=$persen?> Complete %</strong> )</label>
 				<div class="progress mb-3" style="height: 3rem;">
 					<div class="progress-bar progress-bar-striped progress-bar-animated <?=$bg?> <?=$ac?>" style="width: <?=$persen?>">
-						<span style="margin-top: 5px;"><?=$persen?> Complete</span>
+						<span></span>
 					</div>
 				</div>	
 			</div>
