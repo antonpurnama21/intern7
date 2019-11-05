@@ -405,7 +405,9 @@ class Scope extends CommonDash {
 	{
 		helper_log('delete','Delete Project Scope ( '.email($this->input->post('id')).' )',$this->session->userdata('userlog')['sess_usrID']);
 		
-		$query 		= $this->Mod_crud->deleteData('t_project_scope', array('projectScopeID' => $this->input->post('id')));
+		$deltemp = $this->Mod_crud->deleteData('t_project_scope_temp', array('projectScopeID' => $this->input->post('id')));
+		$delworkscope = $this->Mod_crud->deleteData('t_workscope', array('projectScopeID' => $this->input->post('id')));
+		$query	 = $this->Mod_crud->deleteData('t_project_scope', array('projectScopeID' => $this->input->post('id')));
 		if ($query){
 			$data = array(
 					'code' 	=> 200,
