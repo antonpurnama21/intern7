@@ -50,7 +50,7 @@
 					<td><?=$key->emaiL?></td>
 					<td><?=name_university($key->universityID)?></td>
 					<td><?=name_faculty($key->facultyID)?></td>
-					<td><?=ucwords(cek_status($key->mahasiswaID))?></td>
+					<td><?=cek_status($key->mahasiswaID)?></td>
 					<td class="text-center">
 						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?=base_url("mahasiswa/modalReset")?>', '<?=$key->mahasiswaID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
 						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Mahasiswa" style="margin: 5px" href="<?=base_url('mahasiswa/form/'.$key->mahasiswaID)?>"><i class="icon-quill4"></i></a>

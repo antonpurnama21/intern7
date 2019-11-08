@@ -44,7 +44,7 @@
 				<td><?= $key->telePhone?></td>
 				<td><?= name_university($key->universityID)?></td>
 				<td><?= what_role($key->roleID)?></td>
-				<td><?=ucwords(cek_status($key->adminCampusID))?></td>
+				<td><?=cek_status($key->adminCampusID)?></td>
 				<td>
 					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?= base_url("admincampus/modalReset")?>', '<?= $key->adminCampusID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
 					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" onclick="showModal('<?=base_url("admincampus/modalEdit")?>', '<?=$key->adminCampusID.'~'.$key->fullName?>', 'editadmincampus')"><i class="icon-quill4"></i></a>
