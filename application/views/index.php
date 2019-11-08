@@ -205,22 +205,14 @@ foreach ($dtjumlah as $key) {?>
 								$no = 0;
 							foreach ($dtaccount as $key) {
 							$no++;
-							if ($key->statuS == 'new') {
-								$status = '<span class="badge badge-success">New</span>';
-							}elseif ($key->statuS == 'new-mahasiswa') {
-								$status = '<span class="badge badge-success">New Mahasiswa</span>';
-							}elseif ($key->statuS == 'reset') {
-								$status = '<span class="badge badge-warning">Reset Password</span>';
-							}else{
-								$status = 'Revoke';
-							}
+							
 						?>
 						<tr class="text-size-mini">
 							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?= $key->loginID ?></td>
 							<td>
-								<?= $key->emaiL ?>  <?=$status?>
+								<?= $key->emaiL ?>  <?=cek_status($key->loginID)?>
 							</td>
 							<td><?= what_role($key->roleID) ?></td>
 							<td>

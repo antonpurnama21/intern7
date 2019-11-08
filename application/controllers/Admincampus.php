@@ -70,7 +70,7 @@ class Admincampus extends CommonDash {
 				'roleID'		=> '33',
 				'emaiL'			=> $this->input->post('Email'),
 				'passworD'		=> 'null',
-				'statuS'		=> 'new',
+				'statuS'		=> 'new-user',
 				'createdTime'	=> date('Y-m-d H:i:s')
 				)
 			); //insert login
@@ -237,7 +237,7 @@ class Admincampus extends CommonDash {
 
 		$update = $this->Mod_crud->updateData('t_login', array(
 		           		'passworD' 	=> 'null',
-					'statuS'	=> 'reset',
+						'statuS'	=> 'reset-password',
            			), array('emaiL' => $email)
            	);
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
@@ -389,6 +389,7 @@ class Admincampus extends CommonDash {
 		}else{
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
 						'passworD'		=> md5($this->input->post('Password1')),
+						'statuS'		=> 'verified',
            			), array('loginID'  => $this->input->post('Admincampusid'))
            	);
 			helper_log('edit','Change Password',$this->session->userdata('userlog')['sess_usrID']);

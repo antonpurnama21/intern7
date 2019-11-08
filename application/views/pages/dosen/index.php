@@ -25,6 +25,7 @@
 				<th>Email</th>
 				<th>University</th>
 				<th>Faculty</th>
+				<th>Status</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -49,6 +50,7 @@
 					<td><?=$key->emaiL?></td>
 					<td><?=name_university($key->universityID)?></td>
 					<td><?=name_faculty($key->facultyID)?></td>
+					<td><?=ucwords(cek_status($key->dosenID))?></td>
 					<td class="text-center">
 						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?=base_url("dosen/modalReset")?>', '<?=$key->dosenID.'~'.$key->fullName?>', `resetpass`);"><i class="icon-lock"></i></a>
 						<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Dosen" style="margin: 5px" href="<?=base_url('dosen/form/'.$key->dosenID)?>"><i class="icon-quill4"></i></a>

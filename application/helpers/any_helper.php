@@ -733,4 +733,32 @@ if (!function_exists('timestep'))
 	}
 }
 
+if (!function_exists('cek_status'))
+{
+	function cek_status($id=null)
+	{
+		$CI =& get_instance();
+
+		$get = $CI->Mod_crud->getData('row', 'statuS', 't_login', null, null, null, array("loginID = '".$id."'"));
+		
+		if ($get->statuS == 'new-user') {
+			$status = '<span class="badge badge-success">New User</span>';
+		}elseif ($get->statuS == 'new-mahasiswa') {
+			$status = '<span class="badge badge-success">New Mahasiswa</span>';
+		}elseif ($get->statuS == 'reset-password') {
+			$status = '<span class="badge badge-warning">Reset Password</span>';
+		}elseif ($get->statuS == 'verified') {
+			$status = '<span class="badge badge-primary">Verified Account</span>';
+		}else{
+			$status = '<span class="badge badge-danger">Revoke Account</span>';
+		}
+
+		if ($get) :
+			return $status;
+		else :
+			return false;
+		endif;
+	}
+}
+
 

@@ -143,7 +143,7 @@ class Dosen extends CommonDash {
 					'roleID'		=> 44,
 					'emaiL'			=> $this->input->post('Email'),
 					'passworD'		=> 'null',
-					'statuS'		=> 'new',
+					'statuS'		=> 'new-user',
 					'createdTime'	=> date('Y-m-d H:i:s')
 					)
 				);
@@ -399,7 +399,7 @@ class Dosen extends CommonDash {
 
 		$update = $this->Mod_crud->updateData('t_login', array(
 		           		'passworD' 	=> 'null',
-					'statuS'	=> 'reset',
+						'statuS'	=> 'reset-password',
            			), array('emaiL' => $email)
            	);
 		
@@ -617,6 +617,7 @@ class Dosen extends CommonDash {
 		}else{
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
 						'passworD'		=> md5($this->input->post('Password1')),
+						'statuS'		=> 'verified',
            			), array('loginID'  => $this->input->post('Dosenid'))
            	);
 			helper_log('edit','Change Password',$this->session->userdata('userlog')['sess_usrID']);

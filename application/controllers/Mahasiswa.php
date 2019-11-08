@@ -469,7 +469,7 @@ class Mahasiswa extends CommonDash {
 
 		$update = $this->Mod_crud->updateData('t_login', array(
 		           		'passworD' 	=> 'null',
-					'statuS'	=> 'reset',
+						'statuS'	=> 'reset-password',
            			), array('emaiL' => $email)
            	);
 		
@@ -766,6 +766,7 @@ class Mahasiswa extends CommonDash {
 		}else{
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
 						'passworD'		=> md5($this->input->post('Password1')),
+						'statuS'		=> 'verified',
            			), array('loginID'  => $this->input->post('Mahasiswaid'))
            	);
 			helper_log('edit','Change Password',$this->session->userdata('userlog')['sess_usrID']);

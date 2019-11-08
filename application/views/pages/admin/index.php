@@ -24,6 +24,7 @@
 				<th>Phone Number</th>
 				<th>Department</th>
 				<th>Role</th>
+				<th>Status</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -43,6 +44,7 @@
 				<td><?= $key->telePhone?></td>
 				<td><?= name_dept($key->deptID)?></td>
 				<td><?= what_role($key->roleID)?></td>
+				<td><?=ucwords(cek_status($key->adminID))?></td>
 				<td>
 					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?= base_url("admin/modalReset")?>', '<?= $key->adminID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
 					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" onclick="showModal('<?=base_url("admin/modalEdit")?>', '<?=$key->adminID.'~'.$key->fullName?>', 'editadmin')"><i class="icon-quill4"></i></a>
