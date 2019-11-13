@@ -69,7 +69,7 @@
 							<div class="col-lg-8">
 								<div class="input-group">
 									<div class="input-group-addon" style="padding-top:0px;">:</div>
-									<label class="control-label"><?= name_category($dtscope->categoryID) ?></label>
+									<label class="control-label"><?= name_dept($dtscope->deptID) ?></label>
 								</div>
 							</div>
 						</div>

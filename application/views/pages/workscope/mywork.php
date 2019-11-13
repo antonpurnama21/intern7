@@ -82,7 +82,7 @@
 							<div class="col-lg-8">
 								<div class="input-group">
 									<div class="input-group-addon" style="padding-top:0px;">:</div>
-									<label class="control-label"><?= name_category($key->categoryID) ?></label>
+									<label class="control-label"><?= name_dept($key->deptID) ?></label>
 								</div>
 							</div>
 						</div>

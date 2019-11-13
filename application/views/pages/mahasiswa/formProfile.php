@@ -247,11 +247,11 @@
 						<div class="col-md-6">
 							<div class="row">
 								<div class="form-group">
-									<label class="control-label col-lg-4">Strength</label>
+									<label class="control-label col-lg-4">Strength (3 Point)</label>
 									<div class="col-lg-8">
 										<div class="input-group">
 											<div class="input-group-addon"><i class="icon-file-plus"></i></div>
-											<textarea rows="5" cols="5" name="Strength" id="Strength" class="form-control" required="required" placeholder="Insert Your Strength" title="Insert Your Strength"><?= isset($dMaster->strength) ? $dMaster->strength : '' ?></textarea>
+											<textarea rows="5" cols="5" name="Strength" id="Strength" class="form-control" required="required" placeholder="Insert 3 Point of Your Strength" title="Insert 3 Point of Your Strength"><?= isset($dMaster->strength) ? $dMaster->strength : '' ?></textarea>
 										</div>
 									</div>
 								</div>
@@ -262,11 +262,11 @@
 
 							<div class="row">
 								<div class="form-group">
-									<label class="control-label col-lg-4">Weakness</label>
+									<label class="control-label col-lg-4">Weakness (3 Point)</label>
 									<div class="col-lg-8">
 										<div class="input-group">
 											<div class="input-group-addon"><i class="icon-file-minus"></i></div>
-											<textarea rows="5" cols="5" name="Weakness" id="Weakness" class="form-control" required="required" placeholder="Insert Your Weakness" title="Insert Your Weakness"><?= isset($dMaster->weakness) ? $dMaster->weakness : '' ?></textarea>
+											<textarea rows="5" cols="5" name="Weakness" id="Weakness" class="form-control" required="required" placeholder="Insert 3 Point of Your Weakness" title="Insert 3 Point of Your Weakness"><?= isset($dMaster->weakness) ? $dMaster->weakness : '' ?></textarea>
 										</div>
 									</div>
 								</div>
