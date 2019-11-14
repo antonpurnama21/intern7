@@ -86,9 +86,11 @@ class Account extends CommonDash {
 
 		public function do_revoke()
 	{
+		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$tokeN 	= substr(str_shuffle($set), 0, 12);
 		$emaiL 		= $this->input->post('id');
 		$update 	= $this->Mod_crud->updateData('t_login', array(
-		           	'passworD' 	=> md5('cbn123'),
+		           	'passworD' 	=> md5($tokeN),
 					'statuS'	=> 'revoke',
            			), array('emaiL' => $emaiL)
            	);
@@ -114,7 +116,7 @@ class Account extends CommonDash {
 						</head>
 						<body>
 							<h2>CBN Internship Web Portal</h2>
-							<p>The request to change your account password has been canceled by HC Admin, please use the default password <i>"cbn123"</i> to continue being able to access your account.<br/><br/></p>
+							<p>The request to change your account password has been canceled by HC Admin, please use the random password <b><i>'.$tokeN.'</i></b> to continue being able to access your account.<br/><br/></p>
 							<p><hr />Do Not reply to this message<hr /><br/></p>
 							<p>CBN Internet<br/>
 								PT. Cyberindo Aditama<br/>
