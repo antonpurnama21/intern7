@@ -88,7 +88,7 @@
 					<br />
 
 					<div class="row">
-						<a style="margin-bottom: 5px" class="btn btn-primary" onclick="showModal('<?=base_url("admin/modalProfile")?>', '<?=$dtadmin->adminID.'~'.$dtadmin->fullName?>', `editadmin`);"><i class="icon-quill4"></i> Update Profile</a>
+						<a style="margin-bottom: 5px" class="btn btn-primary" onclick="location.href='<?=base_url('admin/profile_update')?>'"><i class="icon-quill4"></i> Update Profile</a>
 						<a style="margin-bottom: 5px" class="btn btn-danger" onclick="showModal('<?=base_url("admin/changePass")?>', '<?=$dtadmin->adminID.'~'.$dtadmin->fullName?>', `editadmin`);"><i class="icon-lock"></i> Change Password</a><br />
 						
 					</div>

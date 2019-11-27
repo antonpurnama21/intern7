@@ -10,7 +10,7 @@
     	</div>
 	</div>
 	<div class="ml-20">
-		<button type="button" class="btn btn-success" onclick="showModal('<?= base_url('admincampus/modalAdd') ?>', '', 'add');"><i class="icon-add position-left"></i> Add</button>
+		<button type="button" class="btn btn-success" onclick="location.href='<?=base_url('admincampus/add')?>'"><i class="icon-add position-left"></i> Add</button>
 		<a style="margin-right: 10px" class="btn btn-success pull-right" target="_blank" href="<?=base_url('report/reportAdmincampus')?>"><i class="icon-printer position-left"></i> Print to PDF</a>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
@@ -47,8 +47,8 @@
 				<td><?=cek_status($key->adminCampusID)?></td>
 				<td>
 					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?= base_url("admincampus/modalReset")?>', '<?= $key->adminCampusID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
-					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" onclick="showModal('<?=base_url("admincampus/modalEdit")?>', '<?=$key->adminCampusID.'~'.$key->fullName?>', 'editadmincampus')"><i class="icon-quill4"></i></a>
-					<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 5px;" onclick="confirms('Delete','admincampus `<?= $key->fullName?>`?','<?= base_url("admincampus/delete")?>','<?= $key->adminCampusID?>')"><i class="icon-trash"></i></a>
+					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" href="<?=base_url('admincampus/form/'.$key->adminCampusID)?>"><i class="icon-quill4"></i></a>
+					<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 5px;" onclick="confirms('Delete','Admin Campus `<?= $key->fullName?>`?','<?= base_url("admincampus/delete")?>','<?= $key->adminCampusID?>')"><i class="icon-trash"></i></a>
 				</td>
 			</tr>
 			<?php

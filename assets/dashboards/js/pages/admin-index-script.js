@@ -41,32 +41,6 @@ function showModal(target,index,tipe){
    
     $.post(urlx, datax , function(mod) {
         $('#tampilModal').html(mod);
-        //$(".styled, .multiselect-container input").uniform({ radioClass: 'choice' });
-        $('.select2').select2();
-        $.ajax({
-            type:'POST',
-            url: $('#getrole').val(),
-            dataType:"JSON",
-            success: function(data) {
-                $('#Roleid').select2({
-                    placeholder: 'Pick role',
-                    data: data
-                });
-            }
-        });
-
-        $.ajax({
-            type:'POST',
-            url: $('#getdept').val(),
-            dataType:"JSON",
-            success: function(data) {
-                $('#Deptid').select2({
-                    placeholder: 'Pick department',
-                    data: data
-                });
-            }
-        });
-
         $('#modalPortal').modal({show: true , backdrop : true , keyboard: true});
     });
 }

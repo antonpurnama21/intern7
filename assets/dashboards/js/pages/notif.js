@@ -47,7 +47,8 @@ function confirms(judul,pesan,aksi,val)
     })
 }
 
-function notif(head,pesan,tipe)
+
+    function notif(head,pesan,tipe)
     {
 
         $.jGrowl(pesan, {
@@ -55,12 +56,12 @@ function notif(head,pesan,tipe)
             theme: 'alert-styled-right '+tipe,
             life:5000,
             animateOpen: { 
-				height: "show",
-				width: "show"
-			},
-			animateClose: { 
-				height: "hide",
-				width: "show"
-			}
+        height: "show",
+        width: "show"
+      },
+      animateClose: { 
+        height: "hide",
+        width: "show"
+      }
         });
     }

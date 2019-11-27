@@ -36,19 +36,40 @@ class Admincampus extends CommonDash {
 		$this->render('dashboard', 'pages/admincampus/index', $data);
 	}
 
-	public function modalAdd(){
+		public function add()
+	{
 		$data = array(
-				'modalTitle' => 'Add Account ',
-				'formAction' => base_url('admincampus/save'),
-				'Req' => ''
-			);
-		$this->load->view('pages/admincampus/form', $data);
+			'_JS' => generate_js(array(
+					"dashboards/js/plugins/ui/moment/moment.min.js",
+					"dashboards/js/plugins/tables/datatables/datatables.min.js",
+					"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
+					"dashboards/js/plugins/forms/selects/select2.min.js",
+					"dashboards/js/pages/datatables_responsive.js",
+					"dashboards/js/plugins/forms/styling/switch.min.js",
+					"dashboards/js/plugins/forms/styling/switchery.min.js",
+					"dashboards/js/plugins/forms/styling/uniform.min.js",
+					"dashboards/js/plugins/uploaders/fileinput.min.js",
+					"dashboards/js/plugins/pickers/pickadate/picker.js",
+					"dashboards/js/plugins/pickers/pickadate/picker.date.js",
+					"dashboards/js/plugins/pickers/anytime.min.js",
+					"dashboards/js/plugins/forms/validation/validate.min.js",
+					"dashboards/js/pages/admincampus-script.js",
+				)
+			),
+		    'titleWeb' => "Add Admin Campus | CBN Internship",
+		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
+		    'breadcrumb' => explode(',', 'Admin Campus,Add Admin Campus '),
+		    'actionForm' => base_url('admincampus/save'),
+		    'buttonForm' => 'Simpan'
+		);
+
+		$this->render('dashboard', 'pages/admincampus/add', $data);
 	}
 
 	public function save(){
 		$cek = $this->Mod_crud->checkData('emaiL', 't_login', array('emaiL = "'.$this->input->post('Email').'"'));
 		if ($cek){
-			echo json_encode(array('code' => 256, 'message' => 'Email has been registered'));
+			echo json_encode(array('code' => 366, 'message' => 'Email has been registered'));
 		}else{
 
 			$id 	= $this->Mod_crud->autoNumber('adminCampusID','t_admin_campus','33',3);
@@ -133,28 +154,49 @@ class Admincampus extends CommonDash {
 
 			if ($this->email->send()){
 				$this->alert->set('bg-success', "Insert success ! Setup link hes been send");
-       			echo json_encode(array('code' => 200, 'message' => 'Insert success ! Setup link hes been send'));
+       			echo json_encode(array('code' => 200, 'message' => 'Insert success ! Setup link hes been send', 'aksi' => "window.location.href='".base_url('admincampus')."';"));
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}
 		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function modalEdit(){
-		$ID = explode('~',$this->input->post('id'));
+		public function form($id=null)
+	{
 		$data = array(
-				'modalTitle' => 'Edit Account '.$ID[1],
-				'dMaster' => $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin_campus a', null, null, array('t_login l' => 'a.loginID = l.loginID'), array('admincampusID = "'.$ID[0].'"')),
-				'formAction' => base_url('admincampus/edit'),
-				'Req' => ''
-			);
-		$this->load->view('pages/admincampus/form', $data);
+			'_JS' => generate_js(array(
+					"dashboards/js/plugins/ui/moment/moment.min.js",
+					"dashboards/js/plugins/tables/datatables/datatables.min.js",
+					"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
+					"dashboards/js/plugins/forms/selects/select2.min.js",
+					"dashboards/js/pages/datatables_responsive.js",
+					"dashboards/js/plugins/forms/styling/switch.min.js",
+					"dashboards/js/plugins/forms/styling/switchery.min.js",
+					"dashboards/js/plugins/forms/styling/uniform.min.js",
+					"dashboards/js/plugins/uploaders/fileinput.min.js",
+					"dashboards/js/plugins/pickers/pickadate/picker.js",
+					"dashboards/js/plugins/pickers/pickadate/picker.date.js",
+					"dashboards/js/plugins/pickers/anytime.min.js",
+					"dashboards/js/plugins/forms/validation/validate.min.js",
+					"dashboards/js/pages/admin-script.js",
+				)
+			),
+		    'titleWeb' => "Edit Admin Campus | CBN Internship",
+		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
+		    'breadcrumb' => explode(',', 'Admin Campus,Edit Admin ('.name_admincampus($id).')'),
+		    'dMaster' => $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin_campus a', null, null, array('t_login l' => 'a.loginID = l.loginID'), array('admincampusID = "'.$id.'"')),
+			'actionForm' => base_url('admincampus/edit'),
+		    'buttonForm' => 'Simpan',
+		    'Req' => ''
+		);
+
+		$this->render('dashboard', 'pages/admincampus/add', $data);
 	}
 
 	public function edit(){
 		$cek = $this->Mod_crud->checkData('fullName', 't_admin_campus', array('fullName = "'.$this->input->post('Fullname').'"', 'adminCampusID != "'.$this->input->post('Admincampusid').'"'));
 		if ($cek){
-			echo json_encode(array('code' => 256, 'message' => 'Name has been registered'));
+			echo json_encode(array('code' => 367, 'message' => 'Name has been registered'));
 		}else{
 
 			$update = $this->Mod_crud->updateData('t_admin_campus', array(
@@ -174,7 +216,7 @@ class Admincampus extends CommonDash {
 
 			if ($update){
 				$this->alert->set('bg-success', "Update success !");
-       			echo json_encode(array('code' => 200, 'message' => 'Update success !'));
+       			echo json_encode(array('code' => 200, 'message' => 'Update success !', 'aksi' => "window.location.href='".base_url('admincampus')."';"));
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}
@@ -326,16 +368,38 @@ class Admincampus extends CommonDash {
 		$this->render('dashboard', 'pages/admincampus/profile', $data);
 	}
 
-		public function modalProfile()
+		//form_update_profile
+		public function profile_update()
 	{
-		$ID = explode('~',$this->input->post('id'));
+		$id = $this->session->userdata('userlog')['sess_usrID'];
 		$data = array(
-				'modalTitle' => 'Update My Profile '.$ID[1],
-				'dMaster' => $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin_campus a', null, null, array('t_login l' => 'a.loginID = l.loginID'), array('adminCampusID = "'.$ID[0].'"')),
-				'formAction' => base_url('admincampus/editProfile'),
-				'Req' => ''
-			);
-		$this->load->view('pages/admincampus/form', $data);
+			'_JS' => generate_js(array(
+					"dashboards/js/plugins/ui/moment/moment.min.js",
+					"dashboards/js/plugins/tables/datatables/datatables.min.js",
+					"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
+					"dashboards/js/plugins/forms/selects/select2.min.js",
+					"dashboards/js/pages/datatables_responsive.js",
+					"dashboards/js/plugins/forms/styling/switch.min.js",
+					"dashboards/js/plugins/forms/styling/switchery.min.js",
+					"dashboards/js/plugins/forms/styling/uniform.min.js",
+					"dashboards/js/plugins/uploaders/fileinput.min.js",
+					"dashboards/js/plugins/pickers/pickadate/picker.js",
+					"dashboards/js/plugins/pickers/pickadate/picker.date.js",
+					"dashboards/js/plugins/pickers/anytime.min.js",
+					"dashboards/js/plugins/forms/validation/validate.min.js",
+					"dashboards/js/pages/admincampus-script.js",
+				)
+			),
+		    'titleWeb' => "Update Profile | CBN Internship",
+		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
+		    'breadcrumb' => explode(',', 'Profile,Update Profile'),
+		    'dMaster' => $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin_campus a', null, null, array('t_login l' => 'a.loginID = l.loginID'), array('adminCampusID = "'.$id.'"')), //get_data_by_id
+			'actionForm' => base_url('admincampus/editProfile'),
+		    'buttonForm' => 'Simpan',
+		    'Req' => ''
+		);
+
+		$this->render('dashboard', 'pages/admincampus/add', $data);
 	}
 
 		public function editProfile()
@@ -362,7 +426,7 @@ class Admincampus extends CommonDash {
 
 			if ($update){
 				$this->alert->set('bg-success', "Update success !");
-       			echo json_encode(array('code' => 200, 'message' => 'Update success !'));
+       			echo json_encode(array('code' => 200, 'message' => 'Update success !', 'aksi' => "window.location.href='".base_url('admincampus/profile')."';"));
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}

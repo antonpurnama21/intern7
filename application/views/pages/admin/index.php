@@ -10,7 +10,7 @@
     	</div>
 	</div>
 	<div class="ml-20">
-		<button type="button" class="btn btn-success" onclick="showModal('<?= base_url('admin/modalAdd') ?>', '', 'add');"><i class="icon-add position-left"></i> Add</button>
+		<button type="button" class="btn btn-success" onclick="location.href='<?=base_url('admin/add')?>'"><i class="icon-add position-left"></i> Add</button>
 		<a style="margin-right: 10px" class="btn btn-success pull-right" target="_blank" href="<?=base_url('report/reportAdmin')?>"><i class="icon-printer position-left"></i> Print to PDF</a>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
@@ -47,7 +47,7 @@
 				<td><?=cek_status($key->adminID)?></td>
 				<td>
 					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?= base_url("admin/modalReset")?>', '<?= $key->adminID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
-					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" onclick="showModal('<?=base_url("admin/modalEdit")?>', '<?=$key->adminID.'~'.$key->fullName?>', 'editadmin')"><i class="icon-quill4"></i></a>
+					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" href="<?=base_url('admin/form/'.$key->adminID)?>"><i class="icon-quill4"></i></a>
 					<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 5px;" onclick="confirms('Delete','Admin `<?= $key->fullName?>`?','<?= base_url("admin/delete")?>','<?= $key->adminID?>')"><i class="icon-trash"></i></a>
 				</td>
 			</tr>

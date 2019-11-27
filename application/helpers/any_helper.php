@@ -170,6 +170,20 @@ if ( ! function_exists('showLevel'))
 	}
 }
 
+if ( ! function_exists('showLevelApp'))
+{
+	function showLevelApp($level)
+	{
+		$currentLevel = $_SESSION['app']['sess_role'];
+		
+		if (in_array($currentLevel, $level)) {
+		    return "";
+		}else{
+			return "display: none;";
+		}	
+	}
+}
+
 /*
 * @Function_name : uploadPic
 * @Return_type : Array

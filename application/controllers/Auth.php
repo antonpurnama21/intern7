@@ -38,7 +38,7 @@ class Auth extends CI_Controller {
 		}else{
 			$cekPass = $this->Mod_crud->getData('row', '*', 't_login', null, null, null, array('emaiL = "'.$this->input->post('email').'"', 'passworD = "'.MD5($this->input->post('password')).'"'));
 			if ($cekPass == false){
-				echo json_encode(array('code' => 367, 'message' => 'Wrong password'));
+				echo json_encode(array('code' => 369, 'message' => 'Wrong password'));
 			}else{
 					//$avatar = base_url('assets/dashboards/images/avatars/default_avatar.png');
 			if ($this->input->post("chkremember")){
