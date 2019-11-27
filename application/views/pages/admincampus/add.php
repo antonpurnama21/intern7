@@ -12,7 +12,7 @@
 
 	<div class="panel-body">
 		
-		<input type="hidden" name="getCampus" id="getCampus" value="<?= base_url('admincampus/getCampus') ?>">
+		<input type="hidden" name="getCampus" id="getCampus" value="<?= base_url('commonfunction/getUniv') ?>">
 		<form class="form-horizontal form-validate-jquery" action="<?= $actionForm ?>" method="POST" name="dokumen-form" id="dokumen-form">
 			<fieldset class="content-group">
 
@@ -25,7 +25,7 @@
 				</legend>
 
 				<div class="collapse in" id="demo1">
-
+					<?php if($this->uri->segment(2) != 'profile_update'){ ?>
 					<div class="row">
 						<div class="form-group">
 							<label class="control-label col-lg-4">University</label>
@@ -39,6 +39,7 @@
 							</div>
 						</div>
 					</div>
+					<?php } ?>
 
 					<input type="hidden" name="Admincampusid" id="Admincampusid" class="form-control" placeholder="Admin ID" title="Admin ID" value="<?= isset($dMaster->adminCampusID) ? $dMaster->adminCampusID : '' ?>" readonly>
 					
@@ -80,7 +81,11 @@
 			</fieldset>
 
 			<div class="text-right">
-				<button type="button" onclick="location.href='<?=base_url('admin')?>'" class="btn btn-default" id="reset">Cancel <i class="icon-reload-alt position-right"></i></button>
+				<?php if($this->uri->segment(2) != 'profile_update'){ ?>
+				<button type="button" onclick="location.href='<?=base_url('admincampus')?>'" class="btn btn-default" id="reset">Cancel <i class="icon-reload-alt position-right"></i></button>
+				<?php }else{ ?>
+				<button type="button" onclick="location.href='<?=base_url('admincampus/profile')?>'" class="btn btn-default" id="reset">Cancel <i class="icon-reload-alt position-right"></i></button>
+				<?php } ?>
 				<button type="submit" class="btn btn-primary" id="submit-dokumen" name="submit-dokumen">Save <i class="icon-arrow-right14 position-right"></i></button>
 			</div>
 		</form>

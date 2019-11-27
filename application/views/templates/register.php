@@ -113,8 +113,8 @@
 
 				<!-- Content area -->
 				<div class="content d-flex justify-content-center align-items-center">
-					<input type="hidden" name="getFaculty" id="getFaculty" value="<?= base_url('auth/getFaculty') ?>">
-					<input type="hidden" name="getUniv" id="getUniv" value="<?= base_url('auth/getUniv') ?>">
+					<input type="hidden" name="getFaculty" id="getFaculty" value="<?= base_url('commonfunction/getFaculty') ?>">
+					<input type="hidden" name="getUniv" id="getUniv" value="<?= base_url('commonfunction/getUniv') ?>">
 					<!-- Advanced login -->
 					<form id="dokumen-form" action="<?= base_url('auth/do_register') ?>" method="POST" name="dokumen-form" id="dokumen-form">
 						<div class="col-lg-3"></div>

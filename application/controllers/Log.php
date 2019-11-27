@@ -8,7 +8,6 @@ class Log extends CommonDash {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mod_crud');
 	}
 
 	public function index()
@@ -52,32 +51,6 @@ class Log extends CommonDash {
 		
 	}
 
-	public function getList()
-	{
-		$res = array();
-		$Log = $this->Mod_crud->getData('result','*', 't_log_activity',null,null,null,null,null,array('logID DESC'));
-
-		if (!empty($Log)) {
-			$no = 0;
-			foreach ($Log as $key) {
-				$no++;
-				$waktu = timestep($key->logTime);
-				array_push($res, array(
-							'',
-							$no,
-							email($key->logUsrID),
-							$waktu,
-							$key->logBrowser,
-							$key->logIP,
-							$key->logPlatform,
-							ucwords(logtype($key->logTypeID)),
-							$key->logDesc
-							)
-				);
-			}
-		}
-		echo json_encode($res);
-	}
 
 	public function result($id = null)
 	{
@@ -326,6 +299,7 @@ class Log extends CommonDash {
 	}
 
 }
+
 
 /* End of file Log.php */
 /* Location: ./application/controllers/Log.php */

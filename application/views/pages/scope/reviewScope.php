@@ -83,6 +83,18 @@
 
 							<div class="row">
 								<div class="form-group ">
+									<label class="control-label col-lg-4 text-bold ">Project Leader </label>
+									<div class="col-lg-8">
+										<div class="input-group">
+											<div class="input-group-addon" style="padding-top:0px;">:</div>
+											<label class="control-label"><?= name_admin($dMaster->adminID) ?></label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group ">
 									<label class="control-label col-lg-4 text-bold ">Description </label>
 									<div class="col-lg-8">
 										<div class="input-group">

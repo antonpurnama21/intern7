@@ -13,7 +13,7 @@
 	<div class="ml-20">
 
 	</div>
-	<table class="table datatable-responsive-row-control table-hover">
+	<table class="table datatable-responsive-row-control table-striped table-bordered table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
 				<th>.</th>

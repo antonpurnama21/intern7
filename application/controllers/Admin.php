@@ -8,7 +8,6 @@ class Admin extends CommonDash {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mod_crud');
 	}
 
 	// index_list_admin
@@ -250,36 +249,6 @@ class Admin extends CommonDash {
 		
 	}
 
-	//menampilkan_role
-	public function getRole()
-	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'roleID, roleName', 't_role',2);
-		if (!empty($data)) {
-			foreach ($data as $key) {
-				$mk['id'] = $key->roleID;
-				$mk['text'] = $key->roleName;
-				array_push($resp, $mk);
-			}
-		}
-		echo json_encode($resp);
-	}
-
-	//menampilkan_department
-		public function getDept()
-	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'deptID, deptName', 't_department');
-		if (!empty($data)) {
-			foreach ($data as $key) {
-				$mk['id'] = $key->deptID;
-				$mk['text'] = $key->deptName;
-				array_push($resp, $mk);
-			}
-		}
-		echo json_encode($resp);
-	}
-
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	//modal_reset_password
 		public function modalReset()
@@ -441,13 +410,11 @@ class Admin extends CommonDash {
 						'emaiL' 	=> $this->input->post('Email'),
 						'fullName' 	=> $this->input->post('Fullname'),
 						'telePhone' 	=> $this->input->post('Telephone'),
-						'deptID'	=> $this->input->post('Deptid'),
 						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' 	=> date('Y-m-d H:i:s')
            			), array('adminID ' => $this->input->post('Adminid'))
            		); //update_admin
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
-						'roleID'		=> $this->input->post('Roleid'),
 		           		'emaiL' 		=> $this->input->post('Email')
            			), array('loginID'  => $this->input->post('Adminid'))
            	); //update_profile

@@ -8,7 +8,6 @@ class Scope extends CommonDash {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mod_crud');
 	}
 
 	public function index()
@@ -80,7 +79,7 @@ class Scope extends CommonDash {
 
 	public function detilScope($id=null)
 	{
-		$detail = $this->Mod_crud->getData('row', '*', 't_project_scope', null, null,null,array('projectScopeID = "'.$id.'"'));
+		$detail = $this->Mod_crud->getData('row', 'a.*,p.*', 't_project_scope a', null, null,array('t_project p'=>'a.projectID = p.projectID'),array('a.projectScopeID = "'.$id.'"'));
 
 		$temp = $this->Mod_crud->getData('result', 't.*,m.*', 't_project_scope_temp t', null, null,array('t_mahasiswa m'=>'t.mahasiswaID = m.mahasiswaID'),array('t.projectScopeID = "'.$id.'"'));
 
@@ -338,10 +337,10 @@ class Scope extends CommonDash {
 		}else{
 
 			$code = $this->Mod_crud->autoNumber('projectID','t_project','PRJ-',3);
-			$deptID = $this->session->userdata('userlog')['sess_deptID'];
  			$save = $this->Mod_crud->insertData('t_project', array(
 				'projectID'	=> $code,
-				'deptID'	=> $deptID,
+				'deptID'	=> $this->input->post('Deptid'),
+				'adminID'	=> $this->input->post('Adminid'),
 				'projectName'	=> $this->input->post('Projectname'),
 				'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 				'createdTIME'	=> date('Y-m-d H:i:s')
@@ -378,8 +377,10 @@ class Scope extends CommonDash {
 				echo json_encode(array('code' => 267, 'message' => 'Project has been added!'));
 			}else{
 				$edit = $this->Mod_crud->updateData('t_project', array(
+					'deptID'	=> $this->input->post('Deptid'),
+					'adminID'	=> $this->input->post('Adminid'),
            			'projectName' 	=> $this->input->post('Projectname'),
-           			'updatedBY'	=> $this->session->userdata('userlog')['sess_usrID'],
+           			'updatedBY'		=> $this->session->userdata('userlog')['sess_usrID'],
            			'updatedTIME'	=> date('Y-m-d H:i:s')
            		), array('projectID'	=> $this->input->post('Projectid'))
            	);
@@ -453,34 +454,6 @@ class Scope extends CommonDash {
 		}else{
 			echo '';
 		}
-	}
-
-	public function getCategory()
-	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'categoryID, categoryName', 't_category');
-		if (!empty($data)) {
-			foreach ($data as $key) {
-				$mk['id'] = $key->categoryID;
-				$mk['text'] = $key->categoryName;
-				array_push($resp, $mk);
-			}
-		}
-		echo json_encode($resp);
-	}
-
-	public function getProject()
-	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'projectID, deptID, projectName', 't_project');
-		if (!empty($data)) {
-			foreach ($data as $key) {
-				$mk['id'] = $key->projectID;
-				$mk['text'] = $key->projectName.' ( '.name_dept($key->deptID).' )';
-				array_push($resp, $mk);
-			}
-		}
-		echo json_encode($resp);
 	}
 
 	public function cancelScope()
@@ -752,7 +725,7 @@ class Scope extends CommonDash {
 		$ID = explode('~',$this->input->post('id'));
 		$data = array(
 				'modalTitle' 	=> 'Review '.$ID[1],
-				'dMaster' 	=> $this->Mod_crud->getData('row','*','t_project_scope', null, null,null, array('projectScopeID = "'.$ID[0].'"')),
+				'dMaster' 	=> $this->Mod_crud->getData('row','a.*,p.*','t_project_scope a', null, null,array('t_project p'=>'a.projectID = p.projectID'), array('a.projectScopeID = "'.$ID[0].'"')),
 				'Req' 		=> ''
 			);
 		$this->load->view('pages/scope/reviewScope', $data);

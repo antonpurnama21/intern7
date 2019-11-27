@@ -12,9 +12,9 @@
 
 	<div class="panel-body">
 		
-		<input type="hidden" name="getFaculty" id="getFaculty" value="<?= base_url('mahasiswa/getFaculty') ?>">
-		<input type="hidden" name="getUniv" id="getUniv" value="<?= base_url('mahasiswa/getUniv') ?>">
-		<input type="hidden" name="getResidence" id="getResidence" value="<?= base_url('mahasiswa/getResidence') ?>">
+		<input type="hidden" name="getFaculty" id="getFaculty" value="<?= base_url('commonfunction/getFaculty') ?>">
+		<input type="hidden" name="getUniv" id="getUniv" value="<?= base_url('commonfunction/getUniv') ?>">
+		<input type="hidden" name="getResidence" id="getResidence" value="<?= base_url('commonfunction/getResidence') ?>">
 		<form class="form-horizontal form-validate-jquery" action="<?= $actionForm ?>" method="POST" name="dokumen-form" id="dokumen-form">
 
 				<fieldset class="content-group">

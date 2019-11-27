@@ -8,7 +8,6 @@ class Admincampus extends CommonDash {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mod_crud');
 	}
 
 	public function index()
@@ -239,20 +238,6 @@ class Admincampus extends CommonDash {
 		
 	}
 
-		public function getCampus()
-	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'universityID, universityName', 't_university',null,null,null,array('mou = "YES"'));
-		if (!empty($data)) {
-			foreach ($data as $key) {
-				$mk['id'] = $key->universityID;
-				$mk['text'] = $key->universityName;
-				array_push($resp, $mk);
-			}
-		}
-		echo json_encode($resp);
-	}
-
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 		public function modalReset()
 	{
@@ -410,7 +395,6 @@ class Admincampus extends CommonDash {
 		}else{
 
 			$update = $this->Mod_crud->updateData('t_admin_campus', array(
-						'universityID'	=> $this->input->post('Universityid'),
 						'emaiL' 	=> $this->input->post('Email'),
 						'fullName' 	=> $this->input->post('Fullname'),
 						'telePhone' 	=> $this->input->post('Telephone'),

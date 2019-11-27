@@ -60,11 +60,11 @@ function showModal(target,index,tipe){
 
         $.ajax({
             type:'POST',
-            url: $('#getCategory').val(),
+            url: $('#getDept').val(),
             dataType:"JSON",
             success: function(data) {
-                $('#Categoryid').select2({
-                    placeholder: 'Pick Category',
+                $('#Deptid').select2({
+                    placeholder: 'Pick Department',
                     data: data
                 });
             }
@@ -72,10 +72,10 @@ function showModal(target,index,tipe){
 
         $.ajax({
             type:'POST',
-            url: $('#getProject').val(),
+            url: $('#getAdmin').val(),
             dataType:"JSON",
             success: function(data) {
-                $('#Projectid').select2({
+                $('#Adminid').select2({
                     placeholder: 'Pick Project',
                     data: data
                 });

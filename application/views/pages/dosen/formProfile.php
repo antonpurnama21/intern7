@@ -12,8 +12,8 @@
 
 	<div class="panel-body">
 		
-		<input type="hidden" name="getFaculty" id="getFaculty" value="<?= base_url('dosen/getFaculty') ?>">
-		<input type="hidden" name="getUniv" id="getUniv" value="<?= base_url('dosen/getUniv') ?>">
+		<input type="hidden" name="getFaculty" id="getFaculty" value="<?= base_url('commonfunction/getFaculty') ?>">
+		<input type="hidden" name="getUniv" id="getUniv" value="<?= base_url('commonfunction/getUniv') ?>">
 		<form class="form-horizontal form-validate-jquery" action="<?= $actionForm ?>" method="POST" name="dokumen-form" id="dokumen-form">
 			<fieldset class="content-group">
 

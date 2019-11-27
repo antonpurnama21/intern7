@@ -12,8 +12,8 @@
 
 	<div class="panel-body">
 		
-		<input type="hidden" name="getCategory" id="getCategory" value="<?= base_url('scope/getCategory') ?>">
-		<input type="hidden" name="getProject" id="getProject" value="<?= base_url('scope/getProject') ?>">
+		<input type="hidden" name="getCategory" id="getCategory" value="<?= base_url('commonfunction/getCategory') ?>">
+		<input type="hidden" name="getProject" id="getProject" value="<?= base_url('commonfunction/getProject') ?>">
 		
 		<form class="form-horizontal form-validate-jquery" action="<?= $actionForm ?>" method="POST" name="dokumen-form" id="dokumen-form">
 			<fieldset class="content-group">

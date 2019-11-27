@@ -8,7 +8,6 @@ class Dosen extends CommonDash {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mod_crud');
 	}
 
 	public function index()
@@ -342,34 +341,6 @@ class Dosen extends CommonDash {
 			echo '';
 		}
 		
-	}
-
-	public function getFaculty()
-	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'facultyID, facultyName', 't_faculty');
-		if (!empty($data)) {
-			foreach ($data as $key) {
-				$mk['id'] = $key->facultyID;
-				$mk['text'] = $key->facultyName;
-				array_push($resp, $mk);
-			}
-		}
-		echo json_encode($resp);
-	}
-
-		public function getUniv()
-	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'universityID, universityName', 't_university');
-		if (!empty($data)) {
-			foreach ($data as $key) {
-				$mk['id'] = $key->universityID;
-				$mk['text'] = $key->universityName;
-				array_push($resp, $mk);
-			}
-		}
-		echo json_encode($resp);
 	}
 
 
