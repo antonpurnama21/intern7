@@ -60,6 +60,7 @@ class Department extends CommonDash {
            			)
            		);
 			helper_log('add','Add New Department ( '.$this->input->post('Deptname').' )',$this->session->userdata('userlog')['sess_usrID']);
+			create_notification('New','Department',$this->input->post('Deptname'),'department/index');
 			if ($save){
 				$this->alert->set('bg-success', "Insert success ! ");
        			echo json_encode(array('code' => 200, 'message' => 'Insert success !'));

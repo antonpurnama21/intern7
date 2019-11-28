@@ -1,7 +1,4 @@
 $(function() {
-    $('.select2').select2();
-
-    $(".styled, .multiselect-container input").uniform({ radioClass: 'choice' });
 
     $('.datatable-responsive-row-control').DataTable({
         'scrollX': true,
@@ -29,4 +26,6 @@ $(function() {
         order: [1, 'asc']
      });   
 });
+//<?php echo site_url('faculty/delete/') ?>
+
 

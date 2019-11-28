@@ -86,46 +86,37 @@
 			<div class="navbar-right">
 				<p class="navbar-text"><?= $sesi['sess_name'] ?></p>
 				<p class="navbar-text"><span class="label bg-success-400">online</span></p>
-				
+				<?php if($sesi['sess_role'] == 11){ ?>
+				<input type="hidden" name="getNotif" id="getNotif" value="<?= base_url('notification/get_notif') ?>">
+				<?php } ?>
 				<ul class="nav navbar-nav">				
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="label label-pill label-danger count" style="border-radius:10px; margin-top: 4px;"></span>
 							<i class="icon-bell2"></i>
 							<span class="visible-xs-inline-block position-right">Activity</span>
-							<span class="status-mark border-orange-400"></span>
+							
 						</a>
 
-						<div class="dropdown-menu dropdown-content">
+						<div class="dropdown-menu dropdown-content width-350">
 							<div class="dropdown-content-heading">
 								Activity
 								<ul class="icons-list">
 									<li><a href="#"><i class="icon-menu7"></i></a></li>
 								</ul>
 							</div>
-						</div>
-					</li>
+							<div class="dropdown-content-body dropdown-scrollable">
+								<ul class="media-list">
 
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-bubble8"></i>
-							<span class="visible-xs-inline-block position-right">Messages</span>
-							<span class="status-mark border-orange-400"></span>
-						</a>
-						
-						<div class="dropdown-menu dropdown-content width-350">
-							<div class="dropdown-content-heading">
-								Messages
-								<ul class="icons-list">
-									<li><a href="#"><i class="icon-compose"></i></a></li>
 								</ul>
 							</div>
 
-
-							<div class="dropdown-content-footer">
-								<a href="#" data-popup="tooltip" title="All messages"><i class="icon-menu display-block"></i></a>
+							<div class="dropdown-content-footer bg-light">
+								<a href="<?=base_url('notification')?>" class="text-grey mr-auto">All activity</a>
 							</div>
 						</div>
-					</li>					
+					</li>
+
 				</ul>
 			</div>
 		</div>
@@ -265,6 +256,38 @@
 	    y.type = "password";
 	  }
 	}
+
+	$(document).ready(function(){
+		function load_unseen_notification(view = '')
+	    {
+	        $.ajax({
+	            url:$('#getNotif').val(),
+	            method:"POST",
+	            data:{view:view},
+	            dataType:"json",
+	            success:function(data)
+	            {
+	                $('.media-list').html(data.notification);
+	                if(data.unseen_notification > 0)
+	            {
+	                $('.count').html(data.unseen_notification);
+	                }
+	            }
+	        });
+	    }
+ 
+		load_unseen_notification();
+
+		 
+		$(document).on('click', '.dropdown-toggle', function(){
+		    $('.count').html('');
+		    load_unseen_notification('yes');
+		});
+		 
+		setInterval(function(){ 
+		    load_unseen_notification();; 
+		}, 5000);
+	});
 </script>
 
 </html>

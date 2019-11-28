@@ -58,6 +58,7 @@ class Faculty extends CommonDash {
            			)
            		);
 			helper_log('add','Add New Faculty ( '.$this->input->post('Facultyname').' )',$this->session->userdata('userlog')['sess_usrID']);
+			create_notification('New','Faculty',$this->input->post('Facultyname'),'faculty/index');
 			if ($save){
 				$this->alert->set('bg-success', "Insert success ! ");
        			echo json_encode(array('code' => 200, 'message' => 'Insert success ! Setup link hes been send'));

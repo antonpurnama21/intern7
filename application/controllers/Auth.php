@@ -400,6 +400,7 @@ class Auth extends CI_Controller {
 				    $this->email->message($message);
 				    
 				    helper_log('register','New application mahasiswa '.$this->input->post('Email'));
+				    create_notification('New','Mahasiswa',$this->input->post('Fullname'),'mahasiswa/index');
 		    
 			    $lokasi = base_url('auth/login');
 	           	if ($this->email->send()){

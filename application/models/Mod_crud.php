@@ -73,6 +73,12 @@ class Mod_crud extends CI_Model {
 		}
 	}
 
+	function qry_ori($command)
+	{
+		$data = $this->db->query($command);
+		return false;
+	}
+
 	function checkData($row, $table, $where)
 	{
 		$command = "SELECT $row FROM $table";

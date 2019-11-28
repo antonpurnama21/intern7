@@ -169,6 +169,7 @@ class Scope extends CommonDash {
            	);
 
 			helper_log('add','Add New Project Scope ( '.$this->input->post('Projectscope').' )',$this->session->userdata('userlog')['sess_usrID']);
+			create_notification('New','Project Scope',$this->input->post('Projectscope'),'');
 
 			if ($save){
 				$this->alert->set('bg-success', "Insert success !");
@@ -271,6 +272,7 @@ class Scope extends CommonDash {
            	);
 
 			helper_log('add','Add New Category ( '.$this->input->post('Categoryname').' )',$this->session->userdata('userlog')['sess_usrID']);
+			create_notification('New','Category',$this->input->post('Categoryname'),'scope/manage');
 
 			if ($save){
 				$this->alert->set('bg-success', "Insert success !");
@@ -348,6 +350,7 @@ class Scope extends CommonDash {
            	);
 
 			helper_log('add','Add New Project ( '.$this->input->post('Projectname').' )',$this->session->userdata('userlog')['sess_usrID']);
+			create_notification('New','Project',$this->input->post('Projectname'),'faculty/index');
 
 			if ($save){
 				$this->alert->set('bg-success', "Insert success !");

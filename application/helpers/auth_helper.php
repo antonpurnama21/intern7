@@ -300,3 +300,26 @@ if (!function_exists('qrysession'))
 		$dsn = $CI->Mod_crud->setsession_qry();
 	}
 }
+
+if (!function_exists('create_notification'))
+{
+	function create_notification($tipe = null, $title = null, $notif = null, $url = null)
+	{
+		$CI =& get_instance();
+		$CI->db->trans_start();
+		
+		$cLog = $CI->Mod_crud->insertData('t_notification', array(
+				'notifType'		=> $tipe,
+				'notifTitle'	=> $title,
+				'notification'	=> $notif,
+				'notifUrl'		=> $url,
+				'create_by'		=> $CI->session->userdata('userlog')['sess_usrID'],
+				'create_at' 	=> date('Y-m-d H:i:s'),
+			)
+		);
+
+		if($cLog) {
+			$CI->db->trans_complete();
+		}
+	}
+}

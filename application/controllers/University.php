@@ -61,6 +61,7 @@ class University extends CommonDash {
            			)
            		);
 			helper_log('add','Add New University ( '.$this->input->post('Universityname').' )',$this->session->userdata('userlog')['sess_usrID']);
+			create_notification('New','University',$this->input->post('Universityname'),'university/index');
 			if ($save){
 				$this->alert->set('bg-success', "Insert success ! ");
        			echo json_encode(array('code' => 200, 'message' => 'Insert success !'));

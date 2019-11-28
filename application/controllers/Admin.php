@@ -158,6 +158,7 @@ class Admin extends CommonDash {
 			    $this->email->subject('Account Setup Link');
 			    $this->email->message($message);
 			    helper_log('add','Add New Admin Department Account ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']); //log_simpan_admin
+			    create_notification('New','Admin Department',$this->input->post('Fullname'),'admin/index');
 
 			if ($this->email->send()){
 				$this->alert->set('bg-success', "Insert success ! Setup link hes been send");

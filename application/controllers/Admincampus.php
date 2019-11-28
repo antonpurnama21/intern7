@@ -150,6 +150,7 @@ class Admincampus extends CommonDash {
 			    $this->email->subject('Account Setup Link');
 			    $this->email->message($message);
 			    helper_log('add','Add New Admin Campus Account ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']);
+			    create_notification('New','Admin Campus',$this->input->post('Fullname'),'admincampus/index');
 
 			if ($this->email->send()){
 				$this->alert->set('bg-success', "Insert success ! Setup link hes been send");

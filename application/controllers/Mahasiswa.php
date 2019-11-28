@@ -175,6 +175,7 @@ class Mahasiswa extends CommonDash {
 			    $this->email->subject('Account Setup Link');
 			    $this->email->message($message);
 			    helper_log('add','Add New Mahasiswa ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']);
+			    create_notification('New','Mahasiswa',$this->input->post('Fullname'),'mahasiswa/index');
 
 			if ($this->email->send()){
 				$this->alert->set('bg-success', "Insert success ! Setup link hes been send");

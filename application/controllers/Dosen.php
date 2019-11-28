@@ -202,6 +202,7 @@ class Dosen extends CommonDash {
 			    $this->email->subject('Account Setup Link');
 			    $this->email->message($message);
 			    helper_log('add','Add New Dosen ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']);
+			    create_notification('New','Dosen',$this->input->post('Fullname'),'dosen/index');
 
 			if ($this->email->send()){
 				$this->alert->set('bg-success', "Insert success ! Setup link hes been send");
