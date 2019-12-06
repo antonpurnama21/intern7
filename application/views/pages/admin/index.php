@@ -10,13 +10,12 @@
     	</div>
 	</div>
 	<div class="ml-20">
-		<button type="button" class="btn btn-success" onclick="location.href='<?=base_url('admin/add')?>'"><i class="icon-add position-left"></i> Add</button>
-		<a style="margin-right: 10px" class="btn btn-success pull-right" target="_blank" href="<?=base_url('report/reportAdmin')?>"><i class="icon-printer position-left"></i> Print to PDF</a>
+		<button type="button" class="btn btn-success btn-xs" onclick="location.href='<?=base_url('admin/add')?>'"><i class="icon-add position-left"></i> Add</button>
+		<a style="margin-right: 10px" class="btn btn-success btn-xs pull-right" target="_blank" href="<?=base_url('report/reportAdmin')?>"><i class="icon-printer position-left"></i> Print to PDF</a>
 	</div>
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px; text-align:center;">
-				<th>.</th>
 				<th>No</th>
 				<th>ID User</th>
 				<th>Name</th>
@@ -36,7 +35,6 @@
 						$no++;
 			?>
 			<tr class="text-size-mini">
-				<td></td>
 				<td><?= $no ?></td>
 				<td><div class="col-md-8 text-semibold text-success"><?= $key->loginID?></div></td>
 				<td><?= $key->fullName?></td>
@@ -46,9 +44,9 @@
 				<td><?= what_role($key->roleID)?></td>
 				<td><?=cek_status($key->adminID)?></td>
 				<td>
-					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?= base_url("admin/modalReset")?>', '<?= $key->adminID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
-					<a class="btn btn-primary" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" href="<?=base_url('admin/form/'.$key->adminID)?>"><i class="icon-quill4"></i></a>
-					<a class="btn btn-danger" data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 5px;" onclick="confirms('Delete','Admin `<?= $key->fullName?>`?','<?= base_url("admin/delete")?>','<?= $key->adminID?>')"><i class="icon-trash"></i></a>
+					<a class="btn btn-primary btn-xs" data-placement="left" data-popup="tooltip" title="Reset Password" style="margin: 5px" onclick="showModal('<?= base_url("admin/modalReset")?>', '<?= $key->adminID.'~'.$key->fullName?>', 'resetpass')"><i class="icon-lock"></i></a>
+					<a class="btn btn-primary btn-xs" data-placement="left" data-popup="tooltip" title="Edit Data" style="margin: 5px" href="<?=base_url('admin/form/'.$key->adminID)?>"><i class="icon-quill4"></i></a>
+					<a class="btn btn-danger btn-xs" data-placement="left" data-popup="tooltip" title="Delete Data" style="margin: 5px;" onclick="confirms('Delete','Admin `<?= $key->fullName?>`?','<?= base_url("admin/delete")?>','<?= $key->adminID?>')"><i class="icon-trash"></i></a>
 				</td>
 			</tr>
 			<?php

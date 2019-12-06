@@ -416,7 +416,6 @@ class Workscope extends CommonDash {
 			foreach ($getprogress as $key) {
 				$no++;
 				array_push($res, array(
-					'',
 					$no,
 					$key->progress,
 					$key->finding,

@@ -16,7 +16,6 @@
 	<table class="table datatable-responsive-row-control table-striped table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th>.</th>
 				<th>No</th>
 				<th>Project Scope</th>
 				<th>Project Name</th>
@@ -68,7 +67,6 @@
 				                $approve = $key->isApproved;
 						?>
 						<tr>
-							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?=$key->projectScope?></td>
 							<td><?=name_project($key->projectID)?></td>

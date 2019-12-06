@@ -84,7 +84,6 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th>.</th>
 				<th>No</th>
 				<th>Email User</th>
 				<th>Log Time</th>
@@ -103,7 +102,6 @@
 				 $i++;
 			 ?>
 			<tr>
-				<td></td>
 				<td><?= $i ?></td>
 				<td><?= email($key->logUsrID) ?></td>
 				<td><?= timestep($key->logTime) ?></td>

@@ -9,7 +9,7 @@
 			<li <?= getActiveFunc('workscope/index') ?> style="<?= showLevel(array(11,22,33,44)); ?>" ><a href="<?= base_url('workscope') ?>"><i class="icon-calendar"></i> <span>Workscope</span></a></li>
 			<li <?= getActiveFunc('workscope/myworkscope') ?> style="<?= showLevel(array(55)); ?>"><a href="<?= base_url('workscope/myworkscope') ?>"><i class="icon-calendar"></i> <span>My Workscope</span></a></li>
 
-			<li class="navigation-header"><span>User</span> <i class="icon-users" title="User Pages"></i></li>
+			<li style="<?= showLevel(array(11)); ?>" class="navigation-header"><span>User</span> <i class="icon-users" title="User Pages"></i></li>
 			<li style="<?= showLevel(array(11)); ?>">
 				<a href="#"><i class="icon-magazine"></i> <span>Admin</span></a>
 				<ul>

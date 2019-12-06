@@ -17,7 +17,6 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th>.</th>
 						<th>No</th>
 						<th>Category ID</th>
 						<th>Category</th>
@@ -32,7 +31,6 @@
 									$no++;
 						?>
 							<tr class="text-size-mini">
-								<td></td>
 								<td><?= $no ?>.</td>
 								<td><?= $cat->categoryID ?></td>
 								<td><?= $cat->categoryName ?></td>
@@ -67,7 +65,6 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th>.</th>
 						<th>No</th>
 						<th>Project ID</th>
 						<th>Project Name</th>
@@ -82,7 +79,6 @@
 									$no++;
 						?>
 							<tr class="text-size-mini">
-								<td></td>
 								<td><?= $no ?>.</td>
 								<td><?= $pro->projectID ?></td>
 								<td><?= $pro->projectName ?> ( <?= name_dept($pro->deptID) ?> }</td>
@@ -120,7 +116,6 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th>.</th>
 						<th>No</th>
 						<th>ID</th>
 						<th>Project Scope</th>
@@ -153,7 +148,6 @@
 				                }
 						?>
 						<tr>
-							<td></td>
 							<td><?= $no ?>.</td>
 							<td><div class='col-md-8 text-semibold text-success'><?=$key->projectScopeID?></div></td>
 							<td><?=$key->projectScope?></td>

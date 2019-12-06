@@ -16,7 +16,6 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th>.</th>
 				<th>No</th>
 				<th>Project Scope</th>
 				<th>Project Name</th>
@@ -61,7 +60,6 @@
                                 }
 						?>
 						<tr>
-							<td></td>
 							<td><?= $no ?>.</td>
 							<td><?=ucwords($key->projectScope) ?></td>
 							<td><?=name_project($key->projectID)?></td>

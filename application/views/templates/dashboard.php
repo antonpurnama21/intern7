@@ -92,7 +92,7 @@
 				<ul class="nav navbar-nav">				
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<span class="label label-pill label-danger count" style="border-radius:10px; margin-top: 4px;"></span>
+							<span class="label label-pill label-danger count" style="border-radius:10px; margin-top: 7px; margin-right: 7px;z-index: 10;"></span>
 							<i class="icon-bell2"></i>
 							<span class="visible-xs-inline-block position-right">Activity</span>
 							

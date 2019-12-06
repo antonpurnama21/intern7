@@ -25,14 +25,14 @@ class Notification extends CommonDash {
 						"dashboards/js/plugins/pickers/pickadate/picker.js",
 						"dashboards/js/plugins/pickers/pickadate/picker.date.js",
 						"dashboards/js/plugins/forms/validation/validate.min.js",
-						"dashboards/js/pages/faculty-index-script.js",
+						"dashboards/js/pages/notif-index-script.js",
 				)
 			),
-			'titleWeb' => "Faculty | CBN Internship",
-			'breadcrumb' => explode(',', 'Data,Faculty'),
-			'dMaster' => $this->Mod_crud->getData('result','*', 't_faculty'),
+			'titleWeb' => "All Notification | CBN Internship",
+			'breadcrumb' => explode(',', 'Dashboar,All Notification'),
+			'dMaster' => $this->Mod_crud->getData('result','*', 't_notification',null,null,null,null,null,array('notifID DESC')),
 		);
-		$this->render('dashboard', 'pages/faculty/index', $data);
+		$this->render('dashboard', 'pages/notification/index', $data);
 	}
 
 	public function get_notif()

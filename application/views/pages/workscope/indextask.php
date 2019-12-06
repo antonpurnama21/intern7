@@ -17,7 +17,6 @@
 			<table class="table datatable-responsive-row-control table-hover">
 				<thead>
 					<tr style="font-size:12px;text-align:center;">
-						<th>.</th>
 						<th>No</th>
 						<th>Task ID</th>
 						<th>Task Name</th>
@@ -53,7 +52,6 @@
                                 }
 						?>
 						<tr>
-							<td></td>
 							<td><?= $no ?>.</td>
 							<td><div class='col-md-8 text-semibold text-success'><?=$key->taskID?></div></td>
 							<td><?=$key->taskName?></td>

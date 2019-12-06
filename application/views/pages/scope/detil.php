@@ -200,7 +200,6 @@
 				<table class="table datatable-responsive-row-control table-hover">
 					<thead>
 	                        <tr style="font-size:12px;text-align:center;">
-	                            <th>.</th>
 	                            <th>No</th>
 	                            <th>NIM</th>
 	                            <th>Nama Mahasiswa</th>
@@ -230,7 +229,6 @@
                                     }
                                 ?>
                             <tr>
-                            	<td></td>
                                 <td><?= $no ?>.</td>
                                 <td><?=$key->mahasiswaNumber ?></td>
                                 <td><?=ucwords($key->fullName)?></td>

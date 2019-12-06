@@ -213,7 +213,6 @@ class Log extends CommonDash {
                     $email = $email1;
                 }
 				array_push($res, array(
-							'',
 							$no,
 							$email,
 							$waktu,

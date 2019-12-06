@@ -17,7 +17,6 @@
 	<table class="table datatable-responsive-row-control table-hover">
 		<thead>
 			<tr style="font-size:12px;text-align:center;">
-				<th>.</th>
 				<th>No</th>
 				<th>Picture</th>
 				<th>Nim</th>
@@ -42,9 +41,8 @@
 						}
 				?>
 				<tr>
-					<td></td>
 					<td><?= $no ?>.</td>
-					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:50%;height:auto;"></td>
+					<td><img src="<?=$lokasi?>" alt="" class="img-responsive" style="width:50px;height:50px;"></td>
 					<td><div class="col-md-8 text-semibold text-success"><?=$key->dosenNumber?></div></td>
 					<td><?=$key->fullName?></td>
 					<td><?=$key->emaiL?></td>
