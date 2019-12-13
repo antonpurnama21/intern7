@@ -10,36 +10,36 @@ class Account extends CommonDash {
 		parent::__construct();
 	}
 
-	public function do_resend()
+	public function do_resend() // fungsi untuk mengirim ulang email setup password
 	{
-		$emaiL 	= $this->input->post('id');
-		$delete = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$emaiL));
+		$emaiL 	= $this->input->post('id'); //ambil email
+		$delete = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$emaiL)); //menghapus email pada tabel reset password
 
-		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$tokeN 	= substr(str_shuffle($set), 0, 55);
-		$create = time();
-		$exp = 60*60;
-		$done = $create+$exp;
-		$expired_at = date('Y-m-d H:i:s',$done);
+		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; //string untuk generate token
+		$tokeN 	= substr(str_shuffle($set), 0, 55); //buat token
+		$create = time(); //set waktu
+		$exp = 60*60; //set jangka waktu kadaluarsa
+		$done = $create+$exp; //set kadaluarsa
+		$expired_at = date('Y-m-d H:i:s',$done); //set kadaluarsa setelah di kirim
 
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
 				'emaiL'		=> $emaiL,
 				'tokeN'		=> $tokeN,
 				'created_at'	=> date('Y-m-d H:i:s'),
 				'expired_at'	=> $expired_at
-				)
+				) // create data pada t_password_reset
 			);
 
 			$config = array(
-				  		'protocol' => 'ssmtp',
-				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id',
-				  		'smtp_port' => 465,
-				  		'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
-				  		'smtp_pass' => 'Infocbn123', // change it to yours
+				  		'protocol' => 'ssmtp',//protocol
+				  		'smtp_host' => 'ssl://mail.intern7.iex.or.id', //rubah ke host kamu
+				  		'smtp_port' => 465, //port
+				  		'smtp_user' => 'info@intern7.iex.or.id', // rubah ke email user kamu
+				  		'smtp_pass' => 'Infocbn123', // rubah ke password kamu
 				  		//'smtp_username' => 'armg3295',
-				  		'mailtype' => 'html',
-				  		'charset' => 'iso-8859-1',
-				  		'wordwrap' => TRUE
+				  		'mailtype' => 'html', //type email
+				  		'charset' => 'iso-8859-1', //karakter huruf
+				  		'wordwrap' => TRUE //wordwap
 			);
 
 			$message = 	'
@@ -61,18 +61,18 @@ class Account extends CommonDash {
 							</p>							
 						</body>
 						</html>
-						';
+						'; //isi pesan
 	 		
-		    $this->load->library('email', $config);
+		    $this->load->library('email', $config); //load library
 		    $this->email->set_newline("\r\n");
 		    $this->email->from($config['smtp_user']);
 		    $this->email->to($emaiL);
-		    $this->email->subject('Account Setup Link');
+		    $this->email->subject('Account Setup Link'); //subjek email
 		    $this->email->message($message);
-		    helper_log('resend','Resend Setup Link to '.$emaiL,$this->session->userdata('userlog')['sess_usrID']);
+		    helper_log('resend','Resend Setup Link to '.$emaiL,$this->session->userdata('userlog')['sess_usrID']); //create log aktivitas
 
-           	if ($this->email->send()){
-			$data = array(
+           	if ($this->email->send()){ //jika terkirim
+			$data = array( //menampilkan sweatalert
 					'code' => 200,
 					'pesan' => 'Resend Setup Link, Success!',
 					'aksi' => 'setTimeout("window.location.reload();",1500)'
@@ -83,7 +83,7 @@ class Account extends CommonDash {
 			}
 	}
 
-		public function do_revoke()
+		public function do_revoke() //email untuk membatalkan perubahan password
 	{
 		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$tokeN 	= substr(str_shuffle($set), 0, 12);
@@ -149,17 +149,17 @@ class Account extends CommonDash {
 			}
 	}
 
-	function delete(){
-		$id 		= $this->input->post('id');
-		$getlogin 	= $this->Mod_crud->getData('row','*','t_login',null,null,null,array('loginID = "'.$id.'"'));
-		$email 		= $getlogin->emaiL;
-		helper_log('delete','Deleted Account '.$email,$this->session->userdata('userlog')['sess_usrID']);
+	function delete(){ //fungsi untuk menghapus
+		$id 		= $this->input->post('id'); //ambil id login
+		$getlogin 	= $this->Mod_crud->getData('row','*','t_login',null,null,null,array('loginID = "'.$id.'"')); //ambil data login pada table t_login
+		$email 		= $getlogin->emaiL; //ambil email
+		helper_log('delete','Deleted Account '.$email,$this->session->userdata('userlog')['sess_usrID']); //create log delete
 
-		if ($getlogin->roleID == 11) {
-			$delete 	 = $this->Mod_crud->deleteData('t_admin',array('loginID'=>$id));
-			$deletereset 	 = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
-			$deletelog 	 = $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));
-			if ($deletelog){
+		if ($getlogin->roleID == 11) { //jika role id = 11
+			$delete 	 = $this->Mod_crud->deleteData('t_admin',array('loginID'=>$id)); //delete data admin pd table t-admin
+			$deletereset 	 = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email)); //delete email pada table t-password-reset
+			$deletelog 	 = $this->Mod_crud->deleteData('t_login',array('loginID'=>$id)); //delete data login pada table login
+			if ($deletelog){ //jika di eksekusi $deletelog maka..
 			$data = array(
 					'code' => 200,
 					'pesan' => 'Success Delete !',
@@ -169,7 +169,7 @@ class Account extends CommonDash {
 			}else{
 				echo '';
 			}
-		}elseif ($getlogin->roleID == 22 ) {
+		}elseif ($getlogin->roleID == 22 ) { //jika role id = 22
 			$delete 		= $this->Mod_crud->deleteData('t_admin',array('loginID'=>$id));
 			$deletereset 		= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 			$deletelog 		= $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));			
@@ -183,8 +183,8 @@ class Account extends CommonDash {
 			}else{
 				echo '';
 			}
-		}elseif ($getlogin->roleID == 33 ) {
-			$delete 		= $this->Mod_crud->deleteData('t_admin_university',array('loginID'=>$id));
+		}elseif ($getlogin->roleID == 33 ) { //jika role id = 33
+			$delete 		= $this->Mod_crud->deleteData('t_admin_university',array('loginID'=>$id)); //delete data pd table t_admin_university
 			$deletereset 		= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 			$deletelog 		= $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));			
 			if ($deletelog){
@@ -197,13 +197,13 @@ class Account extends CommonDash {
 			}else{
 				echo '';
 			}
-		}elseif ($getlogin->roleID == 44 ) {
-			$getdosen		= $this->Mod_crud->getData('row','*','t_dosen',null,null,null,array('loginID = "'.$id.'"'));
+		}elseif ($getlogin->roleID == 44 ) { //jika role id = 44
+			$getdosen		= $this->Mod_crud->getData('row','*','t_dosen',null,null,null,array('loginID = "'.$id.'"')); //delete data pada table dosen
 			$delete 		= $this->Mod_crud->deleteData('t_dosen',array('loginID'=>$id));
 			$deletereset 		= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
 			$deletelog 		= $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));
 			if ($deletelog){
-			unlink(FCPATH . $getdosen->profilePic);
+			unlink(FCPATH . $getdosen->profilePic); //menghapus gambar pada direktori project
 			$data = array(
 					'code' => 200,
 					'pesan' => 'Success Delete !',
@@ -213,16 +213,16 @@ class Account extends CommonDash {
 			}else{
 				echo '';
 			}
-		}else{
-			$getmhs 	= $this->Mod_crud->getData('row','*','t_mahasiswa',null,null,null,array('loginID = "'.$id.'"'));
-			$getfile 	= $this->Mod_crud->getData('row','*','t_mahasiswa_file',null,null,null,array('mahasiswaID = "'.$getmhs->mahasiswaID.'"'));
-			$delete 	= $this->Mod_crud->deleteData('t_mahasiswa',array('loginID'=>$id));
-			$delete 	= $this->Mod_crud->deleteData('t_mahasiswa_file',array('fileID'=>$getfile->fileID));
+		}else{ //untuk role id = 55
+			//$getmhs 	= $this->Mod_crud->getData('row','*','t_mahasiswa',null,null,null,array('loginID = "'.$id.'"'));
+			$getfile 	= $this->Mod_crud->getData('row','*','t_mahasiswa_file',null,null,null,array('mahasiswaID = "'.$id.'"')); // ambil data file mahasiswa pada table t-mahasiswa-file
+			$delete 	= $this->Mod_crud->deleteData('t_mahasiswa',array('loginID'=>$id));//hapus data mahasiswa pada table mahasiswa
+			$delete 	= $this->Mod_crud->deleteData('t_mahasiswa_file',array('fileID'=>$getfile->fileID));//menghapus data pada table t-file-mahasiswa
 			$deletelog 	= $this->Mod_crud->deleteData('t_login',array('loginID'=>$id));
 			if ($deletelog){
-			unlink(FCPATH . $getfile->photo);
-			unlink(FCPATH . $getfile->resume);
-			unlink(FCPATH . $getfile->academicTranscipt);
+			unlink(FCPATH . $getfile->photo); //hapus file foto pada dir projek
+			unlink(FCPATH . $getfile->resume); //hapus file resume pda dir projek
+			unlink(FCPATH . $getfile->academicTranscipt); //hapus file transcipt pada dir projek
 			$data = array(
 					'code' => 200,
 					'pesan' => 'Success Delete !',
@@ -238,5 +238,5 @@ class Account extends CommonDash {
 
 }
 
-/* End of file faculty.php */
-/* Location: ./application/controllers/faculty.php */
+/* End of file account.php */
+/* Location: ./application/controllers/account.php */

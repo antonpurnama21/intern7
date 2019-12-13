@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
+//berisi fungsi2 umum yang sering dipakai/atau di butuhkan di frontend
 class CommonFunction extends CI_Controller {
 
 	public function __construct()
@@ -40,7 +40,7 @@ class CommonFunction extends CI_Controller {
 		}
 		echo json_encode($resp);
 	}
-
+		//menampilkan universitas
 		public function getUniv()
 	{
 		$resp = array();
@@ -54,7 +54,7 @@ class CommonFunction extends CI_Controller {
 		}
 		echo json_encode($resp);
 	}
-
+		//menampilkan fakultas
 		public function getFaculty()
 	{
 		$resp = array();
@@ -69,6 +69,7 @@ class CommonFunction extends CI_Controller {
 		echo json_encode($resp);
 	}
 
+		//menampilkan residence
 		public function getResidence()
 	{
 		$resp = array();
@@ -83,6 +84,7 @@ class CommonFunction extends CI_Controller {
 		echo json_encode($resp);
 	}
 
+		//menampilkan kategory
 		public function getCategory()
 	{
 		$resp = array();
@@ -97,6 +99,7 @@ class CommonFunction extends CI_Controller {
 		echo json_encode($resp);
 	}
 
+	//menampilkan project
 	public function getProject()
 	{
 		$resp = array();
@@ -111,6 +114,7 @@ class CommonFunction extends CI_Controller {
 		echo json_encode($resp);
 	}
 
+		//menampilkan admin department
 		public function getAdmin()
 	{
 		$resp = array();

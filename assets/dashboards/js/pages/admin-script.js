@@ -1,4 +1,4 @@
-$(function() {
+$(function() {// function utnuk tabel
     var listPengaduan = [];
     $.post($('#alamatList').val(), {}, function(resp){
         var result = JSON.parse(resp);
@@ -137,21 +137,21 @@ $(function() {
 
     $.validator.addMethod("letteronly", function(value, element) {
         return this.optional(element) || /^[a-zA-Z ]*$/.test(value);
-    });
+    }); //hanya huruf
 
     $.validator.addMethod( "extensionImage", function( value, element, param ) {
     param = typeof param === "string" ? param.replace( /,/g, "|" ) : "png|jpe?g";
     return this.optional( element ) || value.match( new RegExp( "\\.(" + param + ")$", "i" ) );
-    });
+    }); //hanya extensi png
 
     $.validator.addMethod( "extensionDoc", function( value, element, param ) {
     param = typeof param === "string" ? param.replace( /,/g, "|" ) : "pdf";
     return this.optional( element ) || value.match( new RegExp( "\\.(" + param + ")$", "i" ) );
-    });
+    });// hanya ektensi doc
 
     $.validator.addMethod('filesize', function (value, element, param) {
     return this.optional(element) || (element.files[0].size <= param)
-    });
+    }); //atur size file
 
     $("#dokumen-form").validate({
         ignore: 'input[type=hidden], .select2-search__field', // ignore hidden fields

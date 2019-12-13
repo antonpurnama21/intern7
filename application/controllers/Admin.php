@@ -14,7 +14,7 @@ class Admin extends CommonDash {
 	public function index()
 	{
 		$data = array(
-			'_JS' => generate_js(array(
+			'_JS' => generate_js(array( //menggenerate js
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
 						"dashboards/js/plugins/tables/datatables/extensions/scroller.min.js",
@@ -29,11 +29,11 @@ class Admin extends CommonDash {
 						"dashboards/js/pages/admin-index-script.js",
 				)
 			),
-			'titleWeb' => "Admin Department | CBN Internship",
-			'breadcrumb' => explode(',', 'Account,Admin Department'),
-			'dMaster'	=> $this->Mod_crud->getData('result','a.*, l.roleID', 't_admin a', null, null, array('t_login l' => 'a.loginID = l.loginID')), //ambil_data_admin
+			'titleWeb' => "Admin Department | CBN Internship", //title web
+			'breadcrumb' => explode(',', 'Account,Admin Department'), //breadcrumb
+			'dMaster'	=> $this->Mod_crud->getData('result','a.*, l.roleID', 't_admin a', null, null, array('t_login l' => 'a.loginID = l.loginID')), //mengambil data admin pada table admin
 		);
-		$this->render('dashboard', 'pages/admin/index', $data);
+		$this->render('dashboard', 'pages/admin/index', $data); //load view admin index.php
 	}
 
 
@@ -59,29 +59,28 @@ class Admin extends CommonDash {
 				)
 			),
 		    'titleWeb' => "Add Admin Department | CBN Internship",
-		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
 		    'breadcrumb' => explode(',', 'Admin Department,Add Admin Department '),
-		    'actionForm' => base_url('admin/save'),
-		    'buttonForm' => 'Simpan'
+		    'actionForm' => base_url('admin/save'), //set action pada form tambah
+		    'buttonForm' => 'Simpan' //set button
 		);
 
-		$this->render('dashboard', 'pages/admin/add', $data);
+		$this->render('dashboard', 'pages/admin/add', $data); //load view admin add.php
 	}
 
 	// menyimpan_data_admin
 	public function save(){
 		$cek = $this->Mod_crud->checkData('emaiL', 't_login', array('emaiL = "'.$this->input->post('Email').'"')); //cek_email_yg_sama
-		if ($cek){
+		if ($cek){ //jika ada
 			echo json_encode(array('code' => 366, 'message' => 'Email has been registered'));
 		}else{
 			
-			if ($this->input->post('Roleid')==11) { //kondisi_untuk_memisahkan_admin_department_dan_admin_hc
-				$id 	= $this->Mod_crud->autoNumber('adminID','t_admin','11',3);
-			}elseif ($this->input->post('Roleid')==22) {
+			if ($this->input->post('Roleid')==11) { //jika role id 11
+				$id 	= $this->Mod_crud->autoNumber('adminID','t_admin','11',3); //create id otomatis pada table admin
+			}elseif ($this->input->post('Roleid')==22) { //jika role id 22
 				$id 	= $this->Mod_crud->autoNumber('adminID','t_admin','22',3);	
 			}
 
-			$save = $this->Mod_crud->insertData('t_admin', array(
+			$save = $this->Mod_crud->insertData('t_admin', array( //simpan data pada table admin
 						'adminID' 	=> $id,
 						'loginID' 	=> $id,
 						'emaiL' 	=> $this->input->post('Email'),
@@ -91,9 +90,9 @@ class Admin extends CommonDash {
 						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' => date('Y-m-d H:i:s')
            			)
-           		); //insert admin
+           		);
 
-			$savelogin = $this->Mod_crud->insertData('t_login', array(
+			$savelogin = $this->Mod_crud->insertData('t_login', array( //simpan data login pada table login
 				'loginID'		=> $id,
 				'roleID'		=> $this->input->post('Roleid'),
 				'emaiL'			=> $this->input->post('Email'),
@@ -103,14 +102,14 @@ class Admin extends CommonDash {
 				)
 			); //insert login
 
-			$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-			$tokeN 	= substr(str_shuffle($set), 0, 55); //membuat_token_untuk_email_verifikasi
-			$create = time();
-			$exp = 60*60;
-			$done = $create+$exp;
-			$expired_at = date('Y-m-d H:i:s',$done);
+			$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; //set random string
+			$tokeN 	= substr(str_shuffle($set), 0, 55); //membuat_token_untuk_email setup pasword
+			$create = time();//set waktu
+			$exp = 60*60;//set jangka waktu kadaluarsa
+			$done = $create+$exp;//set waktu kadaluarsa
+			$expired_at = date('Y-m-d H:i:s',$done); //set waktu kadaluara setelah berhasil dikirim
 
-			$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
+			$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array( //simpan email pada table password reset
 					'emaiL'		=> $this->input->post('Email'),
 					'tokeN'		=> $tokeN,
 					'created_at'	=> date('Y-m-d H:i:s'),
@@ -119,15 +118,15 @@ class Admin extends CommonDash {
 				); //insert_email_pada_tabel_password_reset
 
 			$config = array(
-			  				'protocol' => 'ssmtp',
-							'smtp_host' => 'ssl://mail.intern7.iex.or.id',
-							'smtp_port' => 465,
+			  				'protocol' => 'ssmtp', //protoco;
+							'smtp_host' => 'ssl://mail.intern7.iex.or.id', //rubah ke host kamu
+							'smtp_port' => 465, //port
 							'smtp_user' => 'info@intern7.iex.or.id', // change it to yours
 							'smtp_pass' => 'Infocbn123', // change it to yours
 					  		//'smtp_username' => 'armg3295',
-					  		'mailtype' => 'html',
-					  		'charset' => 'iso-8859-1',
-					  		'wordwrap' => TRUE
+					  		'mailtype' => 'html', //type email
+					  		'charset' => 'iso-8859-1', //set karakter huruf
+					  		'wordwrap' => TRUE //wordwrap
 				); //setup_email
 
 				$message = 	"
@@ -149,22 +148,22 @@ class Admin extends CommonDash {
 								</p>							
 							</body>
 							</html>
-							";
+							"; //isi pesan
 		 		
-			    $this->load->library('email', $config);
+			    $this->load->library('email', $config); //load library email
 			    $this->email->set_newline("\r\n");
-			    $this->email->from($config['smtp_user']);
-			    $this->email->to($this->input->post('Email'));
-			    $this->email->subject('Account Setup Link');
-			    $this->email->message($message);
-			    helper_log('add','Add New Admin Department Account ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']); //log_simpan_admin
-			    create_notification('New','Admin Department',$this->input->post('Fullname'),'admin/index');
+			    $this->email->from($config['smtp_user']);//email dari
+			    $this->email->to($this->input->post('Email'));//kirim ke
+			    $this->email->subject('Account Setup Link'); //subjek email
+			    $this->email->message($message); //isi pesan
+			    helper_log('add','Add New Admin Department Account ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']); //catat aktivitas log_simpan_admin
+			    create_notification('New','Admin Department',$this->input->post('Fullname'),'admin/index'); //sreate notifikasi
 
-			if ($this->email->send()){
-				$this->alert->set('bg-success', "Insert success ! Setup link hes been send");
-       			echo json_encode(array('code' => 200, 'message' => 'Insert success ! Setup link hes been send', 'aksi' => "window.location.href='".base_url('admin')."';"));
+			if ($this->email->send()){ //jika terkirim
+				$this->alert->set('bg-success', "Insert success ! Setup link hes been send"); //set alert
+       			echo json_encode(array('code' => 200, 'message' => 'Insert success ! Setup link hes been send', 'aksi' => "window.location.href='".base_url('admin')."';")); //alert berhasil
        		}else{
-       			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
+       			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !')); //alert gagal
        		}
 		}
 	}
@@ -194,23 +193,23 @@ class Admin extends CommonDash {
 		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
 		    'breadcrumb' => explode(',', 'Admin Department,Edit Admin ('.name_admin($id).')'),
 		    'dMaster' => $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin a', null, null, array('t_login l' => 'a.loginID = l.loginID'), array('adminID = "'.$id.'"')), //ambil_data_admin_per_id
-			'actionForm' => base_url('admin/edit'),
-		    'buttonForm' => 'Simpan',
+			'actionForm' => base_url('admin/edit'), //set form action
+		    'buttonForm' => 'Simpan', //set button
 		    'Req' => ''
 		);
 
-		$this->render('dashboard', 'pages/admin/add', $data);
+		$this->render('dashboard', 'pages/admin/add', $data); // load admin add
 	}
 
 	public function edit(){
 		$cek = $this->Mod_crud->checkData('fullName', 't_admin', array('fullName = "'.$this->input->post('Fullname').'"', 'adminID != "'.$this->input->post('Adminid').'"')); //cek_nama_yg_sama
-		if ($cek){
+		if ($cek){ //jika ada
 			echo json_encode(array('code' => 367, 'message' => 'Name has been registered'));
 		}else{
 			$update = $this->Mod_crud->updateData('t_admin', array(
 						'emaiL' 	=> $this->input->post('Email'),
 						'fullName' 	=> $this->input->post('Fullname'),
-						'telePhone' 	=> $this->input->post('Telephone'),
+						'telePhone' => $this->input->post('Telephone'),
 						'deptID'	=> $this->input->post('Deptid'),
 						'createdBY'	=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' => date('Y-m-d H:i:s')
@@ -237,8 +236,8 @@ class Admin extends CommonDash {
 		helper_log('delete','Delete Account ( '.email($this->input->post('id')).' )',$this->session->userdata('userlog')['sess_usrID']); //log_delete_admin
 		$deletelog 	= $this->Mod_crud->deleteData('t_login',array('loginID'=>$this->input->post('id'))); //delete_login
 		$query 		= $this->Mod_crud->deleteData('t_admin', array('adminID' => $this->input->post('id'))); //delete_admin
-		if ($query){
-			$data = array(
+		if ($query){ //jika di eksekusi
+			$data = array(//sweat alert berhasil
 					'code' => 200,
 					'pesan' => 'Success Delete !',
 					'aksi' => 'setTimeout("window.location.reload();",1500)'
@@ -254,14 +253,14 @@ class Admin extends CommonDash {
 	//modal_reset_password
 		public function modalReset()
 	{
-		$ID = explode('~',$this->input->post('id'));
+		$ID = explode('~',$this->input->post('id')); //get id
 		$data = array(
-				'modalTitle' => 'Reset Password Account '.$ID[1],
-				'dMaster' => $this->Mod_crud->getData('row', 'emaiL', 't_admin', null, null, null, array('adminID = "'.$ID[0].'"')),
+				'modalTitle' => 'Reset Password Account '.$ID[1], //modal title
+				'dMaster' => $this->Mod_crud->getData('row', 'emaiL', 't_admin', null, null, null, array('adminID = "'.$ID[0].'"')), //get data admin perid
 				'formAction' => base_url('admin/reset'),
 				'Req' => ''
 			);
-		$this->load->view('pages/admin/reset', $data);
+		$this->load->view('pages/admin/reset', $data);//view load admin reset
 	}
 
 	//reset_password
@@ -341,8 +340,8 @@ class Admin extends CommonDash {
 	//halaman_profile
 	public function profile()
 	{
-		$id = $this->session->userdata('userlog')['sess_usrID'];
-		$detail = $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin a', null, null, array('t_login l'=>'a.loginID = l.loginID'),array('a.adminID = "'.$id.'"'));
+		$id = $this->session->userdata('userlog')['sess_usrID']; //ambil id
+		$detail = $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin a', null, null, array('t_login l'=>'a.loginID = l.loginID'),array('a.adminID = "'.$id.'"')); //get admin by id
 		$data = array(
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
@@ -363,7 +362,7 @@ class Admin extends CommonDash {
 			'breadcrumb' => explode(',', 'Profile,My Profile'),
 			'dtadmin' => $detail
 		);
-		$this->render('dashboard', 'pages/admin/profile', $data);
+		$this->render('dashboard', 'pages/admin/profile', $data);//view load admin profile
 	}
 
 	//form_update_profile
@@ -392,19 +391,19 @@ class Admin extends CommonDash {
 		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
 		    'breadcrumb' => explode(',', 'Profile,Update Profile'),
 		    'dMaster' => $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_admin a', null, null, array('t_login l' => 'a.loginID = l.loginID'), array('adminID = "'.$id.'"')), //get_data_by_id
-			'actionForm' => base_url('admin/editProfile'),
+			'actionForm' => base_url('admin/editProfile'), //action form
 		    'buttonForm' => 'Simpan',
 		    'Req' => ''
 		);
 
-		$this->render('dashboard', 'pages/admin/add', $data);
+		$this->render('dashboard', 'pages/admin/add', $data); //view load admin add
 	}
 
 	//update_profile
 		public function editProfile()
 	{
-		$cek = $this->Mod_crud->checkData('fullName', 't_admin', array('fullName = "'.$this->input->post('Fullname').'"', 'adminID != "'.$this->input->post('Adminid').'"'));
-		if ($cek){
+		$cek = $this->Mod_crud->checkData('fullName', 't_admin', array('fullName = "'.$this->input->post('Fullname').'"', 'adminID != "'.$this->input->post('Adminid').'"'));// cek nama yang sama
+		if ($cek){ //jika ada
 			echo json_encode(array('code' => 367, 'message' => 'Name has been registered'));
 		}else{
 			$update = $this->Mod_crud->updateData('t_admin', array(
@@ -421,9 +420,9 @@ class Admin extends CommonDash {
            	); //update_profile
 			helper_log('edit','Edit Profile',$this->session->userdata('userlog')['sess_usrID']); //log_update_profile
 
-			if ($update){
-				$this->alert->set('bg-success', "Update success !");
-       			echo json_encode(array('code' => 200, 'message' => 'Update success !', 'aksi' => "window.location.href='".base_url('admin/profile')."';"));
+			if ($update){ //jika berhasil
+				$this->alert->set('bg-success', "Update success !"); //alert berhasil
+       			echo json_encode(array('code' => 200, 'message' => 'Update success !', 'aksi' => "window.location.href='".base_url('admin/profile')."';")); 
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));
        		}
@@ -433,32 +432,32 @@ class Admin extends CommonDash {
 	//modal_ganti_password
 	public function changePass()
 	{
-		$ID = explode('~',$this->input->post('id'));
+		$ID = explode('~',$this->input->post('id')); //ambil id
 		$data = array(
 				'modalTitle' => 'Change Password '.$ID[1],
 				'adminID' => $ID[0],
 				'formAction' => base_url('admin/do_change_pass'),
 				'Req' => ''
 			);
-		$this->load->view('pages/admin/changepass', $data);
+		$this->load->view('pages/admin/changepass', $data);//load view changepass
 	}
 
 	//ganti_password
 		public function do_change_pass()
 	{
 		$cek = $this->Mod_crud->checkData('passworD', 't_login', array('passworD = "'.md5($this->input->post('Password1')).'"', 'loginID = "'.$this->input->post('Adminid').'"')); //cek_password
-		if ($cek){
+		if ($cek){ //jika sama
 			echo json_encode(array('code' => 367, 'message' => 'The password you entered has been used before'));
-		}else{
+		}else{ //jika tidak ada
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
 						'passworD'		=> md5($this->input->post('Password1')),
 						'statuS'		=> 'verified',
-           			), array('loginID'  => $this->input->post('Adminid'))
+           			), array('loginID'  => $this->input->post('Adminid')) //create data pada table login
            	);
-			helper_log('edit','Change Password',$this->session->userdata('userlog')['sess_usrID']);
+			helper_log('edit','Change Password',$this->session->userdata('userlog')['sess_usrID']); //create log aktiviti ubah password
 
-			if ($updateLogin){
-				$this->alert->set('bg-success', "Update success !");
+			if ($updateLogin){ //jika berhasil
+				$this->alert->set('bg-success', "Update success !");//set alert success
        			echo json_encode(array('code' => 200, 'message' => 'Update success !'));
        		}else{
        			echo json_encode(array('code' => 500, 'message' => 'An error occurred while saving data !'));

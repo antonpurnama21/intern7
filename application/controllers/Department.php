@@ -10,7 +10,7 @@ class Department extends CommonDash {
 		parent::__construct();
 	}
 
-	public function index()
+	public function index()//halaman index department
 	{
 		$data = array(
 			'_JS' => generate_js(array(
@@ -32,26 +32,27 @@ class Department extends CommonDash {
 			'breadcrumb' => explode(',', 'Data,Department'),
 			'dMaster' => $this->Mod_crud->getData('result','*', 't_department'),
 		);
-		$this->render('dashboard', 'pages/department/index', $data);
+		$this->render('dashboard', 'pages/department/index', $data);//view load index/department
 	}
 
-	public function modalAdd(){
+	public function modalAdd(){//modal tambah department
 		$data = array(
 				'modalTitle' => 'Add Department ',
 				'formAction' => base_url('department/save'),
 				'Req' => ''
 			);
-		$this->load->view('pages/department/form', $data);
+		$this->load->view('pages/department/form', $data);//view load form
 	}
 
-	public function save(){
+	public function save(){//aksi tambah department
+		//cek nama department
 		$cek = $this->Mod_crud->checkData('deptName', 't_department', array('deptName = "'.$this->input->post('Deptname').'"'));
-		if ($cek){
+		if ($cek){//jika ada
 			echo json_encode(array('code' => 256, 'message' => 'Department has been registered'));
 		}else{
-
+			//generate id department
 			$id 	= $this->Mod_crud->autoNumber('deptID','t_department','MDT-',3);
-
+			//simpan department
 			$save = $this->Mod_crud->insertData('t_department', array(
 						'deptID' 		=> $id,
 						'deptName' 		=> $this->input->post('Deptname'),
@@ -59,7 +60,9 @@ class Department extends CommonDash {
 						'createdTime' 	=> date('Y-m-d H:i:s')
            			)
            		);
+			//log aktivitas
 			helper_log('add','Add New Department ( '.$this->input->post('Deptname').' )',$this->session->userdata('userlog')['sess_usrID']);
+			//create notifikasi
 			create_notification('New','Department',$this->input->post('Deptname'),'department/index');
 			if ($save){
 				$this->alert->set('bg-success', "Insert success ! ");
@@ -70,11 +73,11 @@ class Department extends CommonDash {
 		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function modalEdit(){
+	public function modalEdit(){//modal edit
 		$ID = explode('~',$this->input->post('id'));
 		$data = array(
 				'modalTitle' => 'Edit '.$ID[1],
-				'dMaster' => $this->Mod_crud->getData('row', '*', 't_department', null, null, null, array('deptID = "'.$ID[0].'"')),
+				'dMaster' => $this->Mod_crud->getData('row', '*', 't_department', null, null, null, array('deptID = "'.$ID[0].'"')),//get department by id
 				'formAction' => base_url('department/edit'),
 				'Req' => ''
 			);
@@ -86,13 +89,14 @@ class Department extends CommonDash {
 		if ($cek){
 			echo json_encode(array('code' => 256, 'message' => 'Department has been registered'));
 		}else{
-
+			//simpan perubahan
 			$update = $this->Mod_crud->updateData('t_department', array(
 						'deptName'	=> $this->input->post('Deptname'),
 						'createdBY'		=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' 	=> date('Y-m-d H:i:s')
            			), array('deptID ' => $this->input->post('Deptid'))
            		);
+			//log aktivitas
 			helper_log('edit','Edit Department ( '.$this->input->post('Deptname').' )',$this->session->userdata('userlog')['sess_usrID']);
 
 			if ($update){
@@ -104,7 +108,7 @@ class Department extends CommonDash {
 		}
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function delete(){
+	public function delete(){//menghapus data department
 		$query 		= $this->Mod_crud->deleteData('t_department', array('deptID' => $this->input->post('id')));
 		if ($query){
 			$data = array(

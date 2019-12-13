@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mod_crud');
+		$this->load->model('Mod_crud'); //memanggil model mod crud
 	}
 
 	public function index()
@@ -14,56 +14,56 @@ class Auth extends CI_Controller {
 		
 	}
 
-	public function login()
+	public function login() //fungsi kehalaman login
 	{			
-		if ($this->session->userdata('userlog')['is_login'] == TRUE) :
-			redirect(base_url('dashboard')) ;
+		if ($this->session->userdata('userlog')['is_login'] == TRUE) : //jika session is_login sama bernilain true
+			redirect(base_url('dashboard')) ; //redirect ke controller dashboard
 		endif;
 
-		update_workscope();
-		update_project_scope();
-		update_task();
+		update_workscope(); //update workscope secara otomatis
+		update_project_scope(); //update project scope secara otomatis
+		update_task(); //update task secara otomatis
 
 		$data = array(
-		    'titleWeb' => 'Login page | CBN Internship',
+		    'titleWeb' => 'Login page | CBN Internship', //title website
 		);
-		$this->template->load('login', null, $data);
+		$this->template->load('login', null, $data); //load view login
 	}
 
-	public function do_login()
+	public function do_login() //aksi login
 	{
-		$cekUser = $this->Mod_crud->getData('row', '*', 't_login', null, null, null, array('emaiL = "'.$this->input->post('email').'"'));
-		if ($cekUser == false){
+		$cekUser = $this->Mod_crud->getData('row', '*', 't_login', null, null, null, array('emaiL = "'.$this->input->post('email').'"')); //cek email pengguna pada tabel login
+		if ($cekUser == false){ //jika tak ada menampilkan pesan alert
 			echo json_encode(array('code' => 366, 'message' => 'Email not found'));
 		}else{
-			$cekPass = $this->Mod_crud->getData('row', '*', 't_login', null, null, null, array('emaiL = "'.$this->input->post('email').'"', 'passworD = "'.MD5($this->input->post('password')).'"'));
-			if ($cekPass == false){
+			$cekPass = $this->Mod_crud->getData('row', '*', 't_login', null, null, null, array('emaiL = "'.$this->input->post('email').'"', 'passworD = "'.MD5($this->input->post('password')).'"')); //cek password pengguna pada tabel login
+			if ($cekPass == false){ //jika tak ada menampilkan pesan alert
 				echo json_encode(array('code' => 369, 'message' => 'Wrong password'));
 			}else{
 					//$avatar = base_url('assets/dashboards/images/avatars/default_avatar.png');
-			if ($this->input->post("chkremember")){
-                        $this->input->set_cookie('u_mail', $this->input->post('email'), 86500); /* Create cookie for store emailid */
-                        $this->input->set_cookie('u_pass', $this->input->post('password'), 86500); /* Create cookie for password */
+			if ($this->input->post("chkremember")){ //remember me pada login
+                        $this->input->set_cookie('u_mail', $this->input->post('email'), 86500); //86500 = 24 jam /* Create cookie for store emailid */
+                        $this->input->set_cookie('u_pass', $this->input->post('password'), 86500); //86500 = 24 jam /* Create cookie for password */
                     }
 
-                			if ($cekPass->roleID == 11 OR $cekPass->roleID == 22) {
-						$user 	= $this->Mod_crud->getData('row', '*', 't_admin', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"'));
+                	if ($cekPass->roleID == 11 OR $cekPass->roleID == 22) { //cek role ID untuk admin department
+						$user 	= $this->Mod_crud->getData('row', '*', 't_admin', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"')); //ambil data admin department pada tabel admin department
 						$login['sess_usrID']  = $user->adminID;
 						$login['sess_deptID'] = $user->deptID;
 						$avatar = base_url('fileupload/pic_admin/default.png');
-					}elseif ($cekPass->roleID == 33) {
-						$user 	= $this->Mod_crud->getData('row', '*', 't_admin_campus', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"'));
+					}elseif ($cekPass->roleID == 33) { //cek role id untuk admin campus
+						$user 	= $this->Mod_crud->getData('row', '*', 't_admin_campus', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"')); //ambil data admin campus pada table admin campus
 						$login['sess_usrID'] 	= $user->adminCampusID;
 						$login['sess_univID'] 	= $user->universityID;
 						$avatar = base_url('fileupload/pic_admin/default.png');
-					}elseif ($cekPass->roleID == 44) {
-						$user 	= $this->Mod_crud->getData('row', '*', 't_dosen', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"'));
+					}elseif ($cekPass->roleID == 44) { //cek role id untuk dosen
+						$user 	= $this->Mod_crud->getData('row', '*', 't_dosen', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"')); //ambil data dosen pada tabel dosen
 						$login['sess_usrID'] 	= $user->dosenID;
 						$login['sess_univID'] 	= $user->universityID;
 						$login['sess_facID'] 	= $user->facultyID;
 						$avatar = base_url('fileupload/pic_dosen/default.png');
-					}else {
-						$user 	= $this->Mod_crud->getData('row', '*', 't_mahasiswa', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"'));
+					}else { //trakhir untuk mahasiswa
+						$user 	= $this->Mod_crud->getData('row', '*', 't_mahasiswa', null, null, null, array('emaiL = "'.$cekPass->emaiL.'"')); //ambil data mahasiswa pada tabel mahasiswa
 						$login['sess_usrID'] 	= $user->mahasiswaID;
 						$login['sess_univID'] 	= $user->universityID;
 						$login['sess_facID'] 	= $user->facultyID;
@@ -77,13 +77,14 @@ class Auth extends CI_Controller {
 						$login['sess_pass'] 	= md5($this->input->post('password'));
 						$login['sess_avatar'] 	= $avatar;
 
-				$lokasi = base_url('dashboard');
-				$this->Mod_crud->updateData('t_login', array('lastLog' => date('Y/m/d H:i:s')),array('emaiL' => $this->input->post('email') ));
-				$this->session->set_userdata('userlog',$login);
-				helper_log('login','Login Application',$this->session->userdata('userlog')['sess_usrID']);
 
-				$this->alert->set('bg-success', 'Welcome '.$login['sess_name'].', you login as '.what_role($login['sess_role']).' !');
-				echo json_encode(array('code' => 200, 'aksi' => "window.location.href = '".$lokasi."'"));
+				$lokasi = base_url('dashboard'); //set lokasi
+				$this->Mod_crud->updateData('t_login', array('lastLog' => date('Y/m/d H:i:s')),array('emaiL' => $this->input->post('email') ));//log pada tabel login
+				$this->session->set_userdata('userlog',$login); //set session
+				helper_log('login','Login Application',$this->session->userdata('userlog')['sess_usrID']);//membuat log aktivitas
+
+				$this->alert->set('bg-success', 'Welcome '.$login['sess_name'].', you login as '.what_role($login['sess_role']).' !');//pesan alert
+				echo json_encode(array('code' => 200, 'aksi' => "window.location.href = '".$lokasi."'")); //diarahkan pada lokasi
 			
 			}
 		}
@@ -91,43 +92,45 @@ class Auth extends CI_Controller {
 
 	/////////////////////////////////////////////////////////////////////////
 
-		public function reset($token=null)
+		public function reset($token=null)//halaman untuk reset password
 	{	
+		//cek email pada table reset password
 		$getreset = $this->Mod_crud->getData('row','*','t_passwordreset',null,null,null,array('tokeN = "'.$token.'"'));
-		if ($getreset == false) {
+		if ($getreset == false) { //jika tak ada
 			echo "Link has been Expired !";
 		}else{
-		$dtmulai = date('Y-m-d H:i:s');
-		$dtakhir = $getreset->expired_at;
-		if ($dtmulai >= $dtakhir) {
+		$dtmulai = date('Y-m-d H:i:s'); //waktu saat di akses
+		$dtakhir = $getreset->expired_at; //waktu expired
+		if ($dtmulai >= $dtakhir) { //mengecek expired token, jika sudah expired
 			$delete 	= $this->Mod_crud->deleteData('t_passwordreset',array('tokeN'=>$token));
 			echo "Lnik has been Expired !";
-		}else{
+		}else{ //jika belum
 
 		$data = array(
 		    'titleWeb' 	=> 'Reset Page | CBN Internship',
 		    'email'	=> $getreset->emaiL
 		);
-		$this->template->load('reset', null, $data);
+		$this->template->load('reset', null, $data); //load view reset
 		}
 	  }
 	}
 
-	public function do_reset()
+	public function do_reset()//reset aksi
 	{
 		$email = $this->input->post('email');
 		$pass1 = $this->input->post('pass1');
 		$pass2 = $this->input->post('pass2');
 
+		//cek email
 		$cekemail = $this->Mod_crud->getData('row', '*', 't_login', null, null, null, array('emaiL = "'.$email.'"'));
-		if ($cekemail == false){
+		if ($cekemail == false){ //jika ada
 			echo json_encode(array('code' => 366, 'message' => 'Email not found !'));
 		}else{
-			if ($pass1 != $pass2){
+			if ($pass1 != $pass2){ //jika password tak sama
 				echo json_encode(array('code' => 368, 'message' => 'Password not same !'));
 			}else{
 
-				$delete  = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));
+				$delete  = $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$email));//menghapus email pada table password reset
 
 				if ($cekemail->roleID == 11 OR $cekemail->roleID == 22) {
 					$user 	= $this->Mod_crud->getData('row', '*', 't_admin', null, null, null, array('emaiL = "'.$email.'"'));
@@ -179,33 +182,33 @@ class Auth extends CI_Controller {
 	}
 
 	////////////////////////////////////////////////////////////////////////////
-	public function forgot()
+	public function forgot() //ke halaman forgot password
 	{				
 		$data = array(
 		    'titleWeb' => 'Forgot Page | CBN Internship',
 		);
-		$this->template->load('forgot', null, $data);
+		$this->template->load('forgot', null, $data);//load view forgot password
 	}
 
-	public function do_forgot()
+	public function do_forgot() //forgot password aksi
 	{
 		$emaiL 		= $this->input->post('email');
-
+		//delete email pada table reset terlebih dahulu apa bila sudah ada
 		$delete 	= $this->Mod_crud->deleteData('t_passwordreset',array('emaiL'=>$emaiL));
-
+		//cek email pada table login
 		$cekemail 	= $this->Mod_crud->getData('row', '*', 't_login', null, null, null, array('emaiL = "'.$emaiL.'"'));
 
-		if ($cekemail == false){
+		if ($cekemail == false){ //jika tak ada
 			echo json_encode(array('code' => 366, 'message' => 'Email not found !'));
 
 		}else{
 
-		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$tokeN 	= substr(str_shuffle($set), 0, 55);
+		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; //set string
+		$tokeN 	= substr(str_shuffle($set), 0, 55); //generate token
 		$create = time();
-		$exp = 60*60;
+		$exp = 60*60; //satu jam
 		$done = $create+$exp;
-		$expired_at = date('Y-m-d H:i:s',$done);
+		$expired_at = date('Y-m-d H:i:s',$done);//set waktu expired
 
 		$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
 				'emaiL'		=> $emaiL,
@@ -258,7 +261,7 @@ class Auth extends CI_Controller {
 		    helper_log('forgot','Send link setup password to '.$emaiL);
 		    
 		    $lokasi = base_url('auth/login');
-           	if ($this->email->send()){
+           	if ($this->email->send()){ //jika email berhasil di kirim
            		$this->alert->set('bg-success', 'Success , your setup link has been send !');
 				echo json_encode(array('code' => 200, 'aksi' => "window.location.href = '".$lokasi."'"));
            	}else{
@@ -270,15 +273,15 @@ class Auth extends CI_Controller {
 
 	/////////////////////////////////////////////////////////////////////////////
 
-		public function register()
+		public function register()//ke halaman register
 	{				
 		$data = array(
 		    'titleWeb' => 'Register Page | CBN Internship',
 		);
-		$this->template->load('register', null, $data);
+		$this->template->load('register', null, $data); //load view register
 	}
 
-		public function getFaculty()
+		public function getFaculty()//get faculty
 	{
 		$resp = array();
 		$data = $this->Mod_crud->getData('result', 'facultyID, facultyName', 't_faculty');
@@ -292,7 +295,7 @@ class Auth extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-		public function getUniv()
+		public function getUniv()//get universitas
 	{
 		$resp = array();
 		$data = $this->Mod_crud->getData('result', 'universityID, universityName', 't_university',null,null,null,array('mou = "YES"'));
@@ -306,20 +309,22 @@ class Auth extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	public function do_register()
+	public function do_register()//register aksi
 	{
 		
 		$cekemail = $this->Mod_crud->checkData('emaiL', 't_login', array('emaiL = "'.$this->input->post('Email').'"'));
 		if ($cekemail) {
 			echo json_encode(array('code' => 366, 'message' => 'Email has been registered'));
 		}else{
+			//cek nim mahasiswa
 		$cekmahasiswa = $this->Mod_crud->checkData('mahasiswaNumber', 't_mahasiswa', array('mahasiswaNumber = "'.$this->input->post('Nim').'"'));
-		if ($cekmahasiswa) {
+		if ($cekmahasiswa) {//jika sudah terdaftar
 			echo json_encode(array('code' => 367, 'message' => 'Your nim has been registered'));
 		} else {
 			//pic
+			//set mahasiswa id secara otomatis
 			$mahasiswaID 	= $this->Mod_crud->autoNumber('mahasiswaID','t_mahasiswa','55',4);
-			
+				
 				$savemahasiswa 	= $this->Mod_crud->insertData('t_mahasiswa', array(
            				'mahasiswaID'		=> $mahasiswaID,
            				'loginID'		=> $mahasiswaID,
@@ -415,11 +420,11 @@ class Auth extends CI_Controller {
 	}
 	//////////////////////////////////////////////////////////////////////////////
 
-	public function logout(){
+	public function logout(){//untuk logout keluar
 		helper_log('logout','Logout Application',$this->session->userdata('userlog')['sess_usrID']);
 
-		$this->session->unset_userdata('userlog');
-		redirect(base_url('dashboard'));
+		$this->session->unset_userdata('userlog');//destroy session
+		redirect(base_url('dashboard'));//load view dashboard
 	}
 
 }
