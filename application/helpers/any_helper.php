@@ -194,7 +194,7 @@ if (!function_exists('uploadPic'))
 	function uploadPic($File, $location, $format)
 	{
 		$aExt = array("jpeg", "jpg", "png");
-		$t = explode(".", $File["name"]);
+		$t 	 = explode(".", $File["name"]);
 		$ext = end($t);
 		if ((($File["type"] == "image/png") || ($File["type"] == "image/jpg") || ($File["type"] == "image/jpeg")) && ($File["size"] < 2000000)&& in_array($ext, $aExt))
 			{
@@ -268,7 +268,7 @@ if (!function_exists('uploadFile'))
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//ambil email
 if (!function_exists('email'))
 {
 	function email($id=null)
@@ -283,7 +283,7 @@ if (!function_exists('email'))
 		endif;
 	}
 }
-
+//name universitas
 if (!function_exists('name_university'))
 {
 	function name_university($id=null)
@@ -298,7 +298,7 @@ if (!function_exists('name_university'))
 		endif;
 	}
 }
-
+//ambil di universitas
 if (!function_exists('get_universityID'))
 {
 	function get_universityID($id=null)
@@ -313,7 +313,7 @@ if (!function_exists('get_universityID'))
 		endif;
 	}
 }
-
+//nama fakultas
 if (!function_exists('name_faculty'))
 {
 	function name_faculty($id=null)
@@ -328,6 +328,7 @@ if (!function_exists('name_faculty'))
 		endif;
 	}
 }
+//ambil id fakultas
 if (!function_exists('get_facultyID'))
 {
 	function get_facultyID($id=null)
@@ -342,7 +343,7 @@ if (!function_exists('get_facultyID'))
 		endif;
 	}
 }
-
+//nama department
 if (!function_exists('name_dept'))
 {
 	function name_dept($id=null)
@@ -357,6 +358,7 @@ if (!function_exists('name_dept'))
 		endif;
 	}
 }
+//ambil id department
 if (!function_exists('get_deptID'))
 {
 	function get_deptID($id=null)
@@ -371,7 +373,7 @@ if (!function_exists('get_deptID'))
 		endif;
 	}
 }
-
+//nama residence
 if (!function_exists('name_residence'))
 {
 	function name_residence($id=null)
@@ -386,7 +388,7 @@ if (!function_exists('name_residence'))
 		endif;
 	}
 }
-
+//jenis kelamin
 if (!function_exists('name_gender'))
 {
 	function name_gender($id=null)
@@ -401,7 +403,7 @@ if (!function_exists('name_gender'))
 		endif;
 	}
 }
-
+//nama project
 if (!function_exists('name_project'))
 {
 	function name_project($id=null)
@@ -416,7 +418,7 @@ if (!function_exists('name_project'))
 		endif;
 	}
 }
-
+//ambil project id
 if (!function_exists('get_projectID'))
 {
 	function get_projectID($id=null)
@@ -431,7 +433,7 @@ if (!function_exists('get_projectID'))
 		endif;
 	}
 }
-
+//nama project scope
 if (!function_exists('name_projectscope'))
 {
 	function name_projectscope($id=null)
@@ -446,7 +448,7 @@ if (!function_exists('name_projectscope'))
 		endif;
 	}
 }
-
+//ambil id project scope
 if (!function_exists('get_scopeID'))
 {
 	function get_scopeID($id=null)
@@ -461,7 +463,7 @@ if (!function_exists('get_scopeID'))
 		endif;
 	}
 }
-
+//nama mahasiswa
 if (!function_exists('name_mhs'))
 {
 	function name_mhs($id=null)
@@ -476,7 +478,7 @@ if (!function_exists('name_mhs'))
 		endif;
 	}
 }
-
+//nama dosen
 if (!function_exists('name_dosen'))
 {
 	function name_dosen($id=null)
@@ -491,7 +493,7 @@ if (!function_exists('name_dosen'))
 		endif;
 	}
 }
-
+//nama admin
 if (!function_exists('name_admin'))
 {
 	function name_admin($id=null)
@@ -506,7 +508,7 @@ if (!function_exists('name_admin'))
 		endif;
 	}
 }
-
+//nama admin campus
 if (!function_exists('name_admincampus'))
 {
 	function name_admincampus($id=null)
@@ -521,7 +523,7 @@ if (!function_exists('name_admincampus'))
 		endif;
 	}
 }
-
+//nama kateogri
 if (!function_exists('name_category'))
 {
 	function name_category($id=null)
@@ -536,7 +538,7 @@ if (!function_exists('name_category'))
 		endif;
 	}
 }
-
+//nama task
 if (!function_exists('name_task'))
 {
 	function name_task($id=null)
@@ -551,7 +553,7 @@ if (!function_exists('name_task'))
 		endif;
 	}
 }
-
+//cek status task
 if (!function_exists('chk_statsTask'))
 {
 	function chk_statsTask($id=null)
@@ -567,7 +569,7 @@ if (!function_exists('chk_statsTask'))
 	}
 }
 
-
+//cek status mahasiswa
 if (!function_exists('chk_statsMhs'))
 {
 	function chk_statsMhs($id = null)
@@ -582,6 +584,7 @@ if (!function_exists('chk_statsMhs'))
 		endif;
 	}
 }
+//cek apply mahasiswa
 if (!function_exists('chk_applyMhs'))
 {
 	function chk_applyMhs($id = null)
@@ -596,7 +599,7 @@ if (!function_exists('chk_applyMhs'))
 		endif;
 	}
 }
-
+//cek tipe temp
 if (!function_exists('chk_typeTemp'))
 {
 	function chk_typeTemp($id = null)
@@ -611,7 +614,7 @@ if (!function_exists('chk_typeTemp'))
 		endif;
 	}
 }
-
+//cek status temp
 if (!function_exists('chk_statsTemp'))
 {
 	function chk_statsTemp($id = null)
@@ -626,7 +629,7 @@ if (!function_exists('chk_statsTemp'))
 		endif;
 	}
 }
-
+//cek total apply
 if (!function_exists('chk_totalApply'))
 {
 	function chk_totalApply($id = null)
@@ -636,7 +639,7 @@ if (!function_exists('chk_totalApply'))
 		return $dsn;
 	}
 }
-
+//cek total task
 if (!function_exists('chk_totalTask'))
 {
 	function chk_totalTask($id = null)
@@ -646,7 +649,7 @@ if (!function_exists('chk_totalTask'))
 		return $dsn;
 	}
 }
-
+//cek total task done
 if (!function_exists('chk_totalTaskDone'))
 {
 	function chk_totalTaskDone($id = null)
@@ -660,7 +663,7 @@ if (!function_exists('chk_totalTaskDone'))
 		endif;
 	}
 }
-
+//cek workscope mahasiswa
 if (!function_exists('chk_workMhs'))
 {
 	function chk_workMhs($id=null)
@@ -674,7 +677,7 @@ if (!function_exists('chk_workMhs'))
 		endif;
 	}
 }
-
+//log type
 if (!function_exists('logtype'))
 {
 	function logtype($id=null)
@@ -689,7 +692,7 @@ if (!function_exists('logtype'))
 		endif;
 	}
 }
-
+//is taken
 if (!function_exists('isTaken'))
 {
 	function isTaken($id=null)
@@ -702,7 +705,7 @@ if (!function_exists('isTaken'))
 		return $status;
 	}
 }
-
+//is approve
 if (!function_exists('isApprove'))
 {
 	function isApprove($id=null)
@@ -715,7 +718,11 @@ if (!function_exists('isApprove'))
 		return $status;
 	}
 }
-
+/*
+* @Function_name : timestep
+* @Return_type : Date
+* @Author : Anton Purnama /082118115288
+*/
 if (!function_exists('timestep'))
 {
 	function timestep($timestamp)
@@ -746,7 +753,7 @@ if (!function_exists('timestep'))
 	    return $time;
 	}
 }
-
+//cek status login
 if (!function_exists('cek_status'))
 {
 	function cek_status($id=null)

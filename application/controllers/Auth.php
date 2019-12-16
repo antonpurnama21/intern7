@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
-
+//controller untuk mengelola halaman login,register,forgot password, dan reset password
 	function __construct()
 	{
 		parent::__construct();

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH."controllers/CommonDash.php");
 
 class Department extends CommonDash {
-
+//controller untuk mengelola department
 	public function __construct()
 	{
 		parent::__construct();
@@ -37,11 +37,11 @@ class Department extends CommonDash {
 
 	public function modalAdd(){//modal tambah department
 		$data = array(
-				'modalTitle' => 'Add Department ',
-				'formAction' => base_url('department/save'),
-				'Req' => ''
+				'modalTitle' => 'Add Department ',//title modal
+				'formAction' => base_url('department/save'),//aksi form modal
+				'Req' => ''//request
 			);
-		$this->load->view('pages/department/form', $data);//view load form
+		$this->load->view('pages/department/form', $data);//load view modal form
 	}
 
 	public function save(){//aksi tambah department
@@ -64,7 +64,8 @@ class Department extends CommonDash {
 			helper_log('add','Add New Department ( '.$this->input->post('Deptname').' )',$this->session->userdata('userlog')['sess_usrID']);
 			//create notifikasi
 			create_notification('New','Department',$this->input->post('Deptname'),'department/index');
-			if ($save){
+			if ($save){//jika save bernilai true
+				//set alert
 				$this->alert->set('bg-success', "Insert success ! ");
        			echo json_encode(array('code' => 200, 'message' => 'Insert success !'));
        		}else{
@@ -85,6 +86,7 @@ class Department extends CommonDash {
 	}
 
 	public function edit(){
+		//cek duplikasi nama
 		$cek = $this->Mod_crud->checkData('deptName', 't_department', array('deptName = "'.$this->input->post('Deptname').'"', 'deptID != "'.$this->input->post('Deptid').'"'));
 		if ($cek){
 			echo json_encode(array('code' => 256, 'message' => 'Department has been registered'));
@@ -109,8 +111,9 @@ class Department extends CommonDash {
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public function delete(){//menghapus data department
+		//hapus data department
 		$query 		= $this->Mod_crud->deleteData('t_department', array('deptID' => $this->input->post('id')));
-		if ($query){
+		if ($query){//jika bernilai true
 			$data = array(
 					'code' => 200,
 					'pesan' => 'Success Delete !',

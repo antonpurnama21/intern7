@@ -4,15 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH."controllers/CommonDash.php");
 
 class Log extends CommonDash {
-
+//controller log aktivitas
 	public function __construct()
 	{
 		parent::__construct();
 	}
-
+	//load index log
 	public function index()
 	{
-		$data = array(
+		$data = array(//generate js
 			'_JS' => generate_js(array(
 						"dashboards/js/plugins/ui/moment/moment.min.js",
 						"dashboards/js/plugins/tables/datatables/datatables.min.js",
@@ -28,15 +28,16 @@ class Log extends CommonDash {
 						"dashboards/js/pages/log-index-script.js",
 				)
 			),
-			'titleWeb' => "Log Activities | CBN Internship",
-			'breadcrumb' => explode(',', 'Log Activity, Log List'),
+			'titleWeb' => "Log Activities | CBN Internship",//title web aplikasi
+			'breadcrumb' => explode(',', 'Log Activity, Log List'),//breadcrumb
+			//ambil data log aktivitas
 			'dMaster'	=> $this->Mod_crud->getData('result','*', 't_log_activity',null,null,null,null,null,array('logID DESC')),
 		);
-		$this->render('dashboard', 'pages/log/index', $data);
+		$this->render('dashboard', 'pages/log/index', $data);//load log index
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function delete(){
+	public function delete(){//hapus log aktivitas (tak digunakan)
 		$query 		= $this->Mod_crud->deleteData('t_log_activity', array('logID' => $this->input->post('id')));
 		if ($query){
 			$data = array(
@@ -52,17 +53,17 @@ class Log extends CommonDash {
 	}
 
 
-	public function result($id = null)
+	public function result($id = null)//hasil filter combobox
 	{
-		if ($id == 'adm') {
-			if ($this->input->post('Admin') == 'alladmin') {
+		if ($id == 'adm') {//jika id == adm (untuk admin hc dan admin department)
+			if ($this->input->post('Admin') == 'alladmin') {//jika post == alladmin
 				$usr = 'Admin Department';
 				$idusr = 'adm';
 				$like[] = 'logUsrID LIKE "11%"';
 				$like[]	= 'logUsrID LIKE "22%"';
 				$lk = implode(' OR ', $like);
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,null,null,array('logID DESC'),$lk);
-			}else{
+			}else{//jika per id
 				$usr = name_admin($this->input->post('Admin'));
 				$idusr = $this->input->post('Admin');
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Admin').'"'),null,array('logID DESC'));
@@ -89,15 +90,15 @@ class Log extends CommonDash {
 				'dMaster' => $log,
 				'id'	=> $idusr,
 			);
-			$this->render('dashboard', 'pages/log/result', $data);
+			$this->render('dashboard', 'pages/log/result', $data);//load view result
 		}
 		
-		if ($id == 'admcampus') {
-			if ($this->input->post('Admincampus') == 'alladmincampus') {
+		if ($id == 'admcampus') {//jika id = admcampus (untuk admin campus)
+			if ($this->input->post('Admincampus') == 'alladmincampus') {//jika post = alladmincampus
 				$usr = 'Admin Campus';
 				$idusr = 'admcampus';
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "33%"'),null,array('logID DESC'));
-			}else{
+			}else{//jika per id
 				$idusr = $this->input->post('Admincampus');
 				$usr = name_admincampus($this->input->post('Admincampus'));
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Admincampus').'"'),null,array('logID DESC'));
@@ -126,12 +127,12 @@ class Log extends CommonDash {
 			$this->render('dashboard', 'pages/log/result', $data);
 		}
 
-		if ($id == 'dsn') {
-			if ($this->input->post('Dosen') == 'alldosen') {
+		if ($id == 'dsn') {//jika id == dsn (untuk dosen)
+			if ($this->input->post('Dosen') == 'alldosen') {//jika post = alldosen
 				$usr = 'Dosen';
 				$idusr = 'dsn';
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "44%"'),null,array('logID DESC'));
-			}else{
+			}else{//jika per id
 				$idusr = $this->input->post('Dosen');
 				$usr = name_dosen($this->input->post('Dosen'));
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Dosen').'"'),null,array('logID DESC'));
@@ -160,12 +161,12 @@ class Log extends CommonDash {
 			$this->render('dashboard', 'pages/log/result', $data);
 		}
 
-		if ($id == 'mhs') {
-			if ($this->input->post('Mahasiswa') == 'allmahasiswa') {
+		if ($id == 'mhs') {//jika id = mhs (untuk mahasiswa)
+			if ($this->input->post('Mahasiswa') == 'allmahasiswa') {//jika post = all mahasiswa
 				$idusr = 'mhs';
 				$usr = 'Mahasiswa';
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID LIKE "55%"'),null,array('logID DESC'));
-			}else{
+			}else{//jika per id
 				$idusr = $this->input->post('Mahasiswa');
 				$usr = name_mhs($this->input->post('Mahasiswa'));
 				$log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$this->input->post('Mahasiswa').'"'),null,array('logID DESC'));
@@ -196,18 +197,19 @@ class Log extends CommonDash {
 		//echo json_encode($log);
 	}
 
-	public function getListByid()
+	public function getListByid()//log berdasarkan id user
 	{
-		$res = array();
-		$id = $this->session->userdata('userlog')['sess_usrID'];
+		$res = array();//set array
+		$id = $this->session->userdata('userlog')['sess_usrID'];//get id dari seesion
+		//get log data
 		$Log = $this->Mod_crud->getData('result', '*','t_log_activity',null,null,null,array('logUsrID = "'.$id.'"'),null,array('logID DESC'));
-		if (!empty($Log)) {
-			$no = 0;
-			foreach ($Log as $key) {
-				$no++;
-				$waktu = timestep($key->logTime);
-                $email1 = email($key->logUsrID);
-                if ($email1 == $this->session->userdata('userlog')['sess_email']) {
+		if (!empty($Log)) {//jika log kosong
+			$no = 0;//set number
+			foreach ($Log as $key) {//looping log
+				$no++;//number
+				$waktu = timestep($key->logTime);//timestep log
+                $email1 = email($key->logUsrID);//email user
+                if ($email1 == $this->session->userdata('userlog')['sess_email']) {//jika email sama dengan session email maka ganti menjadi you
                     $email = 'you';
                 }else{
                     $email = $email1;
@@ -229,15 +231,16 @@ class Log extends CommonDash {
 	}
 
 
-	public function getAdmin()
+	public function getAdmin()//get data admin
 	{
 		$resp = array();
+		//get data
 		$data = $this->Mod_crud->getData('result', 'adminID, fullName, deptID', 't_admin');
-		if (!empty($data)) {
+		if (!empty($data)) {//jika kosong
 				$mk['id'] = 'alladmin';
 				$mk['text'] = 'Print All';
 				array_push($resp, $mk);
-			foreach ($data as $key) {
+			foreach ($data as $key) {//looping data
 				$mk['id'] = $key->adminID;
 				$mk['text'] = $key->fullName.' ['.name_dept($key->deptID).']';
 				array_push($resp, $mk);
@@ -246,7 +249,7 @@ class Log extends CommonDash {
 		echo json_encode($resp);
 	}
 
-	public function getAdminCampus()
+	public function getAdminCampus()//get data admin deprtment
 	{
 		$resp = array();
 		$data = $this->Mod_crud->getData('result', 'adminCampusID, fullName, universityID', 't_admin_campus');
@@ -263,7 +266,7 @@ class Log extends CommonDash {
 		echo json_encode($resp);
 	}
 
-	public function getDosen()
+	public function getDosen()//get data dosen
 	{
 		$resp = array();
 		$data = $this->Mod_crud->getData('result', 'dosenID, fullName, universityID', 't_dosen');
@@ -280,7 +283,7 @@ class Log extends CommonDash {
 		echo json_encode($resp);
 	}
 
-	public function getMahasiswa()
+	public function getMahasiswa()//get data mahasiswa
 	{
 		$resp = array();
 		$data = $this->Mod_crud->getData('result', 'mahasiswaID, fullName, universityID', 't_mahasiswa');

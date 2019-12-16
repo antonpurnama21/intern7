@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH."controllers/CommonDash.php");
 
 class Account extends CommonDash {
-
+//controller untuk mengelola permintaan reset password
 	public function __construct()
 	{
 		parent::__construct();

@@ -14,10 +14,10 @@ class CommonFunction extends CI_Controller {
 		//menampilkan_role
 	public function getRole()
 	{
-		$resp = array();
-		$data = $this->Mod_crud->getData('result', 'roleID, roleName', 't_role',2);
-		if (!empty($data)) {
-			foreach ($data as $key) {
+		$resp = array();//set array
+		$data = $this->Mod_crud->getData('result', 'roleID, roleName', 't_role',2);//ambil data
+		if (!empty($data)) {//jika data tidak kosong
+			foreach ($data as $key) {//looping data
 				$mk['id'] = $key->roleID;
 				$mk['text'] = $key->roleName;
 				array_push($resp, $mk);

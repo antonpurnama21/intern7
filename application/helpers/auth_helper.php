@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // THE HELPER
-
+//cek auth
 if (!function_exists('auth_check'))
 {
 	function auth_check()
@@ -17,7 +17,7 @@ if (!function_exists('auth_check'))
 		}
 	}
 }
-
+//auth level
 if (!function_exists('auth_level'))
 {
 	function auth_level($type = null, $level = null, $module = null)
@@ -38,7 +38,7 @@ if (!function_exists('auth_level'))
 		return $check;
 	}
 }
-
+//level check
 if (!function_exists('level_check'))
 {
 	function level_check($level = null, $module = null)
@@ -57,7 +57,7 @@ if (!function_exists('level_check'))
 		return false;
 	}
 }
-
+//auth redirect
 if (!function_exists('auth_redirect'))
 {
 	function auth_redirect()
@@ -84,35 +84,8 @@ if (!function_exists('auth_redirect'))
 	}
 }
 
-if (!function_exists('what_level'))
-{
-	function what_level($level)
-	{
-		switch($level){
-			case '2':
-				return 'Administrator BPSK';
-				break;
-			case '3':
-				return 'Sekretariat BPSK';
-				break;
-			case '4':
-				return 'Ketua BPSK';
-				break;
-			case '5':
-				return 'Anggota BPSK';
-				break;
-			case '6':
-				return 'User';
-				break;
-			default:
-				return 'Super Admin';
-				break;
-		}
-	}
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//what role
 if (!function_exists('what_role'))
 {
 	function what_role($role)
@@ -128,7 +101,7 @@ if (!function_exists('what_role'))
 		endif;
 	}
 }
-
+//log aktivitas
 if (!function_exists('helper_log'))
 {
 	function helper_log($tipe = null, $str = null, $usrID = null)
@@ -179,7 +152,7 @@ if (!function_exists('helper_log'))
 		}
 	}
 }
-
+//update workscope
 if (!function_exists('update_workscope'))
 {
 	function update_workscope()
@@ -221,7 +194,7 @@ if (!function_exists('update_workscope'))
     	
 	}
 }
-
+//update project scope
 if (!function_exists('update_project_scope'))
 {
 	function update_project_scope()
@@ -291,7 +264,7 @@ if (!function_exists('update_task'))
     	}
 	}
 }
-
+//set query session
 if (!function_exists('qrysession'))
 {
 	function qrysession()
@@ -300,7 +273,7 @@ if (!function_exists('qrysession'))
 		$dsn = $CI->Mod_crud->setsession_qry();
 	}
 }
-
+//buat notifikasi
 if (!function_exists('create_notification'))
 {
 	function create_notification($tipe = null, $title = null, $notif = null, $url = null)

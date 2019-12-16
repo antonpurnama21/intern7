@@ -60,7 +60,7 @@
 			
 			<div class="panel-body">
 				<?php
-				if (!empty($mhsFac)) {
+				if (!empty($mhsFac)) {//mahasiswa per fakultas
 				foreach ($mhsFac as $mhs) {?>
 				<div class="row">
 					<div class="form-group">
@@ -85,7 +85,7 @@
 			
 			<div class="panel-body">
 				<?php
-				if (!empty($dsnFac)) {
+				if (!empty($dsnFac)) {//dosen per fakultas
 				foreach ($dsnFac as $mhs) {?>
 				<div class="row">
 					<div class="form-group">

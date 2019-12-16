@@ -19,7 +19,7 @@
 </div>
 <div class="row">
 <?php
-if (!empty($dtjumlah)) {
+if (!empty($dtjumlah)) {//data jumlah
 foreach ($dtjumlah as $key) {?>
 
 	<div class="col-md-4">
@@ -36,7 +36,7 @@ foreach ($dtjumlah as $key) {?>
 							<div class="input-group">
 								<div class="input-group-addon" style="padding-top:0px;"><i class="icon-user-check"></i></div>
 								<?php
-								if (!empty($dtpersen)) {
+								if (!empty($dtpersen)) {//data persen
 								foreach ($dtpersen as $key2) {
 									if ($key2->label==$key->label) {
 										$persen = $key2->value;
@@ -57,7 +57,7 @@ foreach ($dtjumlah as $key) {?>
 							<div class="input-group">
 								<div class="input-group-addon" style="padding-top:0px;"><i class="icon-hour-glass"></i></div>
 								<?php
-								if (!empty($dtprogress)) {
+								if (!empty($dtprogress)) {//data progress
 								foreach ($dtprogress as $key3) {
 									if ($key3->label==$key->label) {
 										$persen = $key3->value;
@@ -124,7 +124,7 @@ foreach ($dtjumlah as $key) {?>
 						<?php
 							if (!empty($dtscope)) {
 								$no = 0;
-									foreach ($dtscope as $key) {
+									foreach ($dtscope as $key) {//data project scope
 									$no++;
 
 									if ($key->isApproved == 'Y') {

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH."controllers/CommonDash.php");
 
 class Dosen extends CommonDash {
-
+//controller untuk mengelola Dosen
 	public function __construct()
 	{
 		parent::__construct();
@@ -38,9 +38,9 @@ class Dosen extends CommonDash {
 						"dashboards/js/pages/dosen-index-script.js",
 				)
 			),
-			'titleWeb' => "Dosen | CBN Internship",
-			'breadcrumb' => explode(',', 'Dosen, Dosen List'),
-			'dtdosen' => $dosen,
+			'titleWeb' => "Dosen | CBN Internship",//title tab aplikasi
+			'breadcrumb' => explode(',', 'Dosen, Dosen List'),//breadcrumb
+			'dtdosen' => $dosen,//data
 
 		);
 		$this->render('dashboard', 'pages/dosen/index', $data);//load index dosen
@@ -69,16 +69,16 @@ class Dosen extends CommonDash {
 		    'titleWeb' => "Add Dosen | CBN Internship",
 		    //'tabTitle' => explode(',', 'Pengaduan,Input Permohonan Perkara'),
 		    'breadcrumb' => explode(',', 'Dosen,Add New Dosen'),
-		    'actionForm' => base_url('dosen/save'),
-		    'buttonForm' => 'Simpan',
-		    'Req'	=> ''
+		    'actionForm' => base_url('dosen/save'),//aksi form
+		    'buttonForm' => 'Simpan',//button
+		    'Req'	=> ''//request
 		);
 
 		$this->render('dashboard', 'pages/dosen/form', $data);//load view form dosen
 	}
 
 	public function save(){//tambah aksi
-		//cek email dosen
+		//cek duplikasi email dosen
 		$cekemail = $this->Mod_crud->checkData('emaiL', 't_login', array('emaiL = "'.$this->input->post('Email').'"'));
 		if ($cekemail) {//jika ada
 			echo json_encode(array('code' => 366, 'message' => 'Email has been registered'));
@@ -91,37 +91,39 @@ class Dosen extends CommonDash {
 			//generate dosen id
 			$dosenID 	= $this->Mod_crud->autoNumber('dosenID','t_dosen','44',4);
 			//penyimpanan data dosen
+			//jika file tidak kosong
 			if ($_FILES['Userfile']['name'] !== '') {
-					$t = explode(".", $_FILES['Userfile']['name']);
-					$ext = end($t);
-					$cfgFile= array(
-							'file_name' => 'pic_'.$dosenID.'.'.$ext,
-							'upload_path' => 'fileupload/pic_dosen',
-							'allowed_types' => 'jpg|png|gif|jpeg|bmp',
-							'max_size' => 2000,
+					//konfigurasi file
+					$t = explode(".", $_FILES['Userfile']['name']);//ambil ektensi file
+					$ext = end($t);//set ektensi file
+					$cfgFile= array(//arrya konfigurasi
+							'file_name' => 'pic_'.$dosenID.'.'.$ext,//nama file
+							'upload_path' => 'fileupload/pic_dosen',//upload path
+							'allowed_types' => 'jpg|png|gif|jpeg|bmp',//tipe file yang di perbolehkan
+							'max_size' => 2000,//maks ukuran file
 						);
 
-					$this->upload->initialize($cfgFile);//upload gambar
+					$this->upload->initialize($cfgFile);//inisialisasi file
 					if (!$this->upload->do_upload('Userfile')) {//jika tidak melalkukan upload
 						echo json_encode(array('code' => 267, 'message' => strip_tags($this->upload->display_errors())));
-					}else{
-						$gbr 	 = $this->upload->data();
-						$config['image_library'] 	= 'gd2';
-						$config['source_image'] 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
-						$config['create_thumb'] 	= FALSE;
-						$config['maintain_ratio'] 	= FALSE;
-						$config['quality'] 		= '50%';
-						$config['width']         	= 200;
-						$config['height']       	= 200;
+					}else{//jika melakukan upload
+						$gbr 	 = $this->upload->data();//ambil data file yg di upload
+						$config['image_library'] 	= 'gd2';//library
+						$config['source_image'] 	= 'fileupload/pic_dosen/' . $gbr['file_name'];//path penyimpanan
+						$config['create_thumb'] 	= FALSE;//tumbnail
+						$config['maintain_ratio'] 	= FALSE;//ration
+						$config['quality'] 		= '50%';//kualitas
+						$config['width']         	= 200;//lebar
+						$config['height']       	= 200;//tinggi
 						$config['new_image']	 	= 'fileupload/pic_dosen/' . $gbr['file_name'];
 						$this->load->library('image_lib', $config);
-						$this->image_lib->resize();
+						$this->image_lib->resize();//resize ukuran file
 					}
 					$pathPic = 'fileupload/pic_dosen/' . $gbr['file_name'];//set lokasi gambar
 				} else {
 					$pathPic = '';
 				}
-				//simpan dosen
+				//simpan data dosen
 				$saveDosen = $this->Mod_crud->insertData('t_dosen', array(
            				'dosenID' 	=> $dosenID,
            				'loginID'	=> $dosenID,
@@ -140,7 +142,7 @@ class Dosen extends CommonDash {
            				'createdTIME'	=> date('Y-m-d H:i:s')
            			)
            		);
-
+				//simpan login
 	           	$savelogin = $this->Mod_crud->insertData('t_login', array(
 					'loginID'		=> $dosenID,
 					'roleID'		=> 44,
@@ -157,7 +159,7 @@ class Dosen extends CommonDash {
 			$exp = 60*60;//1jam
 			$done = $create+$exp;//masa expired
 			$expired_at = date('Y-m-d H:i:s',$done);//waktu expired
-
+			//simpan ke table password reset
 			$t_passwordreset = $this->Mod_crud->insertData('t_passwordreset', array(
 					'emaiL'		=> $this->input->post('Email'),
 					'tokeN'		=> $tokeN,
@@ -165,7 +167,7 @@ class Dosen extends CommonDash {
 					'expired_at'	=> $expired_at
 					)
 				);
-
+			//konfigurasi email
 			$config = array(
 			  				'protocol' => 'ssmtp',
 							'smtp_host' => 'ssl://mail.intern7.iex.or.id',
@@ -177,7 +179,7 @@ class Dosen extends CommonDash {
 					  		'charset' => 'iso-8859-1',
 					  		'wordwrap' => TRUE
 				);
-
+				//isi pesan
 				$message = 	"
 							<html>
 							<head>
@@ -200,17 +202,18 @@ class Dosen extends CommonDash {
 							";
 		 		
 			    $this->load->library('email', $config);//load library email
-			    $this->email->set_newline("\r\n");
-			    $this->email->from($config['smtp_user']);
-			    $this->email->to($this->input->post('Email'));
-			    $this->email->subject('Account Setup Link');
-			    $this->email->message($message);
+			    $this->email->set_newline("\r\n");//set garis baru
+			    $this->email->from($config['smtp_user']);//pengirim email
+			    $this->email->to($this->input->post('Email'));//email tujuan
+			    $this->email->subject('Account Setup Link');//subject email
+			    $this->email->message($message);//set isi pesan
 			    //log aktivitas
 			    helper_log('add','Add New Dosen ( '.$this->input->post('Email').' )',$this->session->userdata('userlog')['sess_usrID']);
 			    //notification
 			    create_notification('New','Dosen',$this->input->post('Fullname'),'dosen/index');
 
-			if ($this->email->send()){
+			if ($this->email->send()){//jika terkirim
+				//set alert sukses
 				$this->alert->set('bg-success', "Insert success ! Setup link hes been send");
        			echo json_encode(array('code' => 200, 'message' => 'Insert success ! Setup link hes been send', 'aksi' => "window.location.href='".base_url('dosen')."';"));
        		}else{
@@ -331,15 +334,19 @@ class Dosen extends CommonDash {
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public function delete(){//hapus dosen
+		//log hapus
 		helper_log('delete','Delete Dosen ( '.email($this->input->post('id')).' )',$this->session->userdata('userlog')['sess_usrID']);
+		//ambil data dosen
 		$getdosen 	= $this->Mod_crud->getData('row','profilePic','t_dosen',null,null,null,array('dosenID = "'.$this->input->post('id').'"'));
+		//hapus login
 		$deletelog 	= $this->Mod_crud->deleteData('t_login',array('loginID'=>$this->input->post('id')));
+		//hapus dosen
 		$query 		= $this->Mod_crud->deleteData('t_dosen', array('dosenID' => $this->input->post('id')));
-		if ($query){
-			if (!empty($getdosen)){
-			unlink(FCPATH . $getdosen->profilePic);
+		if ($query){//jika bernilai true
+			if (!empty($getdosen)){//jika tidak kosong
+			unlink(FCPATH . $getdosen->profilePic);//hapus gambar di pathnya
 			}
-			$data = array(
+			$data = array(//array sweatalert
 					'code' => 200,
 					'pesan' => 'Success Delete !',
 					'aksi' => 'setTimeout("window.location.reload();",1500)'
@@ -355,19 +362,20 @@ class Dosen extends CommonDash {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 		public function modalReset()//modal reset password
 	{
-		$ID = explode('~',$this->input->post('id'));
+		$ID = explode('~',$this->input->post('id'));//get id
 		$data = array(
-				'modalTitle' => 'Reset Password '.$ID[1],
+				'modalTitle' => 'Reset Password '.$ID[1],//set modal title
+				//ambil email dosen
 				'dMaster' => $this->Mod_crud->getData('row', 'emaiL', 't_dosen', null, null, null, array('dosenID = "'.$ID[0].'"')),
-				'formAction' => base_url('dosen/reset'),
-				'Req' => ''
+				'formAction' => base_url('dosen/reset'),//modal form dosen
+				'Req' => ''//request
 			);
-		$this->load->view('pages/dosen/reset', $data);
+		$this->load->view('pages/dosen/reset', $data);//load modal view
 	}
 
 	function reset()//aksi reset password
 	{
-		$email = $this->input->post('Email');
+		$email = $this->input->post('Email');//get email
 
 		$set 	= '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$tokeN 	= substr(str_shuffle($set), 0, 55);
@@ -431,6 +439,7 @@ class Dosen extends CommonDash {
 		    $this->email->to($email);
 		    $this->email->subject('Password Reset');
 		    $this->email->message($message);
+		    //log set setup password
 		    helper_log('reset','Send Email Setup Password To '.$email,$this->session->userdata('userlog')['sess_usrID']);
 
 			if ($this->email->send()){
@@ -443,7 +452,8 @@ class Dosen extends CommonDash {
 // profile//////////////////////////////////////////////////////////////
 			public function profile()//ke halaman profile
 	{
-		$id = $this->session->userdata('userlog')['sess_usrID'];
+		$id = $this->session->userdata('userlog')['sess_usrID'];//ambil id dari session
+		//ambil data detail dosen
 		$detail = $this->Mod_crud->getData('row', 'a.*, l.roleID', 't_dosen a', null, null, array('t_login l'=>'a.loginID = l.loginID'),array('a.dosenID = "'.$id.'"'));
 		$data = array(
 			'_JS' => generate_js(array(
@@ -465,7 +475,7 @@ class Dosen extends CommonDash {
 			'breadcrumb' => explode(',', 'Profile,My Profile'),
 			'dtdosen' => $detail
 		);
-		$this->render('dashboard', 'pages/dosen/profile', $data);
+		$this->render('dashboard', 'pages/dosen/profile', $data);//load view dosen profile
 	}
 
 		public function formProfile($id=null)//edit profile
@@ -497,10 +507,11 @@ class Dosen extends CommonDash {
 		    'Req' => ''
 		);
 
-		$this->render('dashboard', 'pages/dosen/formProfile', $data);
+		$this->render('dashboard', 'pages/dosen/formProfile', $data);//load view form profile
 	}
 
 	public function editProfile(){//aksi edit profile
+		//cek duplikasi nama dosen
 		$cek = $this->Mod_crud->checkData('fullName', 't_dosen', array('fullName = "'.$this->input->post('Fullname').'"', 'dosenID != "'.$this->input->post('Dosenid').'"'));
 		if ($cek){
 			echo json_encode(array('code' => 368, 'message' => 'Name has been registered'));
@@ -590,10 +601,12 @@ class Dosen extends CommonDash {
 
 		public function do_change_pass()//aksi rubah password
 	{
+		//cek password
 		$cek = $this->Mod_crud->checkData('passworD', 't_login', array('passworD = "'.md5($this->input->post('Password1')).'"', 'loginID = "'.$this->input->post('Dosenid').'"'));
-		if ($cek){
+		if ($cek){//jika sama dengan password lama
 			echo json_encode(array('code' => 256, 'message' => 'The password you entered has been used before'));
 		}else{
+			//update login
 			$updateLogin = $this->Mod_crud->updateData('t_login', array(
 						'passworD'		=> md5($this->input->post('Password1')),
 						'statuS'		=> 'verified',

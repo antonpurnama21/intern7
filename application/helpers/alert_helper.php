@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (!function_exists('has_alert'))
 {
+	//untuk menyetel alert
 	function has_alert($type = '')
 	{
 		$CI =& get_instance();

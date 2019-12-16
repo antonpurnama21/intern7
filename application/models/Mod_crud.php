@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mod_crud extends CI_Model {
-
+//model crud
+	//fungsi ambil data
 	function getData($type = null, $select, $table, $limit = null, $offset = null, $joins = null, $where = null, $group = null, $order = null, $like = null)
 	{
 		$command = "SELECT $select FROM $table";
@@ -52,7 +53,7 @@ class Mod_crud extends CI_Model {
 			return false;
 		}
 	}
-
+	//query
 	function qry($type = null, $command)
 	{
 		$data = $this->db->query($command);
@@ -72,13 +73,13 @@ class Mod_crud extends CI_Model {
 			}
 		}
 	}
-
+	//query tanpa type
 	function qry_ori($command)
 	{
 		$data = $this->db->query($command);
 		return false;
 	}
-
+	//cek data
 	function checkData($row, $table, $where)
 	{
 		$command = "SELECT $row FROM $table";
@@ -96,18 +97,18 @@ class Mod_crud extends CI_Model {
 		}
 
 	}
-
+	//insert data
 	function insertData($table,$data)
 	{
 		$data = $this->db->insert($table,$data);
 		return $data;
 	}
-
+	//insert multiple
 	function insertBatch($table, $data)
 	{
 		return $this->db->insert_batch($table, $data);
 	}
-
+	//update data
 	function updateData($table,$data,$where)
 	{
 		foreach ($where as $key => $values) {
@@ -116,7 +117,7 @@ class Mod_crud extends CI_Model {
 		$data = $this->db->update($table,$data);
 		return $data;
 	}
-
+	//hapus data
 	function deleteData($table,$where)
 	{
 		foreach ($where as $key => $values) {
@@ -125,7 +126,7 @@ class Mod_crud extends CI_Model {
 		$data = $this->db->delete($table);
 		return $data;
 	}
-
+	//hapus semua
 	function delete_all($table)
 	{
 		$delete = $this->db->truncate($table);
@@ -135,7 +136,7 @@ class Mod_crud extends CI_Model {
 			return FALSE;
 		}
 	}
-
+	//generate auto number/id
 	function autoNumber($field, $table, $format, $digit)
 	{
 		$qry = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS KodeAkhir FROM $table WHERE $field LIKE '$format%'");
@@ -147,7 +148,7 @@ class Mod_crud extends CI_Model {
 		$kode = $format.sprintf("%0".$digit."s", $nextCode);
 		return $kode;
 	}
-
+	//hitung data
 	function countData($type = null, $select, $table, $limit = null, $offset = null, $joins = null, $where = null, $group = null, $order = null, $like = null)
 	{
 		$command = "SELECT $select FROM $table";
@@ -192,7 +193,7 @@ class Mod_crud extends CI_Model {
 		$data = $this->db->query($command);
 		return $data->num_rows();
 	}
-	
+	//query session
 	function setsession_qry(){
 		$query=$this->db->query('SET SESSION sql_mode = ""');
 		if ($query) {

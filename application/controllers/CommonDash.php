@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-//contoller utama untuk menggantikan ci_controller
+//contoller utama aplikasi
 class CommonDash extends CI_Controller {
 
 	public $data = array();

@@ -59,14 +59,14 @@ class Coba extends Fpdf {
 	$pdf->Cell(100 ,15, "Universitas" ,1 ,"LR", "C", true);
 	$pdf->Cell(100, 15, "Fakultas", 1, "LR", "C", true);
 	$pdf->Cell(170 ,15, "Alamat" ,1 ,"LR", "C", true);
-	if (!empty($dtdosen)) {
+	if (!empty($dMaster)) {
 		$pdf->SetLeftMargin(20);
 		$pdf->Ln();
 		$no = 0;
 		$curY=$pdf->GetY();
 		$curN = 0;
 		//$akhir = 0;
-		foreach ($dtdosen as $key) {
+		foreach ($dMaster as $key) {
 			$no++;
 			$yAwal = $pdf->GetY();
 			$xAwal = $pdf->GetX();

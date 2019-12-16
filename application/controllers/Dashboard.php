@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH."controllers/CommonDash.php");
 
 class Dashboard extends CommonDash {
-
+//controller untuk mengelola halaman depan aplikasi/dashboard
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,7 +14,7 @@ class Dashboard extends CommonDash {
 	public function index()//halaman utama admin dashboard
 	{
 		if ($this->session->userdata('userlog')['sess_role']==11) { //untuk role id = 11 admin HC
-			qrysession();//memanggil query session untuk menghindari gagal eksekusi query pada server
+			qrysession();//set query session sql_mode = ""
 			//ambil data account yang memiliki password null
 			$getaccount = $this->Mod_crud->getData('result', '*', 't_login', null, null, null,array('passworD = "null"'));
 			//ambil data project scope yang belum di upprove

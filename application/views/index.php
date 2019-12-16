@@ -26,7 +26,7 @@
 			
 			<div class="panel-body">
 				<?php
-				if (!empty($dtmhs)) {
+				if (!empty($dtmhs)) {// data mahasiswa
 				foreach ($dtmhs as $mhs) {?>
 				<div class="row">
 					<div class="form-group">
@@ -51,7 +51,7 @@
 			
 			<div class="panel-body">
 				<?php
-				if (!empty($dtprj)) {
+				if (!empty($dtprj)) {// data project
 				foreach ($dtprj as $prj) {?>
 				<div class="row">
 					<div class="form-group">
@@ -76,7 +76,7 @@
 			
 			<div class="panel-body">
 				<?php
-				if (!empty($dtscp)) {
+				if (!empty($dtscp)) {//date project scope
 				foreach ($dtscp as $scope) {?>
 				<div class="row">
 					<div class="form-group">
@@ -101,7 +101,7 @@
 </div>
 <div class="row">
 <?php
-if (!empty($dtjumlah)) {
+if (!empty($dtjumlah)) {//data jumlah
 foreach ($dtjumlah as $key) {?>
 
 	<div class="col-md-4">
@@ -118,7 +118,7 @@ foreach ($dtjumlah as $key) {?>
 							<div class="input-group">
 								<div class="input-group-addon" style="padding-top:0px;"><i class="icon-user-check"></i></div>
 								<?php
-								if (!empty($dtpersen)) {
+								if (!empty($dtpersen)) {//data persen
 								foreach ($dtpersen as $key2) {
 									if ($key2->label==$key->label) {
 										$persen = $key2->value;
@@ -139,7 +139,7 @@ foreach ($dtjumlah as $key) {?>
 							<div class="input-group">
 								<div class="input-group-addon" style="padding-top:0px;"><i class="icon-hour-glass"></i></div>
 								<?php
-								if (!empty($dtprogress)) {
+								if (!empty($dtprogress)) {// date progress
 								foreach ($dtprogress as $key3) {
 									if ($key3->label==$key->label) {
 										$persen = $key3->value;
@@ -201,7 +201,7 @@ foreach ($dtjumlah as $key) {?>
 					</thead>
 					<tbody>
 						<?php
-							if (!empty($dtaccount)) {
+							if (!empty($dtaccount)) {//data akun
 								$no = 0;
 							foreach ($dtaccount as $key) {
 							$no++;
@@ -264,7 +264,7 @@ foreach ($dtjumlah as $key) {?>
 					</thead>
 					<tbody>
 						<?php
-							if (!empty($dtscope)) {
+							if (!empty($dtscope)) {// data project scope
 								$no = 0;
 									foreach ($dtscope as $key) {
 									$no++;
@@ -309,46 +309,3 @@ foreach ($dtjumlah as $key) {?>
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel panel-white border-top-success">
-			<div class="panel-heading">
-				<h6 class="panel-title"></h6>
-				<div class="heading-elements">
-					<ul class="icons-list">
-                		<li><a data-action="collapse" data-popup="tooltip" title="Collapse"></a></li>
-                		<li><a data-action="reload" data-popup="tooltip" title="Reload"></a></li>
-                		<li><a data-action="close" data-popup="tooltip" title="Close"></a></li>
-                	</ul>
-            	</div>
-			</div>
-
-			<div class="panel-body">
-				<ul class="nav nav-tabs nav-tabs-highlight" id="myTab" role="tablist">
-					<li class="nav-item">
-						<a href="#tab1" class="nav-link active" data-toggle="tab">Tab 1</a>
-					</li>
-					<li class="nav-item">
-						<a href="#tab2" class="nav-link" data-toggle="tab">Tab 2</a>
-					</li>
-				</ul>
-
-				<div class="tab-content">
-					<div class="tab-pane" id="tab1">
-						Tab 1
-					</div>
-
-					<div class="tab-pane" id="tab2">
-						Tab 2
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script>
-  $(function () {
-    $('#myTab li:first-child a').tab('show')
-  })
-</script>

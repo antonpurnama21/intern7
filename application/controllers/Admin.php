@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH."controllers/CommonDash.php");
 
 class Admin extends CommonDash {
-
+//controller untuk mengelola admin HC dan admin department
 	public function __construct()
 	{
 		parent::__construct();
