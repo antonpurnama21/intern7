@@ -53,6 +53,8 @@ class University extends CommonDash {
 		}else{
 			//generate id univeristas
 			$id 	= $this->Mod_crud->autoNumber('universityID','t_university','MUV-',3);
+			//generate id profile universitas
+			$idprofile 	= $this->Mod_crud->autoNumber('universityProfileID','t_university_profile','ID-'.$id.'-',2);
 			//simpan universitas
 			$save = $this->Mod_crud->insertData('t_university', array(
 						'universityID' 		=> $id,
@@ -60,6 +62,13 @@ class University extends CommonDash {
 						'mou'				=> $this->input->post('Mou'),
 						'createdBY'			=> $this->session->userdata('userlog')['sess_usrID'],
 						'createdTime' 		=> date('Y-m-d H:i:s')
+           			)
+           		);
+			//simpan universitas profile
+			$savepro = $this->Mod_crud->insertData('t_university_profile', array(
+						'universityProfileID'	=> $idprofile,
+						'universityID' 			=> $id,
+						'universityName' 		=> $this->input->post('Universityname'),
            			)
            		);
 			//log tambah universitas
