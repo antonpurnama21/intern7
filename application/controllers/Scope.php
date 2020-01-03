@@ -260,7 +260,7 @@ class Scope extends CommonDash {
 	{
 		$data = array(
 				'modalTitle' => 'Add Category ',//modal title
-				'formAction' => base_url('scope/saveCategory')//url aksi,
+				'formAction' => base_url('scope/saveCategory'),//url aksi,
 				'Req' => ''
 			);
 		$this->load->view('pages/scope/formCategory', $data);////load modal category
